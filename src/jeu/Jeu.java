@@ -104,7 +104,7 @@ public class Jeu {
 	
 	private void modifierEtatCase()
 	{
-		//pollution
+		//pollutions
 	}
 
 	private void ChangerTour()
