@@ -6,6 +6,7 @@ public class Jeu {
 	private String nom;
 	private Personnage joueur;
 	private int nbJour;
+	private int nbHeure;
 	private int nbCaseMax = 0;
 	private final static int MAX_CASE = 50;
 	private Case[] cases = new Case[MAX_CASE];
@@ -59,6 +60,34 @@ public class Jeu {
 
 	public void setNbJour(int nbJour) {
 		this.nbJour = nbJour;
+	}
+
+	public int getNbHeure() {
+		return nbHeure;
+	}
+
+	public void setNbHeure(int nbHeure) {
+		this.nbHeure = nbHeure;
+	}
+
+	public int getNbCaseMax() {
+		return nbCaseMax;
+	}
+
+	public void setNbCaseMax(int nbCaseMax) {
+		this.nbCaseMax = nbCaseMax;
+	}
+
+	public Case[] getCases() {
+		return cases;
+	}
+
+	public void setCases(Case[] cases) {
+		this.cases = cases;
+	}
+
+	public static int getMaxCase() {
+		return MAX_CASE;
 	}
 
 	private void afficherMonstreJeu()

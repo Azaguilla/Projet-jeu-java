@@ -46,9 +46,10 @@ public abstract class Personnage {
 		
 	}
 	
-	public void boirePotion()
+	public String boirePotion()
 	{
-		
+		this.vie = this.vie + 2;
+		return "Vous réccupérer de la vie. Votre énergie est actuellement à "+this.vie+" pts.";
 	}
 	
 	public String manger()
