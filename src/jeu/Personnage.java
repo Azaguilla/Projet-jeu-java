@@ -17,6 +17,7 @@ public abstract class Personnage {
 	private int energie;
 	private int force;
 	private int vie;
+	private int position;
 	
 	 public Personnage(String nom, String sexe, String classe) {
 		super();
@@ -33,17 +34,51 @@ public abstract class Personnage {
 
 	@Override
 	public String toString() {
-		return "Un grand "+this.classe+" était apparu dans la contrée, âgé de "+this.age+". Voici ses caractéristiques : "
+		return "Personnage [nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", classe=" + classe + ", taille="
+				+ taille + ", poids=" + poids + ", energie=" + energie + ", force=" + force + ", vie=" + vie + "]";
+	}
+
+	public String caracPerso() {
+		return "Un grand "+this.classe+" était apparu dans la contrée, âgé de "+this.age+" ans. Voici ses caractéristiques : "
 				+ "énergie "+this.energie+", force "+this.force+" et vie "+this.vie;
 	}
 
+	
 	public void examinerCase(Case lacase) {
 		lacase.afficheCarac();
 	}
 	
-	public void seDeplacer()
+	public boolean seDeplacer(String choix, int max_case)
 	{
-		
+		switch (choix) {
+		case "A" :
+			if (this.position == max_case)
+			{
+				System.out.println("Vous ne pouvez pas avancer.");
+				return false;
+			}
+			else
+			{
+				this.position++;
+				System.out.println("Vous avancez d'une case.");
+				return true;
+			}
+		case "R" : 
+			if (this.position == 0)
+			{
+				System.out.println("Vous ne pouvez pas reculer.");
+				return false;
+			}
+			else
+			{
+				this.position--;
+				System.out.println("Vous reculez d'une case.");
+				return true;
+			}
+		default: 
+			System.out.println("Je ne comprends pas votre déplacement");
+			return false;
+		}
 	}
 	
 	public String boirePotion()

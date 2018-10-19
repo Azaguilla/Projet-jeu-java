@@ -19,10 +19,13 @@ public class Plaine extends Case {
 		switch (this.getPollution()) {
 		case 1 :
 			personnage.setVie(personnage.getVie()-1);
+			break;
 		case 2 : 
 			personnage.setVie(personnage.getVie()-2);
+			break;
 		case 3 : 
 			personnage.setVie(personnage.getVie()-3);
+			break;
 		default: 
 			personnage.setVie(personnage.getVie());
 		}
