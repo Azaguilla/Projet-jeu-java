@@ -15,6 +15,8 @@ public class RolePlayUI {
 		
 		System.out.println(personnage.toString());
 		
+		/*initialisation*/
+		
 		Jeu jeu = new Jeu("Partie", personnage, 15);
 		System.out.println(jeu.toString());
 		jeu.afficheCases();
