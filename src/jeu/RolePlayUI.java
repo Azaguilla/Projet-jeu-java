@@ -32,6 +32,8 @@ public class RolePlayUI {
 		System.out.println(loup1.getForce());
 		System.out.println(loup1.son());
 		Plaine case1 = new Plaine(1, 2, 0);
+		jeu.ajoutCase(case1);
+		System.out.println(jeu.toString());
 		System.out.println(case1.toString());
 		System.out.println("Affichage 1");
 		case1.ajoutMonsre(loup1);
