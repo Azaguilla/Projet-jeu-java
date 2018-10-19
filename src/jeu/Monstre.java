@@ -109,5 +109,10 @@ public abstract class Monstre {
 		this.setSommeil(false);
 	}
 	
+	public void grandir()
+	{
+		
+	}
+	
 	public abstract String son();
 }

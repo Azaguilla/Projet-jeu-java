@@ -13,9 +13,9 @@ public class Plaine extends Case {
 				+ getNbMaxMonstre() + " monstres. Sa pollution est au niveau " + getPollution() + ".";
 	}
 
-	@Override
+	//Inflige des degats au personnage selon le niveau de pollution
 	public void degatPersonnage(Personnage personnage) {
-		
+
 		switch (this.getPollution()) {
 		case 1 :
 			personnage.setVie(personnage.getVie()-1);
@@ -29,7 +29,7 @@ public class Plaine extends Case {
 	}
 
 	@Override
-	public void netoyerCase() {
+	public void nettoyerCase() {
 		this.setPollution(0);
 	}
 

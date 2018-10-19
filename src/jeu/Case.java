@@ -69,6 +69,6 @@ public abstract class Case {
 		this.pollution = pollution;
 	}
 	public abstract void degatPersonnage(Personnage personnage);
-	public abstract void netoyerCase();
+	public abstract void nettoyerCase();
 	
 }

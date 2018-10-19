@@ -6,16 +6,18 @@ public class Jeu {
 	private String nom;
 	private Personnage joueur;
 	private int nbJour;
+	private final static int MAX_JOUR = 15;
+	private int jourCourant;
 	private int nbHeure;
+	private final static int MAX_HEURE = 15;
 	private int nbCaseMax = 0;
 	private final static int MAX_CASE = 50;
 	private Case[] cases = new Case[MAX_CASE];
 	
-	public Jeu(String nom, Personnage joueur, int nbJour) {
+	public Jeu(String nom, Personnage joueur) {
 		super();
 		this.nom = nom;
 		this.joueur = joueur;
-		this.nbJour = nbJour;
 	}
 	
 	public void ajoutCase(Case lacase)
@@ -90,24 +92,37 @@ public class Jeu {
 		return MAX_CASE;
 	}
 
-	private void afficherMonstreJeu()
+	private void AfficheInfoJeu()
 	{
-		
-	}
-	
-	private void afficherMonstreCase()
-	{
-		
+		// affiche le nom du jeu, le nb d'heure restante
 	}
 	
 	private void modifierEtatMonstre()
 	{
-		
+		//sommeil
 	}
 	
 	private void modifierEtatCase()
 	{
-		
+		//pollution
 	}
 
+	private void ChangerTour()
+	{
+		// On vérifie que ce n'est pas la fin du jeu
+		if (this.jourCourant != MAX_JOUR) {
+			this.jourCourant++;
+			this.modifierEtatMonstre();
+			
+		}
+		else
+		{
+			this.FinDuJeu();
+		}
+	}
+	
+	private void FinDuJeu()
+	{
+		
+	}
 }

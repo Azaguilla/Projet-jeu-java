@@ -60,8 +60,13 @@ public abstract class Personnage {
 	
 	public void nettoyer(Case lacase)
 	{
-		lacase.netoyerCase();
+		lacase.nettoyerCase();
 	}
+	public void finDeTour()
+	{
+		
+	}
+	
 	public abstract void attaquer();
 	
 	public String getNom() {
