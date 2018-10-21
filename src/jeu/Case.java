@@ -25,13 +25,18 @@ public abstract class Case {
 	}
 
 
-	public void ajoutMonsre(Monstre monstre)
+	public String infosCase() {
+		return "Plaine [Case n° " + getNumCase() + ", de taille " + getTaille() + ". Cette case est occupée par"
+				+ getNbMaxMonstre() + " monstres. Sa pollution est au niveau " + getPollution() + ".";
+	}
+
+	public void ajoutMonstre(Monstre monstre)
 	{
 		this.monstres[this.nbMaxMonstre] = monstre;
 		this.nbMaxMonstre += 1; 
 	}
 	
-	public void afficheCarac()
+	public void afficheMonstres()
 	{
 		for (int i = 0; i < this.nbMaxMonstre; i++)
 		{

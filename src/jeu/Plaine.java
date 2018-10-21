@@ -4,14 +4,15 @@ public class Plaine extends Case {
 	
 	public Plaine(int numCase, int taille, int pollution) {
 		super(numCase, taille, pollution);
-		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Plaine [Case n° " + getNumCase() + ", de taille " + getTaille() + ". Cette case est occupée par"
-				+ getNbMaxMonstre() + " monstres. Sa pollution est au niveau " + getPollution() + ".";
+		return "Plaine [infosCase()=" + infosCase() + ", getNumCase()=" + getNumCase() + ", getTaille()=" + getTaille()
+				+ ", getNbMaxMonstre()=" + getNbMaxMonstre() + ", getPollution()=" + getPollution() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+
 
 	//Inflige des degats au personnage selon le niveau de pollution
 	public void degatPersonnage(Personnage personnage) {

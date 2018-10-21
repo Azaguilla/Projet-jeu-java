@@ -36,7 +36,7 @@ public class Jeu {
 	{
 		for (int i = 0; i < this.nbCaseMax; i++)
 		{
-			System.out.println("Case"+i+": "+this.cases[i].getClass());
+			System.out.println("Case "+i+": "+this.cases[i].getClass());
 		}
 	}
 	
@@ -92,7 +92,7 @@ public class Jeu {
 		return MAX_CASE;
 	}
 
-	private void AfficheInfoJeu()
+	public void AfficheInfoJeu()
 	{
 		// affiche le nom du jeu, le nb d'heure restante
 	}
@@ -107,13 +107,13 @@ public class Jeu {
 		//pollutions
 	}
 
-	private void ChangerTour()
+	public void ChangerTour()
 	{
 		// On vérifie que ce n'est pas la fin du jeu
 		if (this.jourCourant != MAX_JOUR) {
 			this.jourCourant++;
 			this.modifierEtatMonstre();
-			
+			this.modifierEtatCase();
 		}
 		else
 		{
@@ -124,5 +124,18 @@ public class Jeu {
 	private void FinDuJeu()
 	{
 		
+	}
+	
+	public Case recupererCase(int numCase)
+	{
+		Case lacase = null;
+		for (int i = 0; i < this.nbCaseMax; i++)
+		{
+			if(this.cases[i].getNumCase() == numCase)
+			{
+				lacase = this.cases[i];
+			}
+		}
+		return lacase;
 	}
 }

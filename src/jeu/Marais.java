@@ -1,22 +1,48 @@
 package jeu;
 
 public class Marais extends Case {
+	private int profondeur;
 
+	@Override
+	public String toString() {
+		return "Marais [profondeur=" + profondeur + "]";
+	}
+
+	public Marais(int numCase, int taille, int pollution, int profondeur) {
+		super(numCase, taille, pollution);
+		this.profondeur = profondeur;
+	}
+	
 	@Override
 	public void degatPersonnage(Personnage personnage) {
-		// TODO Auto-generated method stub
+		switch (this.getPollution()) {
+		case 1 :
+			personnage.setVie(personnage.getVie()-1);
+			break;
+		case 2 : 
+			personnage.setVie(personnage.getVie()-2);
+			break;
+		case 3 : 
+			personnage.setVie(personnage.getVie()-3);
+			break;
+		default: 
+			personnage.setVie(personnage.getVie());
+		}
 		
+	}
+
+	public int getProfondeur() {
+		return profondeur;
+	}
+
+	public void setProfondeur(int profondeur) {
+		this.profondeur = profondeur;
 	}
 
 	@Override
-	public void netoyerCase() {
+	public void nettoyerCase() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public Marais(int numCase, int taille, int nbMaxMonstre, int nbMonstre, int pollution) {
-		super(numCase, taille, nbMaxMonstre, nbMonstre, pollution);
-		// TODO Auto-generated constructor stub
 	}
 
 }

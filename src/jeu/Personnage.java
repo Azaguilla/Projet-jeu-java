@@ -49,7 +49,7 @@ public abstract class Personnage {
 		lacase.afficheCarac();
 	}
 	
-	public boolean seDeplacer(String choix, int max_case)
+	public boolean seDeplacer(String choix, int max_case, Jeu jeu)
 	{
 		switch (choix) {
 		case "A" :
@@ -62,6 +62,7 @@ public abstract class Personnage {
 			{
 				this.position++;
 				System.out.println("Vous avancez d'une case.");
+				jeu.recupererCase(this.position).degatPersonnage(this);
 				return true;
 			}
 		case "R" : 
@@ -74,6 +75,7 @@ public abstract class Personnage {
 			{
 				this.position--;
 				System.out.println("Vous reculez d'une case.");
+				jeu.recupererCase(this.position).degatPersonnage(this);
 				return true;
 			}
 		default: 
@@ -98,9 +100,9 @@ public abstract class Personnage {
 	{
 		lacase.nettoyerCase();
 	}
-	public void finDeTour()
+	public void finDeTour(Jeu jeu)
 	{
-		
+		jeu.ChangerTour();
 	}
 	
 	public String getNom() {

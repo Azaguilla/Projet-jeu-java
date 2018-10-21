@@ -4,9 +4,14 @@ public class Foret extends Case {
 
 	private int hauteur;
 
-	public Foret(int numCase, int taille, int nbMaxMonstre, int nbMonstre, int pollution, int hauteur) {
-		super(numCase, taille, nbMaxMonstre, nbMonstre, pollution);
+	public Foret(int numCase, int taille, int pollution, int hauteur) {
+		super(numCase, taille, pollution);
 		this.hauteur = hauteur;
+	}
+
+	@Override
+	public String toString() {
+		return "Foret [hauteur=" + hauteur + "]";
 	}
 
 	public int getHauteur() {
@@ -19,12 +24,24 @@ public class Foret extends Case {
 
 	@Override
 	public void degatPersonnage(Personnage personnage) {
-		// TODO Auto-generated method stub
+		switch (this.getPollution()) {
+		case 1 :
+			personnage.setVie(personnage.getVie()-1);
+			break;
+		case 2 : 
+			personnage.setVie(personnage.getVie()-2);
+			break;
+		case 3 : 
+			personnage.setVie(personnage.getVie()-3);
+			break;
+		default: 
+			personnage.setVie(personnage.getVie());
+		}
 		
 	}
 
 	@Override
-	public void netoyerCase() {
+	public void nettoyerCase() {
 		// TODO Auto-generated method stub
 		
 	}
