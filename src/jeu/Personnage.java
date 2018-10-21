@@ -30,6 +30,7 @@ public abstract class Personnage {
 		this.energie = 20;
 		this.force = 4;
 		this.vie = 10;
+		this.position = 1;
 	}
 
 	@Override
@@ -40,7 +41,7 @@ public abstract class Personnage {
 
 	public String caracPerso() {
 		return "Un grand "+this.classe+" était apparu dans la contrée, âgé de "+this.age+" ans. Voici ses caractéristiques : "
-				+ "énergie "+this.energie+", force "+this.force+" et vie "+this.vie;
+				+ "énergie "+this.energie+", force "+this.force+" et vie "+this.vie+". Il rest placé actuellement sur la case "+this.position;
 	}
 
 	
@@ -64,7 +65,7 @@ public abstract class Personnage {
 				return true;
 			}
 		case "R" : 
-			if (this.position == 0)
+			if (this.position == 1)
 			{
 				System.out.println("Vous ne pouvez pas reculer.");
 				return false;
@@ -101,8 +102,6 @@ public abstract class Personnage {
 	{
 		
 	}
-	
-	public abstract void attaquer();
 	
 	public String getNom() {
 		return nom;
@@ -160,4 +159,6 @@ public abstract class Personnage {
 	public void setVie(int vie) {
 		this.vie = vie;
 	}
+	
+	public abstract void attaquer(Monstre monstre);
 }

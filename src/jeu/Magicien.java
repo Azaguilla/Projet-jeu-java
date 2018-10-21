@@ -4,19 +4,17 @@ public final class Magicien extends Personnage {
 	private static Personnage getInstance;
 	
 	@Override
-	public void attaquer() {
-		// TODO Auto-generated method stub
-		
+	public void attaquer(Monstre monstre) {
+		monstre.setVie(monstre.getVie()-this.getForce());
 	}
 	
-	public void lancerSort()
+	public void lancerSort(Monstre monstre)
 	{
-		
+		monstre.setVie(monstre.getVie()-this.getForce()*3);
 	}
 
 	private Magicien(String nom, String sexe, String classe) {
 		super(nom, sexe, classe);
-		// TODO Auto-generated constructor stub
 	}
 
 	

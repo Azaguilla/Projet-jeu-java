@@ -1,16 +1,24 @@
 package jeu;
 
 public class Guerrier extends Personnage {
+	private static Personnage getInstance;
 
-	public Guerrier(String nom, String sexe, int age, String classe, int taille, int poids, int energie, int force) {
-		super(nom, sexe, age, classe, taille, poids, energie, force);
-		// TODO Auto-generated constructor stub
+	private Guerrier(String nom, String sexe, String classe) {
+		super(nom, sexe, classe);
+	}
+	
+	public static Personnage getInstance(String nom, String sexe, String classe) 
+	{ 
+	    if (getInstance == null) 
+	    {
+	         getInstance = new Guerrier(nom, sexe, classe); 
+	    }
+	        return getInstance; 
 	}
 
 	@Override
-	public void attaquer() {
-		// TODO Auto-generated method stub
-		
+	public void attaquer(Monstre monstre) {
+		monstre.setVie(monstre.getVie()-this.getForce()*3);
 	}
 
 }

@@ -1,16 +1,24 @@
 package jeu;
 
 public class Chasseur extends Personnage {
-
-	public Chasseur(String nom, String sexe, int age, String classe, int taille, int poids, int energie, int force) {
-		super(nom, sexe, age, classe, taille, poids, energie, force);
-		// TODO Auto-generated constructor stub
+	private static Personnage getInstance;
+	
+	private Chasseur(String nom, String sexe, String classe) {
+		super(nom, sexe, classe);
 	}
 
 	@Override
-	public void attaquer() {
-		// TODO Auto-generated method stub
-		
+	public void attaquer(Monstre monstre) {
+		monstre.setVie(monstre.getVie()-this.getForce());
+	}
+	
+	public static Personnage getInstance(String nom, String sexe, String classe) 
+	{ 
+	    if (getInstance == null) 
+	    {
+	         getInstance = new Chasseur(nom, sexe, classe); 
+	    }
+	        return getInstance; 
 	}
 	
 }
