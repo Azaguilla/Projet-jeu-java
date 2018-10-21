@@ -8,5 +8,5 @@ package jeu;
  *
  */
 public interface Terrestre {
-	public void vagabonder();
+	public void vagabonder(SeDeplacer seDeplacer);
 }

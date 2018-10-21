@@ -9,15 +9,16 @@ package jeu;
  */
 public abstract class Monstre {
 	private String nom;
-	private String sexe;
+	private int sexe;
 	private int poids;
 	private int taille;
 	private double age;
-	private int force = 100;
-	private int vie = 100;
+	private int force = 2;
+	private int vie = 10;
 	private boolean sommeil =  false;
+	private int gestation;
 
-	public Monstre(String nom, String sexe, int poids, int taille, double age, int force, int vie, boolean sommeil) {
+	public Monstre(String nom, int sexe, int poids, int taille, double age, int force, int vie, boolean sommeil) {
 		super();
 		this.nom = nom;
 		this.sexe = sexe;
@@ -40,10 +41,10 @@ public abstract class Monstre {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String getSexe() {
+	public int getSexe() {
 		return sexe;
 	}
-	public void setSexe(String sexe) {
+	public void setSexe(int sexe) {
 		this.sexe = sexe;
 	}
 	public int getTaille() {
@@ -96,7 +97,7 @@ public abstract class Monstre {
 
 	public void seSoigner()
 	{
-		this.setVie(100);
+		this.setVie(this.getVie()+2);
 	}
 	
 	public void dormir()
@@ -111,7 +112,10 @@ public abstract class Monstre {
 	
 	public void grandir()
 	{
-		
+		if(this.getTaille() < 2)
+		{
+			this.setTaille(this.getTaille()+1);
+		}
 	}
 	
 	public abstract String son();

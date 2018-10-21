@@ -24,6 +24,6 @@ public final class Magicien extends Personnage {
 	    {
 	         getInstance = new Magicien(nom, sexe, classe); 
 	    }
-	        return getInstance; 
+	    return getInstance; 
 	}
 }
