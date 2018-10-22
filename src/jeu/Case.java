@@ -13,7 +13,7 @@ public abstract class Case {
 	private int taille;
 	private int nbMaxMonstre = 0;
 	private final static int MAX_MONSTRES = 3;
-	private Monstre[] monstres = new Monstre[MAX_MONSTRES];
+	protected Monstre[] monstres = new Monstre[MAX_MONSTRES];
 	private int pollution;
 	
 	
@@ -29,12 +29,6 @@ public abstract class Case {
 		return "Plaine [Case n° " + getNumCase() + ", de taille " + getTaille() + ". Cette case est occupée par"
 				+ getNbMaxMonstre() + " monstres. Sa pollution est au niveau " + getPollution() + ".";
 	}
-
-	public void ajoutMonstre(Monstre monstre)
-	{
-		this.monstres[this.nbMaxMonstre] = monstre;
-		this.nbMaxMonstre += 1; 
-	}
 	
 	public void afficheMonstres()
 	{
@@ -44,6 +38,16 @@ public abstract class Case {
 		}
 	}
 	
+	public Monstre[] getMonstres() {
+		return monstres;
+	}
+
+
+	public void setMonstres(Monstre[] monstres) {
+		this.monstres = monstres;
+	}
+
+
 	public void suppMonstre()
 	{
 		
@@ -75,5 +79,6 @@ public abstract class Case {
 	}
 	public abstract void degatPersonnage(Personnage personnage);
 	public abstract void nettoyerCase();
+	public abstract boolean ajoutMonstre(Monstre monstre);
 	
 }

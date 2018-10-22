@@ -36,6 +36,14 @@ public class Plaine extends Case {
 	public void nettoyerCase() {
 		this.setPollution(0);
 	}
+	
+	@Override
+	public boolean ajoutMonstre(Monstre monstre) {
+		monstre.setNumCaseActuelle(this.getNumCase());
+		this.monstres[this.getNbMaxMonstre()] = monstre;
+		this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 
+		return true;
+	}
 
 
 }

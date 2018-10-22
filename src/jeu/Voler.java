@@ -1,16 +1,16 @@
 package jeu;
 
 public class Voler implements SeDeplacer {
-	public boolean seDeplacer(Volant monstre)
+	public boolean voler(Monstre monstre, Jeu jeu)
 	{
 		System.out.println("Le monstre s'envole vers la case.");
 		return true;
 	}
-	public boolean seDeplacer(Terrestre monstre)
+	public boolean vagabonder(Monstre monstre, Jeu jeu)
 	{
 		return false;
 	}
-	public boolean seDeplacer(Rampant monstre)
+	public boolean ramper(Monstre monstre, Jeu jeu)
 	{
 		return false;
 	}

@@ -16,7 +16,7 @@ public abstract class Monstre {
 	private int force = 2;
 	private int vie = 10;
 	private boolean sommeil =  false;
-	private int gestation;
+	private int numCaseActuelle;
 
 	public Monstre(String nom, int sexe, int poids, int taille, double age, int force, int vie, boolean sommeil) {
 		super();
@@ -93,6 +93,14 @@ public abstract class Monstre {
 
 	public void setPoids(int poids) {
 		this.poids = poids;
+	}
+
+	public int getNumCaseActuelle() {
+		return numCaseActuelle;
+	}
+
+	public void setNumCaseActuelle(int numCaseActuelle) {
+		this.numCaseActuelle = numCaseActuelle;
 	}
 
 	public void seSoigner()

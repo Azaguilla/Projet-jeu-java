@@ -13,6 +13,9 @@ public class Jeu {
 	private int nbCaseMax = 0;
 	private final static int MAX_CASE = 50;
 	private Case[] cases = new Case[MAX_CASE];
+	private int nbOeufMax = 0;
+	private final static int MAX_OEUF = 50;
+	private Oeuf[] oeufs = new Oeuf[MAX_OEUF];
 	
 	public Jeu(String nom, Personnage joueur) {
 		super();
@@ -106,6 +109,31 @@ public class Jeu {
 	{
 		//pollutions
 	}
+	
+	private void verifNaissances()
+	{
+		//TODO OPTIMISATION !!!
+		for (int i = 0; i < this.nbOeufMax; i++)
+		{
+			if(this.oeufs[i].getTempsIncub() != 0)
+			{
+				int newTempsIncub = this.oeufs[i].getTempsIncub() - 1;
+				this.oeufs[i].setTempsIncub(newTempsIncub);
+			}
+			else
+			{
+				int numCase = (int) Math.round(1+Math.random()*this.nbCaseMax);
+				Monstre monstre = this.oeufs[i].eclore();
+				Case laCase = this.recupererCase(numCase);
+				while(laCase.ajoutMonstre(monstre) == false)
+				{
+					numCase = (int) Math.round(1+Math.random()*this.nbCaseMax);
+					monstre = this.oeufs[i].eclore();
+					laCase = this.recupererCase(numCase);
+				}
+			}
+		}
+	}
 
 	public void ChangerTour()
 	{
@@ -114,6 +142,7 @@ public class Jeu {
 			this.jourCourant++;
 			this.modifierEtatMonstre();
 			this.modifierEtatCase();
+			this.verifNaissances();
 		}
 		else
 		{

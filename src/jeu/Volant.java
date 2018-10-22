@@ -8,5 +8,5 @@ package jeu;
  *
  */
 public interface Volant {
-	public void voler(SeDeplacer seDeplacer);
+	public void voler(SeDeplacer seDeplacer, Jeu jeu);
 }

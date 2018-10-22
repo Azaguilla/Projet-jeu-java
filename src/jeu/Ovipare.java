@@ -1,5 +1,5 @@
 package jeu;
 
 public interface Ovipare {
-	public Monstre pondreOeuf();
+	public Oeuf pondreOeuf();
 }

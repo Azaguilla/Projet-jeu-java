@@ -8,5 +8,5 @@ package jeu;
  *
  */
 public interface Rampant {
-	public void ramper(SeDeplacer seDeplacer);
+	public void ramper(SeDeplacer seDeplacer, Jeu jeu);
 }

@@ -1,7 +1,7 @@
 package jeu;
 
 public interface SeDeplacer {
-	public boolean seDeplacer(Terrestre monstre);
-	public boolean seDeplacer(Rampant monstre);
-	public boolean seDeplacer(Volant monstre);
+	public boolean vagabonder(Monstre monstre, Jeu jeu);
+	public boolean ramper(Monstre monstre, Jeu jeu);
+	public boolean voler(Monstre monstre, Jeu jeu);
 }

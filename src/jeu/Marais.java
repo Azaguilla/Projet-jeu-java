@@ -44,5 +44,21 @@ public class Marais extends Case {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public boolean ajoutMonstre(Monstre monstre) {
+		if(monstre instanceof Blob || monstre instanceof Basilic)
+		{
+			monstre.setNumCaseActuelle(this.getNumCase());
+			this.monstres[this.getNbMaxMonstre()] = monstre;
+			this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 
+			return true;
+		}
+		else
+		{
+			System.out.println("Vous ne pouvez pas ajouter ce type de monstre sur la case");
+			return false;
+		}
+	}
 
 }

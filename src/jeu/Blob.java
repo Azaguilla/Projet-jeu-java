@@ -7,8 +7,8 @@ public class Blob extends Monstre implements Rampant {
 	}
 
 	@Override
-	public void ramper(SeDeplacer seDeplacer) {
-		seDeplacer.seDeplacer(this);
+	public void ramper(SeDeplacer seDeplacer, Jeu jeu) {
+		seDeplacer.ramper(this, jeu);
 	}
 
 	@Override

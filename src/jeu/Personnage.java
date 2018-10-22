@@ -46,7 +46,7 @@ public abstract class Personnage {
 
 	
 	public void examinerCase(Case lacase) {
-		lacase.afficheCarac();
+		lacase.infosCase();
 	}
 	
 	public boolean seDeplacer(String choix, int max_case, Jeu jeu)

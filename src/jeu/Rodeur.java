@@ -2,11 +2,11 @@ package jeu;
 
 public class Rodeur extends Personnage {
 	private static Personnage getInstance;
-	public boolean ignorerMonstre(Monstre monstre, String choix, int max_case)
+	public boolean ignorerMonstre(Monstre monstre, String choix, int max_case, Jeu jeu)
 	{
 		if(monstre.isSommeil())
 		{
-			return this.seDeplacer(choix, max_case);
+			return this.seDeplacer(choix, max_case, jeu);
 		}
 		else
 		{

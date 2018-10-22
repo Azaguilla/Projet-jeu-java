@@ -14,9 +14,9 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare {
 		super(nom, sexe, poids, taille, age, force, vie, sommeil);
 	}
 
-	public void vagabonder(SeDeplacer seDeplacer)
+	public void vagabonder(SeDeplacer seDeplacer, Jeu jeu)
 	{
-		seDeplacer.seDeplacer(this);
+		seDeplacer.vagabonder(this, jeu);
 	}
 	
 	public Monstre naissance()
