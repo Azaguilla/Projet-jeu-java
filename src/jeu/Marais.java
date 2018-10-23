@@ -2,6 +2,7 @@ package jeu;
 
 public class Marais extends Case {
 	private int profondeur;
+	//private boolean vase;
 
 	@Override
 	public String toString() {
@@ -42,7 +43,8 @@ public class Marais extends Case {
 	@Override
 	public void nettoyerCase() {
 		// TODO Auto-generated method stub
-		
+		//if(this.vase == true)
+		//{this.vase == false; heure --;}
 	}
 	
 	@Override

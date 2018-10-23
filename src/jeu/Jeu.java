@@ -1,6 +1,7 @@
 package jeu;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Jeu {
 	private String nom;
@@ -16,6 +17,7 @@ public class Jeu {
 	private int nbOeufMax = 0;
 	private final static int MAX_OEUF = 50;
 	private Oeuf[] oeufs = new Oeuf[MAX_OEUF];
+	private Random rand = new Random();
 	
 	public Jeu(String nom, Personnage joueur) {
 		super();
@@ -103,11 +105,37 @@ public class Jeu {
 	private void modifierEtatMonstre()
 	{
 		//sommeil
+		int n;
+		for (int i = 0; i < this.nbCaseMax; i++)
+		{
+			for (int j = 0; j < /*nbMaxMonstre*/; j++)
+			{
+				n = rand.nextInt(2);
+				switch (n)
+				{
+					/*case 0 = dormir si réveillé*/
+					case 0: if(/*cases[i].monstres[j].sommeil*/ == false)
+								//Monstre.dormir();				-> methode dormir()
+							break;
+					/*case 1 = se reveiller si endormi*/
+					case 1: if(/*cases[i].monstres[j].sommeil*/ == true)
+								//Monstre.seReveiller();		-> methode seReveiller()
+							break;
+				}
+			}
+		}
+		//penser a changer l'état de sommeil si combat engagé
 	}
 	
 	private void modifierEtatCase()
 	{
 		//pollutions
+		int n;
+		for (int i = 0; i < this.nbCaseMax; i++)
+		{
+			n = rand.nextInt(3);
+			this.cases[i].setPollution(n);
+		}
 	}
 	
 	private void verifNaissances()

@@ -3,6 +3,7 @@ package jeu;
 public class Foret extends Case {
 
 	private int hauteur;
+	//private boolean toiles;
 
 	public Foret(int numCase, int taille, int pollution, int hauteur) {
 		super(numCase, taille, pollution);
@@ -42,6 +43,9 @@ public class Foret extends Case {
 	@Override
 	public void nettoyerCase() {
 		this.setPollution(0);
+		//heure --
+		//if(this.toiles == true)
+		//{this.toiles == false; heure --;}
 	}
 
 	@Override
