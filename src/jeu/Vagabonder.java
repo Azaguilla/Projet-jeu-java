@@ -12,7 +12,7 @@ public class Vagabonder implements SeDeplacer {
 		int newNumCase = laCase.getNumCase()+1;
 		Case newCase = jeu.recupererCase(newNumCase);
 		newCase.ajoutMonstre(monstre);
-		laCase.suppMonstre(monstre);
+		laCase.SuppMonstre(monstre);
 		System.out.println("Le monstre vagabonde vers la case "+newNumCase);
 		return true;
 	}

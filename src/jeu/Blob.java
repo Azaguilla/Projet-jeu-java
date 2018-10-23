@@ -27,4 +27,10 @@ public class Blob extends Monstre implements Rampant {
 		return new Blob("Blob", sexe, poids, taille, 0, force, vie, false);
 	}
 
+	@Override
+	public void gestation() {
+		// non concerné
+		
+	}
+
 }

@@ -17,8 +17,8 @@ public class Guerrier extends Personnage {
 	}
 
 	@Override
-	public void attaquer(Monstre monstre) {
-		monstre.setVie(monstre.getVie()-this.getForce()*3);
+	public void attaquer(Monstre monstre, Jeu jeu) {
+		monstre.setVie(monstre.getVie()-this.getForce()*3, jeu);
 	}
 
 }

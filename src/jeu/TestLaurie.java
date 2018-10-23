@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class TestLaurie {
 	public static void main(String[] args) {
+		Personnage pers = Magicien.getInstance("Aza", "F", "Mage");
 		Basilic bas = new Basilic("Basilic", 0, 0, 0, 0, 0, 0, false);
 		
 		Oeuf oeuf = bas.pondreOeuf();
@@ -14,6 +15,23 @@ public class TestLaurie {
 		}
 		
 		System.out.println(bas);
+		Jeu jeu = new Jeu("Partie1", pers);
+		Plaine plaine = new Plaine(0, 1, 0);
+		Marais marais = new Marais(0, 1, 0, 0);
+		
+		Monstre gob = new Gobelin("Gobelin", 0, 0, 0, 0, 0, 0, false);
+		plaine.ajoutMonstre(bas);
+		System.out.println(plaine.getMonstres());
+		gob.gestation();
+		gob.gestation();
+		gob.gestation();
+		gob.gestation();
+		System.out.println(gob);
+		
+		jeu.ajoutCase(plaine);
+		jeu.ajoutCase(marais);
+		
+		jeu.AfficheInfoJeu();
 	}
 
 }

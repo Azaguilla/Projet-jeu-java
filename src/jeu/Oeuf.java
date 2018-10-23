@@ -2,6 +2,7 @@ package jeu;
 
 public class Oeuf {
 	private int tempsIncub;
+	private int numCaseMere;
 	private Monstre monstre;
 	
 	public Oeuf(int tempsIncub, Monstre monstre) {
@@ -30,5 +31,13 @@ public class Oeuf {
 
 	public void setMonstre(Monstre monstre) {
 		this.monstre = monstre;
+	}
+
+	public int getNumCaseMere() {
+		return numCaseMere;
+	}
+
+	public void setNumCaseMere(int numCaseMere) {
+		this.numCaseMere = numCaseMere;
 	}
 }

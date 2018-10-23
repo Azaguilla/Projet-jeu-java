@@ -22,4 +22,10 @@ public class Ent extends Monstre implements Vivipare {
 		return "Les branches de l'Ent "+this.getNom()+" craquent sous la forêt profonde.";
 	}
 
+	@Override
+	public void gestation() {
+		// non concerné
+		
+	}
+
 }

@@ -14,7 +14,7 @@ public class Griffon extends Monstre implements Volant, Ovipare {
 		int force = 2;
 		int vie = 10;
 		
-		Monstre bebe = new Basilic("Basilic", sexe, poids, taille, 0, force, vie, false);
+		Monstre bebe = new Griffon("Griffon", sexe, poids, taille, 0, force, vie, false);
 		
 		return new Oeuf(2, bebe);
 	}
@@ -27,6 +27,11 @@ public class Griffon extends Monstre implements Volant, Ovipare {
 	@Override
 	public String son() {
 		return "Le Griffon "+this.getNom()+" glatit dans le ciel.";
+	}
+
+	@Override
+	public void gestation() {
+		// TODO Auto-generated method stub
 	}
 
 }

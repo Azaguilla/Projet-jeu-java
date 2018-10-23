@@ -96,9 +96,9 @@ public abstract class Personnage {
 		return "Vous réccupérer de l'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
 	}
 	
-	public void nettoyer(Case lacase)
+	public void nettoyer(Case laCase)
 	{
-		lacase.nettoyerCase();
+		laCase.nettoyerCase();
 	}
 	public void finDeTour(Jeu jeu)
 	{
@@ -162,5 +162,5 @@ public abstract class Personnage {
 		this.vie = vie;
 	}
 	
-	public abstract void attaquer(Monstre monstre);
+	public abstract void attaquer(Monstre monstre, Jeu jeu);
 }

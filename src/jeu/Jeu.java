@@ -1,6 +1,6 @@
 package jeu;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Jeu {
@@ -13,10 +13,10 @@ public class Jeu {
 	private final static int MAX_HEURE = 15;
 	private int nbCaseMax = 0;
 	private final static int MAX_CASE = 50;
-	private Case[] cases = new Case[MAX_CASE];
+	protected ArrayList<Case> cases = new ArrayList<>(MAX_CASE);
 	private int nbOeufMax = 0;
 	private final static int MAX_OEUF = 50;
-	private Oeuf[] oeufs = new Oeuf[MAX_OEUF];
+	protected ArrayList<Oeuf> oeufs = new ArrayList<>(MAX_OEUF);
 	private Random rand = new Random();
 	
 	public Jeu(String nom, Personnage joueur) {
@@ -25,24 +25,57 @@ public class Jeu {
 		this.joueur = joueur;
 	}
 	
-	public void ajoutCase(Case lacase)
+	public void ajoutCase(Case laCase)
 	{
-		this.cases[this.nbCaseMax] = lacase;
-		this.nbCaseMax += 1; 
+		if(this.cases.size()<MAX_CASE){
+			this.cases.add(laCase);
+        }else{
+            System.out.println("Il y a trop de cases.");
+        }
+
 	}
-	
+
+    public void SuppCase(Case laCase){
+        this.cases.remove(laCase);
+    }
+
+    public ArrayList<Case> getCases() {
+        return this.cases;
+    }
+    
+	public void setCases(ArrayList<Case> cases) {
+		this.cases = cases;
+	}
+
+
+	public void ajoutOeuf(Case laCase)
+	{
+		if(this.cases.size()<MAX_CASE){
+			this.cases.add(laCase);
+        }else{
+            System.out.println("Il y a trop d'oeuf.");
+        }
+
+	}
+
+    public void SuppOeuf(Oeuf oeuf){
+        this.oeufs.remove(oeuf);
+    }
+
+    public ArrayList<Oeuf> getOeufs() {
+        return this.oeufs;
+    }
+    
+	public void setOeufs(ArrayList<Oeuf> oeufs) {
+		this.oeufs = oeufs;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Jeu [nom=" + nom + ", joueur=" + joueur + ", nbJour=" + nbJour + ", nbCaseMax=" + nbCaseMax + ", cases="
-				+ Arrays.toString(cases) + "]";
-	}
-
-	public void afficheCases()
-	{
-		for (int i = 0; i < this.nbCaseMax; i++)
-		{
-			System.out.println("Case "+i+": "+this.cases[i].getClass());
-		}
+				+ cases + "]";
 	}
 	
 	public String getNom() {
@@ -85,21 +118,14 @@ public class Jeu {
 		this.nbCaseMax = nbCaseMax;
 	}
 
-	public Case[] getCases() {
-		return cases;
-	}
-
-	public void setCases(Case[] cases) {
-		this.cases = cases;
-	}
-
 	public static int getMaxCase() {
 		return MAX_CASE;
 	}
 
 	public void AfficheInfoJeu()
 	{
-		// affiche le nom du jeu, le nb d'heure restante
+		System.out.println("Le jeu : "+this.nom+". Vous avez "+this.nbJour+"pour atteindre le bout de la carte. Vous disposez d'encore "+this.nbHeure+" heures avant la fin de ce jour. Voici la liste des cases et des monstres qui y sont placés:"+
+							this.getCases());
 	}
 	
 	private void modifierEtatMonstre()
@@ -108,18 +134,18 @@ public class Jeu {
 		int n;
 		for (int i = 0; i < this.nbCaseMax; i++)
 		{
-			for (int j = 0; j < this.cases[i].getNbMaxMonstre(); j++)
+			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
 			{
 				n = rand.nextInt(2);
 				switch (n)
 				{
 					/*case 0 = dormir si réveillé*/
-					case 0: if(this.cases[i].monstres[j].isSommeil() == false)
-								this.cases[i].monstres[j].dormir();
+					case 0: if(this.cases.get(i).monstres.get(j).isSommeil() == false)
+						this.cases.get(i).monstres.get(j).dormir();
 							break;
 					/*case 1 = se reveiller si endormi*/
-					case 1: if(this.cases[i].monstres[j].isSommeil() == true)
-								this.cases[i].monstres[j].seReveiller();
+					case 1: if(this.cases.get(i).monstres.get(j).isSommeil() == true)
+						this.cases.get(i).monstres.get(j).seReveiller();
 							break;
 				}
 			}
@@ -134,30 +160,40 @@ public class Jeu {
 		for (int i = 0; i < this.nbCaseMax; i++)
 		{
 			n = rand.nextInt(3);
-			this.cases[i].setPollution(n);
+			this.cases.get(i).setPollution(n);
 		}
 	}
 	
 	private void verifNaissances()
 	{
 		//TODO OPTIMISATION !!!
+		//On vérifie les oeufs
 		for (int i = 0; i < this.nbOeufMax; i++)
 		{
-			if(this.oeufs[i].getTempsIncub() != 0)
+			if(this.oeufs.get(i).getTempsIncub() != 0)
 			{
-				int newTempsIncub = this.oeufs[i].getTempsIncub() - 1;
-				this.oeufs[i].setTempsIncub(newTempsIncub);
+				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
+				this.oeufs.get(i).setTempsIncub(newTempsIncub);
 			}
 			else
 			{
-				int numCase = (int) Math.round(1+Math.random()*this.nbCaseMax);
-				Monstre monstre = this.oeufs[i].eclore();
+				Monstre monstre = this.oeufs.get(i).eclore();
+				int numCase = oeufs.get(i).getNumCaseMere();
 				Case laCase = this.recupererCase(numCase);
-				while(laCase.ajoutMonstre(monstre) == false)
+				laCase.ajoutMonstre(monstre);
+			}
+		}
+		
+		//On vérifie la gestation des vivipares
+		for (int i = 0; i < this.nbCaseMax; i++)
+		{
+			Case laCase = this.cases.get(i);
+			for (int j = 0; j < laCase.getNbMaxMonstre(); j++)
+			{
+				Monstre monstre = this.cases.get(i).monstres.get(j);
+				if (monstre.isEnGestation())
 				{
-					numCase = (int) Math.round(1+Math.random()*this.nbCaseMax);
-					monstre = this.oeufs[i].eclore();
-					laCase = this.recupererCase(numCase);
+					monstre.gestation();
 				}
 			}
 		}
@@ -185,14 +221,6 @@ public class Jeu {
 	
 	public Case recupererCase(int numCase)
 	{
-		Case lacase = null;
-		for (int i = 0; i < this.nbCaseMax; i++)
-		{
-			if(this.cases[i].getNumCase() == numCase)
-			{
-				lacase = this.cases[i];
-			}
-		}
-		return lacase;
+		return this.cases.get(numCase);
 	}
 }

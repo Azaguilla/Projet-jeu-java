@@ -52,7 +52,7 @@ public class Marais extends Case {
 		if(monstre instanceof Blob || monstre instanceof Basilic)
 		{
 			monstre.setNumCaseActuelle(this.getNumCase());
-			this.monstres[this.getNbMaxMonstre()] = monstre;
+			this.monstres.add(monstre);
 			this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 
 			return true;
 		}

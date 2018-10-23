@@ -29,8 +29,8 @@ public class Rodeur extends Personnage {
 	}
 
 	@Override
-	public void attaquer(Monstre monstre) {
-		monstre.setVie(monstre.getVie()-this.getForce());
+	public void attaquer(Monstre monstre, Jeu jeu) {
+		monstre.setVie(monstre.getVie()-this.getForce(), jeu);
 		
 	}
 }

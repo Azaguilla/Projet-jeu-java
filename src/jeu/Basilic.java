@@ -29,4 +29,10 @@ public class Basilic extends Monstre implements Rampant, Ovipare {
 		return "Le Basilic "+this.getNom()+" siffle au fond du Marais.";
 	}
 
+	@Override
+	public void gestation() {
+		// non concerné
+		
+	}
+
 }

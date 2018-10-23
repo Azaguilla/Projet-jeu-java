@@ -26,7 +26,13 @@ public class Wyverne extends Monstre implements Volant, Ovipare{
 
 	@Override
 	public String son() {
-		return "La Wyverne "+this.getNom()+" pousse un cri strident avant de s'envoler.";
+		return "La Wyverne "+this.getNom()+" pousse un cri strident en tournoyant dans le ciel.";
+	}
+
+	@Override
+	public void gestation() {
+		// non concerné
+		
 	}
 
 }

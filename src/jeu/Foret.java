@@ -43,7 +43,7 @@ public class Foret extends Case {
 	@Override
 	public void nettoyerCase() {
 		this.setPollution(0);
-		//heure --
+		//heure -- >le faire au moment de l'appel à la méthode ?
 		//if(this.toiles == true)
 		//{this.toiles == false; heure --;}
 	}
@@ -53,7 +53,7 @@ public class Foret extends Case {
 		if(monstre instanceof Ent || monstre instanceof LoupGarou)
 		{
 			monstre.setNumCaseActuelle(this.getNumCase());
-			this.monstres[this.getNbMaxMonstre()] = monstre;
+			this.monstres.add(monstre);
 			this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 
 			return true;
 		}

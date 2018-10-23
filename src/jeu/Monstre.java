@@ -17,6 +17,7 @@ public abstract class Monstre {
 	private int vie = 10;
 	private boolean sommeil =  false;
 	private int numCaseActuelle;
+	private boolean enGestation = false;
 
 	public Monstre(String nom, int sexe, int poids, int taille, double age, int force, int vie, boolean sommeil) {
 		super();
@@ -29,11 +30,14 @@ public abstract class Monstre {
 		this.sommeil = sommeil;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Animal [nom=" + nom + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille + ", age=" + age
-				+ ", force=" + force + ", vie=" + vie + ", sommeil=" + sommeil + ", posX=" + "]";
+		return "Monstre [nom=" + nom + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille + ", age=" + age
+				+ ", force=" + force + ", vie=" + vie + ", sommeil=" + sommeil + ", numCaseActuelle=" + numCaseActuelle
+				+ ", enGestation=" + enGestation + "]";
 	}
+
 
 	public String getNom() {
 		return nom;
@@ -71,8 +75,15 @@ public abstract class Monstre {
 	public int getVie() {
 		return vie;
 	}
-	public void setVie(int degat) {
-		this.vie = this.vie - degat;
+	public void setVie(int degat, Jeu jeu) {
+		if(this.vie == 0)
+		{
+			this.mourir(jeu);
+		}
+		else
+		{
+			this.vie = this.vie - degat;
+		}
 	}
 	public boolean isSommeil() {
 		return sommeil;
@@ -103,9 +114,17 @@ public abstract class Monstre {
 		this.numCaseActuelle = numCaseActuelle;
 	}
 
-	public void seSoigner()
+	public boolean isEnGestation() {
+		return enGestation;
+	}
+
+	public void setEnGestation(boolean enGestation) {
+		this.enGestation = enGestation;
+	}
+
+	public void seSoigner(Jeu jeu)
 	{
-		this.setVie(this.getVie()+2);
+		this.setVie(this.getVie()+2, jeu);
 	}
 	
 	public void dormir()
@@ -126,5 +145,12 @@ public abstract class Monstre {
 		}
 	}
 	
+	public void mourir(Jeu jeu)
+	{
+		Case laCase = jeu.cases.get(this.numCaseActuelle);
+		laCase.SuppMonstre(this);
+	}
+	
 	public abstract String son();
+	public abstract void gestation();
 }

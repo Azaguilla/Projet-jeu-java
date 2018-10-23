@@ -4,13 +4,13 @@ public final class Magicien extends Personnage {
 	private static Personnage getInstance;
 	
 	@Override
-	public void attaquer(Monstre monstre) {
-		monstre.setVie(monstre.getVie()-this.getForce());
+	public void attaquer(Monstre monstre, Jeu jeu) {
+		monstre.setVie(monstre.getVie()-this.getForce(), jeu);
 	}
 	
-	public void lancerSort(Monstre monstre)
+	public void lancerSort(Monstre monstre, Jeu jeu)
 	{
-		monstre.setVie(monstre.getVie()-this.getForce()*3);
+		monstre.setVie(monstre.getVie()-this.getForce()*3, jeu);
 	}
 
 	private Magicien(String nom, String sexe, String classe) {

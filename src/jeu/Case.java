@@ -3,6 +3,8 @@
  */
 package jeu;
 
+import java.util.ArrayList;
+
 
 /**
  * @author Laurie
@@ -13,7 +15,7 @@ public abstract class Case {
 	private int taille;
 	private int nbMaxMonstre = 0;
 	private final static int MAX_MONSTRES = 3;
-	protected Monstre[] monstres = new Monstre[MAX_MONSTRES];
+	protected ArrayList<Monstre> monstres = new ArrayList<>(MAX_MONSTRES);
 	private int pollution;
 	
 	
@@ -30,28 +32,17 @@ public abstract class Case {
 				+ getNbMaxMonstre() + " monstres. Sa pollution est au niveau " + getPollution() + ".";
 	}
 	
-	public void afficheMonstres()
-	{
-		for (int i = 0; i < this.nbMaxMonstre; i++)
-		{
-			System.out.println("Monstre"+i+": "+this.monstres[i]);
-		}
-	}
-	
-	public Monstre[] getMonstres() {
-		return monstres;
-	}
-
-
-	public void setMonstres(Monstre[] monstres) {
+	public void setMonstres(ArrayList<Monstre> monstres) {
 		this.monstres = monstres;
 	}
 
+    public void SuppMonstre(Monstre monstre){
+        this.monstres.remove(monstre);
+    }
 
-	public void suppMonstre()
-	{
-		
-	}
+    public ArrayList<Monstre> getMonstres() {
+        return this.monstres;
+    }
 	
 	public int getNumCase() {
 		return numCase;

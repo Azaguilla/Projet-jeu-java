@@ -40,7 +40,7 @@ public class Plaine extends Case {
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) {
 		monstre.setNumCaseActuelle(this.getNumCase());
-		this.monstres[this.getNbMaxMonstre()] = monstre;
+		this.monstres.add(monstre);
 		this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 
 		return true;
 	}
