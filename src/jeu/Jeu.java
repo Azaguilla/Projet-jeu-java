@@ -108,17 +108,17 @@ public class Jeu {
 		int n;
 		for (int i = 0; i < this.nbCaseMax; i++)
 		{
-			for (int j = 0; j < this.cases[i].nbMaxMonstre; j++)
+			for (int j = 0; j < this.cases[i].getNbMaxMonstre(); j++)
 			{
 				n = rand.nextInt(2);
 				switch (n)
 				{
 					/*case 0 = dormir si réveillé*/
-					case 0: if(this.cases[i].monstres[j].isSommeil == false)
+					case 0: if(this.cases[i].monstres[j].isSommeil() == false)
 								this.cases[i].monstres[j].dormir();
 							break;
 					/*case 1 = se reveiller si endormi*/
-					case 1: if(this.cases[i].monstres[j].isSommeil == true)
+					case 1: if(this.cases[i].monstres[j].isSommeil() == true)
 								this.cases[i].monstres[j].seReveiller();
 							break;
 				}
