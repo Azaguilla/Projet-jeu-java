@@ -13,7 +13,19 @@ public class Ramper implements SeDeplacer {
 	{
 		int numCase = monstre.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
-		int newNumCase = laCase.getNumCase()+1;
+		int n = rand.nextInt(3);
+		switch (n)
+		{
+			/*case 0 = recule*/
+			case 0: int newNumCase = laCase.getNumCase()-1;
+					break;
+			/*case 1 = reste*/
+			case 1: int newNumCase = laCase.getNumCase();
+					break;
+			/*case 2 = avance*/
+			case 2: int newNumCase = laCase.getNumCase()+1;
+					break;
+		}
 		Case newCase = jeu.recupererCase(newNumCase);
 		newCase.ajoutMonstre(monstre);
 		laCase.SuppMonstre(monstre);

@@ -5,13 +5,28 @@ import java.util.Scanner;
 public class RolePlayUI {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Bienvenue dans le Royaume de Dar Elnor.");
+		System.out.println("Choississez la classe de votre personnage :");
 		String classe = "Mage";
 		System.out.println("Choississez le nom de votre personnage :");
 		String nom = sc.next();
 		System.out.println("Choississez le sexe de votre personnage : Femme [F], Homme [M].");
 		String sexe = sc.next();
+		
 		Personnage personnage = Magicien.getInstance(nom, sexe, classe);
+		
+		System.out.println("Bienvenue dans le Royaume de Dar Elnor, " + nom + ".");
+		System.out.println("Scénario...");
+		
+		int n = rand.nextInt(3);
+		switch (n)
+		{
+			case 0: System.out.println(nom + ", grand " /*+ classe +*/", quête 1...");
+					break;
+			case 1: System.out.println(nom + ", grand " /*+ classe +*/", quête 2...");
+					break;
+			case 2: System.out.println(nom + ", grand " /*+ classe +*/", quête 3...");
+					break;
+		}
 		
 		System.out.println(personnage.toString());
 		
