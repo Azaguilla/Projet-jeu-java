@@ -5,26 +5,47 @@ import java.util.Scanner;
 public class RolePlayUI {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Choississez la classe de votre personnage :");
-		String classe = "Mage";
+		System.out.println("Choississez la classe de votre personnage : Chasseur [1], Guerrier [2], Magicien [3], Rodeur [4] -- Plus de détails [0]");
+		int tmp_classe = sc.nextInt();
 		System.out.println("Choississez le nom de votre personnage :");
 		String nom = sc.next();
 		System.out.println("Choississez le sexe de votre personnage : Femme [F], Homme [M].");
-		String sexe = sc.next();
+		char sexe = sc.useDelimiter(pattern);
+		String classe;
+		
+		System.out.println("Bienvenue dans le Royaume de Dar Elnor, " + nom + ".\n");
+		System.out.println("Scénario...\n");
+		
+		switch(tmp_classe)
+		{
+			case 1:	if(sexe == 'M') System.out.println("Agile chasseur, ");
+					if(sexe == 'F') System.out.println("Agile chasseresse, ");
+					classe = "chasseur";
+					break;
+			case 2:	if(sexe == 'M') System.out.println("Grand guerrier, ");
+					if(sexe == 'F') System.out.println("Grande guerriere, ");
+					classe = "guerrier";
+					break;
+			case 3: if(sexe == 'M') System.out.println("Puissant magicien, ");
+					if(sexe == 'F') System.out.println("Puissante magicienne, ");
+					classe = "mage";
+					break;
+			case 4:	if(sexe == 'M') System.out.println("Sournois rôdeur, ");
+					if(sexe == 'F') System.out.println("Sournoise rôdeuse, ");
+					classe = "rodeur";
+					break;
+		}
 		
 		Personnage personnage = Magicien.getInstance(nom, sexe, classe);
-		
-		System.out.println("Bienvenue dans le Royaume de Dar Elnor, " + nom + ".");
-		System.out.println("Scénario...");
 		
 		int n = rand.nextInt(3);
 		switch (n)
 		{
-			case 0: System.out.println(nom + ", grand " /*+ classe +*/", quête 1...");
+			case 0: System.out.println("quête 1...");
 					break;
-			case 1: System.out.println(nom + ", grand " /*+ classe +*/", quête 2...");
+			case 1: System.out.println("quête 2...");
 					break;
-			case 2: System.out.println(nom + ", grand " /*+ classe +*/", quête 3...");
+			case 2: System.out.println("quête 3...");
 					break;
 		}
 		

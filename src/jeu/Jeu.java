@@ -202,21 +202,35 @@ public class Jeu {
 	public void ChangerTour()
 	{
 		// On vérifie que ce n'est pas la fin du jeu
-		if (this.jourCourant != MAX_JOUR) {
+		if (this.jourCourant = MAX_JOUR || this.joueur.getVie() = 0) 
+		{
+			this.FinDuJeu();
+		}
+		else
+		{
 			this.jourCourant++;
 			this.modifierEtatMonstre();
 			this.modifierEtatCase();
 			this.verifNaissances();
 		}
-		else
-		{
-			this.FinDuJeu();
-		}
 	}
 	
 	private void FinDuJeu()
 	{
-		
+		if (this.joueur.getVie() = 0)
+			System.out.println("Vous êtes mort...")
+			/*Afficher stats*/
+			else
+			{
+				if (this.jourCourant = MAX_JOUR)
+					System.out.println("Votre temps est écoulé...")
+					/*Afficher stats*/
+					else
+					{
+						System.out.println("Félicitation! Vous avez réussi!")
+						/*Afficher stats*/
+					}
+			}
 	}
 	
 	public Case recupererCase(int numCase)
