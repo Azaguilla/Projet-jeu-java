@@ -218,16 +218,16 @@ public class Jeu {
 	private void FinDuJeu()
 	{
 		if (this.joueur.getVie() = 0)
-			System.out.println("Vous êtes mort...")
+			System.out.println("Vous êtes mort...");
 			/*Afficher stats*/
 			else
 			{
 				if (this.jourCourant = MAX_JOUR)
-					System.out.println("Votre temps est écoulé...")
+					System.out.println("Votre temps est écoulé...");
 					/*Afficher stats*/
 					else
 					{
-						System.out.println("Félicitation! Vous avez réussi!")
+						System.out.println("Félicitation! Vous avez réussi!");
 						/*Afficher stats*/
 					}
 			}
