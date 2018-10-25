@@ -30,7 +30,8 @@ public class TestLaurie {
 		
 		jeu.ajoutCase(plaine);
 		jeu.ajoutCase(marais);
-		
+		gob.grandir();
+		System.out.println(gob.getTaille());
 		jeu.AfficheInfoJeu();
 	}
 

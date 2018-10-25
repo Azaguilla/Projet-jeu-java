@@ -1,4 +1,4 @@
-package jeu;
+package Model;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -121,12 +121,6 @@ public class Jeu {
 	public static int getMaxCase() {
 		return MAX_CASE;
 	}
-
-	public void AfficheInfoJeu()
-	{
-		System.out.println("Le jeu : "+this.nom+". Vous avez "+this.nbJour+"pour atteindre le bout de la carte. Vous disposez d'encore "+this.nbHeure+" heures avant la fin de ce jour. Voici la liste des cases et des monstres qui y sont placés:"+
-							this.getCases());
-	}
 	
 	private void modifierEtatMonstre()
 	{
@@ -202,7 +196,7 @@ public class Jeu {
 	public void ChangerTour()
 	{
 		// On vérifie que ce n'est pas la fin du jeu
-		if (this.jourCourant = MAX_JOUR || this.joueur.getVie() = 0) 
+		if (this.jourCourant == MAX_JOUR || this.joueur.getVie() == 0) 
 		{
 			this.FinDuJeu();
 		}
@@ -217,12 +211,12 @@ public class Jeu {
 	
 	private void FinDuJeu()
 	{
-		if (this.joueur.getVie() = 0)
+		if (this.joueur.getVie() == 0)
 			System.out.println("Vous êtes mort...");
 			/*Afficher stats*/
 			else
 			{
-				if (this.jourCourant = MAX_JOUR)
+				if(this.jourCourant == MAX_JOUR)
 					System.out.println("Votre temps est écoulé...");
 					/*Afficher stats*/
 					else

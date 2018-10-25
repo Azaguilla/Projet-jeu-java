@@ -1,11 +1,15 @@
-package jeu;
+package Model;
 
-public class Vagabonder implements SeDeplacer {
+public class Ramper implements SeDeplacer {
 	public boolean voler(Monstre monstre, Jeu jeu)
 	{
 		return false;
 	}
 	public boolean vagabonder(Monstre monstre, Jeu jeu)
+	{
+		return false;
+	}
+	public boolean ramper(Monstre monstre, Jeu jeu)
 	{
 		int numCase = monstre.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
@@ -25,11 +29,7 @@ public class Vagabonder implements SeDeplacer {
 		Case newCase = jeu.recupererCase(newNumCase);
 		newCase.ajoutMonstre(monstre);
 		laCase.SuppMonstre(monstre);
-		System.out.println("Le monstre vagabonde vers la case "+newNumCase);
+		System.out.println("Le monstre nage vers la case.");
 		return true;
-	}
-	public boolean ramper(Monstre monstre, Jeu jeu)
-	{
-		return false;
 	}
 }
