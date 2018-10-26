@@ -15,9 +15,9 @@ public class Marais extends Case {
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Profondeur : " + profondeur + "\n"
 				+ "Taille : " + getTaille() + "\n"
-				+ "Les monstres : \n" + getMonstres() + "\n"
 				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
-				+ "Niveau de pollution : "+ getPollution() + "\n";
+				+ "Niveau de pollution : "+ getPollution() + "\n"
+				+ "Les monstres : \n" + getMonstres() + "\n";
 	}
 	
 	@Override

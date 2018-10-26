@@ -161,4 +161,20 @@ public class Model {
 	{
 		personnage.lancerSort(monstre, jeu);
 	}
+	
+	public void personnageEstBienVivant(Jeu jeu)
+	{
+		if (jeu.getJoueur().getVie() <= 0)
+		{
+			jeu.ChangerTour();
+		}
+	}
+	
+	public void personnageEstSurObjectif(Jeu jeu)
+	{
+		if (jeu.getJoueur().getPosition() == jeu.cases.size()-1)
+		{
+			jeu.ChangerTour();
+		}
+	}
 }

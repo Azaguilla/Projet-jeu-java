@@ -16,7 +16,7 @@ public final class Magicien extends Personnage {
 	public void lancerSort(Monstre monstre, Jeu jeu)
 	{
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre.");
-		monstre.setVie(this.getForce(), jeu);
+		monstre.setVie(this.getForce()*3, jeu);
 		if(monstre.getVie() < 0)
 		{
 			monstre.mourir(jeu);

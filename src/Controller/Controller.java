@@ -88,6 +88,10 @@ public class Controller {
 		this.jeu.consequenceAction();
 		String choixDeplacement = this.vue.choixDeplacement();
 		this.model.deplacerPersonnage(this.jeu.getJoueur(), choixDeplacement, this.jeu);
+		
+		this.model.personnageEstBienVivant(this.jeu);
+		this.model.personnageEstSurObjectif(this.jeu);
+		
 		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 		actions(choix);
 	}
@@ -96,6 +100,9 @@ public class Controller {
 	{
 		this.jeu.consequenceAction();
 		this.model.manger(this.jeu.getJoueur());
+		
+		this.model.personnageEstBienVivant(this.jeu);
+		
 		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 		actions(choix);
 	}
@@ -104,7 +111,7 @@ public class Controller {
 	{
 			ArrayList<Monstre> monstres = this.model.recupererMonstre(this.jeu.getJoueur(), this.jeu);
 			int numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
-			if(numMonstreAttaque == 10)
+			if(numMonstreAttaque == -1)
 			{
 				int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 				actions(choix);
@@ -121,6 +128,9 @@ public class Controller {
 					this.jeu.consequenceAction();
 					Monstre monstreAttaque = monstres.get(numMonstreAttaque);
 					this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
+					
+					this.model.personnageEstBienVivant(this.jeu);
+					
 					int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 					actions(choix);
 				}
@@ -131,7 +141,7 @@ public class Controller {
 	{
 		ArrayList<Monstre> monstres = this.model.recupererMonstre(this.jeu.getJoueur(), this.jeu);
 		int numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
-		if(numMonstreAttaque == 10)
+		if(numMonstreAttaque == -1)
 		{
 			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 			actions(choix);
@@ -148,6 +158,9 @@ public class Controller {
 				this.jeu.consequenceAction();
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
 				this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
+
+				this.model.personnageEstBienVivant(this.jeu);
+				
 				int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 				actions(choix);
 			}
@@ -158,8 +171,11 @@ public class Controller {
 	{
 		this.jeu.consequenceAction();
 		Personnage personnage = this.jeu.getJoueur();
-		Case laCase = this.jeu.recupererCase(personnage.getPosition());
+		Case laCase = this.jeu.recupererCase(personnage.getPosition()+1);
 		this.jeu.getJoueur().nettoyer(laCase);
+		
+		this.model.personnageEstBienVivant(this.jeu);
+		
 		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 		actions(choix);
 	}
@@ -167,9 +183,23 @@ public class Controller {
 	public void examinerCase()
 	{
 		this.jeu.consequenceAction();
-		//TODO
-		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-		actions(choix);
+		int nbCase = this.jeu.getCases().size();
+		int laCase = this.vue.afficherChoixCase(nbCase);
+			{
+				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
+				actions(5);
+			}
+			else
+			{
+				this.jeu.consequenceAction();
+				String infos = this.jeu.getCases().get(laCase).toString();
+				
+				this.model.personnageEstBienVivant(this.jeu);
+				
+				int choix = this.vue.AfficherMenu(infos, this.jeu.getJoueur());
+				actions(choix);
+			}
+		}
 	}
 	
 	public void afficheInfosCaseActuelle()
@@ -177,6 +207,9 @@ public class Controller {
 		Personnage personnage = this.jeu.getJoueur();
 		Case laCase = this.jeu.recupererCase(personnage.getPosition());
 		this.jeu.getJoueur().examinerCase(laCase);
+		
+		this.model.personnageEstBienVivant(this.jeu);
+		
 		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 		actions(choix);
 	}
@@ -184,14 +217,22 @@ public class Controller {
 	public void afficheInfoJeu()
 	{
 		String infos = this.jeu.infosJeu();
+		
+		this.model.personnageEstBienVivant(this.jeu);
+		
 		int choix = this.vue.AfficherMenu(infos, this.jeu.getJoueur());
 		actions(choix);
 	}
 	
 	public void passerTour()
 	{
-		this.jeu.ChangerTour();
-		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-		actions(choix);
+		this.model.personnageEstBienVivant(this.jeu);
+		
+		boolean estFinJeu = this.jeu.ChangerTour();
+		if(!estFinJeu)
+		{
+			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+			actions(choix);
+		}
 	}
 }

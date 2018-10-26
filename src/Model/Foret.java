@@ -16,9 +16,9 @@ public class Foret extends Case {
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Hauteur : " + hauteur + "\n"
 				+ "Taille : " + getTaille() + "\n"
-				+ "Les monstres : \n" + getMonstres() + "\n"
 				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
-				+ "Niveau de pollution : "+ getPollution() + "\n";
+				+ "Niveau de pollution : "+ getPollution() + "\n"
+				+ "Les monstres : \n" + getMonstres() + "\n";
 	}
 
 	public int getHauteur() {

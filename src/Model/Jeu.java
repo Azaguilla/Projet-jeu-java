@@ -11,7 +11,6 @@ public class Jeu {
 	private int jourCourant;
 	private int nbHeure;
 	private final static int MAX_HEURE = 15;
-	private int nbCaseMax = 0;
 	private final static int MAX_CASE = 50;
 	protected ArrayList<Case> cases = new ArrayList<>(MAX_CASE);
 	private int nbOeufMax = 0;
@@ -35,7 +34,7 @@ public class Jeu {
 				+ "Nombre de jour : " + nbJour + "\n"
 				+ "Jour actuel : " + jourCourant + "\n"
 				+ "Nombre d'heure à dépenser : " + nbHeure + "\n"
-				+ "Nombre de case dans le jeu : " + nbCaseMax + "\n"
+				+ "Nombre de case dans le jeu : " + cases.size() + "\n"
 				+ "Les cases : " + cases + "\n";
 	}
 
@@ -116,14 +115,6 @@ public class Jeu {
 		this.nbHeure = nbHeure;
 	}
 
-	public int getNbCaseMax() {
-		return nbCaseMax;
-	}
-
-	public void setNbCaseMax(int nbCaseMax) {
-		this.nbCaseMax = nbCaseMax;
-	}
-
 	public static int getMaxCase() {
 		return MAX_CASE;
 	}
@@ -132,7 +123,7 @@ public class Jeu {
 	{
 		//sommeil
 		int n;
-		for (int i = 0; i < this.nbCaseMax; i++)
+		for (int i = 0; i < this.cases.size()-1; i++)
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
 			{
@@ -157,7 +148,7 @@ public class Jeu {
 	{
 		//pollutions
 		int n;
-		for (int i = 0; i < this.nbCaseMax; i++)
+		for (int i = 0; i < this.cases.size(); i++)
 		{
 			n = rand.nextInt(3);
 			this.cases.get(i).setPollution(n);
@@ -185,7 +176,7 @@ public class Jeu {
 		}
 		
 		//On vérifie la gestation des vivipares
-		for (int i = 0; i < this.nbCaseMax; i++)
+		for (int i = 0; i < this.cases.size(); i++)
 		{
 			Case laCase = this.cases.get(i);
 			for (int j = 0; j < laCase.getNbMaxMonstre(); j++)
@@ -199,12 +190,13 @@ public class Jeu {
 		}
 	}
 
-	public void ChangerTour()
+	public boolean ChangerTour()
 	{
 		// On vérifie que ce n'est pas la fin du jeu
-		if (this.jourCourant == MAX_JOUR || this.joueur.getVie() == 0) 
+		if (this.jourCourant == this.nbJour || this.joueur.getVie() == 0) 
 		{
 			this.FinDuJeu();
+			return true;
 		}
 		else
 		{
@@ -214,6 +206,7 @@ public class Jeu {
 			this.modifierEtatMonstre();
 			this.modifierEtatCase();
 			this.verifNaissances();
+			return false;
 		}
 	}
 	
@@ -224,7 +217,7 @@ public class Jeu {
 			/*Afficher stats*/
 			else
 			{
-				if(this.jourCourant == MAX_JOUR)
+				if(this.jourCourant == this.nbJour)
 					System.out.println("Votre temps est écoulé...");
 					/*Afficher stats*/
 					else
@@ -258,6 +251,6 @@ public class Jeu {
 				+ "Nombre de jour : " + nbJour + "\n"
 				+ "Jour actuel : " + jourCourant + "\n"
 				+ "Nombre d'heure à dépenser : " + nbHeure + "\n"
-				+ "Nombre de case dans le jeu : " + nbCaseMax + "\n";
+				+ "Nombre de case dans le jeu : " + this.cases.size() + "\n";
 	}
 }

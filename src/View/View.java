@@ -53,14 +53,14 @@ public class View {
 		System.out.println(personnage);
 		
 		System.out.println("Tu as le choix entre diverses actions dans ce monde. Que veux-tu faire ? \n "
-				+ "Te déplacer[0] \n "
-				+ "Manger[1] \n "
-				+ "Attaquer[2] \n "
-				+ "Lancer un sort[3] \n "
-				+ "Nettoyer une case[4] \n "
-				+ "Examiner une case[5] \n "
-				+ "Afficher des infos sur ta case actuelle[6] \n "
-				+ "Afficher des infos sur le jeu (simplifié)[7] \n "
+				+ "Te déplacer[0] - 1 heure \n "
+				+ "Manger[1] - 1 heure \n "
+				+ "Attaquer[2] - 1 heure \n "
+				+ "Lancer un sort[3] - 1 heure \n "
+				+ "Nettoyer la case suivante[4] - 1 heure \n "
+				+ "Examiner une case[5] - 1 heure \n "
+				+ "Afficher des infos sur ta case actuelle[6] - gratuit \n "
+				+ "Afficher des infos sur le jeu (simplifié)[7] - gratuit \n "
 				+ "Passer le tour[8]");
 		
 		int choix = sc.nextInt();
@@ -82,7 +82,21 @@ public class View {
 		System.out.println(monstres);
 		
 		System.out.println("Quel monstre veux-tu attaquer ? Indique son numéro de 0 à 2 \n"
-				+ "Retour[3]");
+				+ "Retour[-1]");
+		
+		int choix = sc.nextInt();
+		
+		return choix;
+	}
+	
+	public int afficherChoixCase(int nbCases)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Le jeu est composé de "+nbCases+" cases.\n");
+		
+		System.out.println("Entrez le numéro de la case à étudier \n"
+				+ "Retour[-1]");
 		
 		int choix = sc.nextInt();
 		

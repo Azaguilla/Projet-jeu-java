@@ -11,9 +11,9 @@ public class Plaine extends Case {
 		return "Plaine \n"
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Taille : " + getTaille() + "\n"
-				+ "Les monstres : \n" + getMonstres() + "\n"
 				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
-				+ "Niveau de pollution : "+ getPollution() + "\n";
+				+ "Niveau de pollution : "+ getPollution() + "\n"
+				+ "Les monstres : \n" + getMonstres() + "\n";
 	}
 
 
@@ -33,7 +33,7 @@ public class Plaine extends Case {
 			personnage.setVie(personnage.getVie()-3);
 			break;
 		default: 
-			System.out.println("Le vent frais souffle sur votre visage, le soleil.");
+			System.out.println("Le vent frais souffle sur votre visage, le soleil illumine la plaine luxuriante.");
 			personnage.setVie(personnage.getVie());
 		}
 	}
