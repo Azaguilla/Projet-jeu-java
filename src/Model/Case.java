@@ -25,12 +25,6 @@ public abstract class Case {
 		this.taille = taille;
 		this.pollution = pollution;
 	}
-
-
-	public String infosCase() {
-		return "Plaine [Case n° " + getNumCase() + ", de taille " + getTaille() + ". Cette case est occupée par"
-				+ getNbMaxMonstre() + " monstres. Sa pollution est au niveau " + getPollution() + ".";
-	}
 	
 	public void setMonstres(ArrayList<Monstre> monstres) {
 		this.monstres = monstres;

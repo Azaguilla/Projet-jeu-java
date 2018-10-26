@@ -30,30 +30,18 @@ public abstract class Personnage {
 		this.energie = 20;
 		this.force = 4;
 		this.vie = 10;
-		this.position = 1;
+		this.position = 0;
 	}
-
-	@Override
-	public String toString() {
-		return "Personnage [nom=" + nom + ", sexe=" + sexe + ", age=" + age + ", classe=" + classe + ", taille="
-				+ taille + ", poids=" + poids + ", energie=" + energie + ", force=" + force + ", vie=" + vie + "]";
-	}
-
-	public String caracPerso() {
-		return "Un grand "+this.classe+" était apparu dans la contrée, âgé de "+this.age+" ans. Voici ses caractéristiques : "
-				+ "énergie "+this.energie+", force "+this.force+" et vie "+this.vie+". Il rest placé actuellement sur la case "+this.position;
-	}
-
 	
 	public void examinerCase(Case lacase) {
-		lacase.infosCase();
+		System.out.println(lacase.toString());
 	}
 	
-	public boolean seDeplacer(String choix, int max_case, Jeu jeu)
+	public boolean seDeplacer(String choix, Jeu jeu)
 	{
 		switch (choix) {
 		case "A" :
-			if (this.position == max_case)
+			if (this.position == Jeu.getMaxCase())
 			{
 				System.out.println("Vous ne pouvez pas avancer.");
 				return false;
@@ -66,7 +54,7 @@ public abstract class Personnage {
 				return true;
 			}
 		case "R" : 
-			if (this.position == 1)
+			if (this.position == 0)
 			{
 				System.out.println("Vous ne pouvez pas reculer.");
 				return false;
@@ -93,7 +81,7 @@ public abstract class Personnage {
 	public String manger()
 	{
 		this.energie = this.energie + 2;
-		return "Vous réccupérer de l'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
+		return "Vous récupérer de l'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
 	}
 	
 	public void nettoyer(Case laCase)
@@ -162,5 +150,14 @@ public abstract class Personnage {
 		this.vie = vie;
 	}
 	
+	public int getPosition() {
+		return position;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
 	public abstract void attaquer(Monstre monstre, Jeu jeu);
+	public abstract void lancerSort(Monstre monstre, Jeu jeu);
 }

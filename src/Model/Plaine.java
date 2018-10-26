@@ -8,33 +8,47 @@ public class Plaine extends Case {
 	
 	@Override
 	public String toString() {
-		return "Plaine [infosCase()=" + infosCase() + ", getNumCase()=" + getNumCase() + ", getTaille()=" + getTaille()
-				+ ", getNbMaxMonstre()=" + getNbMaxMonstre() + ", getPollution()=" + getPollution() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "Plaine \n"
+				+ "Numéro de la case : " + getNumCase() + "\n"
+				+ "Taille : " + getTaille() + "\n"
+				+ "Les monstres : \n" + getMonstres() + "\n"
+				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
+				+ "Niveau de pollution : "+ getPollution() + "\n";
 	}
 
 
 	//Inflige des degats au personnage selon le niveau de pollution
 	public void degatPersonnage(Personnage personnage) {
-
 		switch (this.getPollution()) {
 		case 1 :
+			System.out.println("Pollution niveau 1 : vous perdez 1 pts de vie.");
 			personnage.setVie(personnage.getVie()-1);
 			break;
 		case 2 : 
+			System.out.println("Pollution niveau 2 : vous perdez 2 pts de vie.");
 			personnage.setVie(personnage.getVie()-2);
 			break;
 		case 3 : 
+			System.out.println("Pollution niveau 1 : vous perdez 3 pts de vie.");
 			personnage.setVie(personnage.getVie()-3);
 			break;
 		default: 
+			System.out.println("Le vent frais souffle sur votre visage, le soleil.");
 			personnage.setVie(personnage.getVie());
 		}
 	}
 
 	@Override
 	public void nettoyerCase() {
-		this.setPollution(0);
+		if(this.getPollution() == 0)
+		{
+			System.out.println("La case est déjà propre.");
+		}
+		else
+		{
+			System.out.println("Vous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.");
+			this.setPollution(this.getPollution()-1);
+		}
 	}
 	
 	@Override

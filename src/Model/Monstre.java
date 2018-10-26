@@ -31,9 +31,17 @@ public abstract class Monstre {
 
 	@Override
 	public String toString() {
-		return "Monstre [nom=" + nom + ", sexe=" + sexe + ", poids=" + poids + ", taille=" + taille + ", age=" + age
-				+ ", force=" + force + ", vie=" + vie + ", sommeil=" + sommeil + ", numCaseActuelle=" + numCaseActuelle
-				+ ", enGestation=" + enGestation + "]";
+		return " \n\n  Monstre \n "
+				+ "Espèce : " + nom + "\n"
+				+ "Sexe : " + sexe + "\n"
+				+ "Poids : " + poids + "\n"
+				+ "Taille : " + taille + "\n"
+				+ "Age : " + age + "\n"
+				+ "Force : " + force + "\n"
+				+ "Vie : " + vie + "\n"
+				+ "Sommeil : " + sommeil + "\n"
+				+ "Numéro de case : " + numCaseActuelle + "\n"
+				+ "En gestation : " + enGestation;
 	}
 
 
@@ -74,7 +82,7 @@ public abstract class Monstre {
 		return vie;
 	}
 	public void setVie(int degat, Jeu jeu) {
-		if(this.vie == 0)
+		if(this.vie < 0)
 		{
 			this.mourir(jeu);
 		}
@@ -147,6 +155,7 @@ public abstract class Monstre {
 	{
 		Case laCase = jeu.cases.get(this.numCaseActuelle);
 		laCase.SuppMonstre(this);
+		System.out.println("Le monstre "+this.nom+" est mort.");
 	}
 	
 	public abstract String son();

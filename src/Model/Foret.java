@@ -12,7 +12,13 @@ public class Foret extends Case {
 
 	@Override
 	public String toString() {
-		return "Foret [hauteur=" + hauteur + "]";
+		return "Foret  \n"
+				+ "Numéro de la case : " + getNumCase() + "\n"
+				+ "Hauteur : " + hauteur + "\n"
+				+ "Taille : " + getTaille() + "\n"
+				+ "Les monstres : \n" + getMonstres() + "\n"
+				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
+				+ "Niveau de pollution : "+ getPollution() + "\n";
 	}
 
 	public int getHauteur() {
@@ -27,22 +33,34 @@ public class Foret extends Case {
 	public void degatPersonnage(Personnage personnage) {
 		switch (this.getPollution()) {
 		case 1 :
+			System.out.println("Vous entrez une odeur étrange et désagréable. Le poison s'inflitre dans vos poumons et vous perdez 1 pts de vie.");
 			personnage.setVie(personnage.getVie()-1);
 			break;
 		case 2 : 
+			System.out.println("L'air est nauséabond et des miasmes s'accrochent aux branches des arbres. Vous pouvez à peine respirez et vous perdez 2 pts de vie.");
 			personnage.setVie(personnage.getVie()-2);
 			break;
 		case 3 : 
+			System.out.println("L'atmosphère est épaisse et vous voyez à peine devant vous à cause de la pollution. Vous suffoquez et vous perdez 3 pts de vie.");
 			personnage.setVie(personnage.getVie()-3);
 			break;
 		default: 
+			System.out.println("L'air de la forêt est pure.");
 			personnage.setVie(personnage.getVie());
 		}
 	}
 
 	@Override
 	public void nettoyerCase() {
-		this.setPollution(0);
+		if(this.getPollution() == 0)
+		{
+			System.out.println("La case est déjà propre.");
+		}
+		else
+		{
+			System.out.println("Vous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.");
+			this.setPollution(this.getPollution()-1);
+		}
 		//heure -- >le faire au moment de l'appel à la méthode ?
 		//if(this.toiles == true)
 		//{this.toiles == false; heure --;}

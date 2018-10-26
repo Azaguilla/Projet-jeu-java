@@ -19,12 +19,26 @@ public class Jeu {
 	protected ArrayList<Oeuf> oeufs = new ArrayList<>(MAX_OEUF);
 	private Random rand = new Random();
 	
-	public Jeu(String nom, Personnage joueur) {
+	public Jeu(String nom, Personnage joueur, int nbJour, int nbHeure) {
 		super();
 		this.nom = nom;
 		this.joueur = joueur;
+		this.nbHeure = nbHeure;
+		this.nbJour = nbJour;
 	}
 	
+	@Override
+	public String toString() {
+		return "Jeu \n"
+				+ "Nom : " + nom + "\n"
+				+ "Joueur : " + joueur + "\n"
+				+ "Nombre de jour : " + nbJour + "\n"
+				+ "Jour actuel : " + jourCourant + "\n"
+				+ "Nombre d'heure à dépenser : " + nbHeure + "\n"
+				+ "Nombre de case dans le jeu : " + nbCaseMax + "\n"
+				+ "Les cases : " + cases + "\n";
+	}
+
 	public void ajoutCase(Case laCase)
 	{
 		if(this.cases.size()<MAX_CASE){
@@ -68,14 +82,6 @@ public class Jeu {
     
 	public void setOeufs(ArrayList<Oeuf> oeufs) {
 		this.oeufs = oeufs;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Jeu [nom=" + nom + ", joueur=" + joueur + ", nbJour=" + nbJour + ", nbCaseMax=" + nbCaseMax + ", cases="
-				+ cases + "]";
 	}
 	
 	public String getNom() {
@@ -202,7 +208,9 @@ public class Jeu {
 		}
 		else
 		{
+			System.out.println("Vous vous endormez sous un arbre. La lune se lève puis redescend, laissant place au Soleil. Un nouveau jour commence.");
 			this.jourCourant++;
+			this.nbHeure = 10;
 			this.modifierEtatMonstre();
 			this.modifierEtatCase();
 			this.verifNaissances();
@@ -230,5 +238,26 @@ public class Jeu {
 	public Case recupererCase(int numCase)
 	{
 		return this.cases.get(numCase);
+	}
+	
+	public void consequenceAction()
+	{
+		System.out.println("Les heures tournent. Vous perdez une heure de temps à faire votre action.");
+		this.nbHeure --;
+		if(this.nbHeure == 0)
+		{
+			this.ChangerTour();
+		}
+	}
+	
+	public String infosJeu()
+	{
+		return "Jeu \n"
+				+ "Nom : " + nom + "\n"
+				+ "Joueur : " + joueur + "\n"
+				+ "Nombre de jour : " + nbJour + "\n"
+				+ "Jour actuel : " + jourCourant + "\n"
+				+ "Nombre d'heure à dépenser : " + nbHeure + "\n"
+				+ "Nombre de case dans le jeu : " + nbCaseMax + "\n";
 	}
 }

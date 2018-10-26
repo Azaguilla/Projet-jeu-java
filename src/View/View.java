@@ -1,8 +1,10 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Model.Jeu;
+import Model.Monstre;
 import Model.Personnage;
 
 public class View {
@@ -34,6 +36,15 @@ public class View {
 		return nom;
 	}
 	
+	public String choixDeplacement()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Comment voulez-vous vous déplacer ? \n Avancer[A] \n Reculer[R]");
+		String choix = sc.next();
+		
+		return choix;
+	}
+	
 	public int AfficherMenu(String message, Personnage personnage)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -41,17 +52,16 @@ public class View {
 		System.out.println(message);
 		System.out.println(personnage);
 		
-		System.out.println("Tu as le choix entre diverses actions dans ce monde. Que veux-tu faire ? \n"
-				+ "Avancer[1] \n "
-				+ "Reculer[2] \n "
-				+ "Manger[3] \n "
-				+ "Attaquer[4] \n "
-				+ "Lancer un sort[5] \n "
-				+ "Nettoyer une case[6] \n "
-				+ "Examiner une case[7] \n "
-				+ "Afficher des infos sur ta case actuelle[8] \n "
-				+ "Afficher les informations de ton personnage[9] \n "
-				+ "Passer le tour[10]");
+		System.out.println("Tu as le choix entre diverses actions dans ce monde. Que veux-tu faire ? \n "
+				+ "Te déplacer[0] \n "
+				+ "Manger[1] \n "
+				+ "Attaquer[2] \n "
+				+ "Lancer un sort[3] \n "
+				+ "Nettoyer une case[4] \n "
+				+ "Examiner une case[5] \n "
+				+ "Afficher des infos sur ta case actuelle[6] \n "
+				+ "Afficher des infos sur le jeu (simplifié)[7] \n "
+				+ "Passer le tour[8]");
 		
 		int choix = sc.nextInt();
 		
@@ -61,7 +71,21 @@ public class View {
 	public void AfficheInfoJeu(Jeu jeu)
 	{
 		System.out.println("Le jeu : "+jeu.getNom()+ ". \n Vous avez "+jeu.getNbJour()+" jours pour atteindre le bout de la carte. "
-				+ "Vous disposez d'encore "+jeu.getNbHeure()+" heures avant la fin de ce jour. \n Voici la liste des cases et des monstres qui y sont placés:"+
-							jeu.getCases());
+		+ "Vous disposez d'encore "+jeu.getNbHeure()+" heures avant la fin de ce jour. \n Voici la liste des cases et des monstres qui y sont placés:\n\n"+
+		jeu.getCases() + "\n\n");
+	}
+	
+	public int afficherChoixMonstre(ArrayList<Monstre> monstres)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println(monstres);
+		
+		System.out.println("Quel monstre veux-tu attaquer ? Indique son numéro de 0 à 2 \n"
+				+ "Retour[3]");
+		
+		int choix = sc.nextInt();
+		
+		return choix;
 	}
 }

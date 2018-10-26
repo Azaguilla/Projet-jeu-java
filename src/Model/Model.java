@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Model {
@@ -58,7 +59,7 @@ public class Model {
 		for(int i = 0; i<8; i++)
 		{
 			boolean placement = false;
-			int f = 0;
+			int f = 1;
 			while(placement == false)
 			{
 				if(tabCase[f].ajoutMonstre(monstres[i]))
@@ -123,11 +124,41 @@ public class Model {
 	
 	public Jeu creerJeu(Case[] cases, Monstre[] monstres, Personnage personnage)
 	{
-		Jeu jeu = new Jeu(personnage.getNom()+"'s world", personnage);
+		Jeu jeu = new Jeu(personnage.getNom()+"'s world", personnage, 7, 10);
 		for(int i=0; i<20;i++)
 		{
 			jeu.ajoutCase(cases[i]);
 		}
 		return jeu;
+	}
+	
+	public void deplacerPersonnage(Personnage personnage, String choixDeplacement, Jeu jeu)
+	{
+		personnage.seDeplacer(choixDeplacement, jeu);
+	}
+	
+	public void manger(Personnage personnage)
+	{
+		personnage.manger();
+	}
+	
+	public ArrayList<Monstre> recupererMonstre(Personnage personnage, Jeu jeu)
+	{
+		int numCase = personnage.getPosition();
+		Case laCase = jeu.recupererCase(numCase);
+		ArrayList<Monstre> monstres = laCase.getMonstres();
+
+
+		return monstres;
+	}
+	
+	public void attaquerMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
+	{
+		personnage.attaquer(monstre, jeu);
+	}
+	
+	public void lancerSortSurMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
+	{
+		personnage.lancerSort(monstre, jeu);
 	}
 }
