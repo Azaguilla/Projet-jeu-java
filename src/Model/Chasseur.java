@@ -15,15 +15,26 @@ public class Chasseur extends Personnage {
 		{
 			monstre.mourir(jeu);
 		}
+		else
+		{
+			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
+			this.setVie(this.getVie()-monstre.getForce());
+		}
 	}
 	
 	public void lancerSort(Monstre monstre, Jeu jeu)
 	{
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce(), jeu);
+		this.setEnergie(this.getEnergie()-5);
 		if(monstre.getVie() < 0)
 		{
 			monstre.mourir(jeu);
+		}
+		else
+		{
+			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
+			this.setVie(this.getVie()-monstre.getForce());
 		}
 	}
 	

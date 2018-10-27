@@ -18,21 +18,32 @@ public class Guerrier extends Personnage {
 
 	@Override
 	public void attaquer(Monstre monstre, Jeu jeu) {
-		System.out.println("Votre épée fend l'air et vous infligez "+this.getForce()*3+" pts de dégât au monstre.");
+		System.out.println("Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce()*3, jeu);
 		if(monstre.getVie() < 0)
 		{
 			monstre.mourir(jeu);
+		}
+		else
+		{
+			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
+			this.setVie(this.getVie()-monstre.getForce());
 		}
 	}
 	
 	public void lancerSort(Monstre monstre, Jeu jeu)
 	{
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
+		this.setEnergie(this.getEnergie()-5);
 		monstre.setVie(this.getForce(), jeu);
 		if(monstre.getVie() < 0)
 		{
 			monstre.mourir(jeu);
+		}
+		else
+		{
+			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
+			this.setVie(this.getVie()-monstre.getForce());
 		}
 	}
 	

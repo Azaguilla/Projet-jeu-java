@@ -1,6 +1,10 @@
 package Model;
 
+import java.util.Random;
+
 public class Vagabonder implements SeDeplacer {
+	private Random rand = new Random();
+	
 	public boolean voler(Monstre monstre, Jeu jeu)
 	{
 		return false;
@@ -10,8 +14,7 @@ public class Vagabonder implements SeDeplacer {
 		int numCase = monstre.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
 		int n = rand.nextInt(3);
-		int newNumCase;
-		
+		int newNumCase = laCase.getNumCase();
 		switch (n)
 		{
 			/*case 0 = recule*/
@@ -25,10 +28,14 @@ public class Vagabonder implements SeDeplacer {
 					break;
 		}
 		Case newCase = jeu.recupererCase(newNumCase);
-		newCase.ajoutMonstre(monstre);
-		laCase.SuppMonstre(monstre);
-		System.out.println("Le monstre vagabonde vers la case "+newNumCase);
-		return true;
+		if (newCase.ajoutMonstre(monstre))
+		{
+			newCase.ajoutMonstre(monstre);
+			laCase.SuppMonstre(monstre);
+			System.out.println("Le monstre vagabonde vers la case "+newNumCase);
+			return true;
+		}
+		return false;
 	}
 	public boolean ramper(Monstre monstre, Jeu jeu)
 	{

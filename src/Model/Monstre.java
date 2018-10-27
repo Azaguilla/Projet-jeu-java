@@ -158,6 +158,12 @@ public abstract class Monstre {
 		System.out.println("Le monstre "+this.nom+" est mort.");
 	}
 	
+	public void attaquerPersonnage(Personnage personnage)
+	{
+		personnage.setVie(personnage.getVie()-this.force);
+		System.out.println("Le monstre "+this.nom+" attaque férocement. Vous perdez "+this.force+" pts de vie.");
+	}
+	
 	public abstract String son();
 	public abstract void gestation();
 }

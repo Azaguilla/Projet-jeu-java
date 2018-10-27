@@ -25,7 +25,7 @@ public class Model {
 					break;
 			case 4:	if(sexe == "M") System.out.println("Sournois rôdeur, ");
 					if(sexe == "F") System.out.println("Sournoise rôdeuse, ");
-					personnage = Magicien.getInstance(nom, sexe, "Magicien");
+					personnage = Rodeur.getInstance(nom, sexe, "Rôdeur");
 					break;
 		}
 		return personnage;
@@ -137,14 +137,18 @@ public class Model {
 		personnage.seDeplacer(choixDeplacement, jeu);
 	}
 	
-	public void manger(Personnage personnage)
+	public String manger(Personnage personnage)
 	{
-		personnage.manger();
+		return personnage.manger();
 	}
 	
-	public ArrayList<Monstre> recupererMonstre(Personnage personnage, Jeu jeu)
+	public String boirePotion(Personnage personnage)
 	{
-		int numCase = personnage.getPosition();
+		return personnage.boirePotion();
+	}
+	
+	public ArrayList<Monstre> recupererMonstre(int numCase, Jeu jeu)
+	{
 		Case laCase = jeu.recupererCase(numCase);
 		ArrayList<Monstre> monstres = laCase.getMonstres();
 
@@ -162,19 +166,39 @@ public class Model {
 		personnage.lancerSort(monstre, jeu);
 	}
 	
-	public void personnageEstBienVivant(Jeu jeu)
+	public boolean personnageEstBienVivant(Jeu jeu)
 	{
 		if (jeu.getJoueur().getVie() <= 0)
 		{
-			jeu.ChangerTour();
+			return false;
+		}
+		else
+		{
+			return true;
 		}
 	}
 	
-	public void personnageEstSurObjectif(Jeu jeu)
+	public boolean personnageEstSurObjectif(Jeu jeu)
 	{
 		if (jeu.getJoueur().getPosition() == jeu.cases.size()-1)
 		{
-			jeu.ChangerTour();
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	public boolean tempsNEstPasEcoule(Jeu jeu)
+	{
+		if (jeu.getNbJour() == jeu.getJourCourant())
+		{
+			return false;
+		}
+		else
+		{
+			return true;
 		}
 	}
 }

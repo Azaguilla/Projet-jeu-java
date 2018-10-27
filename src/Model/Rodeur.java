@@ -1,7 +1,10 @@
 package Model;
 
+import java.util.Random;
+
 public class Rodeur extends Personnage {
 	private static Personnage getInstance;
+	private Random rand = new Random();
 	
 	private Rodeur(String nom, String sexe, String classe) {
 		super(nom, sexe, classe);
@@ -18,7 +21,7 @@ public class Rodeur extends Personnage {
 
 	@Override
 	public void attaquer(Monstre monstre, Jeu jeu) {
-		int n = rand.nextInt(4);
+		int n = rand.nextInt(2);
 		if(n == 0)
 		{
 			System.out.println("Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
@@ -35,7 +38,7 @@ public class Rodeur extends Personnage {
 		}
 		else
 		{
-			int m = rand.nextInt(4);
+			int m = rand.nextInt(2);
 			if(m == 0)
 			{
 				System.out.println("Le monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+monstre.getForce()/2+" pts de dégât.");
@@ -51,6 +54,7 @@ public class Rodeur extends Personnage {
 	
 	public void lancerSort(Monstre monstre, Jeu jeu)
 	{
+		this.setEnergie(this.getEnergie()-5);
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce(), jeu);
 		if(monstre.getVie() < 0)

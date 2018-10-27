@@ -3,10 +3,12 @@ package Controller;
 import java.util.ArrayList;
 
 import Model.Case;
+import Model.Chasseur;
 import Model.Jeu;
 import Model.Model;
 import Model.Monstre;
 import Model.Personnage;
+import Model.Rodeur;
 import View.View;
 
 public class Controller {
@@ -23,8 +25,31 @@ public class Controller {
 	public void debutJeu()
 	{
 		int classe = this.vue.AfficherDemandeClasse();
+		while(classe > 4 || classe < 0)
+		{
+			this.vue.afficherUnMessage("Saisie incorrecte.");
+			classe = this.vue.AfficherDemandeClasse();
+		}
+		while(classe == 0)
+		{
+			this.vue.afficherUnMessage("Descriptif des classes :\n Le Chasseur est capable d'attaquer à distance,\n Le magicien possède un bonus de dégâts lorsqu'il lance un sort, \n le Guerrier possède un bonus de dégâts au corps-à-corps,\n le Rôdeur a 50% de chance d'infliger des coups critiques et 50% de chance d'esquiver un coup.\n\n");
+			classe = this.vue.AfficherDemandeClasse();
+		}
+		
+		
 		String nom = this.vue.AfficherDemandePersonnage();
+		while(!(nom instanceof String))
+		{
+			this.vue.afficherUnMessage("Veuillez entrer une chaîne de caractère.");
+			nom = this.vue.AfficherDemandePersonnage();
+		}
+		
 		String sexe = this.vue.AfficherDemandeSexe();
+		while(!(sexe instanceof String))
+		{
+			this.vue.afficherUnMessage("Veuillez entrer une chaîne de caractère.");
+			sexe = this.vue.AfficherDemandeSexe();
+		}
 		
 		Personnage personnage = this.model.creerPersonnage(classe, sexe, nom);
 		
@@ -55,24 +80,27 @@ public class Controller {
 				this.manger();
 				break;
 			case 2: 
-				this.attaquer();
+				this.manger();
 				break;
 			case 3: 
-				this.lancerSort();
+				this.attaquer();
 				break;
 			case 4: 
-				this.nettoyerCase();
+				this.lancerSort();
 				break;
 			case 5: 
-				this.examinerCase();
+				this.nettoyerCase();
 				break;
 			case 6: 
+				this.examinerCase();
+				break;
+			case 7: 
 				this.afficheInfosCaseActuelle();
 				break;
-			case 7:
+			case 8:
 				this.afficheInfoJeu();
 				break;
-			case 8:
+			case 9:
 				this.passerTour();
 				break;
 			default:
@@ -89,57 +117,85 @@ public class Controller {
 		String choixDeplacement = this.vue.choixDeplacement();
 		this.model.deplacerPersonnage(this.jeu.getJoueur(), choixDeplacement, this.jeu);
 		
-		this.model.personnageEstBienVivant(this.jeu);
-		this.model.personnageEstSurObjectif(this.jeu);
-		
-		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-		actions(choix);
+		this.verifEtatJeu("\n");
 	}
 	
 	public void manger()
 	{
 		this.jeu.consequenceAction();
-		this.model.manger(this.jeu.getJoueur());
+		String message = this.model.manger(this.jeu.getJoueur());
 		
-		this.model.personnageEstBienVivant(this.jeu);
+		this.verifEtatJeu(message);
+	}
+	
+	public void boirePotion()
+	{
+		this.jeu.consequenceAction();
+		String message = this.model.boirePotion(this.jeu.getJoueur());
 		
-		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-		actions(choix);
+		this.verifEtatJeu(message);
 	}
 	
 	public void attaquer()
 	{
-			ArrayList<Monstre> monstres = this.model.recupererMonstre(this.jeu.getJoueur(), this.jeu);
-			int numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
-			if(numMonstreAttaque == -1)
+		int numCase = this.jeu.getJoueur().getPosition();
+		// Si le joueur est de la classe rodeur, il peut attaquer à distance
+		if(this.jeu.getJoueur() instanceof Chasseur)
+		{
+			int choix = this.vue.afficherChoixChasseur();
+			switch(choix)
 			{
-				int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-				actions(choix);
+				case 0:
+					int choixCase = this.vue.afficherChoixCaseChasseur();
+					if(choixCase == 0)
+					{
+						numCase = this.jeu.getJoueur().getPosition()-1;
+					}
+					else
+					{
+						numCase = this.jeu.getJoueur().getPosition()+1;
+					}
+					break;
+				case 1:
+					numCase = this.jeu.getJoueur().getPosition();
+					break;
+				default:
+					System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
+					actions(2);
+					break;
+			}
+		}
+		
+		// On récupère les monstres en fonction de la case
+		ArrayList<Monstre> monstres = this.model.recupererMonstre(numCase, this.jeu);
+		int numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
+		if(numMonstreAttaque == -1)
+		{
+			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+			actions(choix);
+		}
+		else
+		{
+			if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
+			{
+				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
+				actions(2);
 			}
 			else
 			{
-				if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
-				{
-					System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
-					actions(2);
-				}
-				else
-				{
-					this.jeu.consequenceAction();
-					Monstre monstreAttaque = monstres.get(numMonstreAttaque);
-					this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
-					
-					this.model.personnageEstBienVivant(this.jeu);
-					
-					int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-					actions(choix);
-				}
+				this.jeu.consequenceAction();
+				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
+				this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
+				
+				this.verifEtatJeu("\n");
 			}
+		}
 	}
 	
 	public void lancerSort()
 	{
-		ArrayList<Monstre> monstres = this.model.recupererMonstre(this.jeu.getJoueur(), this.jeu);
+		int numCase = this.jeu.getJoueur().getPosition();
+		ArrayList<Monstre> monstres = this.model.recupererMonstre(numCase, this.jeu);
 		int numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
 		if(numMonstreAttaque == -1)
 		{
@@ -159,10 +215,7 @@ public class Controller {
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
 				this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
 
-				this.model.personnageEstBienVivant(this.jeu);
-				
-				int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-				actions(choix);
+				this.verifEtatJeu("Vous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie.");
 			}
 		}
 	}
@@ -174,10 +227,7 @@ public class Controller {
 		Case laCase = this.jeu.recupererCase(personnage.getPosition()+1);
 		this.jeu.getJoueur().nettoyer(laCase);
 		
-		this.model.personnageEstBienVivant(this.jeu);
-		
-		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-		actions(choix);
+		this.verifEtatJeu("\n");
 	}
 	
 	public void examinerCase()
@@ -185,6 +235,14 @@ public class Controller {
 		this.jeu.consequenceAction();
 		int nbCase = this.jeu.getCases().size();
 		int laCase = this.vue.afficherChoixCase(nbCase);
+		if(laCase == -1)
+		{
+			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+			actions(choix);
+		}
+		else
+		{
+			if(laCase > nbCase-1 || laCase < 0)
 			{
 				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
 				actions(5);
@@ -194,10 +252,7 @@ public class Controller {
 				this.jeu.consequenceAction();
 				String infos = this.jeu.getCases().get(laCase).toString();
 				
-				this.model.personnageEstBienVivant(this.jeu);
-				
-				int choix = this.vue.AfficherMenu(infos, this.jeu.getJoueur());
-				actions(choix);
+				this.verifEtatJeu(infos);
 			}
 		}
 	}
@@ -208,31 +263,45 @@ public class Controller {
 		Case laCase = this.jeu.recupererCase(personnage.getPosition());
 		this.jeu.getJoueur().examinerCase(laCase);
 		
-		this.model.personnageEstBienVivant(this.jeu);
-		
-		int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-		actions(choix);
+		this.verifEtatJeu("\n");
 	}
 	
 	public void afficheInfoJeu()
 	{
 		String infos = this.jeu.infosJeu();
 		
-		this.model.personnageEstBienVivant(this.jeu);
-		
-		int choix = this.vue.AfficherMenu(infos, this.jeu.getJoueur());
-		actions(choix);
+		this.verifEtatJeu(infos);
 	}
 	
 	public void passerTour()
-	{
-		this.model.personnageEstBienVivant(this.jeu);
+	{	
+		this.jeu.ChangerTour();
 		
-		boolean estFinJeu = this.jeu.ChangerTour();
-		if(!estFinJeu)
+		boolean vivant = this.model.personnageEstBienVivant(jeu);
+		boolean pasArrive = this.model.personnageEstSurObjectif(jeu);
+		boolean resteDuTemps = this.model.tempsNEstPasEcoule(jeu);
+		
+		if (vivant && pasArrive && resteDuTemps)
 		{
 			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 			actions(choix);
+		}
+	}
+	
+	public void verifEtatJeu(String message)
+	{
+		boolean vivant = this.model.personnageEstBienVivant(jeu);
+		boolean pasArrive = this.model.personnageEstSurObjectif(jeu);
+		boolean resteDuTemps = this.model.tempsNEstPasEcoule(jeu);
+		
+		if (vivant && pasArrive && resteDuTemps)
+		{
+			int choix = this.vue.AfficherMenu(message, this.jeu.getJoueur());
+			actions(choix);
+		}
+		else
+		{
+			this.jeu.ChangerTour();
 		}
 	}
 }

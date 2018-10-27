@@ -9,6 +9,11 @@ import Model.Personnage;
 
 public class View {
 	
+	public void afficherUnMessage(String message)
+	{
+		System.out.println(message);
+	}
+	
 	public int AfficherDemandeClasse()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -55,13 +60,14 @@ public class View {
 		System.out.println("Tu as le choix entre diverses actions dans ce monde. Que veux-tu faire ? \n "
 				+ "Te déplacer[0] - 1 heure \n "
 				+ "Manger[1] - 1 heure \n "
-				+ "Attaquer[2] - 1 heure \n "
-				+ "Lancer un sort[3] - 1 heure \n "
-				+ "Nettoyer la case suivante[4] - 1 heure \n "
-				+ "Examiner une case[5] - 1 heure \n "
-				+ "Afficher des infos sur ta case actuelle[6] - gratuit \n "
-				+ "Afficher des infos sur le jeu (simplifié)[7] - gratuit \n "
-				+ "Passer le tour[8]");
+				+ "Boire une potion[2] - 1 heure \n "
+				+ "Attaquer[3] - 1 heure \n "
+				+ "Lancer un sort[4] - 1 heure \n "
+				+ "Nettoyer la case suivante[5] - 1 heure \n "
+				+ "Examiner une case[6] - 1 heure \n "
+				+ "Afficher des infos sur ta case actuelle[7] - gratuit \n "
+				+ "Afficher des infos sur le jeu (simplifié)[8] - gratuit \n "
+				+ "Passer le tour[9]");
 		
 		int choix = sc.nextInt();
 		
@@ -98,6 +104,26 @@ public class View {
 		System.out.println("Entrez le numéro de la case à étudier \n"
 				+ "Retour[-1]");
 		
+		int choix = sc.nextInt();
+		
+		return choix;
+	}
+	
+	public int afficherChoixChasseur()
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Vous êtes chasseur. Vous pouvez attaquer à distance. Voulez-vous attaquer d'une case supplémentaire ? Oui[0]/Non[1]");
+		int choix = sc.nextInt();
+		
+		return choix;
+	}
+	
+	public int afficherChoixCaseChasseur()
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Vous voulez attaquer la case précédente ou la case suivante ? Précédente[0]/Suivante[1]");
 		int choix = sc.nextInt();
 		
 		return choix;

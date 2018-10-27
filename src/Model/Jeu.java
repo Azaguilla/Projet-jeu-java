@@ -119,6 +119,14 @@ public class Jeu {
 		return MAX_CASE;
 	}
 	
+	public int getJourCourant() {
+		return jourCourant;
+	}
+
+	public void setJourCourant(int jourCourant) {
+		this.jourCourant = jourCourant;
+	}
+
 	private void modifierEtatMonstre()
 	{
 		//sommeil
@@ -155,6 +163,28 @@ public class Jeu {
 		}
 	}
 	
+	private void lesMonstresSeDeplacent()
+	{
+		//TODO
+		int n;
+		for (int i = 0; i < this.cases.size()-1; i++)
+		{
+			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
+			{
+				n = rand.nextInt(2);
+				switch (n)
+				{
+					case 0: 
+						
+						break;
+					case 1: 
+						
+						break;
+				}
+			}
+		}
+	}
+	
 	private void verifNaissances()
 	{
 		//TODO OPTIMISATION !!!
@@ -168,6 +198,7 @@ public class Jeu {
 			}
 			else
 			{
+				System.out.println("Un oeuf a éclot !");
 				Monstre monstre = this.oeufs.get(i).eclore();
 				int numCase = oeufs.get(i).getNumCaseMere();
 				Case laCase = this.recupererCase(numCase);
@@ -192,27 +223,31 @@ public class Jeu {
 
 	public boolean ChangerTour()
 	{
+		//TODO faire apparaître de nouveaux monstres
 		// On vérifie que ce n'est pas la fin du jeu
-		if (this.jourCourant == this.nbJour || this.joueur.getVie() == 0) 
+		if (this.jourCourant == this.nbJour || this.joueur.getVie() <= 0) 
 		{
 			this.FinDuJeu();
 			return true;
 		}
 		else
 		{
-			System.out.println("Vous vous endormez sous un arbre. La lune se lève puis redescend, laissant place au Soleil. Un nouveau jour commence.");
+			System.out.println("Vous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.");
 			this.jourCourant++;
 			this.nbHeure = 10;
 			this.modifierEtatMonstre();
 			this.modifierEtatCase();
 			this.verifNaissances();
+			this.lesMonstresAttaquent();
+			this.lesMonstresSeDeplacent();
+			//this.nouvellesNaissances();
 			return false;
 		}
 	}
 	
 	private void FinDuJeu()
 	{
-		if (this.joueur.getVie() == 0)
+		if (this.joueur.getVie() <= 0)
 			System.out.println("Vous êtes mort...");
 			/*Afficher stats*/
 			else
@@ -252,5 +287,20 @@ public class Jeu {
 				+ "Jour actuel : " + jourCourant + "\n"
 				+ "Nombre d'heure à dépenser : " + nbHeure + "\n"
 				+ "Nombre de case dans le jeu : " + this.cases.size() + "\n";
+	}
+	
+	public void lesMonstresAttaquent()
+	{
+		int numCase = this.joueur.getPosition();
+		ArrayList<Monstre> monstres = this.cases.get(numCase).monstres;
+		for(int i=0; i<monstres.size();i++)
+		{
+			monstres.get(i).attaquerPersonnage(this.joueur);
+		}
+		
+		if(this.joueur.getVie() <= 0)
+		{
+			this.FinDuJeu();
+		}
 	}
 }
