@@ -18,11 +18,34 @@ public class Rodeur extends Personnage {
 
 	@Override
 	public void attaquer(Monstre monstre, Jeu jeu) {
-		System.out.println("Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre.");
-		monstre.setVie(this.getForce(), jeu);
-		if(monstre.getVie() < 0)
+		int n = rand.nextInt(4);
+		if(n == 0)
+		{
+			System.out.println("Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
+			monstre.setVie(this.getForce()*2, jeu);
+		}
+		else
+		{
+			System.out.println("Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre.");
+			monstre.setVie(this.getForce(), jeu);
+		}
+		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
+		}
+		else
+		{
+			int m = rand.nextInt(4);
+			if(m == 0)
+			{
+				System.out.println("Le monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+monstre.getForce()/2+" pts de dégât.");
+				this.setVie(this.getVie()-monstre.getForce()/2);
+			}
+			else
+			{
+				System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
+				this.setVie(this.getVie()-monstre.getForce());
+			}
 		}
 	}
 	
