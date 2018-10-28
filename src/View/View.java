@@ -76,9 +76,12 @@ public class View {
 	
 	public void AfficheInfoJeu(Jeu jeu)
 	{
-		System.out.println("Le jeu : "+jeu.getNom()+ ". \n Vous avez "+jeu.getNbJour()+" jours pour atteindre le bout de la carte. "
-		+ "Vous disposez d'encore "+jeu.getNbHeure()+" heures avant la fin de ce jour. \n Voici la liste des cases et des monstres qui y sont placés:\n\n"+
-		jeu.getCases() + "\n\n");
+		System.out.println("Voici la liste des cases et des monstres qui y sont placés:\n\n"+
+		jeu.getCases() 
+		+ "\n\n Le jeu : "+jeu.getNom()+ ". \nVous avez "+jeu.getNbJour()+" jours pour atteindre le bout de la carte."
+		+ "Vous disposez d'encore "+jeu.getNbHeure()+" heures avant la fin de ce jour. Ci-dessus, vous pouvez voir l'inialisation du jeu.\n"
+		+ "Attention, dorénavant, pour connaître les informations concernant les monstres et les cases, vous devrez dépenser une heure. Seules les informations de base du jeu\n"
+		+ "ainsi que les informations concernant votre case actuelle seront gratuites.\n\n" );
 	}
 	
 	public int afficherChoixMonstre(ArrayList<Monstre> monstres)
@@ -101,7 +104,9 @@ public class View {
 		
 		System.out.println("Le jeu est composé de "+nbCases+" cases.\n");
 		
-		System.out.println("Entrez le numéro de la case à étudier \n"
+		nbCases = nbCases-1;
+		
+		System.out.println("Entrez le numéro de la case à étudier, en indiquant un nombre en 0 et "+nbCases+". \n"
 				+ "Retour[-1]");
 		
 		int choix = sc.nextInt();

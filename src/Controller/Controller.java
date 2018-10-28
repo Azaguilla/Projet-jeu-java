@@ -1,6 +1,7 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import Model.Case;
 import Model.Chasseur;
@@ -8,13 +9,13 @@ import Model.Jeu;
 import Model.Model;
 import Model.Monstre;
 import Model.Personnage;
-import Model.Rodeur;
 import View.View;
 
 public class Controller {
 	private View vue;
 	private Model model;
 	private Jeu jeu;
+	private Random rand = new Random();
 	
 	public Controller(View vue, Model model) {
 		super();
@@ -64,19 +65,20 @@ public class Controller {
 		this.jeu = this.model.creerJeu(cases, personnage);
 		
 		this.vue.AfficheInfoJeu(this.jeu);
-		int choix = this.vue.AfficherMenu("Bienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n", personnage);
+		String quete = null;
 		int n = rand.nextInt(4);
 		switch (n)
 		{
-			case 0: System.out.println("Le roi est très malade, le Mestre de votre village à trouvé une plante médicinale capable de soigner la maladie du roi, il vous charge d’apporter cette plante au château qui se trouve à *max cases* lieux du village…");
+			case 0: quete = "Le roi est très malade. Le Mestre de votre village a trouvé une plante médicinale capable de soigner la maladie du roi. Il vous charge d’apporter cette plante au château qui se trouve \n  à "+this.jeu.getCases().size()+" lieux du village. L'avenir du Royaume repose entre vos main, héros !";
 					break;
-			case 1: System.out.println("Vous vous réveillez seul dans les bois sans aucuns souvenirs, vous croisez un chasseur qui vous indique la direction du village le plus proche, se trouvant à *max cases* lieux, ce village est peut-être le vôtre ?");
+			case 1: quete = "Vous vous réveillez seul dans les bois sans aucun souvenir. Vous croisez un chasseur qui vous indique la direction du village le plus proche, se trouvant à "+this.jeu.getCases().size()+" lieux d'ici. \nRien n'est sûr mais peut-être ce village est-il le vôtre ?";
 					break;
-			case 2: System.out.println("Après une chasse dans les bois, vous rentrez vers votre village, mais lorsque vous vous en approchez vous entendez du bruit et des cris de plus en plus fort, une bande de brigands est en train de ravager le village, volant et pillant les villageois. L’attaque était bien organisée et personne n’a rien vu venir mais les gardes du village ont tout de même réussi a capturé un des brigands qui vous indique leur campement qui se trouve à *max cases* lieux du village. Vous décidez de partir en chasse…");
+			case 2: quete = "Après une chasse dans les bois, vous rentrez vers votre village, mais lorsque vous vous en approchez vous entendez du bruit et des cris de plus en plus fort. Une bande de brigands \nest en train de ravager le village, volant et pillant les villageois. L’attaque était bien organisée et personne n’a rien vu venir mais les gardes ont tout de même réussi à capturer un des brigands \nqui vous indique l'emplacement de leur campement qui se trouve à "+this.jeu.getCases().size()+" lieux du village. Vous décidez de partir en chasse…";
 					break;
-			case 3: System.out.println("Dans les bois vous rencontrez un vieil homme qui possède une carte qui indiquerai un trésor enfuit dans les ruines se trouvant à *max cases* lieux. C’est un voyage bien trop dangereux pour un vieil homme comme lui, il vous propose donc d’aller chercher ce trésor pour lui en échange de la moitié du butin.");
+			case 3: quete = "Dans les bois vous rencontrez un vieil homme qui possède une carte indiquant un trésor enfoui dans des ruines se trouvant à "+this.jeu.getCases().size()+" lieux. C’est un voyage bien trop dangereux \npour un vieil homme comme lui, il vous propose donc d’aller chercher ce trésor pour lui en échange de la moitié du butin. Comment refuser une telle proposition ?";
 					break;
 		}
+		int choix = this.vue.AfficherMenu("\n\nBienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n\n"+quete+"\n\n", personnage);
 		actions(choix);
 	}
 	

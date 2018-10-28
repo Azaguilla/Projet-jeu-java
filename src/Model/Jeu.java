@@ -7,10 +7,8 @@ public class Jeu {
 	private String nom;
 	private Personnage joueur;
 	private int nbJour;
-	private final static int MAX_JOUR = 15;
 	private int jourCourant;
 	private int nbHeure;
-	private final static int MAX_HEURE = 15;
 	private final static int MAX_CASE = 50;
 	protected ArrayList<Case> cases = new ArrayList<>(MAX_CASE);
 	private int nbOeufMax = 0;
@@ -167,7 +165,6 @@ public class Jeu {
 	{
 		//TODO
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
-		int k = 0;
 		for (int i = 0; i < this.cases.size()-1; i++)
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
