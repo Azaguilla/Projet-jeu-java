@@ -65,6 +65,18 @@ public class Controller {
 		
 		this.vue.AfficheInfoJeu(this.jeu);
 		int choix = this.vue.AfficherMenu("Bienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n", personnage);
+		int n = rand.nextInt(4);
+		switch (n)
+		{
+			case 0: System.out.println("Le roi est très malade, le Mestre de votre village à trouvé une plante médicinale capable de soigner la maladie du roi, il vous charge d’apporter cette plante au château qui se trouve à *max cases* lieux du village…");
+					break;
+			case 1: System.out.println("Vous vous réveillez seul dans les bois sans aucuns souvenirs, vous croisez un chasseur qui vous indique la direction du village le plus proche, se trouvant à *max cases* lieux, ce village est peut-être le vôtre ?");
+					break;
+			case 2: System.out.println("Après une chasse dans les bois, vous rentrez vers votre village, mais lorsque vous vous en approchez vous entendez du bruit et des cris de plus en plus fort, une bande de brigands est en train de ravager le village, volant et pillant les villageois. L’attaque était bien organisée et personne n’a rien vu venir mais les gardes du village ont tout de même réussi a capturé un des brigands qui vous indique leur campement qui se trouve à *max cases* lieux du village. Vous décidez de partir en chasse…");
+					break;
+			case 3: System.out.println("Dans les bois vous rencontrez un vieil homme qui possède une carte qui indiquerai un trésor enfuit dans les ruines se trouvant à *max cases* lieux. C’est un voyage bien trop dangereux pour un vieil homme comme lui, il vous propose donc d’aller chercher ce trésor pour lui en échange de la moitié du butin.");
+					break;
+		}
 		actions(choix);
 	}
 	
