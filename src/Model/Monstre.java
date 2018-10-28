@@ -31,17 +31,17 @@ public abstract class Monstre {
 
 	@Override
 	public String toString() {
-		return " \n\n  Monstre \n "
-				+ "Espèce : " + nom + "\n"
-				+ "Sexe : " + sexe + "\n"
-				+ "Poids : " + poids + "\n"
-				+ "Taille : " + taille + "\n"
-				+ "Age : " + age + "\n"
-				+ "Force : " + force + "\n"
-				+ "Vie : " + vie + "\n"
-				+ "Sommeil : " + sommeil + "\n"
-				+ "Numéro de case : " + numCaseActuelle + "\n"
-				+ "En gestation : " + enGestation;
+		return " \n\nMonstre \n"
+				+ " Espèce : " + nom + "\n"
+				+ " Sexe : " + sexe + "\n"
+				+ " Poids : " + poids + "\n"
+				+ " Taille : " + taille + "\n"
+				+ " Age : " + age + "\n"
+				+ " Force : " + force + "\n"
+				+ " Vie : " + vie + "\n"
+				+ " Sommeil : " + sommeil + "\n"
+				+ " Numéro de case : " + numCaseActuelle + "\n"
+				+ " En gestation : " + enGestation;
 	}
 
 

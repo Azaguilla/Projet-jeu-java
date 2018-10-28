@@ -33,7 +33,7 @@ public class Griffon extends Monstre implements Volant, Ovipare {
 
 	@Override
 	public void gestation() {
-		// TODO Auto-generated method stub
+		this.pondreOeuf();
 	}
 
 }

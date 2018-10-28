@@ -33,8 +33,7 @@ public class Wyverne extends Monstre implements Volant, Ovipare{
 
 	@Override
 	public void gestation() {
-		// non concerné
-		
+		this.pondreOeuf();
 	}
 
 }

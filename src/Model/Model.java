@@ -38,7 +38,7 @@ public class Model {
 		for(int i = 0; i<20; i++)
 		{
 			int n = rand.nextInt(3);
-			int taille = rand.nextInt(3);
+			int taille = rand.nextInt(3)+1;
 			int pollution = rand.nextInt(3);
 			switch (n)
 			{
@@ -56,17 +56,35 @@ public class Model {
 						break;
 			}
 		}
+		
+		// On place les monstres
 		for(int i = 0; i<8; i++)
 		{
 			boolean placement = false;
 			int f = 1;
+			int tour = 0;
 			while(placement == false)
 			{
 				if(tabCase[f].ajoutMonstre(monstres[i]))
 				{
 					placement = true;
 				}
-				
+				else
+				{
+					// On place les monstres jusqu'à la fin. Pour ne pas faire des tours à l'infini, si on a fait 3 tours, on stoppe, le monstre est détruit
+					if(tour < 3)
+					{
+						if(f == 19)
+						{
+							f = 0;
+						}
+					}
+					else
+					{
+						placement = true;
+					}
+				}
+				tour++;
 				f++;
 			}
 		}

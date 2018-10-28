@@ -11,13 +11,13 @@ public class Marais extends Case {
 	
 	@Override
 	public String toString() {
-		return "Marais \n"
+		return "\n\n--------Marais-------- \n"
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Profondeur : " + profondeur + "\n"
 				+ "Taille : " + getTaille() + "\n"
-				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
+				+ "Nombre de monstres : " + getNbMaxMonstre() + "\n"
 				+ "Niveau de pollution : "+ getPollution() + "\n"
-				+ "Les monstres : \n" + getMonstres() + "\n";
+				+ "LES MONSTRES : \n" + getMonstres() + "\n";
 	}
 	
 	@Override
@@ -69,7 +69,7 @@ public class Marais extends Case {
 	public boolean ajoutMonstre(Monstre monstre) {
 		if(monstre instanceof Blob || monstre instanceof Basilic)
 		{
-			if(this.monstres.size()<MAX_MONSTRES){
+			if(this.monstres.size()<this.getTaille()){
 				monstre.setNumCaseActuelle(this.getNumCase());
 				this.monstres.add(monstre);
 				this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 

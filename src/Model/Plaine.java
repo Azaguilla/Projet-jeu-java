@@ -8,12 +8,12 @@ public class Plaine extends Case {
 	
 	@Override
 	public String toString() {
-		return "Plaine \n"
+		return "\n\n--------Plaine-------- \n"
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Taille : " + getTaille() + "\n"
-				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
+				+ "Nombre de monstres : " + getNbMaxMonstre() + "\n"
 				+ "Niveau de pollution : "+ getPollution() + "\n"
-				+ "Les monstres : \n" + getMonstres() + "\n";
+				+ "LES MONSTRES : \n" + getMonstres() + "\n";
 	}
 
 
@@ -53,7 +53,7 @@ public class Plaine extends Case {
 	
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) {
-		if(this.monstres.size()<MAX_MONSTRES){
+		if(this.monstres.size()<this.getTaille()){
 			monstre.setNumCaseActuelle(this.getNumCase());
 			this.monstres.add(monstre);
 			this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 

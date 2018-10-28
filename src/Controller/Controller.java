@@ -39,18 +39,8 @@ public class Controller {
 		
 		
 		String nom = this.vue.AfficherDemandePersonnage();
-		while(!(nom instanceof String))
-		{
-			this.vue.afficherUnMessage("Veuillez entrer une chaîne de caractère.");
-			nom = this.vue.AfficherDemandePersonnage();
-		}
 		
 		String sexe = this.vue.AfficherDemandeSexe();
-		while(!(sexe instanceof String))
-		{
-			this.vue.afficherUnMessage("Veuillez entrer une chaîne de caractère.");
-			sexe = this.vue.AfficherDemandeSexe();
-		}
 		
 		Personnage personnage = this.model.creerPersonnage(classe, sexe, nom);
 		
@@ -175,7 +165,7 @@ public class Controller {
 					break;
 				default:
 					System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
-					actions(2);
+					actions(3);
 					break;
 			}
 		}
@@ -193,7 +183,7 @@ public class Controller {
 			if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
 			{
 				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
-				actions(2);
+				actions(3);
 			}
 			else
 			{
@@ -221,7 +211,7 @@ public class Controller {
 			if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
 			{
 				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
-				actions(2);
+				actions(4);
 			}
 			else
 			{

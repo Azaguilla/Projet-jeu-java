@@ -33,8 +33,7 @@ public class Basilic extends Monstre implements Rampant, Ovipare {
 
 	@Override
 	public void gestation() {
-		// non concerné
-		
+		this.pondreOeuf();
 	}
 
 }

@@ -190,6 +190,27 @@ public class Jeu {
 		}
 	}
 	
+	private void nouvellesNaissances()
+	{
+		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
+		for (int i = 0; i < this.cases.size()-1; i++)
+		{
+			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
+			{
+				monstres.add(this.cases.get(i).monstres.get(j));
+			}
+		}
+		
+		int i = 0;
+		while(i != 4)
+		{
+			int n = rand.nextInt(8);
+			System.out.println("Le monstre "+monstres.get(n).getNom()+" est maintenant en gestation.");
+			monstres.get(n).gestation();
+			i++;
+		}
+	}
+	
 	private void verifNaissances()
 	{
 		//TODO OPTIMISATION !!!
@@ -207,7 +228,18 @@ public class Jeu {
 				Monstre monstre = this.oeufs.get(i).eclore();
 				int numCase = oeufs.get(i).getNumCaseMere();
 				Case laCase = this.recupererCase(numCase);
-				laCase.ajoutMonstre(monstre);
+				while(!laCase.ajoutMonstre(monstre))
+				{
+					if(numCase == 19)
+					{
+						System.out.println("Un monstre est mort car aucun terrain ne lui était favorable.");
+					}
+					else
+					{
+						numCase = numCase +1;
+						laCase = this.recupererCase(numCase);
+					}
+				}
 			}
 		}
 		
@@ -228,7 +260,6 @@ public class Jeu {
 
 	public boolean ChangerTour()
 	{
-		//TODO faire apparaître de nouveaux monstres
 		// On vérifie que ce n'est pas la fin du jeu
 		if (this.jourCourant == this.nbJour || this.joueur.getVie() <= 0) 
 		{
@@ -245,7 +276,7 @@ public class Jeu {
 			this.verifNaissances();
 			this.lesMonstresAttaquent();
 			this.lesMonstresSeDeplacent();
-			//this.nouvellesNaissances();
+			this.nouvellesNaissances();
 			return false;
 		}
 	}

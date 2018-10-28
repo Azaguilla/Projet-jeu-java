@@ -57,15 +57,15 @@ public class View {
 		System.out.println(message);
 		System.out.println(personnage);
 		
-		System.out.println("Tu as le choix entre diverses actions dans ce monde. Que veux-tu faire ? \n "
-				+ "Te déplacer[0] - 1 heure \n "
+		System.out.println("Vous avez le choix entre diverses actions dans ce monde. Que voulez-vous faire ? \n "
+				+ "Vous déplacer[0] - 1 heure \n "
 				+ "Manger[1] - 1 heure \n "
 				+ "Boire une potion[2] - 1 heure \n "
 				+ "Attaquer[3] - 1 heure \n "
 				+ "Lancer un sort[4] - 1 heure \n "
 				+ "Nettoyer la case suivante[5] - 1 heure \n "
 				+ "Examiner une case[6] - 1 heure \n "
-				+ "Afficher des infos sur ta case actuelle[7] - gratuit \n "
+				+ "Afficher des infos sur votre case actuelle[7] - gratuit \n "
 				+ "Afficher des infos sur le jeu (simplifié)[8] - gratuit \n "
 				+ "Passer le tour[9]");
 		

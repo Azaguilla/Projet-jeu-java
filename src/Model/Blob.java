@@ -31,8 +31,7 @@ public class Blob extends Monstre implements Rampant {
 
 	@Override
 	public void gestation() {
-		// non concerné
-		
+		this.seDiviser();		
 	}
 
 }

@@ -12,13 +12,13 @@ public class Foret extends Case {
 
 	@Override
 	public String toString() {
-		return "Foret  \n"
+		return "\n\n--------Foret--------  \n"
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Hauteur : " + hauteur + "\n"
 				+ "Taille : " + getTaille() + "\n"
-				+ "Nombre de monstres maximum : " + getNbMaxMonstre() + "\n"
+				+ "Nombre de monstres : " + getNbMaxMonstre() + "\n"
 				+ "Niveau de pollution : "+ getPollution() + "\n"
-				+ "Les monstres : \n" + getMonstres() + "\n";
+				+ "LES MONSTRES : \n" + getMonstres() + "\n";
 	}
 
 	public int getHauteur() {
@@ -70,7 +70,7 @@ public class Foret extends Case {
 	public boolean ajoutMonstre(Monstre monstre) {
 		if(monstre instanceof Ent || monstre instanceof LoupGarou)
 		{
-			if(this.monstres.size()<MAX_MONSTRES){
+			if(this.monstres.size()<this.getTaille()){
 				monstre.setNumCaseActuelle(this.getNumCase());
 				this.monstres.add(monstre);
 				this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 

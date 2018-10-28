@@ -33,16 +33,17 @@ public class Ent extends Monstre implements Vivipare {
 			case 1: newNumCase = laCase.getNumCase()+1;
 					break;
 		}
-		Case newCase = jeu.recupererCase(newNumCase);
+
 		//On empêche le monstre de sortir du plateau
 		int nbCase = jeu.getCases().size();
-		if(newCase.getNumCase() == -1 || newCase.getNumCase() == nbCase)
+		if(newNumCase == -1 || newNumCase == nbCase)
 		{
 			System.out.println("Le monstre "+this.getNom()+"  a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
 			return false;
 		}
 		else
 		{
+			Case newCase = jeu.recupererCase(newNumCase);
 			if (newCase.ajoutMonstre(this))
 			{
 				laCase.SuppMonstre(this);
