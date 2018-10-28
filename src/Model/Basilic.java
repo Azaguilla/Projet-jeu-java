@@ -18,8 +18,12 @@ public class Basilic extends Monstre implements Rampant, Ovipare {
 	}
 
 	@Override
-	public void ramper(SeDeplacer seDeplacer, Jeu jeu) {
-		seDeplacer.ramper(this, jeu);
+	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) {
+		return seDeplacer.ramper(this, jeu);
+	}
+	
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+		return this.ramper(seDeplacer, jeu);
 	}
 
 	@Override

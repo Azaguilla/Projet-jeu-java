@@ -24,9 +24,13 @@ public class Ogre extends Monstre implements Terrestre, Vivipare {
 		this.dureeGestation = dureeGestation;
 	}
 
-	public void vagabonder(SeDeplacer seDeplacer, Jeu jeu)
+	public boolean vagabonder(SeDeplacer seDeplacer, Jeu jeu)
 	{
-		seDeplacer.vagabonder(this, jeu);
+		return seDeplacer.vagabonder(this, jeu);
+	}
+	
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+		return this.vagabonder(seDeplacer, jeu);
 	}
 	
 	public Monstre naissance()

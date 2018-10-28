@@ -122,7 +122,7 @@ public class Model {
 		return tabMonstre;
 	}
 	
-	public Jeu creerJeu(Case[] cases, Monstre[] monstres, Personnage personnage)
+	public Jeu creerJeu(Case[] cases, Personnage personnage)
 	{
 		Jeu jeu = new Jeu(personnage.getNom()+"'s world", personnage, 7, 10);
 		for(int i=0; i<20;i++)

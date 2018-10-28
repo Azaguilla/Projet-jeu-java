@@ -8,5 +8,5 @@ package Model;
  *
  */
 public interface Terrestre {
-	public void vagabonder(SeDeplacer seDeplacer, Jeu jeu);
+	public boolean vagabonder(SeDeplacer seDeplacer, Jeu jeu);
 }

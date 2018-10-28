@@ -8,5 +8,5 @@ package Model;
  *
  */
 public interface Rampant {
-	public void ramper(SeDeplacer seDeplacer, Jeu jeu);
+	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu);
 }

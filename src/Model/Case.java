@@ -32,6 +32,7 @@ public abstract class Case {
 
     public void SuppMonstre(Monstre monstre){
         this.monstres.remove(monstre);
+        this.nbMaxMonstre--;
     }
 
     public ArrayList<Monstre> getMonstres() {

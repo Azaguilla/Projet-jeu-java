@@ -61,7 +61,7 @@ public class Controller {
 	{
 		Monstre[] monstres = this.model.creerMonstres();
 		Case[] cases = this.model.creerCases(monstres);
-		this.jeu = this.model.creerJeu(cases, monstres, personnage);
+		this.jeu = this.model.creerJeu(cases, personnage);
 		
 		this.vue.AfficheInfoJeu(this.jeu);
 		int choix = this.vue.AfficherMenu("Bienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n", personnage);

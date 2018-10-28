@@ -18,8 +18,12 @@ public class Wyverne extends Monstre implements Volant, Ovipare{
 	}
 
 	@Override
-	public void voler(SeDeplacer seDeplacer, Jeu jeu) {
-		seDeplacer.voler(this, jeu);
+	public boolean voler(SeDeplacer seDeplacer, Jeu jeu) {
+		return seDeplacer.voler(this, jeu);
+	}
+	
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+		return this.voler(seDeplacer, jeu);
 	}
 
 	@Override

@@ -133,7 +133,7 @@ public class Jeu {
 		int n;
 		for (int i = 0; i < this.cases.size()-1; i++)
 		{
-			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
+			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre()-1; j++)
 			{
 				n = rand.nextInt(2);
 				switch (n)
@@ -166,20 +166,28 @@ public class Jeu {
 	private void lesMonstresSeDeplacent()
 	{
 		//TODO
-		int n;
+		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
+		int k = 0;
 		for (int i = 0; i < this.cases.size()-1; i++)
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
 			{
-				n = rand.nextInt(2);
-				switch (n)
+				monstres.add(this.cases.get(i).monstres.get(j));
+			}
+		}
+		
+		for(int l = 0; l < monstres.size(); l++)
+		{
+			Monstre monstre = monstres.get(l);
+			System.out.println("Case "+monstre.getNumCaseActuelle()+" : "+monstre.getNom());
+			if (!monstre.seDeplacer(new Vagabonder(), this))
+			{
+				if (!monstre.seDeplacer(new Ramper(), this))
 				{
-					case 0: 
-						
-						break;
-					case 1: 
-						
-						break;
+					if (!monstre.seDeplacer(new Voler(), this))
+					{
+							System.out.println("Le monstre "+monstre.getNom()+" tourne en rond et piétine. Il n'a pas pu se déplacer.");	
+					}
 				}
 			}
 		}
@@ -189,7 +197,7 @@ public class Jeu {
 	{
 		//TODO OPTIMISATION !!!
 		//On vérifie les oeufs
-		for (int i = 0; i < this.nbOeufMax; i++)
+		for (int i = 0; i < this.nbOeufMax-1; i++)
 		{
 			if(this.oeufs.get(i).getTempsIncub() != 0)
 			{
@@ -207,10 +215,10 @@ public class Jeu {
 		}
 		
 		//On vérifie la gestation des vivipares
-		for (int i = 0; i < this.cases.size(); i++)
+		for (int i = 0; i < this.cases.size()-1; i++)
 		{
 			Case laCase = this.cases.get(i);
-			for (int j = 0; j < laCase.getNbMaxMonstre(); j++)
+			for (int j = 0; j < laCase.getNbMaxMonstre()-1; j++)
 			{
 				Monstre monstre = this.cases.get(i).monstres.get(j);
 				if (monstre.isEnGestation())

@@ -8,5 +8,5 @@ package Model;
  *
  */
 public interface Volant {
-	public void voler(SeDeplacer seDeplacer, Jeu jeu);
+	public boolean voler(SeDeplacer seDeplacer, Jeu jeu);
 }

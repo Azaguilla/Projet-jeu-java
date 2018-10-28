@@ -7,8 +7,8 @@ public class Blob extends Monstre implements Rampant {
 	}
 
 	@Override
-	public void ramper(SeDeplacer seDeplacer, Jeu jeu) {
-		seDeplacer.ramper(this, jeu);
+	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) {
+		return seDeplacer.ramper(this, jeu);
 	}
 
 	@Override
@@ -23,6 +23,10 @@ public class Blob extends Monstre implements Rampant {
 		int poids = this.getPoids();
 		
 		return new Blob("Blob", sexe, poids, taille, 0, false);
+	}
+	
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+		return this.ramper(seDeplacer, jeu);
 	}
 
 	@Override

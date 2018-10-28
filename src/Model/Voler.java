@@ -9,25 +9,35 @@ public class Voler implements SeDeplacer {
 	{
 		int numCase = monstre.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
-		int n = rand.nextInt(3);
+		int n = rand.nextInt(2);
 		int newNumCase = laCase.getNumCase();
 		switch (n)
 		{
 			/*case 0 = recule*/
 			case 0: newNumCase = laCase.getNumCase()-1;
 					break;
-			/*case 1 = reste*/
-			case 1: newNumCase = laCase.getNumCase();
-					break;
 			/*case 2 = avance*/
-			case 2: newNumCase = laCase.getNumCase()+1;
+			case 1: newNumCase = laCase.getNumCase()+1;
 					break;
 		}
 		Case newCase = jeu.recupererCase(newNumCase);
-		newCase.ajoutMonstre(monstre);
-		laCase.SuppMonstre(monstre);
-		System.out.println("Le monstre s'envole vers la case.");
-		return true;
+		//On empêche le monstre de sortir du plateau
+		int nbCase = jeu.getCases().size();
+		if(newCase.getNumCase() == -1 || newCase.getNumCase() == nbCase)
+		{
+			System.out.println("Le monstre a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
+			return false;
+		}
+		else
+		{
+			if (newCase.ajoutMonstre(monstre))
+			{
+				laCase.SuppMonstre(monstre);
+				System.out.println("Le monstre "+monstre.getNom()+"  vagabonde vers la case "+newNumCase);
+				return true;
+			}
+			return false;
+		}
 	}
 	public boolean vagabonder(Monstre monstre, Jeu jeu)
 	{

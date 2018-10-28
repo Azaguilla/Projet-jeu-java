@@ -166,4 +166,5 @@ public abstract class Monstre {
 	
 	public abstract String son();
 	public abstract void gestation();
+	public abstract boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu);
 }
