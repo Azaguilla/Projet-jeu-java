@@ -15,7 +15,7 @@ public abstract class Monstre {
 	private double age;
 	private int force = 2;
 	private int vie = 10;
-	private boolean sommeil =  false;
+	private boolean sommeil;
 	private int numCaseActuelle;
 	private boolean enGestation = false;
 

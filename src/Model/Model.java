@@ -101,38 +101,45 @@ public class Model {
 			int sexe = rand.nextInt(2);
 			int poids = rand.nextInt(20);
 			int taille = rand.nextInt(20);
+			int tmp_sommeil = rand.nextInt(2);
+			boolean sommeil;
+			if(tmp_sommeil == 0) 
+				sommeil = true;
+			else 
+				sommeil = false;
+			
 			switch (n)
 			{
 				case 0: 
-					Basilic basilic = new Basilic("Basilic", sexe, poids, taille, (double) 5, false);
+					Basilic basilic = new Basilic("Basilic", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = basilic;
 						break;
 				case 1: 
-					Blob blob = new Blob("Blob", sexe, poids, taille, (double) 5, false);
+					Blob blob = new Blob("Blob", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = blob;
 						break;
 				case 2: 
-					Ent ent = new Ent("Ent", sexe, poids, taille, (double) 5, false);
+					Ent ent = new Ent("Ent", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = ent;
 						break;
 				case 3: 
-					Gobelin gobelin = new Gobelin("Gobelin", sexe, poids, taille, (double) 5, false);
+					Gobelin gobelin = new Gobelin("Gobelin", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = gobelin;
 						break;
 				case 4: 
-					Griffon griffon = new Griffon("Griffon", sexe, poids, taille, (double) 5, false);
+					Griffon griffon = new Griffon("Griffon", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = griffon;
 						break;
 				case 5: 
-					LoupGarou loupGarou = new LoupGarou("LoupGarou", sexe, poids, taille, (double) 5, false);
+					LoupGarou loupGarou = new LoupGarou("LoupGarou", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = loupGarou;
 						break;
 				case 6: 
-					Ogre ogre = new Ogre("Ogre", sexe, poids, taille, (double) 5, false);
+					Ogre ogre = new Ogre("Ogre", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = ogre;
 						break;
 				case 7: 
-					Wyverne wyverne = new Wyverne("Wyverne", sexe, poids, taille, (double) 5, false);
+					Wyverne wyverne = new Wyverne("Wyverne", sexe, poids, taille, (double) 5, sommeil);
 					tabMonstre[i] = wyverne;
 						break;
 			}
