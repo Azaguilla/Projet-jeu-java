@@ -23,6 +23,7 @@ public final class Magicien extends Personnage {
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre.");
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setVie(this.getForce()*3, jeu);
+		monstre.setSommeil(false);
 		if(monstre.getVie() < 0)
 		{
 			monstre.mourir(jeu);

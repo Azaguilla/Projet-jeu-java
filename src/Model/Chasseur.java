@@ -11,6 +11,7 @@ public class Chasseur extends Personnage {
 	public void attaquer(Monstre monstre, Jeu jeu) {
 		System.out.println("Vous tirez et votre flèche inflige "+this.getForce()+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce(), jeu);
+		monstre.setSommeil(false);
 		if(monstre.getVie() < 0)
 		{
 			monstre.mourir(jeu);

@@ -20,6 +20,7 @@ public class Guerrier extends Personnage {
 	public void attaquer(Monstre monstre, Jeu jeu) {
 		System.out.println("Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce()*3, jeu);
+		monstre.setSommeil(false);
 		if(monstre.getVie() < 0)
 		{
 			monstre.mourir(jeu);

@@ -26,11 +26,13 @@ public class Rodeur extends Personnage {
 		{
 			System.out.println("Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
 			monstre.setVie(this.getForce()*2, jeu);
+			monstre.setSommeil(false);
 		}
 		else
 		{
 			System.out.println("Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 			monstre.setVie(this.getForce(), jeu);
+			monstre.setSommeil(false);
 		}
 		if(monstre.getVie() <= 0)
 		{
