@@ -45,19 +45,26 @@ public class Jeu {
 	{
 		if(this.cases.size()<MAX_CASE){
 			this.cases.add(laCase);
-        }else{
+        }
+		else{
             System.out.println("Il y a trop de cases.");
         }
 
 	}
 	
 	/**
-	 * Supprime une case
+	 * Supprime une case s'il y a encore des cases
+	 * Sinon affiche un message d'erreur
 	 * @param laCase La case à supprimer
 	 */
     public void SuppCase(Case laCase){
-    	//TODO vérifier le nombre min de cases
-        this.cases.remove(laCase);
+    	if(this.cases.size() > 0){
+    		this.cases.remove(laCase);
+        }
+    	else{
+            System.out.println("Il n'y a plus de cases.");
+        }
+        
     }
     
     /**
@@ -85,7 +92,8 @@ public class Jeu {
 	{
 		if(this.cases.size()<MAX_CASE){
 			this.cases.add(laCase);
-        }else{
+        }
+		else{
             System.out.println("Il y a trop d'oeuf.");
         }
 
@@ -96,8 +104,13 @@ public class Jeu {
 	 * @param oeuf L'oeuf à supprimer
 	 */
     public void SuppOeuf(Oeuf oeuf){
-    	//TODO vérifier le nombre min d'oeuf
-        this.oeufs.remove(oeuf);
+    	if(this.cases.size() > 0){
+    		this.oeufs.remove(oeuf);
+        }
+		else{
+            System.out.println("Il n'y a plus d'oeuf.");
+        }
+        
     }
      
     /**
@@ -320,7 +333,7 @@ public class Jeu {
 		//On vérifie les oeufs
 		for (int i = 0; i < this.nbOeufMax-1; i++)
 		{
-			if(this.oeufs.get(i).getTempsIncub() != 0)		//TODO changer en > pour éviter les erreurs?
+			if(this.oeufs.get(i).getTempsIncub() > 0)		//changé en > pour éviter les erreurs (-1...)
 			{
 				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
 				this.oeufs.get(i).setTempsIncub(newTempsIncub);

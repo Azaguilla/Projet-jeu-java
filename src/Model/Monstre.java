@@ -88,7 +88,7 @@ public abstract class Monstre {
 	 * @param jeu
 	 */
 	public void setVie(int degat, Jeu jeu) {
-		if(this.vie < 0)		//TODO modifier en <=
+		if(this.vie <= 0)
 		{
 			this.mourir(jeu);
 		}
@@ -226,9 +226,13 @@ public abstract class Monstre {
 	 */
 	public void attaquerPersonnage(Personnage personnage)
 	{
-		//TODO vérifier l'état de sommeil
-		personnage.setVie(personnage.getVie()-this.force);
-		System.out.println("Le monstre "+this.nom+" attaque férocement. Vous perdez "+this.force+" pts de vie.");
+		if(this.isSommeil() == false)
+		{
+			personnage.setVie(personnage.getVie()-this.force);
+			System.out.println("Le monstre "+this.nom+" attaque férocement. Vous perdez "+this.force+" pts de vie.");
+		}
+		else
+			System.out.println("Le monstre "+this.nom+" est endormis.");
 	}
 	
 	public abstract String son();
