@@ -84,14 +84,14 @@ public class Jeu {
 	}
 
 	/**
-	 * Ajoute un oeuf si le nombre de case maximal n'est pas atteind
+	 * Ajoute un oeuf si le nombre de case maximal n'est pas atteint
 	 * Sinon affiche un message d'erreur
 	 * @param laCase La case d'ajout de l'oeuf
 	 */
-	public void ajoutOeuf(Case laCase)
+	public void ajoutOeuf(Oeuf oeuf)
 	{
-		if(this.cases.size()<MAX_CASE){
-			this.cases.add(laCase);
+		if(this.oeufs.size()<MAX_OEUF){
+			this.oeufs.add(oeuf);
         }
 		else{
             System.out.println("Il y a trop d'oeuf.");
@@ -104,7 +104,7 @@ public class Jeu {
 	 * @param oeuf L'oeuf à supprimer
 	 */
     public void SuppOeuf(Oeuf oeuf){
-    	if(this.cases.size() > 0){
+    	if(this.oeufs.size() > 0){
     		this.oeufs.remove(oeuf);
         }
 		else{
@@ -280,22 +280,31 @@ public class Jeu {
 		for(int l = 0; l < monstres.size(); l++)
 		{
 			Monstre monstre = monstres.get(l);
-			System.out.println("Case "+monstre.getNumCaseActuelle()+" : "+monstre.getNom());
-			if (!monstre.seDeplacer(new Vagabonder(), this))
+			if(!monstre.isSommeil())
 			{
-				if (!monstre.seDeplacer(new Ramper(), this))
+				System.out.println("Case "+monstre.getNumCaseActuelle()+" : "+monstre.getNom());
+				if (!monstre.seDeplacer(new Vagabonder(), this))
 				{
-					if (!monstre.seDeplacer(new Voler(), this))
+					if (!monstre.seDeplacer(new Ramper(), this))
 					{
-							System.out.println("Le monstre "+monstre.getNom()+" tourne en rond et piétine. Il n'a pas pu se déplacer.");	
+						if (!monstre.seDeplacer(new Voler(), this))
+						{
+								System.out.println("Le monstre "+monstre.getNom()+" tourne en rond et piétine. Il n'a pas pu se déplacer.");	
+						}
 					}
 				}
+			}
+			else
+			{
+				System.out.println("Case "+monstre.getNumCaseActuelle()+" : "+monstre.getNom()+". Ce monstre dort, il ne peut pas se déplacer.");
 			}
 		}
 	}
 	
 	/**
+	 * Récupère tous les monstres, en choisi 4 et les fait se reproduire
 	 * 
+	 * @return void
 	 */
 	private void nouvellesNaissances()
 	{
@@ -309,12 +318,17 @@ public class Jeu {
 			}
 		}
 		
-		int i = 0;
+		int i = 1;
 		while(i != 4)
 		{
-			int n = rand.nextInt(8);
-			System.out.println("Le monstre "+monstres.get(n).getNom()+" est maintenant en gestation.");
-			monstres.get(n).gestation();
+			int n = rand.nextInt(monstres.size());
+
+			Monstre monstre = monstres.get(n);
+			if(!monstre.isEnGestation() && monstre.getSexe() != 1)
+			{
+				System.out.println("Le monstre "+monstres.get(n).getNom()+" est maintenant en gestation.");
+				monstre.gestation(this);
+			}
 			i++;
 		}
 	}
@@ -331,9 +345,10 @@ public class Jeu {
 	{
 		//TODO OPTIMISATION !!!
 		//On vérifie les oeufs
-		for (int i = 0; i < this.nbOeufMax-1; i++)
+
+		for (int i = 0; i < this.oeufs.size(); i++)
 		{
-			if(this.oeufs.get(i).getTempsIncub() > 0)		//changé en > pour éviter les erreurs (-1...)
+			if(this.oeufs.get(i).getTempsIncub() >= 0)		//changé en > pour éviter les erreurs (-1...)
 			{
 				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
 				this.oeufs.get(i).setTempsIncub(newTempsIncub);
@@ -344,38 +359,49 @@ public class Jeu {
 				Monstre monstre = this.oeufs.get(i).eclore();
 				int numCase = oeufs.get(i).getNumCaseMere();
 				Case laCase = this.recupererCase(numCase);
-				while(!laCase.ajoutMonstre(monstre))
+				this.oeufs.remove(i);
+				boolean monstrePlace = false;
+				while(monstrePlace == false)
 				{
-					if(numCase == 19)
+					if(laCase.ajoutMonstre(monstre))
 					{
-						System.out.println("Un monstre est mort car aucun terrain ne lui était favorable.");
+						System.out.println("Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+						monstrePlace = true;
 					}
 					else
 					{
-						numCase = numCase +1;
-						laCase = this.recupererCase(numCase);
+						if(numCase == 19)
+						{
+							System.out.println("Un jeune monstre est mort car aucun terrain ne lui était favorable.");
+							monstrePlace = true;
+						}
+						else
+						{
+							numCase = numCase +1;
+							laCase = this.recupererCase(numCase);
+						}
 					}
 				}
 			}
 		}
 		
 		//On vérifie la gestation des vivipares
-		for (int i = 0; i < this.cases.size()-1; i++)
+		for (int i = 0; i < this.cases.size(); i++)
 		{
 			Case laCase = this.cases.get(i);
-			for (int j = 0; j < laCase.getNbMaxMonstre()-1; j++)
+			for (int j = 0; j < laCase.monstres.size(); j++)
 			{
 				Monstre monstre = this.cases.get(i).monstres.get(j);
 				if (monstre.isEnGestation())
 				{
-					monstre.gestation();
+					monstre.gestation(this);
 				}
 			}
 		}
 	}
 	
 	/**
-	 * Vérifie que ce n'est pas la fin du jue
+	 * Vérifie que ce n'est pas la fin du jeu
 	 * Si le nombre de jour maximal est atteind ou si le joueur est mort, le jeu prend fin
 	 * Sinon le jour passe et le jeu continue
 	 * @return vrai(true) si le jeu est fini, faux(false) sinon

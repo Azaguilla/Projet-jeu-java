@@ -30,8 +30,33 @@ public class Blob extends Monstre implements Rampant {
 	}
 
 	@Override
-	public void gestation() {
-		this.seDiviser();		
+	public void gestation(Jeu jeu) {
+		System.out.println("Un Blob s'est divisé !");
+		Monstre monstre = this.seDiviser();		
+		int numCase = this.getNumCaseActuelle();
+		Case laCase = jeu.recupererCase(numCase);
+		boolean monstrePlace = false;
+		while(monstrePlace == false)
+		{
+			if(laCase.ajoutMonstre(monstre))
+			{
+				System.out.println("Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+				monstrePlace = true;
+			}
+			else
+			{
+				if(numCase == 19)
+				{
+					System.out.println("Un jeune monstre est mort car aucun terrain ne lui était favorable.");
+					monstrePlace = true;
+				}
+				else
+				{
+					numCase = numCase +1;
+					laCase = jeu.recupererCase(numCase);
+				}
+			}
+		}
 	}
 
 }

@@ -8,6 +8,7 @@ public class Griffon extends Monstre implements Volant, Ovipare {
 
 	@Override
 	public Oeuf pondreOeuf() {
+		System.out.println("Un oeuf est en cours de préparation.");
 		int sexe = (int) Math.round(Math.random());
 		int taille = (int) Math.round(Math.random()*2);
 		int poids = (int) Math.round(30+Math.random()*10);
@@ -31,9 +32,9 @@ public class Griffon extends Monstre implements Volant, Ovipare {
 		return "Le Griffon "+this.getNom()+" glatit dans le ciel.";
 	}
 
-	@Override
-	public void gestation() {
-		this.pondreOeuf();
+	public void gestation(Jeu jeu) {
+		Oeuf oeuf = this.pondreOeuf();
+		jeu.ajoutOeuf(oeuf);
 	}
 
 }

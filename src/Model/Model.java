@@ -11,21 +11,13 @@ public class Model {
 		Personnage personnage = null;
 		switch(classe)
 		{
-			case 1:	if(sexe == "M") System.out.println("Agile chasseur, ");
-					if(sexe == "F") System.out.println("Agile chasseresse, ");
-					personnage = Chasseur.getInstance(nom, sexe, "Chasseur");
+			case 1:personnage = Chasseur.getInstance(nom, sexe, "Chasseur");
 					break;
-			case 2:	if(sexe == "M") System.out.println("Grand guerrier, ");
-					if(sexe == "F") System.out.println("Grande guerriere, ");
-					personnage = Guerrier.getInstance(nom, sexe, "Guerrier");
+			case 2:personnage = Guerrier.getInstance(nom, sexe, "Guerrier");
 					break;
-			case 3: if(sexe == "M") System.out.println("Puissant magicien, ");
-					if(sexe == "F") System.out.println("Puissante magicienne, ");
-					personnage = Magicien.getInstance(nom, sexe, "Magicien");
+			case 3:personnage = Magicien.getInstance(nom, sexe, "Magicien");
 					break;
-			case 4:	if(sexe == "M") System.out.println("Sournois rôdeur, ");
-					if(sexe == "F") System.out.println("Sournoise rôdeuse, ");
-					personnage = Rodeur.getInstance(nom, sexe, "Rôdeur");
+			case 4:personnage = Rodeur.getInstance(nom, sexe, "Rôdeur");
 					break;
 		}
 		return personnage;
@@ -69,22 +61,6 @@ public class Model {
 				{
 					placement = true;
 				}
-				else
-				{
-					// On place les monstres jusqu'à la fin. Pour ne pas faire des tours à l'infini, si on a fait 3 tours, on stoppe, le monstre est détruit
-					if(tour < 3)
-					{
-						if(f == 19)
-						{
-							f = 0;
-						}
-					}
-					else
-					{
-						placement = true;
-					}
-				}
-				tour++;
 				f++;
 			}
 		}

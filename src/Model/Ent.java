@@ -18,6 +18,15 @@ public class Ent extends Monstre implements Vivipare {
 		return new Ent("Ent", sexe, poids, taille, 0, false);
 	}
 	
+	/* Permet au monstre de se déplacer. L'ent possède sa propre manière de se déplacer. 
+	 * Il avance ou recule de manière aléatoire. Il ne peut pas sortir du plateau ou être détruit à cause de ça.
+	 * 
+	 * @params   Jeu          jeu          Le jeu contient les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @params   SeDeplacer   seDeplacer   La manière dont le monstre va se déplacer. Ici il n'est pas utile.
+	 * 
+	 * @return   boolean 
+	 */
+	
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
 		int numCase = this.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
@@ -56,11 +65,11 @@ public class Ent extends Monstre implements Vivipare {
 
 	@Override
 	public String son() {
-		return "Les branches de l'Ent "+this.getNom()+" craquent sous la forêt profonde.";
+		return "Je s'appelle Grout.";
 	}
 
 	@Override
-	public void gestation() {
+	public void gestation(Jeu jeu) {
 		// non concerné
 		
 	}

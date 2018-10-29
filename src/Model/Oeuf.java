@@ -1,6 +1,11 @@
 package Model;
 
 public class Oeuf {
+	@Override
+	public String toString() {
+		return "Oeuf [tempsIncub=" + tempsIncub + ", numCaseMere=" + numCaseMere + ", monstre=" + monstre + "]";
+	}
+
 	private int tempsIncub;
 	private int numCaseMere;
 	private Monstre monstre;
@@ -13,7 +18,6 @@ public class Oeuf {
 
 	public Monstre eclore()
 	{
-		System.out.println("Un nouveau monstre est né :"+this.monstre);
 		return this.monstre;
 	}
 
