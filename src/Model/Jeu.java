@@ -35,7 +35,12 @@ public class Jeu {
 				+ "Nombre de case dans le jeu : " + cases.size() + "\n"
 				+ "Les cases : " + cases + "\n";
 	}
-
+	
+	/**
+	 * Ajoute une case si le nombre maximal de case n'est pas atteind
+	 * Sinon affiche un message d'erreur
+	 * @param laCase La case à ajouter
+	 */
 	public void ajoutCase(Case laCase)
 	{
 		if(this.cases.size()<MAX_CASE){
@@ -45,20 +50,37 @@ public class Jeu {
         }
 
 	}
-
+	
+	/**
+	 * Supprime une case
+	 * @param laCase La case à supprimer
+	 */
     public void SuppCase(Case laCase){
+    	//TODO vérifier le nombre min de cases
         this.cases.remove(laCase);
     }
-
+    
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Case> getCases() {
         return this.cases;
     }
     
+    /**
+     * 
+     * @param cases
+     */
 	public void setCases(ArrayList<Case> cases) {
 		this.cases = cases;
 	}
 
-
+	/**
+	 * Ajoute un oeuf si le nombre de case maximal n'est pas atteind
+	 * Sinon affiche un message d'erreur
+	 * @param laCase La case d'ajout de l'oeuf
+	 */
 	public void ajoutOeuf(Case laCase)
 	{
 		if(this.cases.size()<MAX_CASE){
@@ -68,63 +90,125 @@ public class Jeu {
         }
 
 	}
-
+	
+	/**
+	 * Supprime un oeuf
+	 * @param oeuf L'oeuf à supprimer
+	 */
     public void SuppOeuf(Oeuf oeuf){
+    	//TODO vérifier le nombre min d'oeuf
         this.oeufs.remove(oeuf);
     }
-
+     
+    /**
+     * 
+     * @return
+     */
     public ArrayList<Oeuf> getOeufs() {
         return this.oeufs;
     }
     
+    /**
+     * 
+     * @param oeufs
+     */
 	public void setOeufs(ArrayList<Oeuf> oeufs) {
 		this.oeufs = oeufs;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getNom() {
 		return nom;
 	}
-
+	
+	/**
+	 * 
+	 * @param nom
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public Personnage getJoueur() {
 		return joueur;
 	}
-
+	
+	/**
+	 * 
+	 * @param joueur
+	 */
 	public void setJoueur(Personnage joueur) {
 		this.joueur = joueur;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getNbJour() {
 		return nbJour;
 	}
-
+	
+	/**
+	 * 
+	 * @param nbJour
+	 */
 	public void setNbJour(int nbJour) {
 		this.nbJour = nbJour;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getNbHeure() {
 		return nbHeure;
 	}
-
+	
+	/**
+	 * 
+	 * @param nbHeure
+	 */
 	public void setNbHeure(int nbHeure) {
 		this.nbHeure = nbHeure;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public static int getMaxCase() {
 		return MAX_CASE;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getJourCourant() {
 		return jourCourant;
 	}
-
+	
+	/**
+	 * 
+	 * @param jourCourant
+	 */
 	public void setJourCourant(int jourCourant) {
 		this.jourCourant = jourCourant;
 	}
-
+	
+	/**
+	 * Modifie au hasard l'état de sommeil de tous les monstres sur toutes les cases
+	 * Vérifie que le monstre est réveillé pour endormir
+	 * Vérifie que le monstre est endormi pour réveiller
+	 */
 	private void modifierEtatMonstre()
 	{
 		//sommeil
@@ -136,20 +220,23 @@ public class Jeu {
 				n = rand.nextInt(2);
 				switch (n)
 				{
-					/*case 0 = dormir si réveillé*/
+					/*case 0 = dormir (si réveillé)*/
 					case 0: if(this.cases.get(i).monstres.get(j).isSommeil() == false)
 						this.cases.get(i).monstres.get(j).dormir();
 							break;
-					/*case 1 = se reveiller si endormi*/
+					/*case 1 = se reveiller (si endormi)*/
 					case 1: if(this.cases.get(i).monstres.get(j).isSommeil() == true)
 						this.cases.get(i).monstres.get(j).seReveiller();
 							break;
 				}
 			}
 		}
-		//penser a changer l'état de sommeil si combat engagé
+		//TODO changer état sommeil monstre si personnage attaque
 	}
 	
+	/**
+	 * Modifie au hasard d'état de pollution de toutes les cases
+	 */
 	private void modifierEtatCase()
 	{
 		//pollutions
@@ -161,9 +248,13 @@ public class Jeu {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void lesMonstresSeDeplacent()
 	{
 		//TODO
+		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size()-1; i++)
 		{
@@ -190,8 +281,12 @@ public class Jeu {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void nouvellesNaissances()
 	{
+		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size()-1; i++)
 		{
@@ -211,13 +306,21 @@ public class Jeu {
 		}
 	}
 	
+	/**
+	 * Vérifie pour chaque oeuf l'incubation
+	 * Si l'incubation n'est pas finie, décrémente l'incubation
+	 * Sinon, ajoute un nouveau monstre sur la case mère
+	 * ??
+	 * 
+	 * Vérifie pour chaque monstre la gestation de toutes les cases
+	 */
 	private void verifNaissances()
 	{
 		//TODO OPTIMISATION !!!
 		//On vérifie les oeufs
 		for (int i = 0; i < this.nbOeufMax-1; i++)
 		{
-			if(this.oeufs.get(i).getTempsIncub() != 0)
+			if(this.oeufs.get(i).getTempsIncub() != 0)		//TODO changer en > pour éviter les erreurs?
 			{
 				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
 				this.oeufs.get(i).setTempsIncub(newTempsIncub);
@@ -257,7 +360,13 @@ public class Jeu {
 			}
 		}
 	}
-
+	
+	/**
+	 * Vérifie que ce n'est pas la fin du jue
+	 * Si le nombre de jour maximal est atteind ou si le joueur est mort, le jeu prend fin
+	 * Sinon le jour passe et le jeu continue
+	 * @return vrai(true) si le jeu est fini, faux(false) sinon
+	 */
 	public boolean ChangerTour()
 	{
 		// On vérifie que ce n'est pas la fin du jeu
@@ -281,6 +390,9 @@ public class Jeu {
 		}
 	}
 	
+	/**
+	 * Affiche la fin du jeu
+	 */
 	private void FinDuJeu()
 	{
 		if (this.joueur.getVie() <= 0)
@@ -299,11 +411,20 @@ public class Jeu {
 			}
 	}
 	
+	/**
+	 * Récupère la case
+	 * @param numCase La case à récupérer
+	 * @return La case récupérée
+	 */
 	public Case recupererCase(int numCase)
 	{
 		return this.cases.get(numCase);
 	}
 	
+	/**
+	 * Décrément le nombre d'heures
+	 * Si le nombre d'heure est à 0, le tour change
+	 */
 	public void consequenceAction()
 	{
 		System.out.println("Les heures tournent. Vous perdez une heure de temps à faire votre action.");
@@ -314,6 +435,10 @@ public class Jeu {
 		}
 	}
 	
+	/**
+	 * Affiche les informations du jeu
+	 * @return L'affichage du jeu
+	 */
 	public String infosJeu()
 	{
 		return "Jeu \n"
@@ -325,6 +450,10 @@ public class Jeu {
 				+ "Nombre de case dans le jeu : " + this.cases.size() + "\n";
 	}
 	
+	/**
+	 * Les monstres attaquent le personnage
+	 * Si la vie du joueur est à 0, le jeu prend fin
+	 */
 	public void lesMonstresAttaquent()
 	{
 		int numCase = this.joueur.getPosition();

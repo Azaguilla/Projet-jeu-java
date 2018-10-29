@@ -81,8 +81,14 @@ public abstract class Monstre {
 	public int getVie() {
 		return vie;
 	}
+	
+	/**
+	 * Fais mourir le monstre si sa vie est inférieure ou égale à 0, soustrait le nombre de dégats à sa vie sinon
+	 * @param degat Dégats infligés
+	 * @param jeu
+	 */
 	public void setVie(int degat, Jeu jeu) {
-		if(this.vie < 0)
+		if(this.vie < 0)		//TODO modifier en <=
 		{
 			this.mourir(jeu);
 		}
@@ -91,58 +97,107 @@ public abstract class Monstre {
 			this.vie = this.vie - degat;
 		}
 	}
+	
+	/**
+	 * Vérifie l'état de sommeil du monstre
+	 * @return Etat de sommeil
+	 */
 	public boolean isSommeil() {
 		return sommeil;
 	}
 	
+	/**
+	 * 
+	 * @param sommeil
+	 */
 	public void setSommeil(boolean sommeil) {
 		this.sommeil = sommeil;
 	}
 	
+	/**
+	 * Ajoute 2 de force
+	 */
 	public void ajouterForce()
 	{
 		this.setForce(this.force+2);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getPoids() {
 		return poids;
 	}
-
+	
+	/**
+	 * 
+	 * @param poids
+	 */
 	public void setPoids(int poids) {
 		this.poids = poids;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getNumCaseActuelle() {
 		return numCaseActuelle;
 	}
-
+	
+	/**
+	 * 
+	 * @param numCaseActuelle
+	 */
 	public void setNumCaseActuelle(int numCaseActuelle) {
 		this.numCaseActuelle = numCaseActuelle;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isEnGestation() {
 		return enGestation;
 	}
-
+	
+	/**
+	 * 
+	 * @param enGestation
+	 */
 	public void setEnGestation(boolean enGestation) {
 		this.enGestation = enGestation;
 	}
-
+	
+	/**
+	 * 
+	 * @param jeu
+	 */
 	public void seSoigner(Jeu jeu)
 	{
 		this.setVie(this.getVie()+2, jeu);
 	}
 	
+	/**
+	 * Endors un monstre
+	 */
 	public void dormir()
 	{
 		this.setSommeil(true);
 	}
 	
+	/**
+	 * Réveille un monstre
+	 */
 	public void seReveiller()
 	{
 		this.setSommeil(false);
 	}
 	
+	/**
+	 * Si le monstre n'a pas encore la taille maximale(2), ajoute 1 à la taille
+	 */
 	public void grandir()
 	{
 		if(this.getTaille() < 2)
@@ -151,6 +206,12 @@ public abstract class Monstre {
 		}
 	}
 	
+	/**
+	 * Récupère la case actuelle du monstre 
+	 * Supprime le monstre
+	 * Affiche le nom du monstre mort
+	 * @param jeu
+	 */
 	public void mourir(Jeu jeu)
 	{
 		Case laCase = jeu.cases.get(this.numCaseActuelle);
@@ -158,8 +219,14 @@ public abstract class Monstre {
 		System.out.println("Le monstre "+this.nom+" est mort.");
 	}
 	
+	/**
+	 * Soustrait la force du monstre à la vie du personnage
+	 * Affiche le nom du monstre et les points de vie perdus
+	 * @param personnage Le personnage du joueur
+	 */
 	public void attaquerPersonnage(Personnage personnage)
 	{
+		//TODO vérifier l'état de sommeil
 		personnage.setVie(personnage.getVie()-this.force);
 		System.out.println("Le monstre "+this.nom+" attaque férocement. Vous perdez "+this.force+" pts de vie.");
 	}

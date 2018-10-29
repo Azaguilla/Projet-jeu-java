@@ -32,11 +32,20 @@ public abstract class Personnage {
 		this.vie = 10;
 		this.position = 0;
 	}
-	
+	/**
+	 * Affiche les informations d'une case choisie
+	 * @param lacase La case choisie
+	 */
 	public void examinerCase(Case lacase) {
 		System.out.println(lacase.toString());
 	}
 	
+	/**
+	 * Avance ou recule le personnage d'une case selon le choix
+	 * @param choix Avancer(A) ou Reculer(R)
+	 * @param jeu
+	 * @return vrai(true) si le déplacement est valide, faux(false) sinon
+	 */
 	public boolean seDeplacer(String choix, Jeu jeu)
 	{
 		switch (choix) {
@@ -72,88 +81,200 @@ public abstract class Personnage {
 		}
 	}
 	
+	/**
+	 * Ajoute de la vie au personnage
+	 * @return Affichage de la quantité de vie après ajout
+	 */
 	public String boirePotion()
 	{
 		this.vie = this.vie + 2;
 		return "Vous réccupérer de la vie. Votre énergie est actuellement à "+this.vie+" pts.";
 	}
 	
+	/**
+	 * Ajoute de l'énergie au personnage
+	 * @return Affichage de la quantité d'énergie après ajout
+	 */
 	public String manger()
 	{
 		this.energie = this.energie + 2;
 		return "Vous récupérer de l'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
 	}
 	
+	/**
+	 * 
+	 * @param laCase La case choisie
+	 */
 	public void nettoyer(Case laCase)
 	{
 		laCase.nettoyerCase();
 	}
+	
+	/**
+	 * 
+	 * @param jeu
+	 */
 	public void finDeTour(Jeu jeu)
 	{
 		jeu.ChangerTour();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getNom() {
 		return nom;
 	}
+	
+	/**
+	 * 
+	 * @param nom
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getSexe() {
 		return sexe;
 	}
+	
+	/**
+	 * 
+	 * @param sexe
+	 */
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getAge() {
 		return age;
 	}
+	
+	/**
+	 * 
+	 * @param age
+	 */
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getClasse() {
 		return classe;
 	}
+	
+	/**
+	 * 
+	 * @param classe
+	 */
 	public void setClasse(String classe) {
 		this.classe = classe;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getTaille() {
 		return taille;
 	}
+	
+	/**
+	 * 
+	 * @param taille
+	 */
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getPoids() {
 		return poids;
 	}
+	
+	/**
+	 * 
+	 * @param poids
+	 */
 	public void setPoids(int poids) {
 		this.poids = poids;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getEnergie() {
 		return energie;
 	}
+	
+	/**
+	 * 
+	 * @param energie
+	 */
 	public void setEnergie(int energie) {
 		this.energie = energie;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getForce() {
 		return force;
 	}
+	
+	/**
+	 * 
+	 * @param force
+	 */
 	public void setForce(int force) {
 		this.force = force;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getVie() {
 		return vie;
 	}
-
+	
+	/**
+	 * 
+	 * @param vie
+	 */
 	public void setVie(int vie) {
 		this.vie = vie;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getPosition() {
 		return position;
 	}
-
+	
+	/**
+	 * 
+	 * @param position
+	 */
 	public void setPosition(int position) {
 		this.position = position;
 	}
