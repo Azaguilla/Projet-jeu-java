@@ -60,9 +60,8 @@ public class Ent extends Monstre implements Vivipare
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	@Override
-	public void gestation(Jeu jeu) 
+	public String gestation(Jeu jeu) 
 	{
-		System.out.println("Une pousse d'Ent est apparue !");
 		Monstre monstre = this.naissance();		
 		int numCase = this.getNumCaseActuelle();
 		System.out.println("Case de la mère : "+numCase);
@@ -70,10 +69,11 @@ public class Ent extends Monstre implements Vivipare
 		if(laCase.ajoutMonstre(monstre))
 		{
 			System.out.println("Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+			return "Une pousse d'Ent est apparue !";
 		}
 		else
 		{
-			System.out.println("La vie peut être difficile, dans les sous-bois, pour les jeunes Ent. L'un d'entre eux n'a pas survécu à cause du manque de place.");
+			return "La vie peut être difficile, dans les sous-bois, pour les jeunes Ent. L'un d'entre eux n'a pas survécu à cause du manque de place.";
 		}
 	}
 

@@ -39,21 +39,22 @@ public class Guerrier extends Personnage
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
 	 * @param Monstre monstre Le monstre choisi
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
 	 */
 	@Override
-	public void attaquer(Monstre monstre, Jeu jeu) 
+	public String attaquer(Monstre monstre, Jeu jeu) 
 	{
-		System.out.println("Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
-		monstre.setVie(this.getForce()*3, jeu);
+		monstre.setVie(this.getForce(), jeu);
 		monstre.setSommeil(false);
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
+			return "Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
 		}
 		else
 		{
-			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
 			this.setVie(this.getVie()-monstre.getForce());
+			return "Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
 		}
 	}
 	
@@ -64,21 +65,22 @@ public class Guerrier extends Personnage
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
 	 * @param Monstre monstre Le monstre choisi
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
 	 */
-	public void lancerSort(Monstre monstre, Jeu jeu)
+	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
-		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
-		this.setEnergie(this.getEnergie()-5);
 		monstre.setVie(this.getForce(), jeu);
+		this.setEnergie(this.getEnergie()-5);
 		monstre.setSommeil(false);
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. Il succombe à ses blessures.";
 		}
 		else
 		{
-			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
 			this.setVie(this.getVie()-monstre.getForce());
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
 		}
 	}
 	

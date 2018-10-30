@@ -4,35 +4,36 @@ public final class Magicien extends Personnage {
 	private static Personnage getInstance;
 	
 	@Override
-	public void attaquer(Monstre monstre, Jeu jeu) {
-		System.out.println("Vous sortez votre dague et vous infligez "+this.getForce()+" pts de dégât au monstre.");
+	public String attaquer(Monstre monstre, Jeu jeu) 
+	{
 		monstre.setVie(this.getForce(), jeu);
 		monstre.setSommeil(false);
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
+			return "Vous sortez votre dague et vous infligez "+this.getForce()+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
 		}
 		else
 		{
-			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
 			this.setVie(this.getVie()-monstre.getForce());
+			return "Vous sortez votre dague et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
 		}
 	}
 	
-	public void lancerSort(Monstre monstre, Jeu jeu)
+	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
-		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre.");
+		monstre.setVie(this.getForce(), jeu);
 		this.setEnergie(this.getEnergie()-5);
-		monstre.setVie(this.getForce()*3, jeu);
 		monstre.setSommeil(false);
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. Il succombe à ses blessures.";
 		}
 		else
 		{
-			System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
 			this.setVie(this.getVie()-monstre.getForce());
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
 		}
 	}
 

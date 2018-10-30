@@ -42,29 +42,32 @@ public class Ogre extends Monstre implements Terrestre, Vivipare {
 		return new Ogre("Ogre", sexe, poids, taille, 0, false);
 	}
 
-	
-	public void gestation(Jeu jeu)
+
+	public String gestation(Jeu jeu)
 	{
 		if(this.tempsGestation == this.dureeGestation)
 		{
-			System.out.println("Un bébé "+this.getNom()+" est né !");
+			System.out.println("sysoUn bébé "+this.getNom()+" est né !");
 			Monstre monstre = this.naissance();
 			int numCase = this.getNumCaseActuelle();
 			Case laCase = jeu.recupererCase(numCase);
+			String message = "";
 			boolean monstrePlace = false;
 			while(monstrePlace == false)
 			{
 				if(laCase.ajoutMonstre(monstre))
 				{
-					System.out.println("Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+					System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 					monstrePlace = true;
+					message = "Un bébé "+this.getNom()+" est né !";
 				}
 				else
 				{
 					if(numCase == 19)
 					{
-						System.out.println("Un jeune monstre est mort car aucun terrain ne lui était favorable.");
+						System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 						monstrePlace = true;
+						message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.";
 					}
 					else
 					{
@@ -75,13 +78,16 @@ public class Ogre extends Monstre implements Terrestre, Vivipare {
 			}
 			this.tempsGestation = 0;
 			this.setEnGestation(false);
+			return message;
 		}
 		else
 		{
 			this.tempsGestation++;
 			this.setEnGestation(true);
+			return "Le monstre "+this.getNom()+" est toujours en gestation";
 		}
 	}
+	
 	public String son()
 	{
 		return "L'ogre "+this.getNom()+" gronde.";

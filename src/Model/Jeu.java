@@ -340,7 +340,7 @@ public class Jeu
 	 * 
 	 * @return void
 	 */
-	private void nouvellesNaissances()
+	private String nouvellesNaissances()
 	{
 		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
@@ -352,6 +352,7 @@ public class Jeu
 			}
 		}
 		
+		String message = "";
 		int i = 1;
 		while(i != 4)
 		{
@@ -360,11 +361,11 @@ public class Jeu
 			Monstre monstre = monstres.get(n);
 			if(!monstre.isEnGestation() && monstre.getSexe() != 1)
 			{
-				System.out.println("Le monstre "+monstres.get(n).getNom()+" est maintenant en gestation.");
-				monstre.gestation(this);
+				message =  monstre.gestation(this);
 			}
 			i++;
 		}
+		return message;
 	}
 	
 	/**
@@ -375,21 +376,24 @@ public class Jeu
 	 * 
 	 * Vérifie pour chaque monstre la gestation de toutes les cases
 	 */
-	private void verifNaissances()
+	private String verifNaissances()
 	{
 		//TODO OPTIMISATION !!!
 		//On vérifie les oeufs
-
+		String message = "";
 		for (int i = 0; i < this.oeufs.size(); i++)
 		{
 			if(this.oeufs.get(i).getTempsIncub() >= 0)		//changé en > pour éviter les erreurs (-1...)
 			{
 				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
 				this.oeufs.get(i).setTempsIncub(newTempsIncub);
+				message = "Des oeufs sont encore en incubation.\n";
+				System.out.println("Oeuf "+i+" : "+this.oeufs.get(i).getTempsIncub());
 			}
 			else
 			{
-				System.out.println("Un oeuf a éclot !");
+				System.out.println("sysoUn oeuf a éclot !");
+				message = "Un oeuf a éclot !\n";
 				Monstre monstre = this.oeufs.get(i).eclore();
 				int numCase = oeufs.get(i).getNumCaseMere();
 				Case laCase = this.recupererCase(numCase);
@@ -399,15 +403,17 @@ public class Jeu
 				{
 					if(laCase.ajoutMonstre(monstre))
 					{
-						System.out.println("Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+						System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 						monstrePlace = true;
+						message += "Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase()+"\n";
 					}
 					else
 					{
 						if(numCase == 19)
 						{
-							System.out.println("Un jeune monstre est mort car aucun terrain ne lui était favorable.");
+							System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 							monstrePlace = true;
+							message += "Un jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 						}
 						else
 						{
@@ -428,10 +434,12 @@ public class Jeu
 				Monstre monstre = this.cases.get(i).monstres.get(j);
 				if (monstre.isEnGestation())
 				{
-					monstre.gestation(this);
+					message += monstre.gestation(this);
 				}
 			}
 		}
+		
+		return message;
 	}
 	
 	/**
@@ -440,12 +448,13 @@ public class Jeu
 	 * Sinon le jour passe et le jeu continue
 	 * @return vrai(true) si le jeu est fini, faux(false) sinon
 	 */
-	public boolean ChangerTour()
+	public String ChangerTour()
 	{
+		String message = "";
 		// On vérifie que ce n'est pas la fin du jeu
 		if (this.jourCourant == this.nbJour || this.joueur.getVie() <= 0) 
 		{
-			return true;
+			return message;
 		}
 		else
 		{
@@ -453,11 +462,11 @@ public class Jeu
 			this.nbHeure = 10;
 			this.modifierEtatMonstre();
 			this.modifierEtatCase();
-			this.verifNaissances();
+			message = this.verifNaissances();
 			this.lesMonstresAttaquent();
 			this.lesMonstresSeDeplacent();
-			this.nouvellesNaissances();
-			return false;
+			message += this.nouvellesNaissances();
+			return message;
 		}
 	}
 	
@@ -481,12 +490,13 @@ public class Jeu
 	{
 		this.nbHeure --;
 		String tourChange = "";
+		String message = "";
 		if(this.nbHeure == 0)
 		{
-			this.ChangerTour();
+			message = this.ChangerTour();
 			tourChange = "\nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n";
 		}
-		return tourChange+"\nLes heures tournent. Vous perdez une heure de temps à faire votre action. Il vous reste "+this.nbHeure+" heures.";
+		return message+tourChange+"\nLes heures tournent. Vous perdez une heure de temps à faire votre action. Il vous reste "+this.nbHeure+" heures.";
 	}
 	
 	/**

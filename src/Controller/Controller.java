@@ -196,10 +196,10 @@ public class Controller {
 			else
 			{
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
-				this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
+				String message = this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
 
 				String messageCsq = this.jeu.consequenceAction();
-				this.verifEtatJeu(messageCsq);
+				this.verifEtatJeu(message+"\n"+messageCsq);
 			}
 		}
 	}
@@ -224,10 +224,10 @@ public class Controller {
 			else
 			{
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
-				this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
+				String message = this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
 				
 				String messageCsq = this.jeu.consequenceAction();
-				this.verifEtatJeu("Vous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie."+messageCsq);
+				this.verifEtatJeu(message+"\nVous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie."+messageCsq);
 			}
 		}
 	}
@@ -286,9 +286,9 @@ public class Controller {
 	
 	public void passerTour()
 	{	
-		this.jeu.ChangerTour();
+		String message = this.jeu.ChangerTour();
 		
-		this.verifEtatJeu("Vous avez passé votre tour. \nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n");
+		this.verifEtatJeu(message+"\nVous avez passé votre tour. \nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n");
 	}
 	
 	public void verifEtatJeu(String message)

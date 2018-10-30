@@ -136,7 +136,7 @@ public abstract class Case
 		this.pollution = pollution;
 	}
 	
-	public abstract void degatPersonnage(Personnage personnage);
+	public abstract String degatPersonnage(Personnage personnage);
 	public abstract String nettoyerCase();
 	public abstract boolean ajoutMonstre(Monstre monstre);
 	

@@ -33,9 +33,11 @@ public class Wyverne extends Monstre implements Volant, Ovipare{
 	}
 
 	@Override
-	public void gestation(Jeu jeu) {
+	public String gestation(Jeu jeu) 
+	{
 		Oeuf oeuf = this.pondreOeuf();
 		jeu.ajoutOeuf(oeuf);
+		return "Un oeuf de "+this.getNom()+" est en cours d'incubation.";
 	}
 
 }

@@ -58,24 +58,21 @@ public class Foret extends Case
 	 * @param Personnage personnage Le personnage du joueur
 	 */
 	@Override
-	public void degatPersonnage(Personnage personnage) 
+	public String degatPersonnage(Personnage personnage) 
 	{
 		switch (this.getPollution()) {
 		case 1 :
-			System.out.println("Vous entrez une odeur étrange et désagréable. Le poison s'inflitre dans vos poumons et vous perdez 1 pts de vie.");
 			personnage.setVie(personnage.getVie()-1);
-			break;
+			return "Vous sentez une odeur étrange et désagréable. Le poison s'inflitre dans vos poumons et vous perdez 1 pts de vie.";
 		case 2 : 
-			System.out.println("L'air est nauséabond et des miasmes s'accrochent aux branches des arbres. Vous pouvez à peine respirez et vous perdez 2 pts de vie.");
 			personnage.setVie(personnage.getVie()-2);
-			break;
+			return "L'air est nauséabond et des miasmes s'accrochent aux branches des arbres. Vous pouvez à peine respirez et vous perdez 2 pts de vie.";
 		case 3 : 
-			System.out.println("L'atmosphère est épaisse et vous voyez à peine devant vous à cause de la pollution. Vous suffoquez et vous perdez 3 pts de vie.");
 			personnage.setVie(personnage.getVie()-3);
-			break;
+			return "L'atmosphère est épaisse et vous voyez à peine devant vous à cause de la pollution. Vous suffoquez et vous perdez 3 pts de vie.";
 		default: 
-			System.out.println("L'air de la forêt est pure.");
 			personnage.setVie(personnage.getVie());
+			return "L'air de la forêt est pure.";
 		}
 	}
 

@@ -65,9 +65,10 @@ public class Blob extends Monstre implements Rampant
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	@Override
-	public void gestation(Jeu jeu) 
+	public String gestation(Jeu jeu) 
 	{
-		System.out.println("Un Blob s'est divisé !");
+		System.out.println("sysoUn Blob s'est divisé !");
+		String message ="";
 		Monstre monstre = this.seDiviser();		
 		int numCase = this.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
@@ -76,22 +77,27 @@ public class Blob extends Monstre implements Rampant
 		{
 			if(laCase.ajoutMonstre(monstre))
 			{
-				System.out.println("Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+				System.out.println("sysoLe monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+				message = "Un Blob s'est divisé ! Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase();
 				monstrePlace = true;
 			}
 			else
 			{
 				if(numCase == 19)
 				{
-					System.out.println("Un jeune monstre est mort car aucun terrain ne lui était favorable.");
+					System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
+					message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.";
 					monstrePlace = true;
 				}
 				else
 				{
 					numCase = numCase +1;
 					laCase = jeu.recupererCase(numCase);
+					System.out.println("C'est bizarre..");
+					message = "C'est bizarre...";
 				}
 			}
 		}
+		return message;
 	}
 }

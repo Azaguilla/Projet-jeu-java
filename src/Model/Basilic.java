@@ -69,12 +69,14 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 		/**
 		 * Le monstre entre en gestation d'un oeuf
 		 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+		 * @return String
 		 */
 	@Override
-	public void gestation(Jeu jeu) 
+	public String gestation(Jeu jeu) 
 	{
 		Oeuf oeuf = this.pondreOeuf();
 		jeu.ajoutOeuf(oeuf);
+		return "Un oeuf de "+this.getNom()+" est en cours d'incubation.";
 	}
 
 }

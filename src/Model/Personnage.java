@@ -60,7 +60,6 @@ public abstract class Personnage {
 			else
 			{
 				this.position++;
-				jeu.recupererCase(this.position).degatPersonnage(this);
 				return true;
 			}
 		case 1 : 
@@ -71,7 +70,6 @@ public abstract class Personnage {
 			else
 			{
 				this.position--;
-				jeu.recupererCase(this.position).degatPersonnage(this);
 				return true;
 			}
 		default: 
@@ -294,6 +292,6 @@ public abstract class Personnage {
 		this.position = position;
 	}
 
-	public abstract void attaquer(Monstre monstre, Jeu jeu);
-	public abstract void lancerSort(Monstre monstre, Jeu jeu);
+	public abstract String attaquer(Monstre monstre, Jeu jeu);
+	public abstract String lancerSort(Monstre monstre, Jeu jeu);
 }

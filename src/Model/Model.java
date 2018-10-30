@@ -139,7 +139,8 @@ public class Model {
 		
 		if (deplacement == true)
 		{
-			return "Vous marchez difficilement à travers le lieu hostile, mais vous réussissez à avancer.";
+			String message = jeu.recupererCase(personnage.getPosition()).degatPersonnage(personnage);
+			return "Vous marchez difficilement à travers le lieu hostile, mais vous réussissez à avancer.\n"+message;
 		}
 		else
 		{
@@ -165,14 +166,14 @@ public class Model {
 		return monstres;
 	}
 	
-	public void attaquerMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
+	public String attaquerMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
 	{
-		personnage.attaquer(monstre, jeu);
+		return personnage.attaquer(monstre, jeu);
 	}
 	
-	public void lancerSortSurMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
+	public String lancerSortSurMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
 	{
-		personnage.lancerSort(monstre, jeu);
+		return personnage.lancerSort(monstre, jeu);
 	}
 	
 	public boolean personnageEstBienVivant(Jeu jeu)

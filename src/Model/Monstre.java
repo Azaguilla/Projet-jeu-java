@@ -216,7 +216,6 @@ public abstract class Monstre {
 	{
 		Case laCase = jeu.cases.get(this.numCaseActuelle);
 		laCase.SuppMonstre(this);
-		System.out.println("Le monstre "+this.nom+" est mort.");
 	}
 	
 	/**
@@ -236,6 +235,6 @@ public abstract class Monstre {
 	}
 	
 	public abstract String son();
-	public abstract void gestation(Jeu jeu);
+	public abstract String gestation(Jeu jeu);
 	public abstract boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu);
 }

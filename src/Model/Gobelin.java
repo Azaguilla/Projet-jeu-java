@@ -93,29 +93,33 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	 *		l'état en changé en non gestation
 	 * Sinon le temps de gestation est incrémenté
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
 	 */
-	public void gestation(Jeu jeu)
+	public String gestation(Jeu jeu)
 	{
 		if(this.tempsGestation == this.dureeGestation)
 		{
-			System.out.println("Un bébé "+this.getNom()+" est né !");
+			System.out.println("sysoUn bébé "+this.getNom()+" est né !");
 			Monstre monstre = this.naissance();
 			int numCase = this.getNumCaseActuelle();
 			Case laCase = jeu.recupererCase(numCase);
+			String message = "";
 			boolean monstrePlace = false;
 			while(monstrePlace == false)
 			{
 				if(laCase.ajoutMonstre(monstre))
 				{
-					System.out.println("Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+					System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 					monstrePlace = true;
+					message = "Un bébé "+this.getNom()+" est né ! Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase();
 				}
 				else
 				{
 					if(numCase == 19)
 					{
-						System.out.println("Un jeune monstre est mort car aucun terrain ne lui était favorable.");
+						System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 						monstrePlace = true;
+						message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 					}
 					else
 					{
@@ -126,11 +130,13 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 			}
 			this.tempsGestation = 0;
 			this.setEnGestation(false);
+			return message;
 		}
 		else
 		{
 			this.tempsGestation++;
 			this.setEnGestation(true);
+			return "Le monstre "+this.getNom()+" est toujours en gestation.\n";
 		}
 	}
 	

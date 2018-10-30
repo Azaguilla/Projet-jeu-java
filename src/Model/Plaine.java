@@ -18,23 +18,20 @@ public class Plaine extends Case {
 
 
 	//Inflige des degats au personnage selon le niveau de pollution
-	public void degatPersonnage(Personnage personnage) {
+	public String degatPersonnage(Personnage personnage) {
 		switch (this.getPollution()) {
 		case 1 :
-			System.out.println("Pollution niveau 1 : vous perdez 1 pts de vie.");
 			personnage.setVie(personnage.getVie()-1);
-			break;
+			return "Pollution niveau 1 : vous perdez 1 pts de vie.";
 		case 2 : 
-			System.out.println("Pollution niveau 2 : vous perdez 2 pts de vie.");
 			personnage.setVie(personnage.getVie()-2);
-			break;
+			return "Pollution niveau 2 : vous perdez 2 pts de vie.";
 		case 3 : 
-			System.out.println("Pollution niveau 1 : vous perdez 3 pts de vie.");
 			personnage.setVie(personnage.getVie()-3);
-			break;
+			return "Pollution niveau 1 : vous perdez 3 pts de vie.";
 		default: 
-			System.out.println("Le vent frais souffle sur votre visage, le soleil illumine la plaine luxuriante.");
 			personnage.setVie(personnage.getVie());
+			return "Le vent frais souffle sur votre visage, le soleil illumine la plaine luxuriante.";
 		}
 	}
 

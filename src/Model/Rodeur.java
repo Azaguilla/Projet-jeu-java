@@ -20,49 +20,77 @@ public class Rodeur extends Personnage {
 	}
 
 	@Override
-	public void attaquer(Monstre monstre, Jeu jeu) {
+	public String attaquer(Monstre monstre, Jeu jeu) {
 		int n = rand.nextInt(2);
 		if(n == 0)
 		{
-			System.out.println("Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
 			monstre.setVie(this.getForce()*2, jeu);
 			monstre.setSommeil(false);
-		}
-		else
-		{
-			System.out.println("Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre.");
-			monstre.setVie(this.getForce(), jeu);
-			monstre.setSommeil(false);
-		}
-		if(monstre.getVie() <= 0)
-		{
-			monstre.mourir(jeu);
-		}
-		else
-		{
-			int m = rand.nextInt(2);
-			if(m == 0)
+
+			if(monstre.getVie() <= 0)
 			{
-				System.out.println("Le monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+monstre.getForce()/2+" pts de dégât.");
-				this.setVie(this.getVie()-monstre.getForce()/2);
+				monstre.mourir(jeu);
+				return "Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
 			}
 			else
 			{
-				System.out.println("Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.");
-				this.setVie(this.getVie()-monstre.getForce());
+				int m = rand.nextInt(2);
+				if(m == 0)
+				{
+					this.setVie(this.getVie()-monstre.getForce()/2);
+					return "Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre."
+						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+monstre.getForce()/2+" pts de dégât.";
+				}
+				else
+				{
+					this.setVie(this.getVie()-monstre.getForce());
+					return "Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre."
+						 + "Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+				}
+			}
+		}
+		else
+		{
+			monstre.setVie(this.getForce(), jeu);
+			monstre.setSommeil(false);
+			if(monstre.getVie() <= 0)
+			{
+				monstre.mourir(jeu);
+				return "Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
+			}
+			else
+			{
+				int m = rand.nextInt(2);
+				if(m == 0)
+				{
+					this.setVie(this.getVie()-monstre.getForce()/2);
+					return "Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre."
+						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+monstre.getForce()/2+" pts de dégât.";
+				}
+				else
+				{
+					this.setVie(this.getVie()-monstre.getForce());
+					return "Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre."
+						 + "Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+				}
 			}
 		}
 	}
 	
-	public void lancerSort(Monstre monstre, Jeu jeu)
+	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
-		this.setEnergie(this.getEnergie()-5);
-		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce(), jeu);
+		this.setEnergie(this.getEnergie()-5);
 		monstre.setSommeil(false);
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. Il succombe à ses blessures.";
+		}
+		else
+		{
+			this.setVie(this.getVie()-monstre.getForce());
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
 		}
 	}
 	

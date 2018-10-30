@@ -21,23 +21,20 @@ public class Marais extends Case {
 	}
 	
 	@Override
-	public void degatPersonnage(Personnage personnage) {
+	public String degatPersonnage(Personnage personnage) {
 		switch (this.getPollution()) {
 		case 1 :
-			System.out.println("Des tas de boue polluée sont disséminés çà et là. Vous trébuchez sur l'un d'eux et vous perdez 1 pts de vie.");
 			personnage.setVie(personnage.getVie()-1);
-			break;
+			return "Des tas de boue polluée sont disséminés çà et là. Vous trébuchez sur l'un d'eux et vous perdez 1 pts de vie.";
 		case 2 : 
-			System.out.println("La pollution a fait muter les branches des arbres qui tentent de vous attraper. Vous vous débattez mais les épines vous éraflent les bras et le visage. Vous perdez 2 pts de vie.");
 			personnage.setVie(personnage.getVie()-2);
-			break;
+			return "La pollution a fait muter les branches des arbres qui tentent de vous attraper. Vous vous débattez mais les épines vous éraflent les bras et le visage. Vous perdez 2 pts de vie.";
 		case 3 : 
-			System.out.println("La pollution du marais a ramené des insectes d'une grande férocité. Ils vous vous piquent et tentent de s'infiltrer dans vos oreilles. Vous perdez 3 pts de vie.");
 			personnage.setVie(personnage.getVie()-3);
-			break;
+			return "La pollution du marais a ramené des insectes d'une grande férocité. Ils vous vous piquent et tentent de s'infiltrer dans vos oreilles. Vous perdez 3 pts de vie.";
 		default: 
-			System.out.println("L'odeur qui s'échappe du marais n'est pas agréable mais vous ne remarquez rien d'anormal.");
 			personnage.setVie(personnage.getVie());
+			return "L'odeur qui s'échappe du marais n'est pas agréable mais vous ne remarquez rien d'anormal.";
 		}
 		
 	}
