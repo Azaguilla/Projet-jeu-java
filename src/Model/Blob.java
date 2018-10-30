@@ -58,5 +58,4 @@ public class Blob extends Monstre implements Rampant {
 			}
 		}
 	}
-
 }

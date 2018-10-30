@@ -1,9 +1,6 @@
 package Model;
 
-import java.util.Random;
-
 public class Ent extends Monstre implements Vivipare {
-	private Random rand = new Random();
 	
 	public Ent(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
 		super(nom, sexe, poids, taille, age, sommeil);
@@ -28,39 +25,8 @@ public class Ent extends Monstre implements Vivipare {
 	 */
 	
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
-		int numCase = this.getNumCaseActuelle();
-		Case laCase = jeu.recupererCase(numCase);
-		int n = rand.nextInt(2);
-		int newNumCase = laCase.getNumCase();
-		switch (n)
-		{
-			/*case 0 = recule*/
-			case 0: newNumCase = laCase.getNumCase()-1;
-			System.out.println("Le monstre "+this.getNom()+" recule d'une case.");
-					break;
-			/*case 2 = avance*/
-			case 1: newNumCase = laCase.getNumCase()+1;
-					break;
-		}
-
-		//On empêche le monstre de sortir du plateau
-		int nbCase = jeu.getCases().size();
-		if(newNumCase == -1 || newNumCase == nbCase)
-		{
-			System.out.println("Le monstre "+this.getNom()+"  a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
-			return false;
-		}
-		else
-		{
-			Case newCase = jeu.recupererCase(newNumCase);
-			if (newCase.ajoutMonstre(this))
-			{
-				laCase.SuppMonstre(this);
-				System.out.println("Le monstre "+this.getNom()+"  se traîne vers la case "+newNumCase);
-				return true;
-			}
-			return false;
-		}
+		System.out.println("Les Ent ne se déplacent pas !");
+		return true;
 	}
 
 	@Override
@@ -70,8 +36,19 @@ public class Ent extends Monstre implements Vivipare {
 
 	@Override
 	public void gestation(Jeu jeu) {
-		// non concerné
-		
+		System.out.println("Une pousse d'Ent est apparue !");
+		Monstre monstre = this.naissance();		
+		int numCase = this.getNumCaseActuelle();
+		System.out.println("Case de la mère : "+numCase);
+		Case laCase = jeu.recupererCase(numCase);
+		if(laCase.ajoutMonstre(monstre))
+		{
+			System.out.println("Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+		}
+		else
+		{
+			System.out.println("La vie peut être difficile, dans les sous-bois, pour les jeunes Ent. L'un d'entre eux n'a pas survécu à cause du manque de place.");
+		}
 	}
 
 }

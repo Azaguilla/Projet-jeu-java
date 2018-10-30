@@ -11,7 +11,6 @@ public class Jeu {
 	private int nbHeure;
 	private final static int MAX_CASE = 50;
 	protected ArrayList<Case> cases = new ArrayList<>(MAX_CASE);
-	private int nbOeufMax = 0;
 	private final static int MAX_OEUF = 50;
 	protected ArrayList<Oeuf> oeufs = new ArrayList<>(MAX_OEUF);
 	private Random rand = new Random();
@@ -226,7 +225,7 @@ public class Jeu {
 	{
 		//sommeil
 		int n;
-		for (int i = 0; i < this.cases.size()-1; i++)
+		for (int i = 0; i < this.cases.size(); i++)
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre()-1; j++)
 			{
@@ -269,7 +268,7 @@ public class Jeu {
 		//TODO
 		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
-		for (int i = 0; i < this.cases.size()-1; i++)
+		for (int i = 0; i < this.cases.size(); i++)
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
 			{
