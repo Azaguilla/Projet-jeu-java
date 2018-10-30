@@ -137,7 +137,7 @@ public abstract class Case
 	}
 	
 	public abstract void degatPersonnage(Personnage personnage);
-	public abstract void nettoyerCase();
+	public abstract String nettoyerCase();
 	public abstract boolean ajoutMonstre(Monstre monstre);
 	
 }

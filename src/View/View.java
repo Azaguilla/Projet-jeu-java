@@ -41,11 +41,11 @@ public class View {
 		return nom;
 	}
 	
-	public String choixDeplacement()
+	public int choixDeplacement()
 	{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Comment voulez-vous vous déplacer ? \n Avancer[A] \n Reculer[R]");
-		String choix = sc.next();
+		System.out.println("Comment voulez-vous vous déplacer ? \n Avancer[0] \n Reculer[1]");
+		int choix = sc.nextInt();
 		
 		return choix;
 	}

@@ -51,15 +51,15 @@ public class Marais extends Case {
 	}
 
 	@Override
-	public void nettoyerCase() {
+	public String nettoyerCase() {
 		if(this.getPollution() == 0)
 		{
-			System.out.println("La case est déjà propre.");
+			return "\nLa case est déjà propre.\n";
 		}
 		else
 		{
-			System.out.println("Vous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.");
 			this.setPollution(this.getPollution()-1);
+			return"\nVous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.\n";
 		}
 		//if(this.vase == true)
 		//{this.vase == false; heure --;}

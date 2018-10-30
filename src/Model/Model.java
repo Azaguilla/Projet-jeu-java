@@ -133,9 +133,18 @@ public class Model {
 		return jeu;
 	}
 	
-	public void deplacerPersonnage(Personnage personnage, String choixDeplacement, Jeu jeu)
+	public String deplacerPersonnage(Personnage personnage, int choixDeplacement, Jeu jeu)
 	{
-		personnage.seDeplacer(choixDeplacement, jeu);
+		boolean deplacement = personnage.seDeplacer(choixDeplacement, jeu);
+		
+		if (deplacement == true)
+		{
+			return "Vous marchez difficilement à travers le lieu hostile, mais vous réussissez à avancer.";
+		}
+		else
+		{
+			return "Vous essayez d'avancer, mais quelque chose vous en empêche. La fatigue, peut-être ?";
+		}
 	}
 	
 	public String manger(Personnage personnage)
@@ -152,7 +161,6 @@ public class Model {
 	{
 		Case laCase = jeu.recupererCase(numCase);
 		ArrayList<Monstre> monstres = laCase.getMonstres();
-
 
 		return monstres;
 	}

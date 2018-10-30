@@ -445,12 +445,10 @@ public class Jeu
 		// On vérifie que ce n'est pas la fin du jeu
 		if (this.jourCourant == this.nbJour || this.joueur.getVie() <= 0) 
 		{
-			this.FinDuJeu();
 			return true;
 		}
 		else
 		{
-			System.out.println("Vous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.");
 			this.jourCourant++;
 			this.nbHeure = 10;
 			this.modifierEtatMonstre();
@@ -463,26 +461,7 @@ public class Jeu
 		}
 	}
 	
-	/**
-	 * Affiche la fin du jeu
-	 */
-	private void FinDuJeu()
-	{
-		if (this.joueur.getVie() <= 0)
-			System.out.println("Vous êtes mort...");
-			/*Afficher stats*/
-			else
-			{
-				if(this.jourCourant == this.nbJour)
-					System.out.println("Votre temps est écoulé...");
-					/*Afficher stats*/
-					else
-					{
-						System.out.println("Félicitation! Vous avez réussi!");
-						/*Afficher stats*/
-					}
-			}
-	}
+	
 	
 	/**
 	 * Récupère la case
@@ -498,14 +477,16 @@ public class Jeu
 	 * Décrément le nombre d'heures
 	 * Si le nombre d'heure est à 0, le tour change
 	 */
-	public void consequenceAction()
+	public String consequenceAction()
 	{
-		System.out.println("Les heures tournent. Vous perdez une heure de temps à faire votre action. Il vous reste \"+this.nbHeure+\"heures.");
 		this.nbHeure --;
+		String tourChange = "";
 		if(this.nbHeure == 0)
 		{
 			this.ChangerTour();
+			tourChange = "\nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n";
 		}
+		return tourChange+"\nLes heures tournent. Vous perdez une heure de temps à faire votre action. Il vous reste "+this.nbHeure+" heures.";
 	}
 	
 	/**
@@ -534,11 +515,6 @@ public class Jeu
 		for(int i=0; i<monstres.size();i++)
 		{
 			monstres.get(i).attaquerPersonnage(this.joueur);
-		}
-		
-		if(this.joueur.getVie() <= 0)
-		{
-			this.FinDuJeu();
 		}
 	}
 }

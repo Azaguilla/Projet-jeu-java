@@ -108,7 +108,7 @@ public class Controller {
 				this.passerTour();
 				break;
 			default:
-				System.out.println("Veuillez recommencer");
+				this.vue.afficherUnMessage("Veuillez recommencer");
 				choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
 				actions(choix);
 				break;
@@ -117,27 +117,35 @@ public class Controller {
 	
 	public void seDeplacer()
 	{
-		this.jeu.consequenceAction();
-		String choixDeplacement = this.vue.choixDeplacement();
-		this.model.deplacerPersonnage(this.jeu.getJoueur(), choixDeplacement, this.jeu);
+		int choixDeplacement = this.vue.choixDeplacement();
+
+		if (choixDeplacement != 0)
+		{
+			if(choixDeplacement != 1)
+			{
+				this.vue.afficherUnMessage("Veuillez entrer un caractère valide.");
+				this.seDeplacer();
+			}
+		}
+
+		String deplacement = this.model.deplacerPersonnage(this.jeu.getJoueur(), choixDeplacement, this.jeu);
+		String messageCsq = this.jeu.consequenceAction();
 		
-		this.verifEtatJeu("\n");
+		this.verifEtatJeu(deplacement+messageCsq);
 	}
 	
 	public void manger()
 	{
-		this.jeu.consequenceAction();
 		String message = this.model.manger(this.jeu.getJoueur());
-		
-		this.verifEtatJeu(message);
+		String messageCsq = this.jeu.consequenceAction();
+		this.verifEtatJeu(message+messageCsq);
 	}
 	
 	public void boirePotion()
 	{
-		this.jeu.consequenceAction();
 		String message = this.model.boirePotion(this.jeu.getJoueur());
-		
-		this.verifEtatJeu(message);
+		String messageCsq = this.jeu.consequenceAction();
+		this.verifEtatJeu(message+messageCsq);
 	}
 	
 	public void attaquer()
@@ -164,7 +172,7 @@ public class Controller {
 					numCase = this.jeu.getJoueur().getPosition();
 					break;
 				default:
-					System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
+					this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
 					actions(3);
 					break;
 			}
@@ -182,16 +190,16 @@ public class Controller {
 		{
 			if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
 			{
-				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
+				this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
 				actions(3);
 			}
 			else
 			{
-				this.jeu.consequenceAction();
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
 				this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
-				
-				this.verifEtatJeu("\n");
+
+				String messageCsq = this.jeu.consequenceAction();
+				this.verifEtatJeu(messageCsq);
 			}
 		}
 	}
@@ -210,28 +218,27 @@ public class Controller {
 		{
 			if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
 			{
-				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
+				this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
 				actions(4);
 			}
 			else
 			{
-				this.jeu.consequenceAction();
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
 				this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
-
-				this.verifEtatJeu("Vous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie.");
+				
+				String messageCsq = this.jeu.consequenceAction();
+				this.verifEtatJeu("Vous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie."+messageCsq);
 			}
 		}
 	}
 	
 	public void nettoyerCase()
 	{
-		this.jeu.consequenceAction();
 		Personnage personnage = this.jeu.getJoueur();
 		Case laCase = this.jeu.recupererCase(personnage.getPosition()+1);
-		this.jeu.getJoueur().nettoyer(laCase);
-		
-		this.verifEtatJeu("\n");
+		String message = this.jeu.getJoueur().nettoyer(laCase);
+		String messageCsq = this.jeu.consequenceAction();
+		this.verifEtatJeu(message+messageCsq);
 	}
 	
 	public void examinerCase()
@@ -248,15 +255,15 @@ public class Controller {
 		{
 			if(laCase > nbCase-1 || laCase < 0)
 			{
-				System.out.println("\n\nSaisie incorrecte, veuillez recommencer.\n");
+				this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
 				actions(5);
 			}
 			else
 			{
 				this.jeu.consequenceAction();
 				String infos = this.jeu.getCases().get(laCase).toString();
-				
-				this.verifEtatJeu(infos);
+				String messageCsq = this.jeu.consequenceAction();
+				this.verifEtatJeu(infos+messageCsq);
 			}
 		}
 	}
@@ -265,9 +272,9 @@ public class Controller {
 	{
 		Personnage personnage = this.jeu.getJoueur();
 		Case laCase = this.jeu.recupererCase(personnage.getPosition());
-		this.jeu.getJoueur().examinerCase(laCase);
-		
-		this.verifEtatJeu("\n");
+		String infosCase = this.jeu.getJoueur().examinerCase(laCase);
+		String messageCsq = this.jeu.consequenceAction();
+		this.verifEtatJeu(infosCase+"\n"+messageCsq);
 	}
 	
 	public void afficheInfoJeu()
@@ -281,15 +288,7 @@ public class Controller {
 	{	
 		this.jeu.ChangerTour();
 		
-		boolean vivant = this.model.personnageEstBienVivant(jeu);
-		boolean pasArrive = this.model.personnageEstSurObjectif(jeu);
-		boolean resteDuTemps = this.model.tempsNEstPasEcoule(jeu);
-		
-		if (vivant && pasArrive && resteDuTemps)
-		{
-			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-			actions(choix);
-		}
+		this.verifEtatJeu("Vous avez passé votre tour. \nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n");
 	}
 	
 	public void verifEtatJeu(String message)
@@ -305,7 +304,28 @@ public class Controller {
 		}
 		else
 		{
-			this.jeu.ChangerTour();
+			this.finDuJeu();
 		}
+	}
+	
+	/**
+	 * Affiche la fin du jeu
+	 */
+	private void finDuJeu()
+	{
+		if (this.jeu.getJoueur().getVie() <= 0)
+			this.vue.afficherUnMessage("Vous êtes mort...");
+			/*Afficher stats*/
+			else
+			{
+				if(this.jeu.getJourCourant() == this.jeu.getNbJour())
+					this.vue.afficherUnMessage("Votre temps est écoulé...");
+					/*Afficher stats*/
+					else
+					{
+						this.vue.afficherUnMessage("Félicitation! Vous avez réussi!");
+						/*Afficher stats*/
+					}
+			}
 	}
 }

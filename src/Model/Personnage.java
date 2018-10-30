@@ -36,10 +36,11 @@ public abstract class Personnage {
 	}
 	/**
 	 * Affiche les informations d'une case choisie
-	 * @param lacase La case choisie
+	 * @param laCase La case choisie
+	 * @return String Les informations de la case
 	 */
-	public void examinerCase(Case lacase) {
-		System.out.println(lacase.toString());
+	public String examinerCase(Case laCase) {
+		return laCase.toString();
 	}
 	
 	/**
@@ -48,37 +49,32 @@ public abstract class Personnage {
 	 * @param jeu
 	 * @return vrai(true) si le déplacement est valide, faux(false) sinon
 	 */
-	public boolean seDeplacer(String choix, Jeu jeu)
+	public boolean seDeplacer(int choix, Jeu jeu)
 	{
 		switch (choix) {
-		case "A" :
+		case 0 :
 			if (this.position == Jeu.getMaxCase())
 			{
-				System.out.println("Vous ne pouvez pas avancer.");
 				return false;
 			}
 			else
 			{
 				this.position++;
-				System.out.println("Vous avancez d'une case.");
 				jeu.recupererCase(this.position).degatPersonnage(this);
 				return true;
 			}
-		case "R" : 
+		case 1 : 
 			if (this.position == 0)
 			{
-				System.out.println("Vous ne pouvez pas reculer.");
 				return false;
 			}
 			else
 			{
 				this.position--;
-				System.out.println("Vous reculez d'une case.");
 				jeu.recupererCase(this.position).degatPersonnage(this);
 				return true;
 			}
 		default: 
-			System.out.println("Je ne comprends pas votre déplacement");
 			return false;
 		}
 	}
@@ -124,9 +120,9 @@ public abstract class Personnage {
 	 * 
 	 * @param laCase La case choisie
 	 */
-	public void nettoyer(Case laCase)
+	public String nettoyer(Case laCase)
 	{
-		laCase.nettoyerCase();
+		return laCase.nettoyerCase();
 	}
 	
 	/**
