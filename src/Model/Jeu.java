@@ -83,8 +83,8 @@ public class Jeu
     }
     
     /**
-     * 
-     * @return
+     * Permet de récupérer les cases
+     * @return ArrayList<Case> cases Les cases
      */
     public ArrayList<Case> getCases() 
     {
@@ -92,9 +92,9 @@ public class Jeu
     }
     
     /**
-     * 
-     * @param cases
-     */
+	 * Permet de modifier les cases
+	 * @param ArrayList<Case> cases Les cases
+	 */
 	public void setCases(ArrayList<Case> cases) 
 	{
 		this.cases = cases;
@@ -135,8 +135,8 @@ public class Jeu
     }
      
     /**
-     * 
-     * @return
+     * Permet de récupérer les oeufs
+     * @return ArrayList<Oeuf> oeufs Les oeufs
      */
     public ArrayList<Oeuf> getOeufs() 
     {
@@ -144,26 +144,26 @@ public class Jeu
     }
     
     /**
-     * 
-     * @param oeufs
-     */
+	 * Permet de modifier les oeufs
+	 * @param ArrayList<Oeuf> oeufs Les oeufs
+	 */
 	public void setOeufs(ArrayList<Oeuf> oeufs) 
 	{
 		this.oeufs = oeufs;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nom du personnage
+     * @return String nom Le nom du personnage
+     */
 	public String getNom() 
 	{
 		return nom;
 	}
 	
 	/**
-	 * 
-	 * @param nom
+	 * Permet de modifier le nom du personnage
+	 * @param String nom Le nom du personnage
 	 */
 	public void setNom(String nom) 
 	{
@@ -171,17 +171,17 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le personnage du joueur
+     * @return Personnage joueur Le personnage du joueur
+     */
 	public Personnage getJoueur() 
 	{
 		return joueur;
 	}
 	
 	/**
-	 * 
-	 * @param joueur
+	 * Permet de modifier le personnage du joueur
+	 * @param Personnage joueur Le personnage du joueur
 	 */
 	public void setJoueur(Personnage joueur) 
 	{
@@ -189,17 +189,17 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nombre de jours
+     * @return int nbJour Le nombre de jours
+     */
 	public int getNbJour() 
 	{
 		return nbJour;
 	}
 	
 	/**
-	 * 
-	 * @param nbJour
+	 * Permet de modifier le nombre de jours
+	 * @param int nbJour Le nombre de jours
 	 */
 	public void setNbJour(int nbJour) 
 	{
@@ -207,17 +207,17 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nombre d'heures
+     * @return int nbHeure Le nombre d'heures
+     */
 	public int getNbHeure() 
 	{
 		return nbHeure;
 	}
 	
 	/**
-	 * 
-	 * @param nbHeure
+	 * Permet de modifier le nombre d'heures
+	 * @param int nbHeure Le nombre d'heures
 	 */
 	public void setNbHeure(int nbHeure) 
 	{
@@ -225,26 +225,26 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nombre maximal de cases
+     * @return static int MAX_CASE Le nombre maximal de cases
+     */
 	public static int getMaxCase() 
 	{
 		return MAX_CASE;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le jour courant
+     * @return int jourCourant Le jour courant
+     */
 	public int getJourCourant() 
 	{
 		return jourCourant;
 	}
 	
 	/**
-	 * 
-	 * @param jourCourant
+	 * Permet de modifier le jour courant
+	 * @param int jourCourant Le jour courant
 	 */
 	public void setJourCourant(int jourCourant) 
 	{
@@ -338,7 +338,7 @@ public class Jeu
 	/**
 	 * Récupère tous les monstres, en choisi 4 et les fait se reproduire
 	 * 
-	 * @return void
+	 * @return String message
 	 */
 	private String nouvellesNaissances()
 	{
