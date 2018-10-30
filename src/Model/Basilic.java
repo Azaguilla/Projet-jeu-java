@@ -5,7 +5,7 @@ public class Basilic extends Monstre implements Rampant, Ovipare {
 	public Basilic(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
-	
+	/////////
 	@Override
 	public Oeuf pondreOeuf() {
 		System.out.println("Un oeuf est en cours de préparation.");
