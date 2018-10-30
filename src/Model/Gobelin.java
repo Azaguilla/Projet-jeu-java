@@ -1,6 +1,7 @@
 package Model;
 
-public class Gobelin extends Monstre implements Terrestre, Vivipare {
+public class Gobelin extends Monstre implements Terrestre, Vivipare 
+{
 	private int tempsGestation = 0;
 	private int dureeGestation = 2;
 	
@@ -13,7 +14,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare {
 	 * @param double age Age du Gobelin
 	 * @param boolean sommeil Etat de sommeil du Gobelin, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
-	public Gobelin(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
+	public Gobelin(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
+	{
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
 
@@ -21,7 +23,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare {
      * Permet de récupérer le temps de gestation du Goblelin
      * @return int tempsGestation Le temps de gestation du Goblelin
      */
-	public int getTempsGestation() {
+	public int getTempsGestation() 
+	{
 		return tempsGestation;
 	}
 
@@ -29,7 +32,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare {
 	 * Permet de modifier le temps de gestation du Goblelin
 	 * @param int tempsGestation Le temps de gestation du Goblelin
 	 */
-	public void setTempsGestation(int tempsGestation) {
+	public void setTempsGestation(int tempsGestation) 
+	{
 		this.tempsGestation = tempsGestation;
 	}
 
@@ -37,7 +41,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare {
      * Permet de récupérer la durée de gestation du Goblelin
      * @return int dureeGestation La durée de gestation du Goblelin
      */
-	public int getDureeGestation() {
+	public int getDureeGestation() 
+	{
 		return dureeGestation;
 	}
 
@@ -45,7 +50,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare {
 	 * Permet de modifier la durée de gestation du Goblelin
 	 * @param int dureeGestation La durée de gestation du Goblelin
 	 */
-	public void setDureeGestation(int dureeGestation) {
+	public void setDureeGestation(int dureeGestation) 
+	{
 		this.dureeGestation = dureeGestation;
 	}
 
@@ -62,7 +68,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare {
 	/**
 	 * 
 	 */
-	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
+	{
 		return this.vagabonder(seDeplacer, jeu);
 	}
 	

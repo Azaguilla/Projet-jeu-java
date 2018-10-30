@@ -1,6 +1,7 @@
 package Model;
 
-public class Guerrier extends Personnage {
+public class Guerrier extends Personnage 
+{
 	private static Personnage getInstance;
 
 	/**
@@ -9,7 +10,8 @@ public class Guerrier extends Personnage {
 	 * @param sexe Le sexe du Guerrier
 	 * @param classe La classe du Guerrier
 	 */
-	private Guerrier(String nom, String sexe, String classe) {
+	private Guerrier(String nom, String sexe, String classe) 
+	{
 		super(nom, sexe, classe);
 	}
 	
@@ -39,11 +41,12 @@ public class Guerrier extends Personnage {
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	@Override
-	public void attaquer(Monstre monstre, Jeu jeu) {
+	public void attaquer(Monstre monstre, Jeu jeu) 
+	{
 		System.out.println("Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce()*3, jeu);
 		monstre.setSommeil(false);
-		if(monstre.getVie() < 0)
+		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
 		}
@@ -67,7 +70,8 @@ public class Guerrier extends Personnage {
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setVie(this.getForce(), jeu);
-		if(monstre.getVie() < 0)
+		monstre.setSommeil(false);
+		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
 		}
@@ -83,7 +87,8 @@ public class Guerrier extends Personnage {
 	 * @return String caracPersonnage Les informations
 	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		String caracPersonnage;
 		switch (this.getSexe())
 		{

@@ -3,7 +3,8 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Jeu {
+public class Jeu 
+{
 	private String nom;
 	private Personnage joueur;
 	private int nbJour;
@@ -22,7 +23,8 @@ public class Jeu {
 	 * @param int nbJour Le nombre de jours
 	 * @param int nbHeure Le nombre d'heures
 	 */
-	public Jeu(String nom, Personnage joueur, int nbJour, int nbHeure) {
+	public Jeu(String nom, Personnage joueur, int nbJour, int nbHeure) 
+	{
 		super();
 		this.nom = nom;
 		this.joueur = joueur;
@@ -35,7 +37,8 @@ public class Jeu {
 	 * @return String Les informations
 	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "Jeu \n"
 				+ "Nom : " + nom + "\n"
 				+ "Joueur : " + joueur + "\n"
@@ -67,21 +70,24 @@ public class Jeu {
 	 * Sinon affiche un message d'erreur
 	 * @param laCase La case à supprimer
 	 */
-    public void SuppCase(Case laCase){
-    	if(this.cases.size() > 0){
+    public void SuppCase(Case laCase)
+    {
+    	if(this.cases.size() > 0)
+    	{
     		this.cases.remove(laCase);
         }
-    	else{
+    	else
+    	{
             System.out.println("Il n'y a plus de cases.");
-        }
-        
+        } 
     }
     
     /**
      * 
      * @return
      */
-    public ArrayList<Case> getCases() {
+    public ArrayList<Case> getCases() 
+    {
         return this.cases;
     }
     
@@ -89,7 +95,8 @@ public class Jeu {
      * 
      * @param cases
      */
-	public void setCases(ArrayList<Case> cases) {
+	public void setCases(ArrayList<Case> cases) 
+	{
 		this.cases = cases;
 	}
 
@@ -100,24 +107,28 @@ public class Jeu {
 	 */
 	public void ajoutOeuf(Oeuf oeuf)
 	{
-		if(this.oeufs.size()<MAX_OEUF){
+		if(this.oeufs.size()<MAX_OEUF)
+		{
 			this.oeufs.add(oeuf);
         }
-		else{
+		else
+		{
             System.out.println("Il y a trop d'oeuf.");
         }
-
 	}
 	
 	/**
 	 * Supprime un oeuf
 	 * @param oeuf L'oeuf à supprimer
 	 */
-    public void SuppOeuf(Oeuf oeuf){
-    	if(this.oeufs.size() > 0){
+    public void SuppOeuf(Oeuf oeuf)
+    {
+    	if(this.oeufs.size() > 0)
+    	{
     		this.oeufs.remove(oeuf);
         }
-		else{
+		else
+		{
             System.out.println("Il n'y a plus d'oeuf.");
         }
         
@@ -127,7 +138,8 @@ public class Jeu {
      * 
      * @return
      */
-    public ArrayList<Oeuf> getOeufs() {
+    public ArrayList<Oeuf> getOeufs() 
+    {
         return this.oeufs;
     }
     
@@ -135,7 +147,8 @@ public class Jeu {
      * 
      * @param oeufs
      */
-	public void setOeufs(ArrayList<Oeuf> oeufs) {
+	public void setOeufs(ArrayList<Oeuf> oeufs) 
+	{
 		this.oeufs = oeufs;
 	}
 	
@@ -143,7 +156,8 @@ public class Jeu {
 	 * 
 	 * @return
 	 */
-	public String getNom() {
+	public String getNom() 
+	{
 		return nom;
 	}
 	
@@ -151,7 +165,8 @@ public class Jeu {
 	 * 
 	 * @param nom
 	 */
-	public void setNom(String nom) {
+	public void setNom(String nom) 
+	{
 		this.nom = nom;
 	}
 	
@@ -159,7 +174,8 @@ public class Jeu {
 	 * 
 	 * @return
 	 */
-	public Personnage getJoueur() {
+	public Personnage getJoueur() 
+	{
 		return joueur;
 	}
 	
@@ -167,7 +183,8 @@ public class Jeu {
 	 * 
 	 * @param joueur
 	 */
-	public void setJoueur(Personnage joueur) {
+	public void setJoueur(Personnage joueur) 
+	{
 		this.joueur = joueur;
 	}
 	
@@ -175,7 +192,8 @@ public class Jeu {
 	 * 
 	 * @return
 	 */
-	public int getNbJour() {
+	public int getNbJour() 
+	{
 		return nbJour;
 	}
 	
@@ -183,7 +201,8 @@ public class Jeu {
 	 * 
 	 * @param nbJour
 	 */
-	public void setNbJour(int nbJour) {
+	public void setNbJour(int nbJour) 
+	{
 		this.nbJour = nbJour;
 	}
 	
@@ -191,7 +210,8 @@ public class Jeu {
 	 * 
 	 * @return
 	 */
-	public int getNbHeure() {
+	public int getNbHeure() 
+	{
 		return nbHeure;
 	}
 	
@@ -199,7 +219,8 @@ public class Jeu {
 	 * 
 	 * @param nbHeure
 	 */
-	public void setNbHeure(int nbHeure) {
+	public void setNbHeure(int nbHeure) 
+	{
 		this.nbHeure = nbHeure;
 	}
 	
@@ -207,7 +228,8 @@ public class Jeu {
 	 * 
 	 * @return
 	 */
-	public static int getMaxCase() {
+	public static int getMaxCase() 
+	{
 		return MAX_CASE;
 	}
 	
@@ -215,7 +237,8 @@ public class Jeu {
 	 * 
 	 * @return
 	 */
-	public int getJourCourant() {
+	public int getJourCourant() 
+	{
 		return jourCourant;
 	}
 	
@@ -223,7 +246,8 @@ public class Jeu {
 	 * 
 	 * @param jourCourant
 	 */
-	public void setJourCourant(int jourCourant) {
+	public void setJourCourant(int jourCourant) 
+	{
 		this.jourCourant = jourCourant;
 	}
 	

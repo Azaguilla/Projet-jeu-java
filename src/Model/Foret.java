@@ -39,7 +39,8 @@ public class Foret extends Case
      * Permet de récupérer la hauteur de la case foret
      * @return int hauteur La hauteur de la case foret
      */
-	public int getHauteur() {
+	public int getHauteur() 
+	{
 		return hauteur;
 	}
 
@@ -47,7 +48,8 @@ public class Foret extends Case
      * Permet de modifier la hauteur de la case foret
      * @param int hauteur La hauteur de la case foret
      */
-	public void setHauteur(int hauteur) {
+	public void setHauteur(int hauteur) 
+	{
 		this.hauteur = hauteur;
 	}
 
@@ -56,7 +58,8 @@ public class Foret extends Case
 	 * @param Personnage personnage Le personnage du joueur
 	 */
 	@Override
-	public void degatPersonnage(Personnage personnage) {
+	public void degatPersonnage(Personnage personnage) 
+	{
 		switch (this.getPollution()) {
 		case 1 :
 			System.out.println("Vous entrez une odeur étrange et désagréable. Le poison s'inflitre dans vos poumons et vous perdez 1 pts de vie.");
@@ -80,7 +83,8 @@ public class Foret extends Case
 	 * Permet de nettoyer la case foret si la case n'est pas déjà propre
 	 */
 	@Override
-	public void nettoyerCase() {
+	public void nettoyerCase() 
+	{
 		if(this.getPollution() == 0)
 		{
 			System.out.println("La case est déjà propre.");
@@ -102,7 +106,8 @@ public class Foret extends Case
 	 * 				   faux(false) si le monstre ne peut pas être ajouter ou si ce n'est pas un Ent ou un LoupGarou
 	 */
 	@Override
-	public boolean ajoutMonstre(Monstre monstre) {
+	public boolean ajoutMonstre(Monstre monstre) 
+	{
 		if(monstre instanceof Ent || monstre instanceof LoupGarou)
 		{
 			if(this.monstres.size()<this.getTaille()){

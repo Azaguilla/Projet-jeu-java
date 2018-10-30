@@ -59,7 +59,8 @@ public class Rodeur extends Personnage {
 		this.setEnergie(this.getEnergie()-5);
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce(), jeu);
-		if(monstre.getVie() < 0)
+		monstre.setSommeil(false);
+		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
 		}

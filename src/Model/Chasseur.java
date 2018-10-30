@@ -53,6 +53,7 @@ public class Chasseur extends Personnage
 		System.out.println("L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce(), jeu);
 		this.setEnergie(this.getEnergie()-5);
+		monstre.setSommeil(false);
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
@@ -86,7 +87,8 @@ public class Chasseur extends Personnage
 	 * @return String caracPersonnage Les informations
 	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		String caracPersonnage;
 		switch (this.getSexe())
 		{

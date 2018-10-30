@@ -7,7 +7,8 @@ public final class Magicien extends Personnage {
 	public void attaquer(Monstre monstre, Jeu jeu) {
 		System.out.println("Vous sortez votre dague et vous infligez "+this.getForce()+" pts de dégât au monstre.");
 		monstre.setVie(this.getForce(), jeu);
-		if(monstre.getVie() < 0)
+		monstre.setSommeil(false);
+		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
 		}
@@ -24,7 +25,7 @@ public final class Magicien extends Personnage {
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setVie(this.getForce()*3, jeu);
 		monstre.setSommeil(false);
-		if(monstre.getVie() < 0)
+		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
 		}
