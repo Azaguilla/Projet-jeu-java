@@ -1,21 +1,44 @@
 package Model;
 
-public class Blob extends Monstre implements Rampant {
-
+public class Blob extends Monstre implements Rampant 
+{
+	/**
+	 * Monstre de l'espèce des Blob
+	 * @param String nom Nom du Blob
+	 * @param int sexe Sexe du Blob
+	 * @param int poids Poids du Blob
+	 * @param int taille Taille du Blob
+	 * @param double age Age du Blob
+	 * @param boolean sommeil Etat de sommeil du Blob, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 */
 	public Blob(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
 
+	//TODO javadoc
+	/**
+	 * 
+	 */
 	@Override
-	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) {
+	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) 
+	{
 		return seDeplacer.ramper(this, jeu);
 	}
 
+	/**
+	 * Détermine le son du monstre
+	 * @return String Le son et le nom du Blob
+	 */
 	@Override
-	public String son() {
+	public String son() 
+	{
 		return "Le Blob "+this.getNom()+" gargouille de manière écoeurante.";
 	}
 	
+	/**
+	 * Crée un nouveau Blob identique
+	 * @return Blob Un nouveau Blob
+	 */
 	public Blob seDiviser()
 	{
 		int sexe = this.getSexe();
@@ -25,12 +48,25 @@ public class Blob extends Monstre implements Rampant {
 		return new Blob("Blob", sexe, poids, taille, 0, false);
 	}
 	
-	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+	//TODO javadoc
+	/**
+	 * 
+	 */
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
+	{
 		return this.ramper(seDeplacer, jeu);
 	}
 
+	//TODO vérifier la doc
+	/**
+	 * Le monstre entre en gestation et crée un nouveau monstre identique
+	 * Si le monstre peut etre placé dans son terrain le monstre est placé
+	 * Sinon il meurt
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 */
 	@Override
-	public void gestation(Jeu jeu) {
+	public void gestation(Jeu jeu) 
+	{
 		System.out.println("Un Blob s'est divisé !");
 		Monstre monstre = this.seDiviser();		
 		int numCase = this.getNumCaseActuelle();

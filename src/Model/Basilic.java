@@ -1,13 +1,28 @@
 package Model;
 
-public class Basilic extends Monstre implements Rampant, Ovipare {
-
+public class Basilic extends Monstre implements Rampant, Ovipare 
+{
+	/**
+	 * Monstre de l'espèce des Basilics
+	 * @param String nom Nom du Basilic
+	 * @param int sexe Sexe du Basilic
+	 * @param int poids Poids du Basilic
+	 * @param int taille Taille du Basilic
+	 * @param double age Age du Basilic
+	 * @param boolean sommeil Etat de sommeil du Basilic, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 */
 	public Basilic(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
-	/////////
+	
+	/**
+	 * Initialise au hasard les caracteristiques du bébé
+	 * Crée un nouveau monstre bebe
+	 * @return Oeuf Un nouvel oeuf avec son temps d'incubation et le bebe qu'in contient
+	 */
 	@Override
-	public Oeuf pondreOeuf() {
+	public Oeuf pondreOeuf() 
+	{
 		System.out.println("Un oeuf est en cours de préparation.");
 		int sexe = (int) Math.round(Math.random());
 		int taille = (int) Math.round(Math.random()*2);
@@ -18,22 +33,46 @@ public class Basilic extends Monstre implements Rampant, Ovipare {
 		return new Oeuf(2, bebe);
 	}
 
+	//TODO javadoc
+		/**
+		 * 
+		 * 
+		 */
 	@Override
-	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) {
+	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) 
+	{
 		return seDeplacer.ramper(this, jeu);
 	}
 	
-	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+	//TODO javadoc
+		/**
+		 * 
+		 * 
+		 */
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
+	{
 		return this.ramper(seDeplacer, jeu);
 	}
 
+	//TODO inclure les sons après un déplacement
+		/**
+		 * Détermine le son du monstre
+		 * @return String Le son et le nom du Basilic
+		 */
 	@Override
-	public String son() {
+	public String son() 
+	{
 		return "Le Basilic "+this.getNom()+" siffle au fond du Marais.";
 	}
 
+	//TODO vérifier doc
+		/**
+		 * Le monstre entre en gestation d'un oeuf
+		 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+		 */
 	@Override
-	public void gestation(Jeu jeu) {
+	public void gestation(Jeu jeu) 
+	{
 		Oeuf oeuf = this.pondreOeuf();
 		jeu.ajoutOeuf(oeuf);
 	}

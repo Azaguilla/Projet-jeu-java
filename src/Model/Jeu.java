@@ -15,6 +15,13 @@ public class Jeu {
 	protected ArrayList<Oeuf> oeufs = new ArrayList<>(MAX_OEUF);
 	private Random rand = new Random();
 	
+	/**
+	 * Le jeu
+	 * @param String nom Le nom du personnage
+	 * @param Personnage joueur Le personnage du joueur
+	 * @param int nbJour Le nombre de jours
+	 * @param int nbHeure Le nombre d'heures
+	 */
 	public Jeu(String nom, Personnage joueur, int nbJour, int nbHeure) {
 		super();
 		this.nom = nom;
@@ -23,6 +30,10 @@ public class Jeu {
 		this.nbJour = nbJour;
 	}
 	
+	/**
+	 * Affiche les informations du jeu
+	 * @return String Les informations
+	 */
 	@Override
 	public String toString() {
 		return "Jeu \n"
@@ -465,7 +476,7 @@ public class Jeu {
 	 */
 	public void consequenceAction()
 	{
-		System.out.println("Les heures tournent. Vous perdez une heure de temps à faire votre action.");
+		System.out.println("Les heures tournent. Vous perdez une heure de temps à faire votre action. Il vous reste \"+this.nbHeure+\"heures.");
 		this.nbHeure --;
 		if(this.nbHeure == 0)
 		{

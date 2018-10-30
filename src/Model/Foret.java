@@ -1,17 +1,31 @@
 package Model;
 
-public class Foret extends Case {
+public class Foret extends Case 
+{
 
 	private int hauteur;
 	//private boolean toiles;
 
-	public Foret(int numCase, int taille, int pollution, int hauteur) {
+	/**
+	 * Le type de biome de la case
+	 * @param int numCase Le numéro de la case foret
+	 * @param int taille La taille de la case foret
+	 * @param int pollution La pollution de la case foret
+	 * @param int hauteur La hauteur de la case foret
+	 */
+	public Foret(int numCase, int taille, int pollution, int hauteur) 
+	{
 		super(numCase, taille, pollution);
 		this.hauteur = hauteur;
 	}
 
+	/**
+	 * Affiche les information de la case foret
+	 * @return Les informations
+	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "\n\n--------Foret--------  \n"
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Hauteur : " + hauteur + "\n"
@@ -21,14 +35,26 @@ public class Foret extends Case {
 				+ "LES MONSTRES : \n" + getMonstres() + "\n";
 	}
 
+	/**
+     * Permet de récupérer la hauteur de la case foret
+     * @return int hauteur La hauteur de la case foret
+     */
 	public int getHauteur() {
 		return hauteur;
 	}
 
+	/**
+     * Permet de modifier la hauteur de la case foret
+     * @param int hauteur La hauteur de la case foret
+     */
 	public void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
 
+	/**
+	 * Inflige des dégats au personnage selon de niveau de pollution de la case foret
+	 * @param Personnage personnage Le personnage du joueur
+	 */
 	@Override
 	public void degatPersonnage(Personnage personnage) {
 		switch (this.getPollution()) {
@@ -50,6 +76,9 @@ public class Foret extends Case {
 		}
 	}
 
+	/**
+	 * Permet de nettoyer la case foret si la case n'est pas déjà propre
+	 */
 	@Override
 	public void nettoyerCase() {
 		if(this.getPollution() == 0)
@@ -66,6 +95,12 @@ public class Foret extends Case {
 		//{this.toiles == false; heure --;}
 	}
 
+	/**
+	 * Ajoute un monstres qui ne peut se trouver que dans les forets (Ent et LoupGarou)
+	 * @param Monstre monstre Le monstre a ajouter
+	 * @return boolean vrai(true) si le monste est un Ent ou un LoupGarou et si le monstre peut être ajouté
+	 * 				   faux(false) si le monstre ne peut pas être ajouter ou si ce n'est pas un Ent ou un LoupGarou
+	 */
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) {
 		if(monstre instanceof Ent || monstre instanceof LoupGarou)
