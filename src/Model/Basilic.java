@@ -34,10 +34,10 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	}
 
 	//TODO javadoc
-		/**
-		 * 
-		 * 
-		 */
+	/**
+	 * 
+	 * 
+	 */
 	@Override
 	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) 
 	{
@@ -45,20 +45,20 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	}
 	
 	//TODO javadoc
-		/**
-		 * 
-		 * 
-		 */
+	/**
+	 * 
+	 * 
+	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
 	{
 		return this.ramper(seDeplacer, jeu);
 	}
 
 	//TODO inclure les sons après un déplacement
-		/**
-		 * Détermine le son du monstre
-		 * @return String Le son et le nom du Basilic
-		 */
+	/**
+	 * Détermine le son du monstre
+	 * @return String Le son et le nom du Basilic
+	 */
 	@Override
 	public String son() 
 	{
@@ -66,11 +66,11 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	}
 
 	//TODO vérifier doc
-		/**
-		 * Le monstre entre en gestation d'un oeuf
-		 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-		 * @return String
-		 */
+	/**
+	 * Le monstre entre en gestation d'un oeuf
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
+	 */
 	@Override
 	public String gestation(Jeu jeu) 
 	{

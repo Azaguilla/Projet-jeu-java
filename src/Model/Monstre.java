@@ -7,7 +7,8 @@ package Model;
  * @author Laurie
  *
  */
-public abstract class Monstre {
+public abstract class Monstre 
+{
 	private String nom;
 	private int sexe;
 	private int poids;
@@ -28,7 +29,8 @@ public abstract class Monstre {
 	 * @param double age
 	 * @param boolean sommeil
 	 */
-	public Monstre(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
+	public Monstre(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
+	{
 		super();
 		this.nom = nom;
 		this.sexe = sexe;
@@ -42,7 +44,8 @@ public abstract class Monstre {
 	 * @return String Les information
 	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return " \n\nMonstre \n"
 				+ " Espèce : " + nom + "\n"
 				+ " Sexe : " + sexe + "\n"
@@ -60,7 +63,8 @@ public abstract class Monstre {
      * Permet de récupérer le nom du monstre
      * @return String nom Le nom du monstre
      */
-	public String getNom() {
+	public String getNom() 
+	{
 		return nom;
 	}
 	
@@ -68,7 +72,8 @@ public abstract class Monstre {
 	 * Permet de modifier le nom du monstre
 	 * @param String nom Le nom du monstre
 	 */
-	public void setNom(String nom) {
+	public void setNom(String nom) 
+	{
 		this.nom = nom;
 	}
 	
@@ -76,7 +81,8 @@ public abstract class Monstre {
      * Permet de récupérer le sexe du monstre
      * @return int sexe Le sexe du monstre
      */
-	public int getSexe() {
+	public int getSexe() 
+	{
 		return sexe;
 	}
 	
@@ -84,7 +90,8 @@ public abstract class Monstre {
 	 * Permet de modifier le sexe du monstre
 	 * @param int sexe Le sexe du monstre
 	 */
-	public void setSexe(int sexe) {
+	public void setSexe(int sexe) 
+	{
 		this.sexe = sexe;
 	}
 	
@@ -92,7 +99,8 @@ public abstract class Monstre {
      * Permet de récupérer la taille du monstre
      * @return int taille La taille du monstre
      */
-	public int getTaille() {
+	public int getTaille() 
+	{
 		return taille;
 	}
 	
@@ -100,7 +108,8 @@ public abstract class Monstre {
 	 * Permet de modifier la taille du monstre
 	 * @param int taille La taille du monstre
 	 */
-	public void setTaille(int taille) {
+	public void setTaille(int taille) 
+	{
 		this.taille = taille;
 	}
 	
@@ -108,7 +117,8 @@ public abstract class Monstre {
      * Permet de récupérer l'age du monstre
      * @return double age l'age du monstre
      */
-	public double getAge() {
+	public double getAge() 
+	{
 		return age;
 	}
 
@@ -116,7 +126,8 @@ public abstract class Monstre {
 	 * Permet de modifier l'age du monstre
 	 * @param double age l'age du monstre
 	 */
-	public void setAge(double age) {
+	public void setAge(double age) 
+	{
 		this.age = age;
 	}
 
@@ -124,7 +135,8 @@ public abstract class Monstre {
      * Permet de récupérer la force du monstre
      * @return int force La force du monstre
      */
-	public int getForce() {
+	public int getForce() 
+	{
 		return this.force;
 	}
 	
@@ -132,7 +144,8 @@ public abstract class Monstre {
 	 * Permet de modifier la force du monstre
 	 * @param int force La force du monstre
 	 */
-	public void setForce(int force) {
+	public void setForce(int force) 
+	{
 		this.force = this.force + force;
 	}
 	
@@ -140,7 +153,8 @@ public abstract class Monstre {
      * Permet de récupérer la vie du monstre
      * @return int vie La vie du monstre
      */
-	public int getVie() {
+	public int getVie() 
+	{
 		return vie;
 	}
 	
@@ -150,7 +164,8 @@ public abstract class Monstre {
 	 * @param int degat Dégats infligés
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
-	public void setVie(int degat, Jeu jeu) {
+	public void setVie(int degat, Jeu jeu) 
+	{
 		if(this.vie <= 0)
 		{
 			this.mourir(jeu);
@@ -165,7 +180,8 @@ public abstract class Monstre {
 	 * Vérifie l'état de sommeil du monstre
 	 * @return boolean sommeil L'état de sommeil du monstre
 	 */
-	public boolean isSommeil() {
+	public boolean isSommeil() 
+	{
 		return sommeil;
 	}
 	
@@ -173,7 +189,8 @@ public abstract class Monstre {
 	 * Permet de modifier le sommeil du monstre
 	 * @param boolean sommeil L'état de sommeil du monstre
 	 */
-	public void setSommeil(boolean sommeil) {
+	public void setSommeil(boolean sommeil) 
+	{
 		this.sommeil = sommeil;
 	}
 	
@@ -189,7 +206,8 @@ public abstract class Monstre {
      * Permet de récupérer le poids du monstre
      * @return int poids Le poids du monstre
      */
-	public int getPoids() {
+	public int getPoids() 
+	{
 		return poids;
 	}
 	
@@ -197,7 +215,8 @@ public abstract class Monstre {
 	 * Permet de modifier le poids du monstre
 	 * @param int poids Le poids du monstre
 	 */
-	public void setPoids(int poids) {
+	public void setPoids(int poids) 
+	{
 		this.poids = poids;
 	}
 	
@@ -205,7 +224,8 @@ public abstract class Monstre {
      * Permet de récupérer le numéro de la case actuelle
      * @return int numCaseActuelle Le numéro de la case actuelle
      */
-	public int getNumCaseActuelle() {
+	public int getNumCaseActuelle() 
+	{
 		return numCaseActuelle;
 	}
 	
@@ -213,7 +233,8 @@ public abstract class Monstre {
 	 * Permet de modifier le numéro de la case actuelle
 	 * @param int numCaseActuelle Le numéro de la case actuelle
 	 */
-	public void setNumCaseActuelle(int numCaseActuelle) {
+	public void setNumCaseActuelle(int numCaseActuelle) 
+	{
 		this.numCaseActuelle = numCaseActuelle;
 	}
 	
@@ -221,7 +242,8 @@ public abstract class Monstre {
      * Permet de récupérer l'état de gestation du monstre
      * @return boolean enGestation L'état de gestation du monstre
      */
-	public boolean isEnGestation() {
+	public boolean isEnGestation() 
+	{
 		return enGestation;
 	}
 	
@@ -229,7 +251,8 @@ public abstract class Monstre {
 	 * Permet de modifier l'état de gestation du monstre
 	 * @param boolean enGestation L'état de gestation du monstre
 	 */
-	public void setEnGestation(boolean enGestation) {
+	public void setEnGestation(boolean enGestation) 
+	{
 		this.enGestation = enGestation;
 	}
 	

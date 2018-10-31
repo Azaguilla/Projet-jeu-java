@@ -1,13 +1,27 @@
 package Model;
 
-public class Plaine extends Case {
+public class Plaine extends Case 
+{
 	
-	public Plaine(int numCase, int taille, int pollution) {
+	/**
+	 * Le type de biome de la case
+	 * @param int numCase Le numéro de la case plaine
+	 * @param int taille La taille de la case plaine
+	 * @param int pollution La pollution de la case plaine
+	 * @param int hauteur La hauteur de la case plaine
+	 */
+	public Plaine(int numCase, int taille, int pollution) 
+	{
 		super(numCase, taille, pollution);
 	}
 	
+	/**
+	 * Affiche les information de la case plaine
+	 * @return Les informations
+	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "\n\n--------Plaine-------- \n"
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Taille : " + getTaille() + "\n"
@@ -16,9 +30,13 @@ public class Plaine extends Case {
 				+ "LES MONSTRES : \n" + getMonstres() + "\n";
 	}
 
-
+	/**
+	 * Inflige des dégats au personnage selon de niveau de pollution de la case plaine
+	 * @param Personnage personnage Le personnage du joueur
+	 */
 	//Inflige des degats au personnage selon le niveau de pollution
-	public String degatPersonnage(Personnage personnage) {
+	public String degatPersonnage(Personnage personnage) 
+	{
 		switch (this.getPollution()) {
 		case 1 :
 			personnage.setVie(personnage.getVie()-1);
@@ -28,15 +46,19 @@ public class Plaine extends Case {
 			return "Pollution niveau 2 : vous perdez 2 pts de vie.";
 		case 3 : 
 			personnage.setVie(personnage.getVie()-3);
-			return "Pollution niveau 1 : vous perdez 3 pts de vie.";
+			return "Pollution niveau 3 : vous perdez 3 pts de vie.";
 		default: 
 			personnage.setVie(personnage.getVie());
 			return "Le vent frais souffle sur votre visage, le soleil illumine la plaine luxuriante.";
 		}
 	}
 
+	/**
+	 * Permet de nettoyer la case plaine si la case n'est pas déjà propre
+	 */
 	@Override
-	public String nettoyerCase() {
+	public String nettoyerCase() 
+	{
 		if(this.getPollution() == 0)
 		{
 			return "\nLa case est déjà propre.\n";
@@ -48,9 +70,17 @@ public class Plaine extends Case {
 		}
 	}
 	
+	/**
+	 * Ajoute un monstres
+	 * @param Monstre monstre Le monstre a ajouter
+	 * @return boolean vrai(true) si le monstre peut être ajouté
+	 * 				   faux(false) si le monstre ne peut pas être ajouté
+	 */
 	@Override
-	public boolean ajoutMonstre(Monstre monstre) {
-		if(this.monstres.size()<this.getTaille()){
+	public boolean ajoutMonstre(Monstre monstre) 
+	{
+		if(this.monstres.size()<this.getTaille())
+		{
 			monstre.setNumCaseActuelle(this.getNumCase());
 			this.monstres.add(monstre);
 			this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 

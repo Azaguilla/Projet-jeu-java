@@ -97,7 +97,7 @@ public class Marais extends Case
 	 * Ajoute un monstres qui ne peut se trouver que dans les marais (Blobs et Basilics)
 	 * @param Monstre monstre Le monstre a ajouter
 	 * @return boolean vrai(true) si le monste est un Blob ou un Basilic et si le monstre peut être ajouté
-	 * 				   faux(false) si le monstre ne peut pas être ajouter ou si ce n'est pas un Blob ou un Basilic
+	 * 				   faux(false) si le monstre ne peut pas être ajouté ou si ce n'est pas un Blob ou un Basilic
 	 */
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) {

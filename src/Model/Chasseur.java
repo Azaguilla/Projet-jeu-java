@@ -6,9 +6,9 @@ public class Chasseur extends Personnage
 	
 	/**
 	 * Personnage Chasseur
-	 * @param nom Le nom du chasseur
-	 * @param sexe Le sexe du chasseur
-	 * @param classe La classe du chasseur
+	 * @param nom Le nom du Chasseur
+	 * @param sexe Le sexe du Chasseur
+	 * @param classe La classe du Chasseur
 	 */
 	private Chasseur(String nom, String sexe, String classe)
 	{

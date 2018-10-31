@@ -7,7 +7,8 @@ package Model;
  * @author Laurie
  *
  */
-public abstract class Personnage {
+public abstract class Personnage 
+{
 	private String nom;
 	private String sexe;
 	private int age;
@@ -21,7 +22,14 @@ public abstract class Personnage {
 	protected final static int MAX_VIE = 10;
 	private int position;
 	
-	 public Personnage(String nom, String sexe, String classe) {
+	/**
+	 * Le personnage du joueur
+	 * @param String nom Le nom du personnage
+	 * @param String sexe Le sexe du personnage
+	 * @param String classe La classe du personnage
+	 */
+	 public Personnage(String nom, String sexe, String classe) 
+	 {
 		super();
 		this.nom = nom;
 		this.sexe = sexe;
@@ -36,18 +44,19 @@ public abstract class Personnage {
 	}
 	/**
 	 * Affiche les informations d'une case choisie
-	 * @param laCase La case choisie
+	 * @param Case laCase La case choisie
 	 * @return String Les informations de la case
 	 */
-	public String examinerCase(Case laCase) {
+	public String examinerCase(Case laCase) 
+	{
 		return laCase.toString();
 	}
 	
 	/**
 	 * Avance ou recule le personnage d'une case selon le choix
-	 * @param choix Avancer(A) ou Reculer(R)
-	 * @param jeu
-	 * @return vrai(true) si le déplacement est valide, faux(false) sinon
+	 * @param int choix Avancer ou Reculer
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return boolean vrai(true) si le déplacement est valide, faux(false) sinon
 	 */
 	public boolean seDeplacer(int choix, Jeu jeu)
 	{
@@ -80,7 +89,7 @@ public abstract class Personnage {
 	/**
 	 * Ajoute de la vie au personnage si elle n'est pas au maximum
 	 * Sinon affiche un message d'erreur
-	 * @return Affichage de la quantité de vie après ajout
+	 * @return String Un message
 	 */
 	public String boirePotion()
 	{
@@ -98,7 +107,7 @@ public abstract class Personnage {
 	/**
 	 * Ajoute de l'énergie au personnage si elle n'est pas au maximum
 	 * Sinon affiche un message d'erreur
-	 * @return Affichage de la quantité d'énergie après ajout
+	 * @return String Un message
 	 */
 	public String manger()
 	{
@@ -113,19 +122,21 @@ public abstract class Personnage {
 		}
 		
 	}
-	
+	//TODO vérifier return type
 	/**
-	 * 
-	 * @param laCase La case choisie
+	 * Permet de nettoyer la case
+	 * @param Case laCase La case choisie
+	 * @return String laCase.nettoyerCase()
 	 */
 	public String nettoyer(Case laCase)
 	{
 		return laCase.nettoyerCase();
 	}
 	
+	
 	/**
-	 * 
-	 * @param jeu
+	 * Permet de changer de tour
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	public void finDeTour(Jeu jeu)
 	{
@@ -133,162 +144,182 @@ public abstract class Personnage {
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public String getNom() {
+     * Permet de récupérer le nom du personnage
+     * @return String nom Le nom du personnage
+     */
+	public String getNom() 
+	{
 		return nom;
 	}
 	
 	/**
-	 * 
-	 * @param nom
+	 * Permet de modifier le nom du personnage
+	 * @param String nom Le nom du personnage
 	 */
-	public void setNom(String nom) {
+	public void setNom(String nom) 
+	{
 		this.nom = nom;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public String getSexe() {
+     * Permet de récupérer le sexe du personnage
+     * @return String sexe Le sexe du personnage
+     */
+	public String getSexe() 
+	{
 		return sexe;
 	}
 	
 	/**
-	 * 
-	 * @param sexe
+	 * Permet de modifier le sexe du personnage
+	 * @param String sexe Le sexe du personnage
 	 */
-	public void setSexe(String sexe) {
+	public void setSexe(String sexe) 
+	{
 		this.sexe = sexe;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public int getAge() {
+     * Permet de récupérer l'age du personnage
+     * @return int age L'age du personnage
+     */
+	public int getAge() 
+	{
 		return age;
 	}
 	
 	/**
-	 * 
-	 * @param age
+	 * Permet de modifier l'age du personnage
+	 * @param int age L'age du personnage
 	 */
-	public void setAge(int age) {
+	public void setAge(int age) 
+	{
 		this.age = age;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public String getClasse() {
+     * Permet de récupérer la classe du personnage
+     * @return String classe La classe du personnage
+     */
+	public String getClasse() 
+	{
 		return classe;
 	}
 	
 	/**
-	 * 
-	 * @param classe
+	 * Permet de modifier la classe du personnage
+	 * @param String classe La classe du personnage
 	 */
-	public void setClasse(String classe) {
+	public void setClasse(String classe) 
+	{
 		this.classe = classe;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public int getTaille() {
+     * Permet de récupérer la taille du personnage
+     * @return int taille La taille du personnage
+     */
+	public int getTaille() 
+	{
 		return taille;
 	}
 	
 	/**
-	 * 
-	 * @param taille
+	 * Permet de modifier la taille du personnage
+	 * @param int taille La taille du personnage
 	 */
-	public void setTaille(int taille) {
+	public void setTaille(int taille) 
+	{
 		this.taille = taille;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public int getPoids() {
+     * Permet de récupérer le poids du personnage
+     * @return int poids Le poids du personnage
+     */
+	public int getPoids() 
+	{
 		return poids;
 	}
 	
 	/**
-	 * 
-	 * @param poids
+	 * Permet de modifier le poids du personnage
+	 * @param int poids Le poids du personnage
 	 */
-	public void setPoids(int poids) {
+	public void setPoids(int poids) 
+	{
 		this.poids = poids;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public int getEnergie() {
+     * Permet de récupérer l'energie du personnage
+     * @return int energie L'energie du personnage
+     */
+	public int getEnergie() 
+	{
 		return energie;
 	}
 	
 	/**
-	 * 
-	 * @param energie
+	 * Permet de modifier l'energie du personnage
+	 * @param int energie L'energie du personnage
 	 */
-	public void setEnergie(int energie) {
+	public void setEnergie(int energie) 
+	{
 		this.energie = energie;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public int getForce() {
+     * Permet de récupérer la force du personnage
+     * @return int force La force du personnage
+     */
+	public int getForce() 
+	{
 		return force;
 	}
 	
 	/**
-	 * 
-	 * @param force
+	 * Permet de modifier la force du personnage
+	 * @param int force La force du personnage
 	 */
-	public void setForce(int force) {
+	public void setForce(int force) 
+	{
 		this.force = force;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public int getVie() {
+     * Permet de récupérer la vie du personnage
+     * @return int vie La vie du personnage
+     */
+	public int getVie() 
+	{
 		return vie;
 	}
 	
 	/**
-	 * 
-	 * @param vie
+	 * Permet de modifier la vie du personnage
+	 * @param int vie La vie du personnage
 	 */
-	public void setVie(int vie) {
+	public void setVie(int vie) 
+	{
 		this.vie = vie;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
-	public int getPosition() {
+     * Permet de récupérer la position du personnage
+     * @return int position La position du personnage
+     */
+	public int getPosition() 
+	{
 		return position;
 	}
 	
 	/**
-	 * 
-	 * @param position
+	 * Permet de modifier la position du personnage
+	 * @param int position La position du personnage
 	 */
-	public void setPosition(int position) {
+	public void setPosition(int position) 
+	{
 		this.position = position;
 	}
 
