@@ -361,7 +361,7 @@ public class Jeu
 			Monstre monstre = monstres.get(n);
 			if(!monstre.isEnGestation() && monstre.getSexe() != 1)
 			{
-				message =  monstre.gestation(this);
+				message =  message+monstre.gestation(this);
 			}
 			i++;
 		}
@@ -383,17 +383,17 @@ public class Jeu
 		String message = "";
 		for (int i = 0; i < this.oeufs.size(); i++)
 		{
-			if(this.oeufs.get(i).getTempsIncub() >= 0)		//changé en > pour éviter les erreurs (-1...)
+			if(this.oeufs.get(i).getTempsIncub() >= 1)		//changé en > pour éviter les erreurs (-1...)
 			{
 				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
 				this.oeufs.get(i).setTempsIncub(newTempsIncub);
-				message = "Des oeufs sont encore en incubation.\n";
+				message += "Des oeufs sont encore en incubation.\n";
 				System.out.println("Oeuf "+i+" : "+this.oeufs.get(i).getTempsIncub());
 			}
 			else
 			{
 				System.out.println("sysoUn oeuf a éclot !");
-				message = "Un oeuf a éclot !\n";
+				message += "Un oeuf a éclot !\n";
 				Monstre monstre = this.oeufs.get(i).eclore();
 				int numCase = oeufs.get(i).getNumCaseMere();
 				Case laCase = this.recupererCase(numCase);
@@ -405,7 +405,7 @@ public class Jeu
 					{
 						System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 						monstrePlace = true;
-						message += "Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase()+"\n";
+						message += "\nLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase()+"\n";
 					}
 					else
 					{
@@ -413,7 +413,7 @@ public class Jeu
 						{
 							System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 							monstrePlace = true;
-							message += "Un jeune monstre est mort car aucun terrain ne lui était favorable.\n";
+							message += "\nUn jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 						}
 						else
 						{
@@ -434,7 +434,7 @@ public class Jeu
 				Monstre monstre = this.cases.get(i).monstres.get(j);
 				if (monstre.isEnGestation())
 				{
-					message += monstre.gestation(this);
+					message = message+ monstre.gestation(this);
 				}
 			}
 		}

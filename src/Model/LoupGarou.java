@@ -90,7 +90,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare {
 		{
 			this.tempsGestation++;
 			this.setEnGestation(true);
-			return "Le monstre "+this.getNom()+" est toujours en gestation";
+			return "Le monstre "+this.getNom()+" est en gestation";
 		}
 	}
 	

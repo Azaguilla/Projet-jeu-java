@@ -78,7 +78,7 @@ public class Blob extends Monstre implements Rampant
 			if(laCase.ajoutMonstre(monstre))
 			{
 				System.out.println("sysoLe monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
-				message = "Un Blob s'est divisé ! Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase();
+				message = "\nUn Blob s'est divisé ! Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase()+"\n";
 				monstrePlace = true;
 			}
 			else
@@ -86,7 +86,7 @@ public class Blob extends Monstre implements Rampant
 				if(numCase == 19)
 				{
 					System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
-					message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.";
+					message = "\nUn jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 					monstrePlace = true;
 				}
 				else

@@ -13,7 +13,7 @@ public class Wyverne extends Monstre implements Volant, Ovipare{
 		int taille = (int) Math.round(Math.random()*2);
 		int poids = (int) Math.round(30+Math.random()*10);
 		
-		Monstre bebe = new Basilic("Basilic", sexe, poids, taille, 0, false);
+		Monstre bebe = new Wyverne("Wyverne", sexe, poids, taille, 0, false);
 		
 		return new Oeuf(2, bebe);
 	}
