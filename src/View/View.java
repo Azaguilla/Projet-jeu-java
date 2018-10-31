@@ -9,11 +9,19 @@ import Model.Personnage;
 
 public class View {
 	
+	/**
+	 * Afficher le message
+	 * @param String message Le message à afficher
+	 */
 	public void afficherUnMessage(String message)
 	{
 		System.out.println(message);
 	}
 	
+	/**
+	 * Affiche le choix de classe
+	 * @return int classe La classe choisie
+	 */
 	public int AfficherDemandeClasse()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -23,6 +31,10 @@ public class View {
 		return classe;
 	}
 	
+	/**
+	 * Affiche le choix de sexe, femme ou homme
+	 * @return String sexe Le sexe choisi
+	 */
 	public String AfficherDemandeSexe()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -32,6 +44,10 @@ public class View {
 		return sexe;
 	}
 	
+	/**
+	 * Affiche la demande du nom
+	 * @return String nom Le nom choisi
+	 */
 	public String AfficherDemandePersonnage()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -41,6 +57,10 @@ public class View {
 		return nom;
 	}
 	
+	/**
+	 * Affiche le choix de déplacement, avancer ou reculer
+	 * @return int choix Le choix de déplacement
+	 */
 	public int choixDeplacement()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -50,6 +70,12 @@ public class View {
 		return choix;
 	}
 	
+	/**
+	 * Affiche le menu du choix des actions
+	 * @param String message Le message à afficher
+	 * @param Personnage personnage Le personnage du joueur
+	 * @return int choix Le choix de l'action
+	 */
 	public int AfficherMenu(String message, Personnage personnage)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -74,6 +100,10 @@ public class View {
 		return choix;
 	}
 	
+	/**
+	 * Affiche les informations du jeu
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 */
 	public void AfficheInfoJeu(Jeu jeu)
 	{
 		System.out.println("Voici la liste des cases et des monstres qui y sont placés:\n\n"+
@@ -84,6 +114,12 @@ public class View {
 		+ "ainsi que les informations concernant votre case actuelle seront gratuites.\n\n" );
 	}
 	
+	//TODO vérifier doc (type)
+	/**
+	 * Affiche le choix du monstre à attaquer
+	 * @param ArrayList<Monstre> monstres
+	 * @return int choix Le choix du monstre à attaquer
+	 */
 	public int afficherChoixMonstre(ArrayList<Monstre> monstres)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -98,6 +134,11 @@ public class View {
 		return choix;
 	}
 	
+	/**
+	 * Affiche le choix de la case à examiner
+	 * @param int nbCases Le nombre de cases
+	 * @return int choix Le choix de la case à examiner
+	 */
 	public int afficherChoixCase(int nbCases)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -114,6 +155,10 @@ public class View {
 		return choix;
 	}
 	
+	/**
+	 * Affiche le choix d'attaquer à distance pour un chasseur
+	 * @return int choix Le choix d'attaque
+	 */
 	public int afficherChoixChasseur()
 	{
 		Scanner sc = new Scanner(System.in);
@@ -124,6 +169,10 @@ public class View {
 		return choix;
 	}
 	
+	/**
+	 * Affiche le choix de la case à attaquer
+	 * @return int choix Le choix de la case à attaquer
+	 */
 	public int afficherChoixCaseChasseur()
 	{
 		Scanner sc = new Scanner(System.in);
