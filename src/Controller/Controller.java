@@ -107,7 +107,7 @@ public class Controller {
 				this.manger();
 				break;
 			case 2: 
-				this.manger();
+				this.boirePotion();
 				break;
 			case 3: 
 				this.attaquer();
@@ -324,8 +324,8 @@ public class Controller {
 		Personnage personnage = this.jeu.getJoueur();
 		Case laCase = this.jeu.recupererCase(personnage.getPosition());
 		String infosCase = this.jeu.getJoueur().examinerCase(laCase);
-		String messageCsq = this.jeu.consequenceAction();
-		this.verifEtatJeu(infosCase+"\n"+messageCsq);
+		
+		this.verifEtatJeu(infosCase+"\n");
 	}
 	
 	/**
