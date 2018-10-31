@@ -2,14 +2,31 @@ package Model;
 
 import java.util.Random;
 
-public class Rodeur extends Personnage {
+public class Rodeur extends Personnage 
+{
+	
 	private static Personnage getInstance;
 	private Random rand = new Random();
 	
-	private Rodeur(String nom, String sexe, String classe) {
+	/**
+	 * Personnage Rodeur
+	 * @param nom Le nom du Rodeur
+	 * @param sexe Le sexe du Rodeur
+	 * @param classe La classe du Rodeur
+	 */
+	private Rodeur(String nom, String sexe, String classe) 
+	{
 		super(nom, sexe, classe);
 	}
 	
+	//TODO vérifier doc
+	/**
+	 * Crée un nouveau Rodeur
+	 * @param nom Le nom du Rodeur
+	 * @param sexe Le sexe du Rodeur
+	 * @param classe La classe du Rodeur
+	 * @return
+	 */
 	public static Personnage getInstance(String nom, String sexe, String classe) 
 	{ 
 	    if (getInstance == null) 
@@ -19,8 +36,20 @@ public class Rodeur extends Personnage {
 	        return getInstance; 
 	}
 
+	/**
+	 * Attaque un monstre et met a jour la vie du monstre selon la force du personnage
+	 * Le Rodeur a une chance de faire un coup critique et d'infliger 2 fois plus de dégâts
+	 * Réveille le monstre
+	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
+	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
+	 * Le Rodeur a une chance d'esquiver l'attaque du monstre et ne prend que la moitié des dégâts infligé
+	 * @param Monstre monstre Le monstre choisi
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
+	 */
 	@Override
-	public String attaquer(Monstre monstre, Jeu jeu) {
+	public String attaquer(Monstre monstre, Jeu jeu) 
+	{
 		int n = rand.nextInt(2);
 		if(n == 0)
 		{
@@ -77,6 +106,15 @@ public class Rodeur extends Personnage {
 		}
 	}
 	
+	/**
+	 * Lance un sort au monstre et met a jour la vie du monstre selon la force du personnage et l'énergie dépensée
+	 * Réveille le monstre
+	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
+	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
+	 * @param Monstre monstre Le monstre choisi
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
+	 */
 	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
 		monstre.setVie(this.getForce(), jeu);
@@ -94,8 +132,13 @@ public class Rodeur extends Personnage {
 		}
 	}
 	
+	/**
+	 * Affiche les information détaillées du Rodeur
+	 * @return String caracPersonnage Les informations
+	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		String caracPersonnage;
 		switch (this.getSexe())
 		{

@@ -3,9 +3,18 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Model {
+public class Model 
+{
+	
 	private Random rand = new Random();
 	
+	/**
+	 * Permet de créer un personnage
+	 * @param int classe La classe du personnage
+	 * @param String sexe Le sexe du personnage
+	 * @param String nom Le nom du personnage
+	 * @return Personnage personnage Le personnage créé
+	 */
 	public Personnage creerPersonnage(int classe, String sexe, String nom)
 	{
 		Personnage personnage = null;
@@ -23,6 +32,12 @@ public class Model {
 		return personnage;
 	}
 	
+	//TODO vérifier doc (type)
+	/**
+	 * Permet de créer les cases du jeu et de placer les monstres qu'elles contiennent
+	 * @param Monstre[] monstres Les monstres du jeu
+	 * @return Case[] tabCase Les cases du jeu
+	 */
 	public Case[] creerCases(Monstre[] monstres)
 	{
 		Case[] tabCase;
@@ -67,6 +82,11 @@ public class Model {
 		return tabCase;
 	}
 	
+	//TODO vérifier doc (type)
+	/**
+	 * Permet de créer les monstres du jeu avec des caractéristiques et une espèce au hasard
+	 * @return Monstre[] tabMonstre Les monstres du jeu
+	 */
 	public Monstre[] creerMonstres()
 	{
 		Monstre[] tabMonstre;
@@ -123,6 +143,13 @@ public class Model {
 		return tabMonstre;
 	}
 	
+	//TODO vérifier doc (type)
+	/**
+	 * Permet de créer le jeu avec les cases qu'il contient et le personnage du joueur
+	 * @param Case[] cases Les cases du jeu
+	 * @param Personnage personnage Le personnage du joueur
+	 * @return Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 */
 	public Jeu creerJeu(Case[] cases, Personnage personnage)
 	{
 		Jeu jeu = new Jeu(personnage.getNom()+"'s world", personnage, 7, 10);
@@ -133,6 +160,13 @@ public class Model {
 		return jeu;
 	}
 	
+	/**
+	 * Permet au personnage de se déplacer
+	 * @param Personnage personnage Le personnage du joueur
+	 * @param int choixDeplacement Le déplacement chosi par le joueur (avancer ou reculer)
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String message
+	 */
 	public String deplacerPersonnage(Personnage personnage, int choixDeplacement, Jeu jeu)
 	{
 		boolean deplacement = personnage.seDeplacer(choixDeplacement, jeu);
@@ -148,16 +182,35 @@ public class Model {
 		}
 	}
 	
+	//TODO vérifier le return
+	/**
+	 * Appel la méthode manger() du personnage
+	 * @param Personnage personnage Le personnage du joueur
+	 * @return String personnage.manger()
+	 */
 	public String manger(Personnage personnage)
 	{
 		return personnage.manger();
 	}
 	
+	//TODO vérifier le return
+	/**
+	 * Appel la méthode boirePotion() du personnage
+	 * @param Personnage personnage Le personnage du joueur
+	 * @return String personnage.boirePotion()
+	 */
 	public String boirePotion(Personnage personnage)
 	{
 		return personnage.boirePotion();
 	}
 	
+	//TODO vérifier return type
+	/**
+	 * Récupère les monstres de la case
+	 * @param int numCase Le numéro de la case
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return ArrayList<Monstre> monstres
+	 */
 	public ArrayList<Monstre> recupererMonstre(int numCase, Jeu jeu)
 	{
 		Case laCase = jeu.recupererCase(numCase);
@@ -166,16 +219,37 @@ public class Model {
 		return monstres;
 	}
 	
+	//TODO vérifier return type
+	/**
+	 * Permet au personnage d'attaquer un monstre
+	 * @param Personnage personnage Le personnage du joueur
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param Monstre monstre Le monstre à attaquer
+	 * @return String personnage.attaquer(monstre, jeu)
+	 */
 	public String attaquerMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
 	{
 		return personnage.attaquer(monstre, jeu);
 	}
 	
+	//TODO vérifier return type
+	/**
+	 * Permet au personnage de lancer un sort
+	 * @param Personnage personnage Le personnage du joueur
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param Monstre monstre Le monstre à attaquer
+	 * @return String personnage.lancerSort(monstre, jeu)
+	 */
 	public String lancerSortSurMonstre(Personnage personnage, Jeu jeu, Monstre monstre)
 	{
 		return personnage.lancerSort(monstre, jeu);
 	}
 	
+	/**
+	 * Vérifie que le personnage est vivant
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return boolean faux(false) si la vie du joueur est inférieure ou égale à 0, vrai(true) sinon
+	 */
 	public boolean personnageEstBienVivant(Jeu jeu)
 	{
 		if (jeu.getJoueur().getVie() <= 0)
@@ -188,6 +262,11 @@ public class Model {
 		}
 	}
 	
+	/**
+	 * Vérifie si le joueur a atteind son objectif
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return boolean faux(false) si le joueur se trouve sur la dernière case, vrai(true) sinon
+	 */
 	public boolean personnageEstSurObjectif(Jeu jeu)
 	{
 		if (jeu.getJoueur().getPosition() == jeu.cases.size()-1)
@@ -200,6 +279,11 @@ public class Model {
 		}
 	}
 	
+	/**
+	 * Vérifie si le temps n'est pas écoulé
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return boolean faux(false) si le nombre de jours est égale au jour courant, vrai(true) sinon
+	 */
 	public boolean tempsNEstPasEcoule(Jeu jeu)
 	{
 		if (jeu.getNbJour() == jeu.getJourCourant())

@@ -17,12 +17,23 @@ public class Controller {
 	private Jeu jeu;
 	private Random rand = new Random();
 	
+	//TODO javadoc a completer
+	/**
+	 * 
+	 * @param View vue
+	 * @param Model model
+	 */
 	public Controller(View vue, Model model) {
 		super();
 		this.vue = vue;
 		this.model = model;
 	}
 	
+	/**
+	 * Lance le début du jeu
+	 * Affiche et saisi les informations a entrer par l'utilisateur
+	 * Initialise le personnage
+	 */
 	public void debutJeu()
 	{
 		int classe = this.vue.AfficherDemandeClasse();
@@ -48,6 +59,13 @@ public class Controller {
 		this.initialisation(personnage);
 	}
 	
+	/**
+	 * Initialise le jeu
+	 * Créé les cases, les monstres et le jeu
+	 * Affiche une quête au hasard et un message de bienvenue
+	 * Appel la méthode d'actions
+	 * @param Personnage personnage Le personnage du joueur
+	 */
 	public void initialisation(Personnage personnage)
 	{
 		Monstre[] monstres = this.model.creerMonstres();
@@ -72,6 +90,11 @@ public class Controller {
 		actions(choix);
 	}
 	
+	/**
+	 * Permet de choisir une action à effectuer
+	 * Vérifie que l'entrée est correct
+	 * @param int action L'action choisie
+	 */
 	public void actions(int action)
 	{
 		int choix;
@@ -115,6 +138,10 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Permet au personnage de se déplacer selon son choix
+	 * Vérifie que l'entrée du choix est correcte
+	 */
 	public void seDeplacer()
 	{
 		int choixDeplacement = this.vue.choixDeplacement();
@@ -134,6 +161,9 @@ public class Controller {
 		this.verifEtatJeu(deplacement+messageCsq);
 	}
 	
+	/**
+	 * Permet au personnage de manger
+	 */
 	public void manger()
 	{
 		String message = this.model.manger(this.jeu.getJoueur());
@@ -141,6 +171,9 @@ public class Controller {
 		this.verifEtatJeu(message+messageCsq);
 	}
 	
+	/**
+	 * Permet au personnage de boire une potion
+	 */
 	public void boirePotion()
 	{
 		String message = this.model.boirePotion(this.jeu.getJoueur());
@@ -148,10 +181,15 @@ public class Controller {
 		this.verifEtatJeu(message+messageCsq);
 	}
 	
+	/**
+	 * Permet au personnage d'attaquer
+	 * Si le personnage est chasseur, propose d'attaquer un monstre d'une case adjacente
+	 * Demande a l'utilisateur de choisir le monstre à attaquer et vérifie que la saisie est correcte
+	 */
 	public void attaquer()
 	{
 		int numCase = this.jeu.getJoueur().getPosition();
-		// Si le joueur est de la classe rodeur, il peut attaquer à distance
+		// Si le joueur est de la classe chasseur, il peut attaquer à distance
 		if(this.jeu.getJoueur() instanceof Chasseur)
 		{
 			int choix = this.vue.afficherChoixChasseur();
@@ -204,6 +242,10 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Permet au personnage de lancer un sort
+	 * Demande a l'utilisateur de choisir le monstre à attaquer et vérifie que la saisie est correcte
+	 */
 	public void lancerSort()
 	{
 		int numCase = this.jeu.getJoueur().getPosition();
@@ -232,6 +274,9 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Permet au personnage de nettoyer la case
+	 */
 	public void nettoyerCase()
 	{
 		Personnage personnage = this.jeu.getJoueur();
@@ -241,6 +286,9 @@ public class Controller {
 		this.verifEtatJeu(message+messageCsq);
 	}
 	
+	/**
+	 * Permet au personnage d'examiner une case de son choix
+	 */
 	public void examinerCase()
 	{
 		this.jeu.consequenceAction();
@@ -268,6 +316,9 @@ public class Controller {
 		}
 	}
 	
+	/**
+	 * Permet d'afficher les informations de la case actuelle
+	 */
 	public void afficheInfosCaseActuelle()
 	{
 		Personnage personnage = this.jeu.getJoueur();
@@ -277,6 +328,9 @@ public class Controller {
 		this.verifEtatJeu(infosCase+"\n"+messageCsq);
 	}
 	
+	/**
+	 * Permet d'afficher les informations du jeu
+	 */
 	public void afficheInfoJeu()
 	{
 		String infos = this.jeu.infosJeu();
@@ -284,6 +338,9 @@ public class Controller {
 		this.verifEtatJeu(infos);
 	}
 	
+	/**
+	 * Permet au personnage de passer son tour
+	 */
 	public void passerTour()
 	{	
 		String message = this.jeu.ChangerTour();
@@ -291,6 +348,11 @@ public class Controller {
 		this.verifEtatJeu(message+"\nVous avez passé votre tour. \nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n");
 	}
 	
+	/**
+	 * Si le personnage est toujours vivant, qu'il n'a pas atteind son objectif et qu'il reste du temps, propose a nouveau les actions
+	 * Sinon, lance la fin du jeu
+	 * @param String message
+	 */
 	public void verifEtatJeu(String message)
 	{
 		boolean vivant = this.model.personnageEstBienVivant(jeu);

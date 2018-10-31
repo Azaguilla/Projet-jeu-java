@@ -37,7 +37,7 @@ public class Blob extends Monstre implements Rampant
 	
 	/**
 	 * Crée un nouveau Blob identique
-	 * @return Blob Un nouveau Blob
+	 * @return Monstre Blob Un nouveau Blob
 	 */
 	public Blob seDiviser()
 	{

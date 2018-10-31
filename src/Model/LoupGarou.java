@@ -7,39 +7,83 @@ package Model;
  * @author Laurie
  *
  */
-public class LoupGarou extends Monstre implements Terrestre, Vivipare {
+public class LoupGarou extends Monstre implements Terrestre, Vivipare 
+{
 	private int tempsGestation = 0;
 	private int dureeGestation = 3;
 	
-	public LoupGarou(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
+	/**
+	 * Monstre de l'espèce des LoupGarou
+	 * @param String nom Nom du LoupGarou
+	 * @param int sexe Sexe du LoupGarou
+	 * @param int poids Poids du LoupGarou
+	 * @param int taille Taille du LoupGarou
+	 * @param double age Age du LoupGarou
+	 * @param boolean sommeil Etat de sommeil du LoupGarou, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 */
+	public LoupGarou(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
+	{
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
 
-	public int getTempsGestation() {
+	/**
+     * Permet de récupérer le temps de gestation du LoupGarou
+     * @return int tempsGestation Le temps de gestation du LoupGarou
+     */
+	public int getTempsGestation() 
+	{
 		return tempsGestation;
 	}
 
-	public void setTempsGestation(int tempsGestation) {
+	/**
+	 * Permet de modifier le temps de gestation du LoupGarou
+	 * @param int tempsGestation Le temps de gestation du LoupGarou
+	 */
+	public void setTempsGestation(int tempsGestation) 
+	{
 		this.tempsGestation = tempsGestation;
 	}
 
-	public int getDureeGestation() {
+	/**
+     * Permet de récupérer la durée de gestation du LoupGarou
+     * @return int dureeGestation La durée de gestation du LoupGarou
+     */
+	public int getDureeGestation() 
+	{
 		return dureeGestation;
 	}
 
-	public void setDureeGestation(int dureeGestation) {
+	/**
+	 * Permet de modifier la durée de gestation du LoupGarou
+	 * @param int dureeGestation La durée de gestation du LoupGarou
+	 */
+	public void setDureeGestation(int dureeGestation) 
+	{
 		this.dureeGestation = dureeGestation;
 	}
 	
+	//TODO javadoc
+	/**
+	 * 
+	 */
 	public boolean vagabonder(SeDeplacer seDeplacer, Jeu jeu)
 	{
 		return seDeplacer.vagabonder(this, jeu);
 	}
 	
-	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) {
+	//TODO javadoc
+	/**
+	 * 
+	 */
+	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
+	{
 		return this.vagabonder(seDeplacer, jeu);
 	}
 	
+	/**
+	 * Crée un nouveau LoupGarou avec des caractéristiques aléatoires
+	 * @return Monstre LoupGarou Un Nouveau LoupGarou
+	 */
 	public Monstre naissance()
 	{
 		int sexe = (int) Math.round(Math.random());
@@ -49,6 +93,15 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare {
 		return new LoupGarou("Loup Garou", sexe, poids, taille, 0, false);
 	}
 
+	/**
+	 * Si la gestation arrive a terme (égale à la durée de gestation) 
+	 * 		un monstre est ajouté s'il peut etre placé, sinon il meurt
+	 *		le temps de gestation a 0
+	 *		l'état en changé en non gestation
+	 * Sinon le temps de gestation est incrémenté
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
+	 */
 	public String gestation(Jeu jeu)
 	{
 		if(this.tempsGestation == this.dureeGestation)
@@ -94,6 +147,10 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare {
 		}
 	}
 	
+	/**
+	 * Détermine le son du monstre
+	 * @return String Le son et le nom du LoupGarou
+	 */
 	public String son()
 	{
 		return "Le Loup Garou "+this.getNom()+" hurle à la Lune.";

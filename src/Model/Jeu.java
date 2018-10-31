@@ -52,7 +52,7 @@ public class Jeu
 	/**
 	 * Ajoute une case si le nombre maximal de case n'est pas atteind
 	 * Sinon affiche un message d'erreur
-	 * @param laCase La case à ajouter
+	 * @param Case laCase La case à ajouter
 	 */
 	public void ajoutCase(Case laCase)
 	{
@@ -68,7 +68,7 @@ public class Jeu
 	/**
 	 * Supprime une case s'il y a encore des cases
 	 * Sinon affiche un message d'erreur
-	 * @param laCase La case à supprimer
+	 * @param Case laCase La case à supprimer
 	 */
     public void SuppCase(Case laCase)
     {
@@ -83,8 +83,8 @@ public class Jeu
     }
     
     /**
-     * 
-     * @return
+     * Permet de récupérer les cases
+     * @return ArrayList<Case> cases Les cases
      */
     public ArrayList<Case> getCases() 
     {
@@ -92,9 +92,9 @@ public class Jeu
     }
     
     /**
-     * 
-     * @param cases
-     */
+	 * Permet de modifier les cases
+	 * @param ArrayList<Case> cases Les cases
+	 */
 	public void setCases(ArrayList<Case> cases) 
 	{
 		this.cases = cases;
@@ -103,7 +103,7 @@ public class Jeu
 	/**
 	 * Ajoute un oeuf si le nombre de case maximal n'est pas atteint
 	 * Sinon affiche un message d'erreur
-	 * @param laCase La case d'ajout de l'oeuf
+	 * @param Case laCase La case d'ajout de l'oeuf
 	 */
 	public void ajoutOeuf(Oeuf oeuf)
 	{
@@ -119,7 +119,7 @@ public class Jeu
 	
 	/**
 	 * Supprime un oeuf
-	 * @param oeuf L'oeuf à supprimer
+	 * @param Oeuf oeuf L'oeuf à supprimer
 	 */
     public void SuppOeuf(Oeuf oeuf)
     {
@@ -135,8 +135,8 @@ public class Jeu
     }
      
     /**
-     * 
-     * @return
+     * Permet de récupérer les oeufs
+     * @return ArrayList<Oeuf> oeufs Les oeufs
      */
     public ArrayList<Oeuf> getOeufs() 
     {
@@ -144,26 +144,26 @@ public class Jeu
     }
     
     /**
-     * 
-     * @param oeufs
-     */
+	 * Permet de modifier les oeufs
+	 * @param ArrayList<Oeuf> oeufs Les oeufs
+	 */
 	public void setOeufs(ArrayList<Oeuf> oeufs) 
 	{
 		this.oeufs = oeufs;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nom du personnage
+     * @return String nom Le nom du personnage
+     */
 	public String getNom() 
 	{
 		return nom;
 	}
 	
 	/**
-	 * 
-	 * @param nom
+	 * Permet de modifier le nom du personnage
+	 * @param String nom Le nom du personnage
 	 */
 	public void setNom(String nom) 
 	{
@@ -171,17 +171,17 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le personnage du joueur
+     * @return Personnage joueur Le personnage du joueur
+     */
 	public Personnage getJoueur() 
 	{
 		return joueur;
 	}
 	
 	/**
-	 * 
-	 * @param joueur
+	 * Permet de modifier le personnage du joueur
+	 * @param Personnage joueur Le personnage du joueur
 	 */
 	public void setJoueur(Personnage joueur) 
 	{
@@ -189,17 +189,17 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nombre de jours
+     * @return int nbJour Le nombre de jours
+     */
 	public int getNbJour() 
 	{
 		return nbJour;
 	}
 	
 	/**
-	 * 
-	 * @param nbJour
+	 * Permet de modifier le nombre de jours
+	 * @param int nbJour Le nombre de jours
 	 */
 	public void setNbJour(int nbJour) 
 	{
@@ -207,17 +207,17 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nombre d'heures
+     * @return int nbHeure Le nombre d'heures
+     */
 	public int getNbHeure() 
 	{
 		return nbHeure;
 	}
 	
 	/**
-	 * 
-	 * @param nbHeure
+	 * Permet de modifier le nombre d'heures
+	 * @param int nbHeure Le nombre d'heures
 	 */
 	public void setNbHeure(int nbHeure) 
 	{
@@ -225,26 +225,26 @@ public class Jeu
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le nombre maximal de cases
+     * @return static int MAX_CASE Le nombre maximal de cases
+     */
 	public static int getMaxCase() 
 	{
 		return MAX_CASE;
 	}
 	
 	/**
-	 * 
-	 * @return
-	 */
+     * Permet de récupérer le jour courant
+     * @return int jourCourant Le jour courant
+     */
 	public int getJourCourant() 
 	{
 		return jourCourant;
 	}
 	
 	/**
-	 * 
-	 * @param jourCourant
+	 * Permet de modifier le jour courant
+	 * @param int jourCourant Le jour courant
 	 */
 	public void setJourCourant(int jourCourant) 
 	{
@@ -295,13 +295,12 @@ public class Jeu
 		}
 	}
 	
+	//TODO javadoc
 	/**
 	 * 
 	 */
 	private void lesMonstresSeDeplacent()
 	{
-		//TODO
-		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size(); i++)
 		{
@@ -337,12 +336,10 @@ public class Jeu
 	
 	/**
 	 * Récupère tous les monstres, en choisi 4 et les fait se reproduire
-	 * 
-	 * @return void
+	 * @return String message
 	 */
 	private String nouvellesNaissances()
 	{
-		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size()-1; i++)
 		{
@@ -368,11 +365,12 @@ public class Jeu
 		return message;
 	}
 	
+	//TODO completer doc
 	/**
 	 * Vérifie pour chaque oeuf l'incubation
 	 * Si l'incubation n'est pas finie, décrémente l'incubation
 	 * Sinon, ajoute un nouveau monstre sur la case mère
-	 * ??
+	 * 
 	 * 
 	 * Vérifie pour chaque monstre la gestation de toutes les cases
 	 */
@@ -446,7 +444,7 @@ public class Jeu
 	 * Vérifie que ce n'est pas la fin du jeu
 	 * Si le nombre de jour maximal est atteind ou si le joueur est mort, le jeu prend fin
 	 * Sinon le jour passe et le jeu continue
-	 * @return vrai(true) si le jeu est fini, faux(false) sinon
+	 * @return boolean vrai(true) si le jeu est fini, faux(false) sinon
 	 */
 	public String ChangerTour()
 	{
@@ -475,7 +473,7 @@ public class Jeu
 	/**
 	 * Récupère la case
 	 * @param numCase La case à récupérer
-	 * @return La case récupérée
+	 * @return Case La case récupérée
 	 */
 	public Case recupererCase(int numCase)
 	{
@@ -485,6 +483,7 @@ public class Jeu
 	/**
 	 * Décrément le nombre d'heures
 	 * Si le nombre d'heure est à 0, le tour change
+	 * @return String Les conséquences de l'action
 	 */
 	public String consequenceAction()
 	{
@@ -501,7 +500,7 @@ public class Jeu
 	
 	/**
 	 * Affiche les informations du jeu
-	 * @return L'affichage du jeu
+	 * @return String L'affichage du jeu
 	 */
 	public String infosJeu()
 	{

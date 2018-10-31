@@ -4,7 +4,6 @@ public class Foret extends Case
 {
 
 	private int hauteur;
-	//private boolean toiles;
 
 	/**
 	 * Le type de biome de la case
@@ -92,15 +91,13 @@ public class Foret extends Case
 			return"\nVous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.\n";
 		}
 		//heure -- >le faire au moment de l'appel à la méthode ?
-		//if(this.toiles == true)
-		//{this.toiles == false; heure --;}
 	}
 
 	/**
 	 * Ajoute un monstres qui ne peut se trouver que dans les forets (Ent et LoupGarou)
 	 * @param Monstre monstre Le monstre a ajouter
 	 * @return boolean vrai(true) si le monste est un Ent ou un LoupGarou et si le monstre peut être ajouté
-	 * 				   faux(false) si le monstre ne peut pas être ajouter ou si ce n'est pas un Ent ou un LoupGarou
+	 * 				   faux(false) si le monstre ne peut pas être ajouté ou si ce n'est pas un Ent ou un LoupGarou
 	 */
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) 

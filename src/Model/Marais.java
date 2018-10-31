@@ -1,16 +1,29 @@
 package Model;
 
-public class Marais extends Case {
+public class Marais extends Case 
+{
 	private int profondeur;
-	//private boolean vase;
 
-	public Marais(int numCase, int taille, int pollution, int profondeur) {
+	/**
+	 * Le type de biome de la case
+	 * @param int numCase Le numéro de la case marais
+	 * @param int taille La taille de la case marais
+	 * @param int pollution La pollution de la case marais
+	 * @param int profondeur La profondeur de la case marais
+	 */
+	public Marais(int numCase, int taille, int pollution, int profondeur) 
+	{
 		super(numCase, taille, pollution);
 		this.profondeur = profondeur;
 	}
 	
+	/**
+	 * Affiche les information de la case marais
+	 * @return Les informations
+	 */
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "\n\n--------Marais-------- \n"
 				+ "Numéro de la case : " + getNumCase() + "\n"
 				+ "Profondeur : " + profondeur + "\n"
@@ -20,9 +33,15 @@ public class Marais extends Case {
 				+ "LES MONSTRES : \n" + getMonstres() + "\n";
 	}
 	
+	/**
+	 * Inflige des dégats au personnage selon de niveau de pollution de la case marais
+	 * @param Personnage personnage Le personnage du joueur
+	 */
 	@Override
-	public String degatPersonnage(Personnage personnage) {
-		switch (this.getPollution()) {
+	public String degatPersonnage(Personnage personnage) 
+	{
+		switch (this.getPollution()) 
+		{
 		case 1 :
 			personnage.setVie(personnage.getVie()-1);
 			return "Des tas de boue polluée sont disséminés çà et là. Vous trébuchez sur l'un d'eux et vous perdez 1 pts de vie.";
@@ -39,16 +58,30 @@ public class Marais extends Case {
 		
 	}
 
-	public int getProfondeur() {
+	/**
+     * Permet de récupérer la profondeur de la case marais
+     * @return int profondeur La profondeur de la case marais
+     */
+	public int getProfondeur() 
+	{
 		return profondeur;
 	}
 
-	public void setProfondeur(int profondeur) {
+	/**
+     * Permet de modifier la profondeur de la case marais
+     * @param int profondeur La profondeur de la case marais
+     */
+	public void setProfondeur(int profondeur) 
+	{
 		this.profondeur = profondeur;
 	}
 
+	/**
+	 * Permet de nettoyer la case marais si la case n'est pas déjà propre
+	 */
 	@Override
-	public String nettoyerCase() {
+	public String nettoyerCase() 
+	{
 		if(this.getPollution() == 0)
 		{
 			return "\nLa case est déjà propre.\n";
@@ -58,15 +91,20 @@ public class Marais extends Case {
 			this.setPollution(this.getPollution()-1);
 			return"\nVous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.\n";
 		}
-		//if(this.vase == true)
-		//{this.vase == false; heure --;}
 	}
 	
+	/**
+	 * Ajoute un monstres qui ne peut se trouver que dans les marais (Blobs et Basilics)
+	 * @param Monstre monstre Le monstre a ajouter
+	 * @return boolean vrai(true) si le monste est un Blob ou un Basilic et si le monstre peut être ajouté
+	 * 				   faux(false) si le monstre ne peut pas être ajouté ou si ce n'est pas un Blob ou un Basilic
+	 */
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) {
 		if(monstre instanceof Blob || monstre instanceof Basilic)
 		{
-			if(this.monstres.size()<this.getTaille()){
+			if(this.monstres.size()<this.getTaille())
+			{
 				monstre.setNumCaseActuelle(this.getNumCase());
 				this.monstres.add(monstre);
 				this.setNbMaxMonstre(this.getNbMaxMonstre()+1); 
