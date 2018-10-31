@@ -52,7 +52,7 @@ public class Jeu
 	/**
 	 * Ajoute une case si le nombre maximal de case n'est pas atteind
 	 * Sinon affiche un message d'erreur
-	 * @param laCase La case à ajouter
+	 * @param Case laCase La case à ajouter
 	 */
 	public void ajoutCase(Case laCase)
 	{
@@ -68,7 +68,7 @@ public class Jeu
 	/**
 	 * Supprime une case s'il y a encore des cases
 	 * Sinon affiche un message d'erreur
-	 * @param laCase La case à supprimer
+	 * @param Case laCase La case à supprimer
 	 */
     public void SuppCase(Case laCase)
     {
@@ -103,7 +103,7 @@ public class Jeu
 	/**
 	 * Ajoute un oeuf si le nombre de case maximal n'est pas atteint
 	 * Sinon affiche un message d'erreur
-	 * @param laCase La case d'ajout de l'oeuf
+	 * @param Case laCase La case d'ajout de l'oeuf
 	 */
 	public void ajoutOeuf(Oeuf oeuf)
 	{
@@ -119,7 +119,7 @@ public class Jeu
 	
 	/**
 	 * Supprime un oeuf
-	 * @param oeuf L'oeuf à supprimer
+	 * @param Oeuf oeuf L'oeuf à supprimer
 	 */
     public void SuppOeuf(Oeuf oeuf)
     {
@@ -295,13 +295,12 @@ public class Jeu
 		}
 	}
 	
+	//TODO javadoc
 	/**
 	 * 
 	 */
 	private void lesMonstresSeDeplacent()
 	{
-		//TODO
-		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size(); i++)
 		{
@@ -337,12 +336,10 @@ public class Jeu
 	
 	/**
 	 * Récupère tous les monstres, en choisi 4 et les fait se reproduire
-	 * 
 	 * @return String message
 	 */
 	private String nouvellesNaissances()
 	{
-		//??Ajout de monstre sur chaque case??
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size()-1; i++)
 		{
@@ -368,11 +365,12 @@ public class Jeu
 		return message;
 	}
 	
+	//TODO completer doc
 	/**
 	 * Vérifie pour chaque oeuf l'incubation
 	 * Si l'incubation n'est pas finie, décrémente l'incubation
 	 * Sinon, ajoute un nouveau monstre sur la case mère
-	 * ??
+	 * 
 	 * 
 	 * Vérifie pour chaque monstre la gestation de toutes les cases
 	 */
@@ -446,7 +444,7 @@ public class Jeu
 	 * Vérifie que ce n'est pas la fin du jeu
 	 * Si le nombre de jour maximal est atteind ou si le joueur est mort, le jeu prend fin
 	 * Sinon le jour passe et le jeu continue
-	 * @return vrai(true) si le jeu est fini, faux(false) sinon
+	 * @return boolean vrai(true) si le jeu est fini, faux(false) sinon
 	 */
 	public String ChangerTour()
 	{
@@ -475,7 +473,7 @@ public class Jeu
 	/**
 	 * Récupère la case
 	 * @param numCase La case à récupérer
-	 * @return La case récupérée
+	 * @return Case La case récupérée
 	 */
 	public Case recupererCase(int numCase)
 	{
@@ -485,6 +483,7 @@ public class Jeu
 	/**
 	 * Décrément le nombre d'heures
 	 * Si le nombre d'heure est à 0, le tour change
+	 * @return String Les conséquences de l'action
 	 */
 	public String consequenceAction()
 	{
@@ -501,7 +500,7 @@ public class Jeu
 	
 	/**
 	 * Affiche les informations du jeu
-	 * @return L'affichage du jeu
+	 * @return String L'affichage du jeu
 	 */
 	public String infosJeu()
 	{

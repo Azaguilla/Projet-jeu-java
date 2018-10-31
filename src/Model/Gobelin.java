@@ -20,8 +20,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 
 	/**
-     * Permet de récupérer le temps de gestation du Goblelin
-     * @return int tempsGestation Le temps de gestation du Goblelin
+     * Permet de récupérer le temps de gestation du Gobelin
+     * @return int tempsGestation Le temps de gestation du Gobelin
      */
 	public int getTempsGestation() 
 	{
@@ -29,8 +29,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 
 	/**
-	 * Permet de modifier le temps de gestation du Goblelin
-	 * @param int tempsGestation Le temps de gestation du Goblelin
+	 * Permet de modifier le temps de gestation du Gobelin
+	 * @param int tempsGestation Le temps de gestation du Gobelin
 	 */
 	public void setTempsGestation(int tempsGestation) 
 	{
@@ -38,8 +38,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 
 	/**
-     * Permet de récupérer la durée de gestation du Goblelin
-     * @return int dureeGestation La durée de gestation du Goblelin
+     * Permet de récupérer la durée de gestation du Gobelin
+     * @return int dureeGestation La durée de gestation du Gobelin
      */
 	public int getDureeGestation() 
 	{
@@ -47,8 +47,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 
 	/**
-	 * Permet de modifier la durée de gestation du Goblelin
-	 * @param int dureeGestation La durée de gestation du Goblelin
+	 * Permet de modifier la durée de gestation du Gobelin
+	 * @param int dureeGestation La durée de gestation du Gobelin
 	 */
 	public void setDureeGestation(int dureeGestation) 
 	{
