@@ -18,7 +18,7 @@ public class Ent extends Monstre implements Vivipare
 
 	/**
 	 * Crée un nouvel Ent
-	 * @return Ent Un nouvel Ent
+	 * @return Monstre Ent Un nouvel Ent
 	 */
 	@Override
 	public Monstre naissance() 

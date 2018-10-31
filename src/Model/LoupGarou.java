@@ -82,7 +82,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Crée un nouveau LoupGarou avec des caractéristiques aléatoires
-	 * @return LoupGarou Un Nouveau LoupGarou
+	 * @return Monstre LoupGarou Un Nouveau LoupGarou
 	 */
 	public Monstre naissance()
 	{

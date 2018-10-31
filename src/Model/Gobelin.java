@@ -75,7 +75,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Crée un nouveau Gobelin avec des caractéristiques aléatoires
-	 * @return Gobelin Un Nouveau Gobelin
+	 * @return Monstre Gobelin Un Nouveau Gobelin
 	 */
 	public Monstre naissance()
 	{
