@@ -11,7 +11,7 @@ public class View {
 	
 	/**
 	 * Afficher le message
-	 * @param String message Le message à afficher
+	 * @param Le message à afficher
 	 */
 	public void afficherUnMessage(String message)
 	{
@@ -20,7 +20,7 @@ public class View {
 	
 	/**
 	 * Affiche le choix de classe
-	 * @return int classe La classe choisie
+	 * @return La classe choisie
 	 */
 	public int AfficherDemandeClasse()
 	{
@@ -33,7 +33,7 @@ public class View {
 	
 	/**
 	 * Affiche le choix de sexe, femme ou homme
-	 * @return String sexe Le sexe choisi
+	 * @return Le sexe choisi
 	 */
 	public String AfficherDemandeSexe()
 	{
@@ -46,7 +46,7 @@ public class View {
 	
 	/**
 	 * Affiche la demande du nom
-	 * @return String nom Le nom choisi
+	 * @return Le nom choisi
 	 */
 	public String AfficherDemandePersonnage()
 	{
@@ -59,7 +59,7 @@ public class View {
 	
 	/**
 	 * Affiche le choix de déplacement, avancer ou reculer
-	 * @return int choix Le choix de déplacement
+	 * @return choix Le choix de déplacement
 	 */
 	public int choixDeplacement()
 	{
@@ -72,9 +72,9 @@ public class View {
 	
 	/**
 	 * Affiche le menu du choix des actions
-	 * @param String message Le message à afficher
-	 * @param Personnage personnage Le personnage du joueur
-	 * @return int choix Le choix de l'action
+	 * @param message Le message à afficher
+	 * @param personnage Le personnage du joueur
+	 * @return Le choix de l'action
 	 */
 	public int AfficherMenu(String message, Personnage personnage)
 	{
@@ -102,7 +102,7 @@ public class View {
 	
 	/**
 	 * Affiche les informations du jeu
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	public void AfficheInfoJeu(Jeu jeu)
 	{
@@ -114,11 +114,10 @@ public class View {
 		+ "ainsi que les informations concernant votre case actuelle seront gratuites.\n\n" );
 	}
 	
-	//TODO vérifier doc (type)
 	/**
 	 * Affiche le choix du monstre à attaquer
-	 * @param ArrayList<Monstre> monstres
-	 * @return int choix Le choix du monstre à attaquer
+	 * @param monstres
+	 * @return Le choix du monstre à attaquer
 	 */
 	public int afficherChoixMonstre(ArrayList<Monstre> monstres)
 	{
@@ -136,8 +135,8 @@ public class View {
 	
 	/**
 	 * Affiche le choix de la case à examiner
-	 * @param int nbCases Le nombre de cases
-	 * @return int choix Le choix de la case à examiner
+	 * @param nbCases Le nombre de cases
+	 * @return Le choix de la case à examiner
 	 */
 	public int afficherChoixCase(int nbCases)
 	{
@@ -157,7 +156,7 @@ public class View {
 	
 	/**
 	 * Affiche le choix d'attaquer à distance pour un chasseur
-	 * @return int choix Le choix d'attaque
+	 * @return Le choix d'attaque
 	 */
 	public int afficherChoixChasseur()
 	{
@@ -171,7 +170,7 @@ public class View {
 	
 	/**
 	 * Affiche le choix de la case à attaquer
-	 * @return int choix Le choix de la case à attaquer
+	 * @return Le choix de la case à attaquer
 	 */
 	public int afficherChoixCaseChasseur()
 	{

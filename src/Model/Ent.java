@@ -64,7 +64,7 @@ public class Ent extends Monstre implements Vivipare
 	{
 		Monstre monstre = this.naissance();		
 		int numCase = this.getNumCaseActuelle();
-		System.out.println("Case de la mère : "+numCase);
+		//System.out.println("Case de la mère : "+numCase);
 		Case laCase = jeu.recupererCase(numCase);
 		if(laCase.ajoutMonstre(monstre))
 		{

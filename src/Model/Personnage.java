@@ -325,4 +325,5 @@ public abstract class Personnage
 
 	public abstract String attaquer(Monstre monstre, Jeu jeu);
 	public abstract String lancerSort(Monstre monstre, Jeu jeu);
+	//public abstract String infosPersoSimple();
 }

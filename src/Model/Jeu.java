@@ -60,7 +60,7 @@ public class Jeu
 			this.cases.add(laCase);
         }
 		else{
-            System.out.println("Il y a trop de cases.");
+           // System.out.println("Il y a trop de cases.");
         }
 
 	}
@@ -78,7 +78,7 @@ public class Jeu
         }
     	else
     	{
-            System.out.println("Il n'y a plus de cases.");
+           // System.out.println("Il n'y a plus de cases.");
         } 
     }
     
@@ -113,7 +113,7 @@ public class Jeu
         }
 		else
 		{
-            System.out.println("Il y a trop d'oeuf.");
+            //System.out.println("Il y a trop d'oeuf.");
         }
 	}
 	
@@ -129,7 +129,7 @@ public class Jeu
         }
 		else
 		{
-            System.out.println("Il n'y a plus d'oeuf.");
+            //System.out.println("Il n'y a plus d'oeuf.");
         }
         
     }
@@ -315,7 +315,7 @@ public class Jeu
 			Monstre monstre = monstres.get(l);
 			if(!monstre.isSommeil())
 			{
-				System.out.println("Case "+monstre.getNumCaseActuelle()+" : "+monstre.getNom());
+				//System.out.println("Case "+monstre.getNumCaseActuelle()+" : "+monstre.getNom());
 				if (!monstre.seDeplacer(new Vagabonder(), this))
 				{
 					if (!monstre.seDeplacer(new Ramper(), this))
@@ -386,11 +386,11 @@ public class Jeu
 				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
 				this.oeufs.get(i).setTempsIncub(newTempsIncub);
 				message += "Des oeufs sont encore en incubation.\n";
-				System.out.println("Oeuf "+i+" : "+this.oeufs.get(i).getTempsIncub());
+				//System.out.println("Oeuf "+i+" : "+this.oeufs.get(i).getTempsIncub());
 			}
 			else
 			{
-				System.out.println("sysoUn oeuf a éclot !");
+				//System.out.println("sysoUn oeuf a éclot !");
 				message += "Un oeuf a éclot !\n";
 				Monstre monstre = this.oeufs.get(i).eclore();
 				int numCase = oeufs.get(i).getNumCaseMere();
@@ -401,7 +401,7 @@ public class Jeu
 				{
 					if(laCase.ajoutMonstre(monstre))
 					{
-						System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+						//System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 						monstrePlace = true;
 						message += "\nLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase()+"\n";
 					}
@@ -409,7 +409,7 @@ public class Jeu
 					{
 						if(numCase == 19)
 						{
-							System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
+							//System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 							monstrePlace = true;
 							message += "\nUn jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 						}

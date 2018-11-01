@@ -23,7 +23,7 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	@Override
 	public Oeuf pondreOeuf() 
 	{
-		System.out.println("Un oeuf est en cours de préparation.");
+		//System.out.println("Un oeuf est en cours de préparation.");
 		int sexe = (int) Math.round(Math.random());
 		int taille = (int) Math.round(Math.random()*2);
 		int poids = (int) Math.round(30+Math.random()*10);
@@ -33,10 +33,13 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 		return new Oeuf(2, bebe);
 	}
 
-	//TODO javadoc
 	/**
+	 * Méthode de déplacement des monstres rampant
+	 *  
+	 * @param SeDeplacer seDeplacer 
+	 * @oaram Jeu jeu 
 	 * 
-	 * 
+	 * @return boolean si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	@Override
 	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) 
@@ -44,9 +47,13 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 		return seDeplacer.ramper(this, jeu);
 	}
 	
-	//TODO javadoc
 	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
 	 * 
+	 * @param SeDeplacer seDeplacer 
+	 * @oaram Jeu jeu 
+	 * 
+	 * @return boolean si le monstre s'est bien déplacé, true, sinon, false
 	 * 
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 

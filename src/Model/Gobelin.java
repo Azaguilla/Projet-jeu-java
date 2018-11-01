@@ -99,7 +99,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	{
 		if(this.tempsGestation == this.dureeGestation)
 		{
-			System.out.println("sysoUn bébé "+this.getNom()+" est né !");
+			//System.out.println("sysoUn bébé "+this.getNom()+" est né !");
 			Monstre monstre = this.naissance();
 			int numCase = this.getNumCaseActuelle();
 			Case laCase = jeu.recupererCase(numCase);
@@ -109,7 +109,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 			{
 				if(laCase.ajoutMonstre(monstre))
 				{
-					System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+					//System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 					monstrePlace = true;
 					message = "Un bébé "+this.getNom()+" est né ! Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase();
 				}
@@ -117,7 +117,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 				{
 					if(numCase == 19)
 					{
-						System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
+						//System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 						monstrePlace = true;
 						message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 					}

@@ -20,12 +20,12 @@ public class Wyverne extends Monstre implements Volant, Ovipare
 	/**
 	 * Initialise au hasard les caracteristiques du bébé
 	 * Crée un nouveau monstre bebe
-	 * @return Oeuf Un nouvel oeuf avec son temps d'incubation et le bebe qu'in contient
+	 * @return Oeuf Un nouvel oeuf avec son temps d'incubation et le bebe qu'il contient
 	 */
 	@Override
 	public Oeuf pondreOeuf() 
 	{
-		System.out.println("Un oeuf est en cours de préparation.");
+		//System.out.println("Un oeuf est en cours de préparation.");
 		int sexe = (int) Math.round(Math.random());
 		int taille = (int) Math.round(Math.random()*2);
 		int poids = (int) Math.round(30+Math.random()*10);

@@ -15,9 +15,14 @@ public class Blob extends Monstre implements Rampant
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
 
-	//TODO javadoc
+
 	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
 	 * 
+	 * @param SeDeplacer seDeplacer 
+	 * @oaram Jeu jeu 
+	 * 
+	 * @return boolean si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	@Override
 	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) 
@@ -48,16 +53,20 @@ public class Blob extends Monstre implements Rampant
 		return new Blob("Blob", sexe, poids, taille, 0, false);
 	}
 	
-	//TODO javadoc
 	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
 	 * 
+	 * @param SeDeplacer seDeplacer 
+	 * @oaram Jeu jeu 
+	 * 
+	 * @return boolean si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
 	{
 		return this.ramper(seDeplacer, jeu);
 	}
 
-	//TODO vérifier la doc
+	
 	/**
 	 * Le monstre entre en gestation et crée un nouveau monstre identique
 	 * Si le monstre peut etre placé dans son terrain le monstre est placé
@@ -67,7 +76,7 @@ public class Blob extends Monstre implements Rampant
 	@Override
 	public String gestation(Jeu jeu) 
 	{
-		System.out.println("sysoUn Blob s'est divisé !");
+		//System.out.println("sysoUn Blob s'est divisé !");
 		String message ="";
 		Monstre monstre = this.seDiviser();		
 		int numCase = this.getNumCaseActuelle();
@@ -77,7 +86,7 @@ public class Blob extends Monstre implements Rampant
 		{
 			if(laCase.ajoutMonstre(monstre))
 			{
-				System.out.println("sysoLe monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+				//System.out.println("sysoLe monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 				message = "\nUn Blob s'est divisé ! Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase()+"\n";
 				monstrePlace = true;
 			}
@@ -85,7 +94,7 @@ public class Blob extends Monstre implements Rampant
 			{
 				if(numCase == 19)
 				{
-					System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
+					//System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 					message = "\nUn jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 					monstrePlace = true;
 				}
@@ -93,8 +102,6 @@ public class Blob extends Monstre implements Rampant
 				{
 					numCase = numCase +1;
 					laCase = jeu.recupererCase(numCase);
-					System.out.println("C'est bizarre..");
-					message = "C'est bizarre...";
 				}
 			}
 		}

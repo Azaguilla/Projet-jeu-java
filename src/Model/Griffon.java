@@ -24,7 +24,7 @@ public class Griffon extends Monstre implements Volant, Ovipare
 	@Override
 	public Oeuf pondreOeuf() 
 	{
-		System.out.println("Un oeuf est en cours de préparation.");
+		//System.out.println("Un oeuf est en cours de préparation.");
 		int sexe = (int) Math.round(Math.random());
 		int taille = (int) Math.round(Math.random()*2);
 		int poids = (int) Math.round(30+Math.random()*10);
