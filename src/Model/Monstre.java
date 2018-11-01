@@ -301,6 +301,7 @@ public abstract class Monstre
 	 */
 	public void grandir()
 	{
+		System.out.println("taille augmente pour "+this.getNom());
 		if(this.getTaille() < 2)
 		{
 			this.setTaille(this.getTaille()+1);

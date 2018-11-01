@@ -261,8 +261,10 @@ public class Jeu
 		int n;
 		for (int i = 0; i < this.cases.size(); i++)
 		{
-			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre()-1; j++)
+			for (int j = 0; j < this.cases.get(i).monstres.size(); j++)
 			{
+				//croissance
+				this.cases.get(i).monstres.get(j).grandir();
 				//sommeil
 				n = rand.nextInt(2);
 				switch (n)
@@ -276,8 +278,6 @@ public class Jeu
 						this.cases.get(i).monstres.get(j).seReveiller();
 							break;
 				}
-				//croissance
-				this.cases.get(i).monstres.get(j).grandir();
 			}
 		}
 	}
@@ -516,7 +516,7 @@ public class Jeu
 	
 	/**
 	 * Les monstres attaquent le personnage
-	 * Si la vie du joueur est à 0, le jeu prend fin
+	 * 
 	 */
 	public void lesMonstresAttaquent()
 	{
