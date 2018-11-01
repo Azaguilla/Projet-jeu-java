@@ -19,6 +19,7 @@ public final class Magicien extends Personnage
 	{
 		monstre.setVie(this.getForce(), jeu);
 		monstre.setSommeil(false);
+		int degatsMonstre = monstre.getForce() + monstre.getTaille();
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
@@ -27,7 +28,7 @@ public final class Magicien extends Personnage
 		else
 		{
 			this.setVie(this.getVie()-monstre.getForce());
-			return "Vous sortez votre dague et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+			return "Vous sortez votre dague et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	
@@ -45,6 +46,7 @@ public final class Magicien extends Personnage
 		monstre.setVie(this.getForce(), jeu);
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setSommeil(false);
+		int degatsMonstre = monstre.getForce() + monstre.getTaille();
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
@@ -53,7 +55,7 @@ public final class Magicien extends Personnage
 		else
 		{
 			this.setVie(this.getVie()-monstre.getForce());
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 
@@ -152,24 +154,27 @@ public final class Magicien extends Personnage
 				caracPersonnage = 
 				"Magicienne : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()*3
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			case "M": 
 				caracPersonnage = 
 				"Magicien : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()*3
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			default: 
 				caracPersonnage = 
 				"Magicien : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()*3
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 		}

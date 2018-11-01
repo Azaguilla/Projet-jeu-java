@@ -356,7 +356,7 @@ public class Controller {
 	public void verifEtatJeu(String message)
 	{
 		boolean vivant = this.model.personnageEstBienVivant(jeu);
-		boolean pasArrive = this.model.personnageEstSurObjectif(jeu);
+		boolean pasArrive = this.model.personnageNEstPasSurObjectif(jeu);
 		boolean resteDuTemps = this.model.tempsNEstPasEcoule(jeu);
 		
 		if (vivant && pasArrive && resteDuTemps)

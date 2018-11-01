@@ -51,6 +51,7 @@ public class Rodeur extends Personnage
 	public String attaquer(Monstre monstre, Jeu jeu) 
 	{
 		int n = rand.nextInt(2);
+		int degatsMonstre = monstre.getForce() + monstre.getTaille();
 		if(n == 0)
 		{
 			monstre.setVie(this.getForce()*2, jeu);
@@ -68,13 +69,13 @@ public class Rodeur extends Personnage
 				{
 					this.setVie(this.getVie()-monstre.getForce()/2);
 					return "Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre."
-						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+monstre.getForce()/2+" pts de dégât.";
+						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+degatsMonstre/2+" pts de dégât.";
 				}
 				else
 				{
 					this.setVie(this.getVie()-monstre.getForce());
 					return "Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre."
-						 + "Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+						 + "Le monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 				}
 			}
 		}
@@ -94,13 +95,13 @@ public class Rodeur extends Personnage
 				{
 					this.setVie(this.getVie()-monstre.getForce()/2);
 					return "Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre."
-						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+monstre.getForce()/2+" pts de dégât.";
+						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+degatsMonstre/2+" pts de dégât.";
 				}
 				else
 				{
 					this.setVie(this.getVie()-monstre.getForce());
 					return "Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre."
-						 + "Le monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+						 + "Le monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 				}
 			}
 		}
@@ -120,6 +121,7 @@ public class Rodeur extends Personnage
 		monstre.setVie(this.getForce(), jeu);
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setSommeil(false);
+		int degatsMonstre = monstre.getForce() + monstre.getTaille();
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
@@ -128,7 +130,7 @@ public class Rodeur extends Personnage
 		else
 		{
 			this.setVie(this.getVie()-monstre.getForce());
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	
@@ -199,24 +201,27 @@ public class Rodeur extends Personnage
 				caracPersonnage = 
 				"Rôdeuse : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			case "M": 
 				caracPersonnage = 
 				"Rôdeur : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			default: 
 				caracPersonnage = 
 				"Rôdeur : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 		}

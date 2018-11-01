@@ -28,6 +28,7 @@ public class Chasseur extends Personnage
 	{
 		monstre.setVie(this.getForce(), jeu);
 		monstre.setSommeil(false);
+		int degatsMonstre = monstre.getForce() + monstre.getTaille();
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
@@ -36,7 +37,7 @@ public class Chasseur extends Personnage
 		else
 		{
 			this.setVie(this.getVie()-monstre.getForce());
-			return "Vous tirez et votre flèche inflige "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+			return "Vous tirez et votre flèche inflige "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	
@@ -54,6 +55,7 @@ public class Chasseur extends Personnage
 		monstre.setVie(this.getForce(), jeu);
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setSommeil(false);
+		int degatsMonstre = monstre.getForce() + monstre.getTaille();
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
@@ -62,7 +64,7 @@ public class Chasseur extends Personnage
 		else
 		{
 			this.setVie(this.getVie()-monstre.getForce());
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+monstre.getForce()+" pts de dégât.";
+			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	
@@ -151,24 +153,27 @@ public class Chasseur extends Personnage
 				caracPersonnage = 
 				"Chasseresse : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			case "M": 
 				caracPersonnage = 
 				"Chasseur : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			default: 
 				caracPersonnage = 
 				"Chasseur : \n"
 				+ "Energie : " + getEnergie()
-				+ " | Force : " + getForce()
 				+ " | Vie : " + getVie()
+				+ " | Force : " + getForce()
+				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 		}

@@ -67,8 +67,9 @@ public abstract class Monstre
 	{
 		return " \n\nMonstre \n"
 				+ " Espèce : " + nom + "\n"
-				+ " Force : " + force
+				+ " Force : " + (force+taille)
 				+ " | Vie : " + vie
+				+ " | Taille : " + taille
 				+ " | Sommeil : " + sommeil
 				+ " | Numéro de case : " + numCaseActuelle + "\n";
 	}
@@ -295,7 +296,6 @@ public abstract class Monstre
 		this.setSommeil(false);
 	}
 	
-	//TODO changer taille max des monstres
 	/**
 	 * Si le monstre n'a pas encore la taille maximale(2), ajoute 1 à la taille
 	 */
@@ -325,10 +325,11 @@ public abstract class Monstre
 	 */
 	public void attaquerPersonnage(Personnage personnage)
 	{
+		int degats = this.force+this.taille;
 		if(this.isSommeil() == false)
 		{
-			personnage.setVie(personnage.getVie()-this.force);
-			System.out.println("Le monstre "+this.nom+" attaque férocement. Vous perdez "+this.force+" pts de vie.");
+			personnage.setVie(personnage.getVie()-degats);
+			System.out.println("Le monstre "+this.nom+" attaque férocement. Vous perdez "+degats+" pts de vie.");
 		}
 		else
 			System.out.println("Le monstre "+this.nom+" est endormis.");

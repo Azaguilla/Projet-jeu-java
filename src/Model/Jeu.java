@@ -258,12 +258,12 @@ public class Jeu
 	 */
 	private void modifierEtatMonstre()
 	{
-		//sommeil
 		int n;
 		for (int i = 0; i < this.cases.size(); i++)
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre()-1; j++)
 			{
+				//sommeil
 				n = rand.nextInt(2);
 				switch (n)
 				{
@@ -276,9 +276,10 @@ public class Jeu
 						this.cases.get(i).monstres.get(j).seReveiller();
 							break;
 				}
+				//croissance
+				this.cases.get(i).monstres.get(j).grandir();
 			}
 		}
-		//TODO changer état sommeil monstre si personnage attaque
 	}
 	
 	/**

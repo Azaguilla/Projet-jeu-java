@@ -112,7 +112,7 @@ public class Model
 			int n = rand.nextInt(8);
 			int sexe = rand.nextInt(2);
 			int poids = rand.nextInt(20);
-			int taille = rand.nextInt(20);
+			int taille = rand.nextInt(3);
 			int tmp_sommeil = rand.nextInt(2);
 			boolean sommeil;
 			if(tmp_sommeil == 0) 
@@ -279,7 +279,7 @@ public class Model
 	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 * @return faux(false) si le joueur se trouve sur la dernière case, vrai(true) sinon
 	 */
-	public boolean personnageEstSurObjectif(Jeu jeu)
+	public boolean personnageNEstPasSurObjectif(Jeu jeu)
 	{
 		if (jeu.getJoueur().getPosition() == jeu.cases.size()-1)
 		{
