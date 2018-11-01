@@ -88,8 +88,7 @@ public class Guerrier extends Personnage
 	 * Affiche les information détaillées du guerrier
 	 * @return String caracPersonnage Les informations
 	 */
-	@Override
-	public String toString() 
+	public String infosPersoDetail() 
 	{
 		String caracPersonnage;
 		switch (this.getSexe())
@@ -137,5 +136,46 @@ public class Guerrier extends Personnage
 		
 		return caracPersonnage;
 	}
-
+	
+	/**
+	 * Affiche les information les plus importantes du chasseur
+	 * @return String caracPersonnage Les informations
+	 */
+	@Override
+	public String toString() 
+	{
+		String caracPersonnage;
+		switch (this.getSexe())
+		{
+			case "F": 
+				caracPersonnage = 
+				"Guerrière : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
+				break;
+			case "M": 
+				caracPersonnage = 
+				"Guerrier : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
+				break;
+			default: 
+				caracPersonnage = 
+				"Guerrier : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
+				break;
+		}
+		
+		return caracPersonnage;
+	}
+	
 }
+
+

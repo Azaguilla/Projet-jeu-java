@@ -40,11 +40,10 @@ public abstract class Monstre
 	}
 
 	/**
-	 * Affiche les informations du monstre
+	 * Affiche les informations détaillées du monstre
 	 * @return String Les information
 	 */
-	@Override
-	public String toString() 
+	public String infosMonstreDetail() 
 	{
 		return " \n\nMonstre \n"
 				+ " Espèce : " + nom + "\n"
@@ -57,6 +56,21 @@ public abstract class Monstre
 				+ " Sommeil : " + sommeil + "\n"
 				+ " Numéro de case : " + numCaseActuelle + "\n"
 				+ " En gestation : " + enGestation;
+	}
+	
+	/**
+	 * Affiche les information les plus importantes du monstre
+	 * @return String Les informations
+	 */
+	@Override
+	public String toString()
+	{
+		return " \n\nMonstre \n"
+				+ " Espèce : " + nom + "\n"
+				+ " Force : " + force
+				+ " | Vie : " + vie
+				+ " | Sommeil : " + sommeil
+				+ " | Numéro de case : " + numCaseActuelle + "\n";
 	}
 
 	/**

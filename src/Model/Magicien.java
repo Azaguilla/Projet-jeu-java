@@ -89,8 +89,7 @@ public final class Magicien extends Personnage
 	 * Affiche les information détaillées du Magicien
 	 * @return String caracPersonnage Les informations
 	 */
-	@Override
-	public String toString() 
+	public String infosPersoDetail()
 	{
 		String caracPersonnage;
 		switch (this.getSexe())
@@ -133,6 +132,45 @@ public final class Magicien extends Personnage
 				+ "Force : " + getForce() + "\n"
 				+ "Vie : " + getVie() + "\n"
 				+ "Position : "+ getPosition() + "\n";
+				break;
+		}
+		
+		return caracPersonnage;
+	}
+	
+	/**
+	 * Affiche les information les plus importantes du chasseur
+	 * @return String caracPersonnage Les informations
+	 */
+	@Override
+	public String toString() 
+	{
+		String caracPersonnage;
+		switch (this.getSexe())
+		{
+			case "F": 
+				caracPersonnage = 
+				"Magicienne : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
+				break;
+			case "M": 
+				caracPersonnage = 
+				"Magicien : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
+				break;
+			default: 
+				caracPersonnage = 
+				"Magicien : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
 				break;
 		}
 		
