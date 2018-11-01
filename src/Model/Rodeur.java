@@ -136,8 +136,7 @@ public class Rodeur extends Personnage
 	 * Affiche les information détaillées du Rodeur
 	 * @return String caracPersonnage Les informations
 	 */
-	@Override
-	public String toString() 
+	public String infosPersoDetail()
 	{
 		String caracPersonnage;
 		switch (this.getSexe())
@@ -180,6 +179,45 @@ public class Rodeur extends Personnage
 				+ "Force : " + getForce() + "\n"
 				+ "Vie : " + getVie() + "\n"
 				+ "Position : "+ getPosition() + "\n";
+				break;
+		}
+		
+		return caracPersonnage;
+	}
+	
+	/**
+	 * Affiche les information les plus importantes du chasseur
+	 * @return String caracPersonnage Les informations
+	 */
+	@Override
+	public String toString() 
+	{
+		String caracPersonnage;
+		switch (this.getSexe())
+		{
+			case "F": 
+				caracPersonnage = 
+				"Rôdeuse : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
+				break;
+			case "M": 
+				caracPersonnage = 
+				"Rôdeur : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
+				break;
+			default: 
+				caracPersonnage = 
+				"Rôdeur : \n"
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
 				break;
 		}
 		

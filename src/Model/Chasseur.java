@@ -87,8 +87,8 @@ public class Chasseur extends Personnage
 	 * Affiche les information détaillées du chasseur
 	 * @return String caracPersonnage Les informations
 	 */
-	@Override
-	public String toString() 
+	
+	public String infosPersoDetail()
 	{
 		String caracPersonnage;
 		switch (this.getSexe())
@@ -141,7 +141,8 @@ public class Chasseur extends Personnage
 	 * Affiche les information les plus importantes du chasseur
 	 * @return String caracPersonnage Les informations
 	 */
-	public String infosPersoSimple()
+	@Override
+	public String toString() 
 	{
 		String caracPersonnage;
 		switch (this.getSexe())
@@ -149,26 +150,26 @@ public class Chasseur extends Personnage
 			case "F": 
 				caracPersonnage = 
 				"Chasseresse : \n"
-				+ "Energie : " + getEnergie() + "\n"
-				+ "Force : " + getForce() + "\n"
-				+ "Vie : " + getVie() + "\n"
-				+ "Position : "+ getPosition() + "\n";
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
 				break;
 			case "M": 
 				caracPersonnage = 
 				"Chasseur : \n"
-				+ "Energie : " + getEnergie() + "\n"
-				+ "Force : " + getForce() + "\n"
-				+ "Vie : " + getVie() + "\n"
-				+ "Position : "+ getPosition() + "\n";
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
 				break;
 			default: 
 				caracPersonnage = 
 				"Chasseur : \n"
-				+ "Energie : " + getEnergie() + "\n"
-				+ "Force : " + getForce() + "\n"
-				+ "Vie : " + getVie() + "\n"
-				+ "Position : "+ getPosition() + "\n";
+				+ "Energie : " + getEnergie()
+				+ " | Force : " + getForce()
+				+ " | Vie : " + getVie()
+				+ " | Position : "+ getPosition() + "\n";
 				break;
 		}
 		
