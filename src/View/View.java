@@ -89,7 +89,7 @@ public class View {
 				+ "Boire une potion[2] - 1 heure \n "
 				+ "Attaquer[3] - 1 heure \n "
 				+ "Lancer un sort[4] - 1 heure \n "
-				+ "Nettoyer la case suivante[5] - 1 heure \n "
+				+ "Nettoyer la case suivante[5] - 2 heures \n "
 				+ "Examiner une case[6] - 1 heure \n "
 				+ "Afficher des infos sur votre case actuelle[7] - gratuit \n "
 				+ "Afficher des infos sur le jeu (simplifié)[8] - gratuit \n "

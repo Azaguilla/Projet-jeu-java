@@ -94,10 +94,18 @@ public class Foret extends Case
 		}
 		else
 		{
-			this.setPollution(this.getPollution()-1);
-			return"\nVous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.\n";
+			if(this.hauteur == 0)
+			{
+				this.setPollution(this.getPollution()-1);
+				return"\nVous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.\n";
+			}
+			else
+			{
+				this.hauteur = this.hauteur -1;
+				return"\nLa forêt est dense, de nombreuses branches sont polluées. "
+						+ "\nVous ne pouvez pas commencer la purification tant qu'elle sont là. Vous arrivez à en supprimer une partie mais la pollution reste au même niveau.\n";
+			}
 		}
-		//heure -- >le faire au moment de l'appel à la méthode ?
 	}
 
 	/**

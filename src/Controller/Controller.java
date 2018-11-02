@@ -374,16 +374,16 @@ public class Controller {
 	private void finDuJeu()
 	{
 		if (this.jeu.getJoueur().getVie() <= 0)
-			this.vue.afficherUnMessage("Vous êtes mort...");
+			this.vue.afficherUnMessage("\n------ VOUS ETES MORT ----- \nMalheureusement, les blessures et l'épuisement aura eu raison de vous. Au loin, vous voyez votre objectif. \nVous n'étiez pas si loin, mais vous rencontrez la mort avant d'y parvenir.");
 			/*Afficher stats*/
 			else
 			{
 				if(this.jeu.getJourCourant() == this.jeu.getNbJour())
-					this.vue.afficherUnMessage("Votre temps est écoulé...");
+					this.vue.afficherUnMessage("\n------ VOTRE TEMPS EST ECOULE ------ \nVous avez tenté par tous les moyens d'arriver à temps. Malheureusement, lorsque vous arriverez, vous savez qu'il sera trop tard.");
 					/*Afficher stats*/
 					else
 					{
-						this.vue.afficherUnMessage("Vous venez d'atteindre la case "+jeu.getCases().size()+", Félicitation! Vous avez réussi!");
+						this.vue.afficherUnMessage("\n------ FELICITATION ------ \nVous venez d'atteindre la case "+jeu.getCases().size()+", c'est ici que se termine votre histoire ! Et elle se terminera bien, pour cette fois.");
 						/*Afficher stats*/
 					}
 			}

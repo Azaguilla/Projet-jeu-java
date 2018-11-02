@@ -311,7 +311,7 @@ public class Jeu
 	 */
 	private String lesMonstresSeDeplacent()
 	{
-		String message ="------------ Information sur les déplacements ------------";
+		String message ="------------ Informations sur les déplacements ------------";
 		//On récupère tous les monstres
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size(); i++)
@@ -385,7 +385,7 @@ public class Jeu
 			}
 		}
 		
-		String message = "\n------------ Information sur les nouveaux monstres en gestation ------------\n";
+		String message = "\n------------ Informations sur les nouveaux monstres en gestation ------------\n";
 		int i = 1;
 		while(i != 4)
 		{
@@ -414,9 +414,8 @@ public class Jeu
 	 */
 	private String verifNaissances()
 	{
-		//TODO OPTIMISATION !!!
 		//On vérifie les oeufs
-		String message = "------------ Informations sur les naissances ------------";
+		String message = "\n------------ Informations sur les naissances ------------";
 		for (int i = 0; i < this.oeufs.size(); i++)
 		{
 			if(this.oeufs.get(i).getTempsIncub() >= 1)
@@ -526,7 +525,7 @@ public class Jeu
 	 */
 	public String consequenceAction(int duree)
 	{
-		this.nbHeure = this.nbHeure- duree;
+		this.nbHeure = this.nbHeure - duree;
 		String message = "";
 		if(this.nbHeure == 0)
 		{

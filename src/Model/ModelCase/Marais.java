@@ -94,8 +94,17 @@ public class Marais extends Case
 		}
 		else
 		{
-			this.setPollution(this.getPollution()-1);
-			return"\nVous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.\n";
+			if(this.profondeur == 0)
+			{
+				this.setPollution(this.getPollution()-1);
+				return"\nVous entrez en transe et invoquez des esprits purificateurs. La pollution baisse d'un niveau.\n";
+			}
+			else
+			{
+				this.profondeur = this.profondeur -1;
+				return"\nLe marais est profond, sa purification prend plus de temps que prévu. "
+						+"\nLe niveau de pollution ne descend pas, mais vous vous débarrasser d'une partie de l'eau contaminée.\n";
+			}
 		}
 	}
 	

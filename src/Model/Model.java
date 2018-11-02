@@ -67,6 +67,8 @@ public class Model
 			int n = rand.nextInt(3);
 			int taille = rand.nextInt(3)+1;
 			int pollution = rand.nextInt(3);
+			int profondeur = rand.nextInt(2);
+			int hauteur = rand.nextInt(2);
 			switch (n)
 			{
 				case 0: 
@@ -74,11 +76,11 @@ public class Model
 					tabCase[i] = plaine;
 						break;
 				case 1: 
-					Marais marais = new Marais(i, taille, pollution, 2);
+					Marais marais = new Marais(i, taille, pollution, profondeur);
 					tabCase[i] = marais;
 						break;
 				case 2: 
-					Foret foret = new Foret(i, taille, pollution, 2);
+					Foret foret = new Foret(i, taille, pollution, hauteur);
 					tabCase[i] = foret;
 						break;
 			}
