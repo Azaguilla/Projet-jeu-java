@@ -1,7 +1,11 @@
 /**
  * 
  */
-package Model;
+package Model.ModelMonstre;
+
+import Model.ModelJeu.Jeu;
+import Model.ModelPersonnage.Personnage;
+import Model.ModelCase.Case;
 
 /**
  * @author Laurie
@@ -314,7 +318,7 @@ public abstract class Monstre
 	 */
 	public void mourir(Jeu jeu)
 	{
-		Case laCase = jeu.cases.get(this.numCaseActuelle);
+		Case laCase = jeu.getCases().get(this.numCaseActuelle);
 		laCase.SuppMonstre(this);
 	}
 	

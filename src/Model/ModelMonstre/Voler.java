@@ -1,36 +1,16 @@
-package Model;
+package Model.ModelMonstre;
 
 import java.util.Random;
 
-public class Ramper implements SeDeplacer 
+import Model.ModelJeu.Jeu;
+import Model.ModelCase.Case;
+
+public class Voler implements SeDeplacer 
 {
-	
 	private Random rand = new Random();
 	
 	/**
-	 * Le deplacement en volant
-	 * @param monstre Le monstre qui se déplace
-	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return faux(false)
-	 */
-	public boolean voler(Monstre monstre, Jeu jeu)
-	{
-		return false;
-	}
-	
-	/**
-	 * Le déplacement en vagabondant
-	 * @param monstre Le monstre qui se déplace
-	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return faux(false)
-	 */
-	public boolean vagabonder(Monstre monstre, Jeu jeu)
-	{
-		return false;
-	}
-	
-	/**
-	 * Le déplacement en rampant
+	 * Le déplacement en volant
 	 * Le monstre avance ou recule au hasard
 	 * Si le monstre a pu être ajouté sur la nouvelle case, il est supprimé de l'ancienne
 	 * Sinon il reste sur la même case
@@ -38,7 +18,7 @@ public class Ramper implements SeDeplacer
 	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 * @return vrai(true) s'il a pu se déplacer sur une autre case, faux(false) sinon
 	 */
-	public boolean ramper(Monstre monstre, Jeu jeu)
+	public boolean voler(Monstre monstre, Jeu jeu)
 	{
 		int numCase = monstre.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
@@ -57,7 +37,7 @@ public class Ramper implements SeDeplacer
 		int nbCase = jeu.getCases().size();
 		if(newNumCase == -1 || newNumCase == nbCase)
 		{
-			System.out.println("Le monstre a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
+			//System.out.println("Le monstre a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
 			return false;
 		}
 		else
@@ -66,10 +46,32 @@ public class Ramper implements SeDeplacer
 			if (newCase.ajoutMonstre(monstre))
 			{
 				laCase.SuppMonstre(monstre);
-				System.out.println("Le monstre "+monstre.getNom()+"  vagabonde vers la case "+newNumCase);
+				//System.out.println("Le monstre "+monstre.getNom()+"  vagabonde vers la case "+newNumCase);
 				return true;
 			}
 			return false;
 		}
+	}
+	
+	/**
+	 * Le déplacement en vagabondant
+	 * @param monstre Le monstre qui se déplace
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return faux(false)
+	 */
+	public boolean vagabonder(Monstre monstre, Jeu jeu)
+	{
+		return false;
+	}
+	
+	/**
+	 * Le déplacement en rampant
+	 * @param monstre Le monstre qui se déplace
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return faux(false)
+	 */
+	public boolean ramper(Monstre monstre, Jeu jeu)
+	{
+		return false;
 	}
 }

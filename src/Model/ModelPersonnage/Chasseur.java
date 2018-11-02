@@ -1,4 +1,7 @@
-package Model;
+package Model.ModelPersonnage;
+
+import Model.ModelJeu.Jeu;
+import Model.ModelMonstre.Monstre;
 
 public class Chasseur extends Personnage 
 {

@@ -1,4 +1,7 @@
-package Model;
+package Model.ModelCase;
+
+import Model.ModelMonstre.Monstre;
+import Model.ModelPersonnage.Personnage;
 
 public class Plaine extends Case 
 {
@@ -88,7 +91,7 @@ public class Plaine extends Case
 		}
 		else
 		{
-			System.out.println("Il y a trop de monstre sur la case");
+			//System.out.println("Il y a trop de monstre sur la case");
 			return false;
 		}
 	}

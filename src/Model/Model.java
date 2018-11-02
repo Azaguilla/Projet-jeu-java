@@ -3,6 +3,26 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Model.ModelCase.Case;
+import Model.ModelCase.Foret;
+import Model.ModelCase.Marais;
+import Model.ModelCase.Plaine;
+import Model.ModelJeu.Jeu;
+import Model.ModelMonstre.Basilic;
+import Model.ModelMonstre.Blob;
+import Model.ModelMonstre.Ent;
+import Model.ModelMonstre.Gobelin;
+import Model.ModelMonstre.Griffon;
+import Model.ModelMonstre.LoupGarou;
+import Model.ModelMonstre.Monstre;
+import Model.ModelMonstre.Ogre;
+import Model.ModelMonstre.Wyverne;
+import Model.ModelPersonnage.Chasseur;
+import Model.ModelPersonnage.Guerrier;
+import Model.ModelPersonnage.Magicien;
+import Model.ModelPersonnage.Personnage;
+import Model.ModelPersonnage.Rodeur;
+
 public class Model 
 {
 	
@@ -279,7 +299,7 @@ public class Model
 	 */
 	public boolean personnageNEstPasSurObjectif(Jeu jeu)
 	{
-		if (jeu.getJoueur().getPosition() == jeu.cases.size()-1)
+		if (jeu.getJoueur().getPosition() == jeu.getCases().size()-1)
 		{
 			return false;
 		}

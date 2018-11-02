@@ -1,4 +1,7 @@
-package Model;
+package Model.ModelMonstre;
+
+import Model.ModelJeu.Jeu;
+import Model.ModelCase.Case;
 
 public class Ent extends Monstre implements Vivipare 
 {
@@ -49,7 +52,7 @@ public class Ent extends Monstre implements Vivipare
 	@Override
 	public String son() 
 	{
-		return "Je s'appelle Grout.";
+		return "Les branchent d'un Ent grincent dans les profondeurs de la forêt.";
 	}
 
 

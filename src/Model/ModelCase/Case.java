@@ -1,9 +1,12 @@
 /**
  * 
  */
-package Model;
+package Model.ModelCase;
 
 import java.util.ArrayList;
+
+import Model.ModelMonstre.Monstre;
+import Model.ModelPersonnage.Personnage;
 
 
 /**

@@ -1,4 +1,9 @@
-package Model;
+package Model.ModelCase;
+
+import Model.ModelMonstre.Ent;
+import Model.ModelMonstre.LoupGarou;
+import Model.ModelMonstre.Monstre;
+import Model.ModelPersonnage.Personnage;
 
 public class Foret extends Case 
 {

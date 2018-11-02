@@ -1,4 +1,6 @@
-package Model;
+package Model.ModelMonstre;
+
+import Model.ModelJeu.Jeu;
 
 public interface SeDeplacer {
 	public boolean vagabonder(Monstre monstre, Jeu jeu);

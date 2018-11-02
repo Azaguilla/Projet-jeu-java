@@ -1,27 +1,30 @@
-package Model;
+package Model.ModelMonstre;
 
-public class Gobelin extends Monstre implements Terrestre, Vivipare 
+import Model.ModelJeu.Jeu;
+import Model.ModelCase.Case;
+
+public class Ogre extends Monstre implements Terrestre, Vivipare 
 {
 	private int tempsGestation = 0;
-	private int dureeGestation = 2;
+	private int dureeGestation = 3;
 	
 	/**
-	 * Monstre de l'espèce des Gobelins
-	 * @param nom Nom du Gobelin
-	 * @param sexe Sexe du Gobelin
-	 * @param poids Poids du Gobelin
-	 * @param taille Taille du Gobelin
-	 * @param age Age du Gobelin
-	 * @param sommeil Etat de sommeil du Gobelin, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * Monstre de l'espèce des Ogres
+	 * @param nom Nom de l'Ogre
+	 * @param sexe Sexe de l'Ogre
+	 * @param poids Poids de l'Ogre
+	 * @param taille Taille de l'Ogre
+	 * @param age Age de l'Ogre
+	 * @param sommeil Etat de sommeil de l'Ogre, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
-	public Gobelin(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
+	public Ogre(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
 
 	/**
-     * Permet de récupérer le temps de gestation du Gobelin
-     * @return Le temps de gestation du Gobelin
+     * Permet de récupérer le temps de gestation de l'Ogre
+     * @return Le temps de gestation de l'Ogre
      */
 	public int getTempsGestation() 
 	{
@@ -29,8 +32,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 
 	/**
-	 * Permet de modifier le temps de gestation du Gobelin
-	 * @param tempsGestation Le temps de gestation du Gobelin
+	 * Permet de modifier le temps de gestation de l'Ogre
+	 * @param tempsGestation Le temps de gestation de l'Ogre
 	 */
 	public void setTempsGestation(int tempsGestation) 
 	{
@@ -38,8 +41,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 
 	/**
-     * Permet de récupérer la durée de gestation du Gobelin
-     * @return La durée de gestation du Gobelin
+     * Permet de récupérer la durée de gestation de l'Ogre
+     * @return La durée de gestation de l'Ogre
      */
 	public int getDureeGestation() 
 	{
@@ -47,8 +50,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 
 	/**
-	 * Permet de modifier la durée de gestation du Gobelin
-	 * @param dureeGestation La durée de gestation du Gobelin
+	 * Permet de modifier la durée de gestation de l'Ogre
+	 * @param dureeGestation La durée de gestation de l'Ogre
 	 */
 	public void setDureeGestation(int dureeGestation) 
 	{
@@ -83,18 +86,18 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	}
 	
 	/**
-	 * Crée un nouveau Gobelin avec des caractéristiques aléatoires
-	 * @return Un Nouveau Gobelin
+	 * Crée un nouvel Ogre avec des caractéristiques aléatoires
+	 * @return Un nouvel Ogre
 	 */
 	public Monstre naissance()
 	{
 		int sexe = (int) Math.round(Math.random());
 		int taille = (int) Math.round(Math.random()*2);
-		int poids = (int) Math.round(15+Math.random()*5);
+		int poids = (int) Math.round(80+Math.random()*15);
 		
-		return new Gobelin("Gobelin", sexe, poids, taille, 0, false);
+		return new Ogre("Ogre", sexe, poids, taille, 0, false);
 	}
-	
+
 	/**
 	 * Si la gestation arrive a terme (égale à la durée de gestation) 
 	 * 		un monstre est ajouté s'il peut etre placé, sinon il meurt
@@ -108,7 +111,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	{
 		if(this.tempsGestation == this.dureeGestation)
 		{
-			//System.out.println("sysoUn bébé "+this.getNom()+" est né !");
+			System.out.println("sysoUn bébé "+this.getNom()+" est né !");
 			Monstre monstre = this.naissance();
 			int numCase = this.getNumCaseActuelle();
 			Case laCase = jeu.recupererCase(numCase);
@@ -118,17 +121,17 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 			{
 				if(laCase.ajoutMonstre(monstre))
 				{
-					//System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
+					System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 					monstrePlace = true;
-					message = "Un bébé "+this.getNom()+" est né ! Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase();
+					message = "Un bébé "+this.getNom()+" est né !";
 				}
 				else
 				{
 					if(numCase == 19)
 					{
-						//System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
+						System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 						monstrePlace = true;
-						message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.\n";
+						message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.";
 					}
 					else
 					{
@@ -145,17 +148,16 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 		{
 			this.tempsGestation++;
 			this.setEnGestation(true);
-			return "Le monstre "+this.getNom()+" est toujours en gestation.\n";
+			return "Le monstre "+this.getNom()+" est toujours en gestation";
 		}
 	}
 	
 	/**
 	 * Détermine le son du monstre
-	 * @return Le son et le nom du Gobelin
+	 * @return Le son et le nom de l'Ogre
 	 */
 	public String son()
 	{
-		return "Le gobelin"+this.getNom()+" ricane dans les profondeurs.";
+		return "L'ogre "+this.getNom()+" gronde.";
 	}
-
 }
