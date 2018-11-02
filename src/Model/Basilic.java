@@ -4,12 +4,12 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 {
 	/**
 	 * Monstre de l'espèce des Basilics
-	 * @param String nom Nom du Basilic
-	 * @param int sexe Sexe du Basilic
-	 * @param int poids Poids du Basilic
-	 * @param int taille Taille du Basilic
-	 * @param double age Age du Basilic
-	 * @param boolean sommeil Etat de sommeil du Basilic, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * @param nom Nom du Basilic
+	 * @param sexe Sexe du Basilic
+	 * @param poids Poids du Basilic
+	 * @param taille Taille du Basilic
+	 * @param age Age du Basilic
+	 * @param sommeil Etat de sommeil du Basilic, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
 	public Basilic(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
 		super(nom, sexe, poids, taille, age, sommeil);
@@ -18,7 +18,7 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	/**
 	 * Initialise au hasard les caracteristiques du bébé
 	 * Crée un nouveau monstre bebe
-	 * @return Oeuf Un nouvel oeuf avec son temps d'incubation et le bebe qu'in contient
+	 * @return Un nouvel (un objet) oeuf avec son temps d'incubation et le bebe (l'instanciation du monstre actuel) qu'il contient
 	 */
 	@Override
 	public Oeuf pondreOeuf() 
@@ -36,10 +36,10 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	/**
 	 * Méthode de déplacement des monstres rampant
 	 *  
-	 * @param SeDeplacer seDeplacer 
-	 * @oaram Jeu jeu 
+	 * @param seDeplacer 
+	 * @param jeu 
 	 * 
-	 * @return boolean si le monstre s'est bien déplacé, true, sinon, false
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	@Override
 	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) 
@@ -50,10 +50,10 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	/**
 	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
 	 * 
-	 * @param SeDeplacer seDeplacer 
-	 * @oaram Jeu jeu 
+	 * @param seDeplacer 
+	 * @param jeu 
 	 * 
-	 * @return boolean si le monstre s'est bien déplacé, true, sinon, false
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 * 
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
@@ -64,7 +64,7 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	//TODO inclure les sons après un déplacement
 	/**
 	 * Détermine le son du monstre
-	 * @return String Le son et le nom du Basilic
+	 * @return Le son et le nom du Basilic
 	 */
 	@Override
 	public String son() 
@@ -72,11 +72,10 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 		return "Le Basilic "+this.getNom()+" siffle au fond du Marais.";
 	}
 
-	//TODO vérifier doc
 	/**
 	 * Le monstre entre en gestation d'un oeuf
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information pour indiquer au joueur qu'un oeuf est en cours d'incubation.
 	 */
 	@Override
 	public String gestation(Jeu jeu) 

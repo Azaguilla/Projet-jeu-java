@@ -21,9 +21,9 @@ public abstract class Case
 	
 	/**
 	 * Une case du plateau de jeu
-	 * @param int numCase Numéro de la case, indiquant sa position sur le plateau
-	 * @param int taille Tailler de la case
-	 * @param int pollution Etat de pollution de la case
+	 * @param numCase Numéro de la case, indiquant sa position sur le plateau
+	 * @param taille Tailler de la case
+	 * @param pollution Etat de pollution de la case
 	 */
 	public Case(int numCase, int taille, int pollution) 
 	{
@@ -33,10 +33,9 @@ public abstract class Case
 		this.pollution = pollution;
 	}
 	
-	//TODO vérifier doc (type arraylist..)
 	/**
 	 * Permet de modifier les informations des monstres de la case
-	 * @param ArrayList<Monstre> monstres Les monstres de la case
+	 * @param monstres Les monstres de la case
 	 */
 	public void setMonstres(ArrayList<Monstre> monstres) 
 	{
@@ -45,7 +44,7 @@ public abstract class Case
 
 	/**
 	 * Supprime un monstre de la case et décrémente le nombre de monstres sur la case
-	 * @param Monstre monstre Le monstre a supprimer sur la case
+	 * @param monstre Le monstre a supprimer sur la case
 	 */
     public void SuppMonstre(Monstre monstre)
     {
@@ -53,11 +52,10 @@ public abstract class Case
         this.nbMaxMonstre--;
     }
 
-    //TODO vérifier doc (type arraylist..)
   	/**
   	 * Permet de récupérer les information des monstres de la case
-  	 * @param ArrayList<Monstre> monstres Les monstres de la case
-  	 * @return ArrayList<Monstre> monstres Les monstres de la case
+  	 * @param monstres Les monstres de la case
+  	 * @return Les monstres de la case
   	 */
     public ArrayList<Monstre> getMonstres() 
     {
@@ -66,7 +64,7 @@ public abstract class Case
 	
     /**
      * Permet de récupérer le numéro de la case
-     * @return int numCase Le numéro de la case
+     * @return Le numéro de la case
      */
 	public int getNumCase() 
 	{
@@ -75,7 +73,7 @@ public abstract class Case
 	
 	/**
 	 * Permet de modifier le numéro de la case
-	 * @param int numCase Le numéro de la case
+	 * @param numCase Le numéro de la case
 	 */
 	public void setNumCase(int numCase) 
 	{
@@ -84,7 +82,7 @@ public abstract class Case
 	
 	/**
      * Permet de récupérer la taille de la case
-     * @return int taille La taille de la case
+     * @return La taille de la case
      */
 	public int getTaille() 
 	{
@@ -93,7 +91,7 @@ public abstract class Case
 	
 	/**
 	 * Permet de modifier la taille de la case
-	 * @param int taille La taille de la case
+	 * @param taille La taille de la case
 	 */
 	public void setTaille(int taille) 
 	{
@@ -102,7 +100,7 @@ public abstract class Case
 	
 	/**
      * Permet de récupérer le nombre maximal de monstres sur la case
-     * @return int nbMaxMonstre Le nombre maximal de monstres sur la case
+     * @return Le nombre maximal de monstres sur la case
      */
 	public int getNbMaxMonstre() 
 	{
@@ -111,7 +109,7 @@ public abstract class Case
 	
 	/**
 	 * Permet de modifier le nombre maximal de monstres sur la case
-	 * @param int nbMaxMonstre Le nombre maximal de monstres sur la case
+	 * @param nbMaxMonstre Le nombre maximal de monstres sur la case
 	 */
 	public void setNbMaxMonstre(int nbMaxMonstre) 
 	{
@@ -120,7 +118,7 @@ public abstract class Case
 	
 	/**
      * Permet de récupérer l'état de pollution de la case
-     * @return int pollution L'état de pollution de la case
+     * @return L'état de pollution de la case
      */
 	public int getPollution() 
 	{
@@ -129,7 +127,7 @@ public abstract class Case
 	
 	/**
 	 * Permet de modifier l'état de pollution de la case
-	 * @param int pollution L'état de pollution de la case
+	 * @param pollution L'état de pollution de la case
 	 */
 	public void setPollution(int pollution) 
 	{

@@ -10,9 +10,9 @@ public final class Magicien extends Personnage
 	 * Réveille le monstre
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
-	 * @param Monstre monstre Le monstre choisi
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param monstre Le monstre choisi
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	@Override
 	public String attaquer(Monstre monstre, Jeu jeu) 
@@ -37,9 +37,9 @@ public final class Magicien extends Personnage
 	 * Réveille le monstre
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
-	 * @param Monstre monstre Le monstre choisi
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param monstre Le monstre choisi
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
@@ -70,13 +70,12 @@ public final class Magicien extends Personnage
 		super(nom, sexe, classe);
 	}
 
-	//TODO vérifier doc
 	/**
 	 * Crée un nouveau Magicien
 	 * @param nom Le nom du Magicien
 	 * @param sexe Le sexe du Magicien
 	 * @param classe La classe du Magicien
-	 * @return
+	 * @return Une instance de Magicien
 	 */
 	public static Personnage getInstance(String nom, String sexe, String classe) 
 	{ 
@@ -89,7 +88,7 @@ public final class Magicien extends Personnage
 	
 	/**
 	 * Affiche les information détaillées du Magicien
-	 * @return String caracPersonnage Les informations
+	 * @return Les informations
 	 */
 	public String infosPersoDetail()
 	{
@@ -142,7 +141,7 @@ public final class Magicien extends Personnage
 	
 	/**
 	 * Affiche les information les plus importantes du chasseur
-	 * @return String caracPersonnage Les informations
+	 * @return Les informations
 	 */
 	@Override
 	public String toString() 

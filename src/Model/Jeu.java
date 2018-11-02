@@ -19,9 +19,9 @@ public class Jeu
 	/**
 	 * Le jeu
 	 * @param String nom Le nom du personnage
-	 * @param Personnage joueur Le personnage du joueur
-	 * @param int nbJour Le nombre de jours
-	 * @param int nbHeure Le nombre d'heures
+	 * @param joueur Le personnage du joueur
+	 * @param nbJour Le nombre de jours
+	 * @param nbHeure Le nombre d'heures
 	 */
 	public Jeu(String nom, Personnage joueur, int nbJour, int nbHeure) 
 	{
@@ -34,7 +34,7 @@ public class Jeu
 	
 	/**
 	 * Affiche les informations du jeu
-	 * @return String Les informations
+	 * @return Les informations
 	 */
 	@Override
 	public String toString() 
@@ -52,7 +52,7 @@ public class Jeu
 	/**
 	 * Ajoute une case si le nombre maximal de case n'est pas atteind
 	 * Sinon affiche un message d'erreur
-	 * @param Case laCase La case à ajouter
+	 * @param laCase La case à ajouter
 	 */
 	public void ajoutCase(Case laCase)
 	{
@@ -68,7 +68,7 @@ public class Jeu
 	/**
 	 * Supprime une case s'il y a encore des cases
 	 * Sinon affiche un message d'erreur
-	 * @param Case laCase La case à supprimer
+	 * @param laCase La case à supprimer
 	 */
     public void SuppCase(Case laCase)
     {
@@ -84,7 +84,7 @@ public class Jeu
     
     /**
      * Permet de récupérer les cases
-     * @return ArrayList<Case> cases Les cases
+     * @return Les cases
      */
     public ArrayList<Case> getCases() 
     {
@@ -93,7 +93,7 @@ public class Jeu
     
     /**
 	 * Permet de modifier les cases
-	 * @param ArrayList<Case> cases Les cases
+	 * @param cases Les cases
 	 */
 	public void setCases(ArrayList<Case> cases) 
 	{
@@ -103,7 +103,7 @@ public class Jeu
 	/**
 	 * Ajoute un oeuf si le nombre de case maximal n'est pas atteint
 	 * Sinon affiche un message d'erreur
-	 * @param Case laCase La case d'ajout de l'oeuf
+	 * @param laCase La case d'ajout de l'oeuf
 	 */
 	public void ajoutOeuf(Oeuf oeuf)
 	{
@@ -119,7 +119,7 @@ public class Jeu
 	
 	/**
 	 * Supprime un oeuf
-	 * @param Oeuf oeuf L'oeuf à supprimer
+	 * @param oeuf L'oeuf à supprimer
 	 */
     public void SuppOeuf(Oeuf oeuf)
     {
@@ -136,7 +136,7 @@ public class Jeu
      
     /**
      * Permet de récupérer les oeufs
-     * @return ArrayList<Oeuf> oeufs Les oeufs
+     * @return Les oeufs
      */
     public ArrayList<Oeuf> getOeufs() 
     {
@@ -145,7 +145,7 @@ public class Jeu
     
     /**
 	 * Permet de modifier les oeufs
-	 * @param ArrayList<Oeuf> oeufs Les oeufs
+	 * @param oeufs Les oeufs
 	 */
 	public void setOeufs(ArrayList<Oeuf> oeufs) 
 	{
@@ -154,7 +154,7 @@ public class Jeu
 	
 	/**
      * Permet de récupérer le nom du personnage
-     * @return String nom Le nom du personnage
+     * @return Le nom du personnage
      */
 	public String getNom() 
 	{
@@ -163,7 +163,7 @@ public class Jeu
 	
 	/**
 	 * Permet de modifier le nom du personnage
-	 * @param String nom Le nom du personnage
+	 * @param nom Le nom du personnage
 	 */
 	public void setNom(String nom) 
 	{
@@ -172,7 +172,7 @@ public class Jeu
 	
 	/**
      * Permet de récupérer le personnage du joueur
-     * @return Personnage joueur Le personnage du joueur
+     * @return Le personnage du joueur
      */
 	public Personnage getJoueur() 
 	{
@@ -181,7 +181,7 @@ public class Jeu
 	
 	/**
 	 * Permet de modifier le personnage du joueur
-	 * @param Personnage joueur Le personnage du joueur
+	 * @param joueur Le personnage du joueur
 	 */
 	public void setJoueur(Personnage joueur) 
 	{
@@ -190,7 +190,7 @@ public class Jeu
 	
 	/**
      * Permet de récupérer le nombre de jours
-     * @return int nbJour Le nombre de jours
+     * @return Le nombre de jours
      */
 	public int getNbJour() 
 	{
@@ -199,7 +199,7 @@ public class Jeu
 	
 	/**
 	 * Permet de modifier le nombre de jours
-	 * @param int nbJour Le nombre de jours
+	 * @param nbJour Le nombre de jours
 	 */
 	public void setNbJour(int nbJour) 
 	{
@@ -208,7 +208,7 @@ public class Jeu
 	
 	/**
      * Permet de récupérer le nombre d'heures
-     * @return int nbHeure Le nombre d'heures
+     * @return Le nombre d'heures
      */
 	public int getNbHeure() 
 	{
@@ -217,7 +217,7 @@ public class Jeu
 	
 	/**
 	 * Permet de modifier le nombre d'heures
-	 * @param int nbHeure Le nombre d'heures
+	 * @param nbHeure Le nombre d'heures
 	 */
 	public void setNbHeure(int nbHeure) 
 	{
@@ -226,7 +226,7 @@ public class Jeu
 	
 	/**
      * Permet de récupérer le nombre maximal de cases
-     * @return static int MAX_CASE Le nombre maximal de cases
+     * @return Le nombre maximal de cases
      */
 	public static int getMaxCase() 
 	{
@@ -235,7 +235,7 @@ public class Jeu
 	
 	/**
      * Permet de récupérer le jour courant
-     * @return int jourCourant Le jour courant
+     * @return Le jour courant
      */
 	public int getJourCourant() 
 	{
@@ -244,7 +244,7 @@ public class Jeu
 	
 	/**
 	 * Permet de modifier le jour courant
-	 * @param int jourCourant Le jour courant
+	 * @param jourCourant Le jour courant
 	 */
 	public void setJourCourant(int jourCourant) 
 	{
@@ -298,7 +298,8 @@ public class Jeu
 	
 	//TODO javadoc
 	/**
-	 * 
+	 * Méthode qui gère le déplacement des monstres. Elle les récupère un par un et les déplace.
+	 * Si le monstre retourne un message selon s'il a pu se déplacer ou non
 	 */
 	private void lesMonstresSeDeplacent()
 	{
@@ -337,7 +338,7 @@ public class Jeu
 	
 	/**
 	 * Récupère tous les monstres, en choisi 4 et les fait se reproduire
-	 * @return String message
+	 * @return Un message d'information
 	 */
 	private String nouvellesNaissances()
 	{
@@ -366,14 +367,16 @@ public class Jeu
 		return message;
 	}
 	
-	//TODO completer doc
 	/**
 	 * Vérifie pour chaque oeuf l'incubation
 	 * Si l'incubation n'est pas finie, décrémente l'incubation
 	 * Sinon, ajoute un nouveau monstre sur la case mère
 	 * 
 	 * 
-	 * Vérifie pour chaque monstre la gestation de toutes les cases
+	 * Vérifie pour chaque case la gestation de toutes les monstres
+	 * Si l'un d'eux a atteint la fin de sa durée de gestation, le monstre est placé sur la case mère ou plus loin. (excepté les Ents)
+	 * 
+	 * @return Un message d'information sur les différentes naissances.
 	 */
 	private String verifNaissances()
 	{
@@ -445,7 +448,7 @@ public class Jeu
 	 * Vérifie que ce n'est pas la fin du jeu
 	 * Si le nombre de jour maximal est atteind ou si le joueur est mort, le jeu prend fin
 	 * Sinon le jour passe et le jeu continue
-	 * @return boolean vrai(true) si le jeu est fini, faux(false) sinon
+	 * @return vrai(true) si le jeu est fini, faux(false) sinon
 	 */
 	public String ChangerTour()
 	{
@@ -474,7 +477,7 @@ public class Jeu
 	/**
 	 * Récupère la case
 	 * @param numCase La case à récupérer
-	 * @return Case La case récupérée
+	 * @return La case récupérée
 	 */
 	public Case recupererCase(int numCase)
 	{
@@ -484,7 +487,7 @@ public class Jeu
 	/**
 	 * Décrément le nombre d'heures
 	 * Si le nombre d'heure est à 0, le tour change
-	 * @return String Les conséquences de l'action
+	 * @return Les conséquences de l'action
 	 */
 	public String consequenceAction()
 	{
@@ -501,7 +504,7 @@ public class Jeu
 	
 	/**
 	 * Affiche les informations du jeu
-	 * @return String L'affichage du jeu
+	 * @return L'affichage du jeu
 	 */
 	public String infosJeu()
 	{

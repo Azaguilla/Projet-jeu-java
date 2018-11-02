@@ -7,12 +7,12 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Monstre de l'espèce des Ogres
-	 * @param String nom Nom de l'Ogre
-	 * @param int sexe Sexe de l'Ogre
-	 * @param int poids Poids de l'Ogre
-	 * @param int taille Taille de l'Ogre
-	 * @param double age Age de l'Ogre
-	 * @param boolean sommeil Etat de sommeil de l'Ogre, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * @param nom Nom de l'Ogre
+	 * @param sexe Sexe de l'Ogre
+	 * @param poids Poids de l'Ogre
+	 * @param taille Taille de l'Ogre
+	 * @param age Age de l'Ogre
+	 * @param sommeil Etat de sommeil de l'Ogre, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
 	public Ogre(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
@@ -21,7 +21,7 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 
 	/**
      * Permet de récupérer le temps de gestation de l'Ogre
-     * @return int tempsGestation Le temps de gestation de l'Ogre
+     * @return Le temps de gestation de l'Ogre
      */
 	public int getTempsGestation() 
 	{
@@ -30,7 +30,7 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 
 	/**
 	 * Permet de modifier le temps de gestation de l'Ogre
-	 * @param int tempsGestation Le temps de gestation de l'Ogre
+	 * @param tempsGestation Le temps de gestation de l'Ogre
 	 */
 	public void setTempsGestation(int tempsGestation) 
 	{
@@ -39,7 +39,7 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 
 	/**
      * Permet de récupérer la durée de gestation de l'Ogre
-     * @return int dureeGestation La durée de gestation de l'Ogre
+     * @return La durée de gestation de l'Ogre
      */
 	public int getDureeGestation() 
 	{
@@ -48,24 +48,33 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 
 	/**
 	 * Permet de modifier la durée de gestation de l'Ogre
-	 * @param int dureeGestation La durée de gestation de l'Ogre
+	 * @param dureeGestation La durée de gestation de l'Ogre
 	 */
 	public void setDureeGestation(int dureeGestation) 
 	{
 		this.dureeGestation = dureeGestation;
 	}
 
-	//TODO javadoc
 	/**
+	 * Méthode de déplacement des monstres qui vagabondant
+	 *  
+	 * @param seDeplacer 
+	 * @param jeu 
 	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	public boolean vagabonder(SeDeplacer seDeplacer, Jeu jeu)
 	{
 		return seDeplacer.vagabonder(this, jeu);
 	}
 	
-	//TODO javadoc
 	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
+	 * 
+	 * @param seDeplacer 
+	 * @param jeu 
+	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 * 
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
@@ -75,7 +84,7 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Crée un nouvel Ogre avec des caractéristiques aléatoires
-	 * @return Monstre Ogre Un nouvel Ogre
+	 * @return Un nouvel Ogre
 	 */
 	public Monstre naissance()
 	{
@@ -92,8 +101,8 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 	 *		le temps de gestation a 0
 	 *		l'état en changé en non gestation
 	 * Sinon le temps de gestation est incrémenté
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	public String gestation(Jeu jeu)
 	{
@@ -142,7 +151,7 @@ public class Ogre extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Détermine le son du monstre
-	 * @return String Le son et le nom de l'Ogre
+	 * @return Le son et le nom de l'Ogre
 	 */
 	public String son()
 	{

@@ -21,7 +21,7 @@ public class Guerrier extends Personnage
 	 * @param nom Le nom du Guerrier
 	 * @param sexe Le sexe du Guerrier
 	 * @param classe La classe du Guerrier
-	 * @return
+	 * @return Une instance de Guerrier
 	 */
 	public static Personnage getInstance(String nom, String sexe, String classe) 
 	{ 
@@ -37,9 +37,9 @@ public class Guerrier extends Personnage
 	 * Réveille le monstre
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
-	 * @param Monstre monstre Le monstre choisi
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param monstre Le monstre choisi
+	 * @param eu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	@Override
 	public String attaquer(Monstre monstre, Jeu jeu) 
@@ -64,9 +64,9 @@ public class Guerrier extends Personnage
 	 * Réveille le monstre
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
-	 * @param Monstre monstre Le monstre choisi
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param monstre Le monstre choisi
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
@@ -88,7 +88,7 @@ public class Guerrier extends Personnage
 	
 	/**
 	 * Affiche les information détaillées du guerrier
-	 * @return String caracPersonnage Les informations
+	 * @return Les informations
 	 */
 	public String infosPersoDetail() 
 	{
@@ -141,7 +141,7 @@ public class Guerrier extends Personnage
 	
 	/**
 	 * Affiche les information les plus importantes du chasseur
-	 * @return String caracPersonnage Les informations
+	 * @return Les informations
 	 */
 	@Override
 	public String toString() 

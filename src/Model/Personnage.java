@@ -24,9 +24,9 @@ public abstract class Personnage
 	
 	/**
 	 * Le personnage du joueur
-	 * @param String nom Le nom du personnage
-	 * @param String sexe Le sexe du personnage
-	 * @param String classe La classe du personnage
+	 * @param nom Le nom du personnage
+	 * @param sexe Le sexe du personnage
+	 * @param classe La classe du personnage
 	 */
 	 public Personnage(String nom, String sexe, String classe) 
 	 {
@@ -44,8 +44,8 @@ public abstract class Personnage
 	}
 	/**
 	 * Affiche les informations d'une case choisie
-	 * @param Case laCase La case choisie
-	 * @return String Les informations de la case
+	 * @param laCase La case choisie
+	 * @return Les informations de la case
 	 */
 	public String examinerCase(Case laCase) 
 	{
@@ -54,9 +54,9 @@ public abstract class Personnage
 	
 	/**
 	 * Avance ou recule le personnage d'une case selon le choix
-	 * @param int choix Avancer ou Reculer
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return boolean vrai(true) si le déplacement est valide, faux(false) sinon
+	 * @param choix Avancer ou Reculer
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return vrai(true) si le déplacement est valide, faux(false) sinon
 	 */
 	public boolean seDeplacer(int choix, Jeu jeu)
 	{
@@ -89,7 +89,7 @@ public abstract class Personnage
 	/**
 	 * Ajoute de la vie au personnage si elle n'est pas au maximum
 	 * Sinon affiche un message d'erreur
-	 * @return String Un message
+	 * @return Un message d'information sur la vie
 	 */
 	public String boirePotion()
 	{
@@ -107,7 +107,7 @@ public abstract class Personnage
 	/**
 	 * Ajoute de l'énergie au personnage si elle n'est pas au maximum
 	 * Sinon affiche un message d'erreur
-	 * @return String Un message
+	 * @return Un message
 	 */
 	public String manger()
 	{
@@ -122,11 +122,11 @@ public abstract class Personnage
 		}
 		
 	}
-	//TODO vérifier return type
+
 	/**
 	 * Permet de nettoyer la case
-	 * @param Case laCase La case choisie
-	 * @return String laCase.nettoyerCase()
+	 * @param laCase La case choisie
+	 * @return laCase.nettoyerCase()
 	 */
 	public String nettoyer(Case laCase)
 	{
@@ -136,7 +136,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de changer de tour
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	public void finDeTour(Jeu jeu)
 	{
@@ -145,7 +145,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer le nom du personnage
-     * @return String nom Le nom du personnage
+     * @return Le nom du personnage
      */
 	public String getNom() 
 	{
@@ -154,7 +154,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier le nom du personnage
-	 * @param String nom Le nom du personnage
+	 * @param nom Le nom du personnage
 	 */
 	public void setNom(String nom) 
 	{
@@ -163,7 +163,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer le sexe du personnage
-     * @return String sexe Le sexe du personnage
+     * @return Le sexe du personnage
      */
 	public String getSexe() 
 	{
@@ -172,7 +172,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier le sexe du personnage
-	 * @param String sexe Le sexe du personnage
+	 * @param sexe Le sexe du personnage
 	 */
 	public void setSexe(String sexe) 
 	{
@@ -181,7 +181,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer l'age du personnage
-     * @return int age L'age du personnage
+     * @return L'age du personnage
      */
 	public int getAge() 
 	{
@@ -190,7 +190,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier l'age du personnage
-	 * @param int age L'age du personnage
+	 * @param age L'age du personnage
 	 */
 	public void setAge(int age) 
 	{
@@ -199,7 +199,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer la classe du personnage
-     * @return String classe La classe du personnage
+     * @return La classe du personnage
      */
 	public String getClasse() 
 	{
@@ -208,7 +208,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier la classe du personnage
-	 * @param String classe La classe du personnage
+	 * @param classe La classe du personnage
 	 */
 	public void setClasse(String classe) 
 	{
@@ -217,7 +217,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer la taille du personnage
-     * @return int taille La taille du personnage
+     * @return La taille du personnage
      */
 	public int getTaille() 
 	{
@@ -226,7 +226,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier la taille du personnage
-	 * @param int taille La taille du personnage
+	 * @param taille La taille du personnage
 	 */
 	public void setTaille(int taille) 
 	{
@@ -235,7 +235,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer le poids du personnage
-     * @return int poids Le poids du personnage
+     * @return Le poids du personnage
      */
 	public int getPoids() 
 	{
@@ -244,7 +244,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier le poids du personnage
-	 * @param int poids Le poids du personnage
+	 * @param poids Le poids du personnage
 	 */
 	public void setPoids(int poids) 
 	{
@@ -253,7 +253,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer l'energie du personnage
-     * @return int energie L'energie du personnage
+     * @return L'energie du personnage
      */
 	public int getEnergie() 
 	{
@@ -262,7 +262,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier l'energie du personnage
-	 * @param int energie L'energie du personnage
+	 * @param energie L'energie du personnage
 	 */
 	public void setEnergie(int energie) 
 	{
@@ -271,7 +271,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer la force du personnage
-     * @return int force La force du personnage
+     * @return La force du personnage
      */
 	public int getForce() 
 	{
@@ -280,7 +280,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier la force du personnage
-	 * @param int force La force du personnage
+	 * @param force La force du personnage
 	 */
 	public void setForce(int force) 
 	{
@@ -289,7 +289,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer la vie du personnage
-     * @return int vie La vie du personnage
+     * @return La vie du personnage
      */
 	public int getVie() 
 	{
@@ -298,7 +298,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier la vie du personnage
-	 * @param int vie La vie du personnage
+	 * @param vie La vie du personnage
 	 */
 	public void setVie(int vie) 
 	{
@@ -307,7 +307,7 @@ public abstract class Personnage
 	
 	/**
      * Permet de récupérer la position du personnage
-     * @return int position La position du personnage
+     * @return La position du personnage
      */
 	public int getPosition() 
 	{
@@ -316,7 +316,7 @@ public abstract class Personnage
 	
 	/**
 	 * Permet de modifier la position du personnage
-	 * @param int position La position du personnage
+	 * @param position La position du personnage
 	 */
 	public void setPosition(int position) 
 	{

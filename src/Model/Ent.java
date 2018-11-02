@@ -5,11 +5,11 @@ public class Ent extends Monstre implements Vivipare
 	/**
 	 * Monstre de l'espèce des Ents
 	 * @param String nom Nom de l'Ent
-	 * @param int sexe Sexe de l'Ent
-	 * @param int poids Poids de l'Ent
-	 * @param int taille Taille de l'Ent
-	 * @param double age Age de l'Ent
-	 * @param boolean sommeil Etat de sommeil de l'Ent, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * @param sexe Sexe de l'Ent
+	 * @param poids Poids de l'Ent
+	 * @param taille Taille de l'Ent
+	 * @param age Age de l'Ent
+	 * @param sommeil Etat de sommeil de l'Ent, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
 	public Ent(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
@@ -18,7 +18,7 @@ public class Ent extends Monstre implements Vivipare
 
 	/**
 	 * Crée un nouvel Ent
-	 * @return Monstre Ent Un nouvel Ent
+	 * @return Un nouvel Ent
 	 */
 	@Override
 	public Monstre naissance() 
@@ -32,9 +32,9 @@ public class Ent extends Monstre implements Vivipare
 	
 	/** 
 	 * Permet au monstre de se déplacer. Les Ents ne se déplacent pas.
-	 * @params Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @params SeDeplacer seDeplacer La manière dont le monstre va se déplacer. Ici il n'est pas utile.
-	 * @return   boolean true
+	 * @params jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @params seDeplacer La manière dont le monstre va se déplacer. Ici il n'est pas utile.
+	 * @return True car les Ents ne se déplacent pas.
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
 	{
@@ -44,7 +44,7 @@ public class Ent extends Monstre implements Vivipare
 
 	/**
 	 * Détermine le son du monstre
-	 * @return String Le son et le nom de l'Ent
+	 * @return Le son et le nom de l'Ent
 	 */
 	@Override
 	public String son() 
@@ -52,12 +52,13 @@ public class Ent extends Monstre implements Vivipare
 		return "Je s'appelle Grout.";
 	}
 
-	//TODO vérifier la doc
+
 	/**
 	 * Crée un nouvel Ent
 	 * Si le monstre peut etre placé dans son terrain, le monstre est placé
 	 * Sinon il meurt
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information.
 	 */
 	@Override
 	public String gestation(Jeu jeu) 

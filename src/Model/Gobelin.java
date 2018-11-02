@@ -7,12 +7,12 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Monstre de l'espèce des Gobelins
-	 * @param String nom Nom du Gobelin
-	 * @param int sexe Sexe du Gobelin
-	 * @param int poids Poids du Gobelin
-	 * @param int taille Taille du Gobelin
-	 * @param double age Age du Gobelin
-	 * @param boolean sommeil Etat de sommeil du Gobelin, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * @param nom Nom du Gobelin
+	 * @param sexe Sexe du Gobelin
+	 * @param poids Poids du Gobelin
+	 * @param taille Taille du Gobelin
+	 * @param age Age du Gobelin
+	 * @param sommeil Etat de sommeil du Gobelin, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
 	public Gobelin(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
@@ -21,7 +21,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 
 	/**
      * Permet de récupérer le temps de gestation du Gobelin
-     * @return int tempsGestation Le temps de gestation du Gobelin
+     * @return Le temps de gestation du Gobelin
      */
 	public int getTempsGestation() 
 	{
@@ -30,7 +30,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 
 	/**
 	 * Permet de modifier le temps de gestation du Gobelin
-	 * @param int tempsGestation Le temps de gestation du Gobelin
+	 * @param tempsGestation Le temps de gestation du Gobelin
 	 */
 	public void setTempsGestation(int tempsGestation) 
 	{
@@ -39,7 +39,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 
 	/**
      * Permet de récupérer la durée de gestation du Gobelin
-     * @return int dureeGestation La durée de gestation du Gobelin
+     * @return La durée de gestation du Gobelin
      */
 	public int getDureeGestation() 
 	{
@@ -48,24 +48,33 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 
 	/**
 	 * Permet de modifier la durée de gestation du Gobelin
-	 * @param int dureeGestation La durée de gestation du Gobelin
+	 * @param dureeGestation La durée de gestation du Gobelin
 	 */
 	public void setDureeGestation(int dureeGestation) 
 	{
 		this.dureeGestation = dureeGestation;
 	}
 
-	//TODO javadoc
 	/**
+	 * Méthode de déplacement des monstres qui vagabondant
+	 *  
+	 * @param seDeplacer 
+	 * @param jeu 
 	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	public boolean vagabonder(SeDeplacer seDeplacer, Jeu jeu)
 	{
 		return seDeplacer.vagabonder(this, jeu);
 	}
 	
-	//TODO javadoc
 	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
+	 * 
+	 * @param seDeplacer 
+	 * @param jeu 
+	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 * 
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
@@ -75,7 +84,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Crée un nouveau Gobelin avec des caractéristiques aléatoires
-	 * @return Monstre Gobelin Un Nouveau Gobelin
+	 * @return Un Nouveau Gobelin
 	 */
 	public Monstre naissance()
 	{
@@ -92,8 +101,8 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	 *		le temps de gestation a 0
 	 *		l'état en changé en non gestation
 	 * Sinon le temps de gestation est incrémenté
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	public String gestation(Jeu jeu)
 	{
@@ -142,7 +151,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Détermine le son du monstre
-	 * @return String Le son et le nom du Gobelin
+	 * @return Le son et le nom du Gobelin
 	 */
 	public String son()
 	{

@@ -68,13 +68,12 @@ public class Chasseur extends Personnage
 		}
 	}
 	
-	//TODO vérifier doc
 	/**
 	 * Crée un nouveau Chasseur
 	 * @param nom Le nom du chasseur
 	 * @param sexe Le sexe du chasseur
 	 * @param classe La classe du chasseur
-	 * @return
+	 * @return une instance du Chasseur
 	 */
 	public static Personnage getInstance(String nom, String sexe, String classe) 
 	{ 
@@ -87,7 +86,7 @@ public class Chasseur extends Personnage
 
 	/**
 	 * Affiche les information détaillées du chasseur
-	 * @return String caracPersonnage Les informations
+	 * @return caracPersonnage Les informations
 	 */
 	
 	public String infosPersoDetail()
@@ -141,7 +140,7 @@ public class Chasseur extends Personnage
 	
 	/**
 	 * Affiche les information les plus importantes du chasseur
-	 * @return String caracPersonnage Les informations
+	 * @return caracPersonnage Les informations
 	 */
 	@Override
 	public String toString() 

@@ -14,12 +14,12 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Monstre de l'espèce des LoupGarou
-	 * @param String nom Nom du LoupGarou
-	 * @param int sexe Sexe du LoupGarou
-	 * @param int poids Poids du LoupGarou
-	 * @param int taille Taille du LoupGarou
-	 * @param double age Age du LoupGarou
-	 * @param boolean sommeil Etat de sommeil du LoupGarou, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * @param nom Nom du LoupGarou
+	 * @param sexe Sexe du LoupGarou
+	 * @param poids Poids du LoupGarou
+	 * @param taille Taille du LoupGarou
+	 * @param age Age du LoupGarou
+	 * @param sommeil Etat de sommeil du LoupGarou, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
 	public LoupGarou(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
@@ -28,7 +28,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 
 	/**
      * Permet de récupérer le temps de gestation du LoupGarou
-     * @return int tempsGestation Le temps de gestation du LoupGarou
+     * @return Le temps de gestation du LoupGarou
      */
 	public int getTempsGestation() 
 	{
@@ -37,7 +37,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 
 	/**
 	 * Permet de modifier le temps de gestation du LoupGarou
-	 * @param int tempsGestation Le temps de gestation du LoupGarou
+	 * @param tempsGestation Le temps de gestation du LoupGarou
 	 */
 	public void setTempsGestation(int tempsGestation) 
 	{
@@ -46,7 +46,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 
 	/**
      * Permet de récupérer la durée de gestation du LoupGarou
-     * @return int dureeGestation La durée de gestation du LoupGarou
+     * @return La durée de gestation du LoupGarou
      */
 	public int getDureeGestation() 
 	{
@@ -55,24 +55,33 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 
 	/**
 	 * Permet de modifier la durée de gestation du LoupGarou
-	 * @param int dureeGestation La durée de gestation du LoupGarou
+	 * @param dureeGestation La durée de gestation du LoupGarou
 	 */
 	public void setDureeGestation(int dureeGestation) 
 	{
 		this.dureeGestation = dureeGestation;
 	}
 	
-	//TODO javadoc
 	/**
+	 * Méthode de déplacement des monstres qui vagabondant
+	 *  
+	 * @param seDeplacer 
+	 * @param jeu 
 	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	public boolean vagabonder(SeDeplacer seDeplacer, Jeu jeu)
 	{
 		return seDeplacer.vagabonder(this, jeu);
 	}
 	
-	//TODO javadoc
 	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
+	 * 
+	 * @param seDeplacer 
+	 * @param jeu 
+	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 * 
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
@@ -82,7 +91,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Crée un nouveau LoupGarou avec des caractéristiques aléatoires
-	 * @return Monstre LoupGarou Un Nouveau LoupGarou
+	 * @return LoupGarou Un Nouveau LoupGarou
 	 */
 	public Monstre naissance()
 	{
@@ -100,7 +109,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 	 *		l'état en changé en non gestation
 	 * Sinon le temps de gestation est incrémenté
 	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @return Un message d'information
 	 */
 	public String gestation(Jeu jeu)
 	{
@@ -149,7 +158,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 	
 	/**
 	 * Détermine le son du monstre
-	 * @return String Le son et le nom du LoupGarou
+	 * @return Le son et le nom du LoupGarou
 	 */
 	public String son()
 	{

@@ -4,12 +4,12 @@ public class Blob extends Monstre implements Rampant
 {
 	/**
 	 * Monstre de l'espèce des Blob
-	 * @param String nom Nom du Blob
-	 * @param int sexe Sexe du Blob
-	 * @param int poids Poids du Blob
-	 * @param int taille Taille du Blob
-	 * @param double age Age du Blob
-	 * @param boolean sommeil Etat de sommeil du Blob, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * @param nom Nom du Blob
+	 * @param sexe Sexe du Blob
+	 * @param poids Poids du Blob
+	 * @param taille Taille du Blob
+	 * @param age Age du Blob
+	 * @param sommeil Etat de sommeil du Blob, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
 	public Blob(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
 		super(nom, sexe, poids, taille, age, sommeil);
@@ -42,7 +42,7 @@ public class Blob extends Monstre implements Rampant
 	
 	/**
 	 * Crée un nouveau Blob identique
-	 * @return Monstre Blob Un nouveau Blob
+	 * @return Un nouveau Blob
 	 */
 	public Blob seDiviser()
 	{
@@ -56,8 +56,8 @@ public class Blob extends Monstre implements Rampant
 	/**
 	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
 	 * 
-	 * @param SeDeplacer seDeplacer 
-	 * @oaram Jeu jeu 
+	 * @param seDeplacer 
+	 * @param jeu 
 	 * 
 	 * @return boolean si le monstre s'est bien déplacé, true, sinon, false
 	 */
@@ -71,7 +71,8 @@ public class Blob extends Monstre implements Rampant
 	 * Le monstre entre en gestation et crée un nouveau monstre identique
 	 * Si le monstre peut etre placé dans son terrain le monstre est placé
 	 * Sinon il meurt
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	@Override
 	public String gestation(Jeu jeu) 

@@ -98,7 +98,6 @@ public class Model
 		return tabCase;
 	}
 	
-	//TODO vérifier doc (type)
 	/**
 	 * Permet de créer les monstres du jeu avec des caractéristiques et une espèce au hasard
 	 * @return Les monstres du jeu
@@ -244,7 +243,6 @@ public class Model
 		return personnage.attaquer(monstre, jeu);
 	}
 	
-	//TODO vérifier return type
 	/**
 	 * Permet au personnage de lancer un sort et d'infliger des dégâts au monstre
 	 * @param personnage Le personnage du joueur

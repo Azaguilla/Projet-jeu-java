@@ -17,11 +17,10 @@ public class Controller {
 	private Jeu jeu;
 	private Random rand = new Random();
 	
-	//TODO javadoc a completer
 	/**
-	 * 
-	 * @param View vue
-	 * @param Model model
+	 * Constructeur permettant d'informer le controller de la vue et du model principal
+	 * @param vue La classe qui permettra de générer la vue 
+	 * @param model La classe qui permettra de manipuler les données
 	 */
 	public Controller(View vue, Model model) {
 		super();
@@ -61,10 +60,10 @@ public class Controller {
 	
 	/**
 	 * Initialise le jeu
-	 * Créé les cases, les monstres et le jeu
+	 * Crée les cases, les monstres et les assemble dans le jeu
 	 * Affiche une quête au hasard et un message de bienvenue
 	 * Appel la méthode d'actions
-	 * @param Personnage personnage Le personnage du joueur
+	 * @param personnage Le personnage du joueur
 	 */
 	public void initialisation(Personnage personnage)
 	{
@@ -93,7 +92,7 @@ public class Controller {
 	/**
 	 * Permet de choisir une action à effectuer
 	 * Vérifie que l'entrée est correct
-	 * @param int action L'action choisie
+	 * @param action L'action choisie
 	 */
 	public void actions(int action)
 	{
@@ -351,7 +350,7 @@ public class Controller {
 	/**
 	 * Si le personnage est toujours vivant, qu'il n'a pas atteind son objectif et qu'il reste du temps, propose a nouveau les actions
 	 * Sinon, lance la fin du jeu
-	 * @param String message
+	 * @param message
 	 */
 	public void verifEtatJeu(String message)
 	{
@@ -385,7 +384,7 @@ public class Controller {
 					/*Afficher stats*/
 					else
 					{
-						this.vue.afficherUnMessage("Félicitation! Vous avez réussi!");
+						this.vue.afficherUnMessage("Vous venez d'atteindre la case "+jeu.getCases().size()+", Félicitation! Vous avez réussi!");
 						/*Afficher stats*/
 					}
 			}

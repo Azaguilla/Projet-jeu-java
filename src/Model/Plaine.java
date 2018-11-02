@@ -5,10 +5,10 @@ public class Plaine extends Case
 	
 	/**
 	 * Le type de biome de la case
-	 * @param int numCase Le numéro de la case plaine
-	 * @param int taille La taille de la case plaine
-	 * @param int pollution La pollution de la case plaine
-	 * @param int hauteur La hauteur de la case plaine
+	 * @param numCase Le numéro de la case plaine
+	 * @param taille La taille de la case plaine
+	 * @param pollution La pollution de la case plaine
+	 * @param hauteur La hauteur de la case plaine
 	 */
 	public Plaine(int numCase, int taille, int pollution) 
 	{
@@ -32,7 +32,7 @@ public class Plaine extends Case
 
 	/**
 	 * Inflige des dégats au personnage selon de niveau de pollution de la case plaine
-	 * @param Personnage personnage Le personnage du joueur
+	 * @param personnage Le personnage du joueur
 	 */
 	//Inflige des degats au personnage selon le niveau de pollution
 	public String degatPersonnage(Personnage personnage) 
@@ -72,9 +72,9 @@ public class Plaine extends Case
 	
 	/**
 	 * Ajoute un monstres
-	 * @param Monstre monstre Le monstre a ajouter
-	 * @return boolean vrai(true) si le monstre peut être ajouté
-	 * 				   faux(false) si le monstre ne peut pas être ajouté
+	 * @param monstre Le monstre a ajouter
+	 * @return vrai(true) si le monstre peut être ajouté
+	 * 		   faux(false) si le monstre ne peut pas être ajouté
 	 */
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) 

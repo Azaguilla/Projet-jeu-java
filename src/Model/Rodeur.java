@@ -19,13 +19,12 @@ public class Rodeur extends Personnage
 		super(nom, sexe, classe);
 	}
 	
-	//TODO vérifier doc
 	/**
 	 * Crée un nouveau Rodeur
 	 * @param nom Le nom du Rodeur
 	 * @param sexe Le sexe du Rodeur
 	 * @param classe La classe du Rodeur
-	 * @return
+	 * @return Une instance de Rodeur
 	 */
 	public static Personnage getInstance(String nom, String sexe, String classe) 
 	{ 
@@ -43,9 +42,9 @@ public class Rodeur extends Personnage
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
 	 * Le Rodeur a une chance d'esquiver l'attaque du monstre et ne prend que la moitié des dégâts infligé
-	 * @param Monstre monstre Le monstre choisi
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param monstre Le monstre choisi
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	@Override
 	public String attaquer(Monstre monstre, Jeu jeu) 
@@ -112,9 +111,9 @@ public class Rodeur extends Personnage
 	 * Réveille le monstre
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
-	 * @param Monstre monstre Le monstre choisi
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param monstre Le monstre choisi
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
 	 */
 	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
@@ -136,7 +135,7 @@ public class Rodeur extends Personnage
 	
 	/**
 	 * Affiche les information détaillées du Rodeur
-	 * @return String caracPersonnage Les informations
+	 * @return Les informations
 	 */
 	public String infosPersoDetail()
 	{
@@ -189,7 +188,7 @@ public class Rodeur extends Personnage
 	
 	/**
 	 * Affiche les information les plus importantes du chasseur
-	 * @return String caracPersonnage Les informations
+	 * @return Les informations
 	 */
 	@Override
 	public String toString() 

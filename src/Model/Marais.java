@@ -6,10 +6,10 @@ public class Marais extends Case
 
 	/**
 	 * Le type de biome de la case
-	 * @param int numCase Le numéro de la case marais
-	 * @param int taille La taille de la case marais
-	 * @param int pollution La pollution de la case marais
-	 * @param int profondeur La profondeur de la case marais
+	 * @param numCase Le numéro de la case marais
+	 * @param taille La taille de la case marais
+	 * @param pollution La pollution de la case marais
+	 * @param profondeur La profondeur de la case marais
 	 */
 	public Marais(int numCase, int taille, int pollution, int profondeur) 
 	{
@@ -35,7 +35,7 @@ public class Marais extends Case
 	
 	/**
 	 * Inflige des dégats au personnage selon de niveau de pollution de la case marais
-	 * @param Personnage personnage Le personnage du joueur
+	 * @param personnage Le personnage du joueur
 	 */
 	@Override
 	public String degatPersonnage(Personnage personnage) 
@@ -60,7 +60,7 @@ public class Marais extends Case
 
 	/**
      * Permet de récupérer la profondeur de la case marais
-     * @return int profondeur La profondeur de la case marais
+     * @return La profondeur de la case marais
      */
 	public int getProfondeur() 
 	{
@@ -69,7 +69,7 @@ public class Marais extends Case
 
 	/**
      * Permet de modifier la profondeur de la case marais
-     * @param int profondeur La profondeur de la case marais
+     * @param profondeur La profondeur de la case marais
      */
 	public void setProfondeur(int profondeur) 
 	{
@@ -78,6 +78,7 @@ public class Marais extends Case
 
 	/**
 	 * Permet de nettoyer la case marais si la case n'est pas déjà propre
+	 * @return Un message d'information
 	 */
 	@Override
 	public String nettoyerCase() 
@@ -95,9 +96,9 @@ public class Marais extends Case
 	
 	/**
 	 * Ajoute un monstres qui ne peut se trouver que dans les marais (Blobs et Basilics)
-	 * @param Monstre monstre Le monstre a ajouter
-	 * @return boolean vrai(true) si le monste est un Blob ou un Basilic et si le monstre peut être ajouté
-	 * 				   faux(false) si le monstre ne peut pas être ajouté ou si ce n'est pas un Blob ou un Basilic
+	 * @param monstre Le monstre a ajouter
+	 * @return vrai(true) si le monste est un Blob ou un Basilic et si le monstre peut être ajouté
+	 * 		   faux(false) si le monstre ne peut pas être ajouté ou si ce n'est pas un Blob ou un Basilic
 	 */
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) {

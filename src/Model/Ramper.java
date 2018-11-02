@@ -9,9 +9,9 @@ public class Ramper implements SeDeplacer
 	
 	/**
 	 * Le deplacement en volant
-	 * @param Monstre monstre Le monstre qui se déplace
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return boolean faux(false)
+	 * @param monstre Le monstre qui se déplace
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return faux(false)
 	 */
 	public boolean voler(Monstre monstre, Jeu jeu)
 	{
@@ -20,9 +20,9 @@ public class Ramper implements SeDeplacer
 	
 	/**
 	 * Le déplacement en vagabondant
-	 * @param Monstre monstre Le monstre qui se déplace
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return boolean faux(false)
+	 * @param monstre Le monstre qui se déplace
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return faux(false)
 	 */
 	public boolean vagabonder(Monstre monstre, Jeu jeu)
 	{
@@ -34,9 +34,9 @@ public class Ramper implements SeDeplacer
 	 * Le monstre avance ou recule au hasard
 	 * Si le monstre a pu être ajouté sur la nouvelle case, il est supprimé de l'ancienne
 	 * Sinon il reste sur la même case
-	 * @param Monstre monstre Le monstre qui se déplace
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return boolean vrai(true) s'il a pu se déplacer sur une autre case, faux(false) sinon
+	 * @param monstre Le monstre qui se déplace
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return vrai(true) s'il a pu se déplacer sur une autre case, faux(false) sinon
 	 */
 	public boolean ramper(Monstre monstre, Jeu jeu)
 	{

@@ -22,12 +22,12 @@ public abstract class Monstre
 
 	/**
 	 * Un monstre du jeu
-	 * @param String nom Nom du monstre
-	 * @param int sexe
-	 * @param int poids
-	 * @param int taille
-	 * @param double age
-	 * @param boolean sommeil
+	 * @param nom Nom du monstre
+	 * @param sexe
+	 * @param poids
+	 * @param taille
+	 * @param age
+	 * @param sommeil
 	 */
 	public Monstre(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
@@ -41,7 +41,7 @@ public abstract class Monstre
 
 	/**
 	 * Affiche les informations détaillées du monstre
-	 * @return String Les information
+	 * @return Les informations du monstre 
 	 */
 	public String infosMonstreDetail() 
 	{
@@ -60,7 +60,7 @@ public abstract class Monstre
 	
 	/**
 	 * Affiche les information les plus importantes du monstre
-	 * @return String Les informations
+	 * @return String Les informations du monstre
 	 */
 	@Override
 	public String toString()
@@ -76,7 +76,7 @@ public abstract class Monstre
 
 	/**
      * Permet de récupérer le nom du monstre
-     * @return String nom Le nom du monstre
+     * @return nom Le nom du monstre
      */
 	public String getNom() 
 	{
@@ -85,7 +85,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier le nom du monstre
-	 * @param String nom Le nom du monstre
+	 * @param nom Le nom du monstre
 	 */
 	public void setNom(String nom) 
 	{
@@ -94,7 +94,7 @@ public abstract class Monstre
 	
 	/**
      * Permet de récupérer le sexe du monstre
-     * @return int sexe Le sexe du monstre
+     * @return Le sexe du monstre
      */
 	public int getSexe() 
 	{
@@ -103,7 +103,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier le sexe du monstre
-	 * @param int sexe Le sexe du monstre
+	 * @param sexe Le sexe du monstre
 	 */
 	public void setSexe(int sexe) 
 	{
@@ -112,7 +112,7 @@ public abstract class Monstre
 	
 	/**
      * Permet de récupérer la taille du monstre
-     * @return int taille La taille du monstre
+     * @return La taille du monstre
      */
 	public int getTaille() 
 	{
@@ -121,7 +121,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier la taille du monstre
-	 * @param int taille La taille du monstre
+	 * @param taille La taille du monstre
 	 */
 	public void setTaille(int taille) 
 	{
@@ -130,7 +130,7 @@ public abstract class Monstre
 	
 	/**
      * Permet de récupérer l'age du monstre
-     * @return double age l'age du monstre
+     * @return L'age du monstre
      */
 	public double getAge() 
 	{
@@ -139,7 +139,7 @@ public abstract class Monstre
 
 	/**
 	 * Permet de modifier l'age du monstre
-	 * @param double age l'age du monstre
+	 * @param age L'age du monstre
 	 */
 	public void setAge(double age) 
 	{
@@ -148,7 +148,7 @@ public abstract class Monstre
 
 	/**
      * Permet de récupérer la force du monstre
-     * @return int force La force du monstre
+     * @return La force du monstre
      */
 	public int getForce() 
 	{
@@ -157,7 +157,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier la force du monstre
-	 * @param int force La force du monstre
+	 * @param force La force du monstre
 	 */
 	public void setForce(int force) 
 	{
@@ -166,7 +166,7 @@ public abstract class Monstre
 	
 	/**
      * Permet de récupérer la vie du monstre
-     * @return int vie La vie du monstre
+     * @return La vie du monstre
      */
 	public int getVie() 
 	{
@@ -176,8 +176,8 @@ public abstract class Monstre
 	/**
 	 * Permet de modifier la vie du monstre
 	 * Fais mourir le monstre si sa vie est inférieure ou égale à 0, soustrait le nombre de dégats à sa vie sinon
-	 * @param int degat Dégats infligés
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param degat Dégats infligés
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	public void setVie(int degat, Jeu jeu) 
 	{
@@ -193,7 +193,7 @@ public abstract class Monstre
 	
 	/**
 	 * Vérifie l'état de sommeil du monstre
-	 * @return boolean sommeil L'état de sommeil du monstre
+	 * @return L'état de sommeil du monstre
 	 */
 	public boolean isSommeil() 
 	{
@@ -202,7 +202,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier le sommeil du monstre
-	 * @param boolean sommeil L'état de sommeil du monstre
+	 * @param sommeil L'état de sommeil du monstre
 	 */
 	public void setSommeil(boolean sommeil) 
 	{
@@ -219,7 +219,7 @@ public abstract class Monstre
 	
 	/**
      * Permet de récupérer le poids du monstre
-     * @return int poids Le poids du monstre
+     * @return Le poids du monstre
      */
 	public int getPoids() 
 	{
@@ -228,7 +228,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier le poids du monstre
-	 * @param int poids Le poids du monstre
+	 * @param poids Le poids du monstre
 	 */
 	public void setPoids(int poids) 
 	{
@@ -237,7 +237,7 @@ public abstract class Monstre
 	
 	/**
      * Permet de récupérer le numéro de la case actuelle
-     * @return int numCaseActuelle Le numéro de la case actuelle
+     * @return Le numéro de la case actuelle
      */
 	public int getNumCaseActuelle() 
 	{
@@ -246,7 +246,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier le numéro de la case actuelle
-	 * @param int numCaseActuelle Le numéro de la case actuelle
+	 * @param numCaseActuelle Le numéro de la case actuelle
 	 */
 	public void setNumCaseActuelle(int numCaseActuelle) 
 	{
@@ -255,7 +255,7 @@ public abstract class Monstre
 	
 	/**
      * Permet de récupérer l'état de gestation du monstre
-     * @return boolean enGestation L'état de gestation du monstre
+     * @return L'état de gestation du monstre
      */
 	public boolean isEnGestation() 
 	{
@@ -264,7 +264,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de modifier l'état de gestation du monstre
-	 * @param boolean enGestation L'état de gestation du monstre
+	 * @param enGestation L'état de gestation du monstre
 	 */
 	public void setEnGestation(boolean enGestation) 
 	{
@@ -273,7 +273,7 @@ public abstract class Monstre
 	
 	/**
 	 * Ajoute 2 à la vie
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	public void seSoigner(Jeu jeu)
 	{
@@ -281,7 +281,7 @@ public abstract class Monstre
 	}
 	
 	/**
-	 * Endors un monstre
+	 * Endort un monstre
 	 */
 	public void dormir()
 	{
@@ -301,7 +301,7 @@ public abstract class Monstre
 	 */
 	public void grandir()
 	{
-		System.out.println("taille augmente pour "+this.getNom());
+		//System.out.println("taille augmente pour "+this.getNom());
 		if(this.getTaille() < 2)
 		{
 			this.setTaille(this.getTaille()+1);
@@ -310,7 +310,7 @@ public abstract class Monstre
 	
 	/**
 	 * Permet de supprimer un monstre de la case actuelle
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	public void mourir(Jeu jeu)
 	{
@@ -322,7 +322,7 @@ public abstract class Monstre
 	 * Permet d'attaquer le personnage
 	 * Si le monstre est réveillé, sa force est soustraite à la vie du personnage
 	 * Sinon il ne fait rien
-	 * @param Personnage personnage Le personnage du joueur
+	 * @param personnage Le personnage du joueur
 	 */
 	public void attaquerPersonnage(Personnage personnage)
 	{

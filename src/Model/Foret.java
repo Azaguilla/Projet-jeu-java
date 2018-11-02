@@ -7,10 +7,10 @@ public class Foret extends Case
 
 	/**
 	 * Le type de biome de la case
-	 * @param int numCase Le numéro de la case foret
-	 * @param int taille La taille de la case foret
-	 * @param int pollution La pollution de la case foret
-	 * @param int hauteur La hauteur de la case foret
+	 * @param numCase Le numéro de la case foret
+	 * @param taille La taille de la case foret
+	 * @param pollution La pollution de la case foret
+	 * @param hauteur La hauteur de la case foret
 	 */
 	public Foret(int numCase, int taille, int pollution, int hauteur) 
 	{
@@ -36,7 +36,7 @@ public class Foret extends Case
 
 	/**
      * Permet de récupérer la hauteur de la case foret
-     * @return int hauteur La hauteur de la case foret
+     * @return La hauteur de la case foret
      */
 	public int getHauteur() 
 	{
@@ -45,7 +45,7 @@ public class Foret extends Case
 
 	/**
      * Permet de modifier la hauteur de la case foret
-     * @param int hauteur La hauteur de la case foret
+     * @param hauteur La hauteur de la case foret
      */
 	public void setHauteur(int hauteur) 
 	{
@@ -54,7 +54,8 @@ public class Foret extends Case
 
 	/**
 	 * Inflige des dégats au personnage selon de niveau de pollution de la case foret
-	 * @param Personnage personnage Le personnage du joueur
+	 * @param personnage Le personnage du joueur
+	 * @return Un message d'information
 	 */
 	@Override
 	public String degatPersonnage(Personnage personnage) 
@@ -77,6 +78,7 @@ public class Foret extends Case
 
 	/**
 	 * Permet de nettoyer la case foret si la case n'est pas déjà propre
+	 * @return Un message d'information
 	 */
 	@Override
 	public String nettoyerCase() 
@@ -95,9 +97,9 @@ public class Foret extends Case
 
 	/**
 	 * Ajoute un monstres qui ne peut se trouver que dans les forets (Ent et LoupGarou)
-	 * @param Monstre monstre Le monstre a ajouter
-	 * @return boolean vrai(true) si le monste est un Ent ou un LoupGarou et si le monstre peut être ajouté
-	 * 				   faux(false) si le monstre ne peut pas être ajouté ou si ce n'est pas un Ent ou un LoupGarou
+	 * @param monstre Le monstre a ajouter
+	 * @return vrai(true) si le monste est un Ent ou un LoupGarou et si le monstre peut être ajouté
+	 * 		   faux(false) si le monstre ne peut pas être ajouté ou si ce n'est pas un Ent ou un LoupGarou
 	 */
 	@Override
 	public boolean ajoutMonstre(Monstre monstre) 

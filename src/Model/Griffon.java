@@ -4,12 +4,12 @@ public class Griffon extends Monstre implements Volant, Ovipare
 {
 	/**
 	 * Monstre de l'espèce des Griffons
-	 * @param String nom Nom du Griffon
-	 * @param int sexe Sexe du Griffon
-	 * @param int poids Poids du Griffon
-	 * @param int taille Taille du Griffon
-	 * @param double age Age du Griffon
-	 * @param boolean sommeil Etat de sommeil du Griffon, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * @param nom Nom du Griffon
+	 * @param sexe Sexe du Griffon
+	 * @param poids Poids du Griffon
+	 * @param taille Taille du Griffon
+	 * @param age Age du Griffon
+	 * @param sommeil Etat de sommeil du Griffon, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
 	public Griffon(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
@@ -19,7 +19,7 @@ public class Griffon extends Monstre implements Volant, Ovipare
 	/**
 	 * Initialise au hasard les caracteristiques du bébé
 	 * Crée un nouveau monstre bebe
-	 * @return Oeuf Un nouvel oeuf avec son temps d'incubation et le bebe qu'in contient
+	 * @return Un nouvel oeuf avec son temps d'incubation et le bebe qu'in contient
 	 */
 	@Override
 	public Oeuf pondreOeuf() 
@@ -34,9 +34,13 @@ public class Griffon extends Monstre implements Volant, Ovipare
 		return new Oeuf(2, bebe);
 	}
 
-	//TODO javadoc
 	/**
+	 * Méthode de déplacement des monstres volant
+	 *  
+	 * @param seDeplacer 
+	 * @param jeu 
 	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	@Override
 	public boolean voler(SeDeplacer seDeplacer, Jeu jeu) 
@@ -44,8 +48,13 @@ public class Griffon extends Monstre implements Volant, Ovipare
 		return seDeplacer.voler(this, jeu);
 	}
 	
-	//TODO javadoc
 	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer
+	 * 
+	 * @param seDeplacer 
+	 * @param jeu 
+	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 * 
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
@@ -55,7 +64,7 @@ public class Griffon extends Monstre implements Volant, Ovipare
 
 	/**
 	 * Détermine le son du monstre
-	 * @return String Le son et le nom du Griffon
+	 * @return Le son et le nom du Griffon
 	 */
 	@Override
 	public String son()
@@ -63,11 +72,10 @@ public class Griffon extends Monstre implements Volant, Ovipare
 		return "Le Griffon "+this.getNom()+" glatit dans le ciel.";
 	}
 
-	//TODO vérifier doc
 	/**
 	 * Le monstre entre en gestation d'un oeuf
-	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return String
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information pour indiquer au joueur qu'un oeuf est en cours d'incubation.
 	 */
 	public String gestation(Jeu jeu) 
 	{
