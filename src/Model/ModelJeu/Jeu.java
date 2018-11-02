@@ -1,7 +1,16 @@
-package Model;
+package Model.ModelJeu;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import Model.ModelCase.Case;
+import Model.ModelMonstre.Ent;
+import Model.ModelMonstre.Monstre;
+import Model.ModelMonstre.Oeuf;
+import Model.ModelMonstre.Ramper;
+import Model.ModelMonstre.Vagabonder;
+import Model.ModelMonstre.Voler;
+import Model.ModelPersonnage.Personnage;
 
 public class Jeu 
 {
@@ -261,21 +270,21 @@ public class Jeu
 		int n;
 		for (int i = 0; i < this.cases.size(); i++)
 		{
-			for (int j = 0; j < this.cases.get(i).monstres.size(); j++)
+			for (int j = 0; j < this.cases.get(i).getMonstres().size(); j++)
 			{
 				//croissance
-				this.cases.get(i).monstres.get(j).grandir();
+				this.cases.get(i).getMonstres().get(j).grandir();
 				//sommeil
 				n = rand.nextInt(2);
 				switch (n)
 				{
 					/*case 0 = dormir (si réveillé)*/
-					case 0: if(this.cases.get(i).monstres.get(j).isSommeil() == false)
-						this.cases.get(i).monstres.get(j).dormir();
+					case 0: if(this.cases.get(i).getMonstres().get(j).isSommeil() == false)
+						this.cases.get(i).getMonstres().get(j).dormir();
 							break;
 					/*case 1 = se reveiller (si endormi)*/
-					case 1: if(this.cases.get(i).monstres.get(j).isSommeil() == true)
-						this.cases.get(i).monstres.get(j).seReveiller();
+					case 1: if(this.cases.get(i).getMonstres().get(j).isSommeil() == true)
+						this.cases.get(i).getMonstres().get(j).seReveiller();
 							break;
 				}
 			}
@@ -309,7 +318,7 @@ public class Jeu
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
 			{
-				monstres.add(this.cases.get(i).monstres.get(j));
+				monstres.add(this.cases.get(i).getMonstres().get(j));
 			}
 		}
 		
@@ -343,7 +352,7 @@ public class Jeu
 				{
 					if (monstre instanceof Ent)
 					{
-						message += "\nLe monstre "+monstre.getNom()+" ne peut pas se déplacer, ses racines sont profondes.";
+						message += "\nLe monstre "+monstre.getNom()+" ne peut pas se déplacer, ses racines sont profondes.\n";
 					}
 					else
 					{
@@ -371,7 +380,7 @@ public class Jeu
 		{
 			for (int j = 0; j < this.cases.get(i).getNbMaxMonstre(); j++)
 			{
-				monstres.add(this.cases.get(i).monstres.get(j));
+				monstres.add(this.cases.get(i).getMonstres().get(j));
 			}
 		}
 		
@@ -455,9 +464,9 @@ public class Jeu
 		for (int i = 0; i < this.cases.size(); i++)
 		{
 			Case laCase = this.cases.get(i);
-			for (int j = 0; j < laCase.monstres.size(); j++)
+			for (int j = 0; j < laCase.getMonstres().size(); j++)
 			{
-				Monstre monstre = this.cases.get(i).monstres.get(j);
+				Monstre monstre = this.cases.get(i).getMonstres().get(j);
 				if (monstre.isEnGestation())
 				{
 					message = message+ monstre.gestation(this);
@@ -546,7 +555,7 @@ public class Jeu
 	public void lesMonstresAttaquent()
 	{
 		int numCase = this.joueur.getPosition();
-		ArrayList<Monstre> monstres = this.cases.get(numCase).monstres;
+		ArrayList<Monstre> monstres = this.cases.get(numCase).getMonstres();
 		for(int i=0; i<monstres.size();i++)
 		{
 			monstres.get(i).attaquerPersonnage(this.joueur);

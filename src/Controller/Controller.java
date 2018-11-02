@@ -3,13 +3,13 @@ package Controller;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Model.Case;
-import Model.Chasseur;
-import Model.Jeu;
-import Model.Model;
-import Model.Monstre;
-import Model.Personnage;
 import View.View;
+import Model.Model;
+import Model.ModelCase.Case;
+import Model.ModelJeu.Jeu;
+import Model.ModelMonstre.Monstre;
+import Model.ModelPersonnage.Chasseur;
+import Model.ModelPersonnage.Personnage;
 
 public class Controller {
 	private View vue;

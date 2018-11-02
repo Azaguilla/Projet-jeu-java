@@ -1,25 +1,26 @@
-package Model;
+package Model.ModelMonstre;
 
-public class Griffon extends Monstre implements Volant, Ovipare 
+import Model.ModelJeu.Jeu;
+
+public class Basilic extends Monstre implements Rampant, Ovipare 
 {
 	/**
-	 * Monstre de l'espèce des Griffons
-	 * @param nom Nom du Griffon
-	 * @param sexe Sexe du Griffon
-	 * @param poids Poids du Griffon
-	 * @param taille Taille du Griffon
-	 * @param age Age du Griffon
-	 * @param sommeil Etat de sommeil du Griffon, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
+	 * Monstre de l'espèce des Basilics
+	 * @param nom Nom du Basilic
+	 * @param sexe Sexe du Basilic
+	 * @param poids Poids du Basilic
+	 * @param taille Taille du Basilic
+	 * @param age Age du Basilic
+	 * @param sommeil Etat de sommeil du Basilic, vrai(true) s'il est endormis,  faux(false) s'il est réveillé
 	 */
-	public Griffon(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
-	{
+	public Basilic(String nom, int sexe, int poids, int taille, double age, boolean sommeil) {
 		super(nom, sexe, poids, taille, age, sommeil);
 	}
-
+	
 	/**
 	 * Initialise au hasard les caracteristiques du bébé
 	 * Crée un nouveau monstre bebe
-	 * @return Un nouvel oeuf avec son temps d'incubation et le bebe qu'in contient
+	 * @return Un nouvel (un objet) oeuf avec son temps d'incubation et le bebe (l'instanciation du monstre actuel) qu'il contient
 	 */
 	@Override
 	public Oeuf pondreOeuf() 
@@ -29,13 +30,13 @@ public class Griffon extends Monstre implements Volant, Ovipare
 		int taille = (int) Math.round(Math.random()*2);
 		int poids = (int) Math.round(30+Math.random()*10);
 		
-		Griffon bebe = new Griffon("Griffon", sexe, poids, taille, 0, false);
+		Monstre bebe = new Basilic("Basilic", sexe, poids, taille, 0, false);
 		
 		return new Oeuf(2, bebe);
 	}
 
 	/**
-	 * Méthode de déplacement des monstres volant
+	 * Méthode de déplacement des monstres rampant
 	 *  
 	 * @param seDeplacer 
 	 * @param jeu 
@@ -43,9 +44,9 @@ public class Griffon extends Monstre implements Volant, Ovipare
 	 * @return Si le monstre s'est bien déplacé, true, sinon, false
 	 */
 	@Override
-	public boolean voler(SeDeplacer seDeplacer, Jeu jeu) 
+	public boolean ramper(SeDeplacer seDeplacer, Jeu jeu) 
 	{
-		return seDeplacer.voler(this, jeu);
+		return seDeplacer.ramper(this, jeu);
 	}
 	
 	/**
@@ -59,17 +60,18 @@ public class Griffon extends Monstre implements Volant, Ovipare
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
 	{
-		return this.voler(seDeplacer, jeu);
+		return this.ramper(seDeplacer, jeu);
 	}
 
+	//TODO inclure les sons après un déplacement
 	/**
 	 * Détermine le son du monstre
-	 * @return Le son et le nom du Griffon
+	 * @return Le son et le nom du Basilic
 	 */
 	@Override
-	public String son()
+	public String son() 
 	{
-		return "Le Griffon "+this.getNom()+" glatit dans le ciel.";
+		return "\nLe Basilic "+this.getNom()+" siffle au fond du Marais.\n";
 	}
 
 	/**
@@ -77,11 +79,12 @@ public class Griffon extends Monstre implements Volant, Ovipare
 	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 * @return Un message d'information pour indiquer au joueur qu'un oeuf est en cours d'incubation.
 	 */
+	@Override
 	public String gestation(Jeu jeu) 
 	{
 		Oeuf oeuf = this.pondreOeuf();
 		jeu.ajoutOeuf(oeuf);
-		return "Un oeuf de "+this.getNom()+" est en cours d'incubation.";
+		return "\nUn oeuf de "+this.getNom()+" est en cours d'incubation.\n";
 	}
 
 }

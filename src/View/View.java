@@ -3,9 +3,9 @@ package View;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Model.Jeu;
-import Model.Monstre;
-import Model.Personnage;
+import Model.ModelJeu.Jeu;
+import Model.ModelMonstre.Monstre;
+import Model.ModelPersonnage.Personnage;
 
 public class View {
 	

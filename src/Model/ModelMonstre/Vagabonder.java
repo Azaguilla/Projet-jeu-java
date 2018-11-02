@@ -1,6 +1,9 @@
-package Model;
+package Model.ModelMonstre;
 
 import java.util.Random;
+
+import Model.ModelJeu.Jeu;
+import Model.ModelCase.Case;
 
 public class Vagabonder implements SeDeplacer 
 {

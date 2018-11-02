@@ -1,4 +1,9 @@
-package Model;
+package Model.ModelCase;
+
+import Model.ModelMonstre.Basilic;
+import Model.ModelMonstre.Blob;
+import Model.ModelMonstre.Monstre;
+import Model.ModelPersonnage.Personnage;
 
 public class Marais extends Case 
 {

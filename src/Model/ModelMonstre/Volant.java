@@ -1,7 +1,9 @@
 /**
  * 
  */
-package Model;
+package Model.ModelMonstre;
+
+import Model.ModelJeu.Jeu;
 
 /**
  * @author Laurie

@@ -1,4 +1,7 @@
-package Model;
+package Model.ModelMonstre;
+
+import Model.ModelJeu.Jeu;
+import Model.ModelCase.Case;
 
 public class Blob extends Monstre implements Rampant 
 {

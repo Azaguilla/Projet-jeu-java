@@ -1,4 +1,6 @@
-package Model;
+package Model.ModelMonstre;
+
+import Model.ModelJeu.Jeu;
 
 public class Wyverne extends Monstre implements Volant, Ovipare
 {

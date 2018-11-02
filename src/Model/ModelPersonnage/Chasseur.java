@@ -1,35 +1,21 @@
-package Model;
+package Model.ModelPersonnage;
 
-public class Guerrier extends Personnage 
+import Model.ModelJeu.Jeu;
+import Model.ModelMonstre.Monstre;
+
+public class Chasseur extends Personnage 
 {
 	private static Personnage getInstance;
-
+	
 	/**
-	 * Personnage Guerrier
-	 * @param nom Le nom du Guerrier
-	 * @param sexe Le sexe du Guerrier
-	 * @param classe La classe du Guerrier
+	 * Personnage Chasseur
+	 * @param nom Le nom du Chasseur
+	 * @param sexe Le sexe du Chasseur
+	 * @param classe La classe du Chasseur
 	 */
-	private Guerrier(String nom, String sexe, String classe) 
+	private Chasseur(String nom, String sexe, String classe)
 	{
 		super(nom, sexe, classe);
-	}
-	
-	//TODO vérifier doc
-	/**
-	 * Crée un nouveau Guerrier
-	 * @param nom Le nom du Guerrier
-	 * @param sexe Le sexe du Guerrier
-	 * @param classe La classe du Guerrier
-	 * @return Une instance de Guerrier
-	 */
-	public static Personnage getInstance(String nom, String sexe, String classe) 
-	{ 
-	    if (getInstance == null) 
-	    {
-	         getInstance = new Guerrier(nom, sexe, classe); 
-	    }
-	        return getInstance; 
 	}
 
 	/**
@@ -37,9 +23,8 @@ public class Guerrier extends Personnage
 	 * Réveille le monstre
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
-	 * @param monstre Le monstre choisi
-	 * @param eu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return Un message d'information
+	 * @param Monstre monstre Le monstre choisi
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
 	@Override
 	public String attaquer(Monstre monstre, Jeu jeu) 
@@ -50,12 +35,12 @@ public class Guerrier extends Personnage
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
-			return "Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
+			return "Vous tirez et votre flèche inflige \"+this.getForce()+\" pts de dégât au monstre. Le monstre succombe à ses blessures.";
 		}
 		else
 		{
 			this.setVie(this.getVie()-monstre.getForce());
-			return "Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
+			return "Vous tirez et votre flèche inflige "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	
@@ -64,9 +49,9 @@ public class Guerrier extends Personnage
 	 * Réveille le monstre
 	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
 	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
-	 * @param monstre Le monstre choisi
-	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return Un message d'information
+	 * @param Monstre monstre Le monstre choisi
+	 * @param Jeu jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return String
 	 */
 	public String lancerSort(Monstre monstre, Jeu jeu)
 	{
@@ -87,17 +72,34 @@ public class Guerrier extends Personnage
 	}
 	
 	/**
-	 * Affiche les information détaillées du guerrier
-	 * @return Les informations
+	 * Crée un nouveau Chasseur
+	 * @param nom Le nom du chasseur
+	 * @param sexe Le sexe du chasseur
+	 * @param classe La classe du chasseur
+	 * @return une instance du Chasseur
 	 */
-	public String infosPersoDetail() 
+	public static Personnage getInstance(String nom, String sexe, String classe) 
+	{ 
+	    if (getInstance == null) 
+	    {
+	         getInstance = new Chasseur(nom, sexe, classe); 
+	    }
+	        return getInstance; 
+	}
+
+	/**
+	 * Affiche les information détaillées du chasseur
+	 * @return caracPersonnage Les informations
+	 */
+	
+	public String infosPersoDetail()
 	{
 		String caracPersonnage;
 		switch (this.getSexe())
 		{
 			case "F": 
 				caracPersonnage = 
-				"Guerrière : \n"
+				"Chasseresse : \n"
 				+ "Nom : " + getNom() + "\n"
 				+ "Sexe : " + getSexe() + "\n"
 				+ "Age : " + getAge() + "\n"
@@ -110,7 +112,7 @@ public class Guerrier extends Personnage
 				break;
 			case "M": 
 				caracPersonnage = 
-				"Guerrier : \n"
+				"Chasseur : \n"
 				+ "Nom : " + getNom() + "\n"
 				+ "Sexe : " + getSexe() + "\n"
 				+ "Age : " + getAge() + "\n"
@@ -123,7 +125,7 @@ public class Guerrier extends Personnage
 				break;
 			default: 
 				caracPersonnage = 
-				"Guerrier : \n"
+				"Chasseur : \n"
 				+ "Nom : " + getNom() + "\n"
 				+ "Sexe : " + getSexe() + "\n"
 				+ "Age : " + getAge() + "\n"
@@ -141,7 +143,7 @@ public class Guerrier extends Personnage
 	
 	/**
 	 * Affiche les information les plus importantes du chasseur
-	 * @return Les informations
+	 * @return caracPersonnage Les informations
 	 */
 	@Override
 	public String toString() 
@@ -151,28 +153,28 @@ public class Guerrier extends Personnage
 		{
 			case "F": 
 				caracPersonnage = 
-				"Guerrière : \n"
+				"Chasseresse : \n"
 				+ "Energie : " + getEnergie()
 				+ " | Vie : " + getVie()
-				+ " | Force : " + getForce()*2
+				+ " | Force : " + getForce()
 				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			case "M": 
 				caracPersonnage = 
-				"Guerrier : \n"
+				"Chasseur : \n"
 				+ "Energie : " + getEnergie()
 				+ " | Vie : " + getVie()
-				+ " | Force : " + getForce()*2
+				+ " | Force : " + getForce()
 				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
 			default: 
 				caracPersonnage = 
-				"Guerrier : \n"
+				"Chasseur : \n"
 				+ "Energie : " + getEnergie()
 				+ " | Vie : " + getVie()
-				+ " | Force : " + getForce()*2
+				+ " | Force : " + getForce()
 				+ " | Magie : " + getForce()
 				+ " | Position : "+ getPosition() + "\n";
 				break;
@@ -182,5 +184,3 @@ public class Guerrier extends Personnage
 	}
 	
 }
-
-

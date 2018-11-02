@@ -1,36 +1,16 @@
-package Model;
+package Model.ModelMonstre;
 
 import java.util.Random;
 
-public class Ramper implements SeDeplacer 
+import Model.ModelJeu.Jeu;
+import Model.ModelCase.Case;
+
+public class Voler implements SeDeplacer 
 {
-	
 	private Random rand = new Random();
 	
 	/**
-	 * Le deplacement en volant
-	 * @param monstre Le monstre qui se déplace
-	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return faux(false)
-	 */
-	public boolean voler(Monstre monstre, Jeu jeu)
-	{
-		return false;
-	}
-	
-	/**
-	 * Le déplacement en vagabondant
-	 * @param monstre Le monstre qui se déplace
-	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
-	 * @return faux(false)
-	 */
-	public boolean vagabonder(Monstre monstre, Jeu jeu)
-	{
-		return false;
-	}
-	
-	/**
-	 * Le déplacement en rampant
+	 * Le déplacement en volant
 	 * Le monstre avance ou recule au hasard
 	 * Si le monstre a pu être ajouté sur la nouvelle case, il est supprimé de l'ancienne
 	 * Sinon il reste sur la même case
@@ -38,7 +18,7 @@ public class Ramper implements SeDeplacer
 	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 * @return vrai(true) s'il a pu se déplacer sur une autre case, faux(false) sinon
 	 */
-	public boolean ramper(Monstre monstre, Jeu jeu)
+	public boolean voler(Monstre monstre, Jeu jeu)
 	{
 		int numCase = monstre.getNumCaseActuelle();
 		Case laCase = jeu.recupererCase(numCase);
@@ -71,5 +51,27 @@ public class Ramper implements SeDeplacer
 			}
 			return false;
 		}
+	}
+	
+	/**
+	 * Le déplacement en vagabondant
+	 * @param monstre Le monstre qui se déplace
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return faux(false)
+	 */
+	public boolean vagabonder(Monstre monstre, Jeu jeu)
+	{
+		return false;
+	}
+	
+	/**
+	 * Le déplacement en rampant
+	 * @param monstre Le monstre qui se déplace
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return faux(false)
+	 */
+	public boolean ramper(Monstre monstre, Jeu jeu)
+	{
+		return false;
 	}
 }

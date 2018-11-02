@@ -1,4 +1,7 @@
-package Model;
+package Model.ModelCase;
+
+import Model.ModelMonstre.Monstre;
+import Model.ModelPersonnage.Personnage;
 
 public class Plaine extends Case 
 {
