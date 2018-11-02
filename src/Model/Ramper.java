@@ -57,7 +57,7 @@ public class Ramper implements SeDeplacer
 		int nbCase = jeu.getCases().size();
 		if(newNumCase == -1 || newNumCase == nbCase)
 		{
-			System.out.println("Le monstre a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
+			//System.out.println("Le monstre a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
 			return false;
 		}
 		else
@@ -66,7 +66,7 @@ public class Ramper implements SeDeplacer
 			if (newCase.ajoutMonstre(monstre))
 			{
 				laCase.SuppMonstre(monstre);
-				System.out.println("Le monstre "+monstre.getNom()+"  vagabonde vers la case "+newNumCase);
+				//System.out.println("Le monstre "+monstre.getNom()+"  vagabonde vers la case "+newNumCase);
 				return true;
 			}
 			return false;

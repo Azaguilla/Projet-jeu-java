@@ -113,13 +113,13 @@ public class Marais extends Case
 			}
 			else
 			{
-				System.out.println("Il y a trop de monstre sur la case");
+				//System.out.println("Il y a trop de monstre sur la case");
 				return false;
 			}
 		}
 		else
 		{
-			System.out.println("Vous ne pouvez pas ajouter ce type de monstre sur la case");
+			//System.out.println("Vous ne pouvez pas ajouter ce type de monstre sur la case");
 			return false;
 		}
 	}

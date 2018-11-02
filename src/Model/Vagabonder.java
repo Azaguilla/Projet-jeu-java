@@ -36,7 +36,7 @@ public class Vagabonder implements SeDeplacer
 		{
 			/*case 0 = recule*/
 			case 0: newNumCase = laCase.getNumCase()-1;
-			System.out.println("Le monstre "+monstre.getNom()+" recule d'une case.");
+			//System.out.println("Le monstre "+monstre.getNom()+" recule d'une case.");
 					break;
 			/*case 2 = avance*/
 			case 1: newNumCase = laCase.getNumCase()+1;
@@ -46,7 +46,7 @@ public class Vagabonder implements SeDeplacer
 		int nbCase = jeu.getCases().size();
 		if(newNumCase == -1 || newNumCase == nbCase)
 		{
-			System.out.println("Le monstre a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
+			//System.out.println("Le monstre a tenté de sortir des frontières. Heureusement, les gardes de Dar Elnor l'en ont empêché. Le monstre reste sur sa case.");
 			return false;
 		}
 		else
@@ -55,7 +55,7 @@ public class Vagabonder implements SeDeplacer
 			if (newCase.ajoutMonstre(monstre))
 			{
 				laCase.SuppMonstre(monstre);
-				System.out.println("Le monstre "+monstre.getNom()+"  vagabonde vers la case "+newNumCase);
+				//System.out.println("Le monstre "+monstre.getNom()+"  vagabonde vers la case "+newNumCase);
 				return true;
 			}
 			return false;

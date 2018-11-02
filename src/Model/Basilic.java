@@ -69,7 +69,7 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	@Override
 	public String son() 
 	{
-		return "Le Basilic "+this.getNom()+" siffle au fond du Marais.";
+		return "\nLe Basilic "+this.getNom()+" siffle au fond du Marais.\n";
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class Basilic extends Monstre implements Rampant, Ovipare
 	{
 		Oeuf oeuf = this.pondreOeuf();
 		jeu.ajoutOeuf(oeuf);
-		return "Un oeuf de "+this.getNom()+" est en cours d'incubation.";
+		return "\nUn oeuf de "+this.getNom()+" est en cours d'incubation.\n";
 	}
 
 }

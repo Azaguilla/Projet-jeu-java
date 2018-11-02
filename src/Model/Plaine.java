@@ -88,7 +88,7 @@ public class Plaine extends Case
 		}
 		else
 		{
-			System.out.println("Il y a trop de monstre sur la case");
+			//System.out.println("Il y a trop de monstre sur la case");
 			return false;
 		}
 	}

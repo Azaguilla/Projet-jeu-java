@@ -155,7 +155,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	 */
 	public String son()
 	{
-		return "Le gobelin"+this.getNom()+" ricane dans les profondeurs.";
+		return "Le gobelin "+this.getNom()+" ricane dans les profondeurs.";
 	}
 
 }
