@@ -15,7 +15,6 @@ public class Guerrier extends Personnage
 		super(nom, sexe, classe);
 	}
 	
-	//TODO vérifier doc
 	/**
 	 * Crée un nouveau Guerrier
 	 * @param nom Le nom du Guerrier

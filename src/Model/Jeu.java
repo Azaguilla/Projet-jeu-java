@@ -296,10 +296,9 @@ public class Jeu
 		}
 	}
 	
-	//TODO javadoc
 	/**
 	 * Méthode qui gère le déplacement des monstres. Elle les récupère un par un et les déplace.
-	 * Si le monstre retourne un message selon s'il a pu se déplacer ou non
+	 * Le monstre retourne un message selon s'il a pu se déplacer ou non
 	 */
 	private void lesMonstresSeDeplacent()
 	{
@@ -385,7 +384,7 @@ public class Jeu
 		String message = "";
 		for (int i = 0; i < this.oeufs.size(); i++)
 		{
-			if(this.oeufs.get(i).getTempsIncub() >= 1)		//changé en > pour éviter les erreurs (-1...)
+			if(this.oeufs.get(i).getTempsIncub() >= 1)
 			{
 				int newTempsIncub = this.oeufs.get(i).getTempsIncub() - 1;
 				this.oeufs.get(i).setTempsIncub(newTempsIncub);
