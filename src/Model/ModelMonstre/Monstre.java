@@ -337,7 +337,7 @@ public abstract class Monstre
 			System.out.println("Le monstre "+this.nom+" attaque férocement. Vous perdez "+degats+" pts de vie.");
 		}
 		else
-			System.out.println("Le monstre "+this.nom+" est endormis.");
+			System.out.println("Le monstre n'attaque pas,"+this.nom+" est endormis.");
 	}
 	
 	public abstract String son();

@@ -30,12 +30,12 @@ public class Chasseur extends Personnage
 	public String attaquer(Monstre monstre, Jeu jeu) 
 	{
 		monstre.setVie(this.getForce(), jeu);
-		monstre.setSommeil(false);
-		int degatsMonstre = monstre.getForce() + monstre.getTaille();
+		monstre.seReveiller();
+		int degatsMonstre = (monstre.getForce() + monstre.getTaille())/2;
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
-			return "Vous tirez et votre flèche inflige \"+this.getForce()+\" pts de dégât au monstre. Le monstre succombe à ses blessures.";
+			return "Vous tirez et votre flèche inflige "+this.getForce()+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
 		}
 		else
 		{
@@ -58,7 +58,7 @@ public class Chasseur extends Personnage
 		monstre.setVie(this.getForce(), jeu);
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setSommeil(false);
-		int degatsMonstre = monstre.getForce() + monstre.getTaille();
+		int degatsMonstre = (monstre.getForce() + monstre.getTaille())/2;
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);

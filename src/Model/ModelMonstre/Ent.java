@@ -17,6 +17,7 @@ public class Ent extends Monstre implements Vivipare
 	public Ent(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
 		super(nom, sexe, poids, taille, age, sommeil);
+		this.setForce(this.getForce()*3);
 	}
 
 	/**

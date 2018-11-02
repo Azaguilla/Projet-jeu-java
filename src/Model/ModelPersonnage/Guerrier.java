@@ -47,8 +47,8 @@ public class Guerrier extends Personnage
 	public String attaquer(Monstre monstre, Jeu jeu) 
 	{
 		monstre.setVie(this.getForce()*2, jeu);
-		monstre.setSommeil(false);
-		int degatsMonstre = monstre.getForce() + monstre.getTaille();
+		monstre.seReveiller();
+		int degatsMonstre = (monstre.getForce() + monstre.getTaille())/2;
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
@@ -75,7 +75,7 @@ public class Guerrier extends Personnage
 		monstre.setVie(this.getForce(), jeu);
 		this.setEnergie(this.getEnergie()-5);
 		monstre.setSommeil(false);
-		int degatsMonstre = monstre.getForce() + monstre.getTaille();
+		int degatsMonstre = (monstre.getForce() + monstre.getTaille())/2;
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
