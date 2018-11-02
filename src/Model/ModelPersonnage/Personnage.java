@@ -100,11 +100,11 @@ public abstract class Personnage
 		if(this.vie < MAX_VIE)
 		{
 			this.vie = this.vie + 2;
-			return "Vous réccupérer de la vie. Votre vie est actuellement à "+this.vie+" pts.";
+			return "\nVous réccupérer de la vie. Votre vie est actuellement à "+this.vie+" pts.";
 		}
 		else
 		{
-			return "Vous ne pouvez pas récupérer plus de points de vie. Votre vie est actuellement à "+this.vie+" pts.";
+			return "\nVous ne pouvez pas récupérer plus de points de vie. Votre vie est actuellement à "+this.vie+" pts.";
 		}
 	}
 	
@@ -118,11 +118,11 @@ public abstract class Personnage
 		if(this.energie < MAX_ENERGIE)
 		{
 			this.energie = this.energie + 2;
-			return "Vous récupérer de l'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
+			return "\nVous récupérer de l'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
 		}
 		else
 		{
-			return "Vous ne pouvez pas récupérer plus de points d'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
+			return "\nVous ne pouvez pas récupérer plus de points d'énergie. Votre énergie est actuellement à "+this.energie+" pts.";
 		}
 		
 	}

@@ -43,7 +43,7 @@ public class Controller {
 		}
 		while(classe == 0)
 		{
-			this.vue.afficherUnMessage("Descriptif des classes :\n Le Chasseur est capable d'attaquer à distance,\n Le magicien possède un bonus de dégâts lorsqu'il lance un sort, \n le Guerrier possède un bonus de dégâts au corps-à-corps,\n le Rôdeur a 50% de chance d'infliger des coups critiques et 50% de chance d'esquiver un coup.\n\n");
+			this.vue.afficherUnMessage("Descriptif des classes :\n Le Chasseur est capable d'attaquer à distance,\n Le magicien possède un bonus de dégâts lorsqu'il lance un sort, \n le Guerrier possède un bonus de dégâts au corps-à-corps,\n le Rôdeur a 50% de chance de faire un coup critique et infliger le double de dégâts et 50% de chance d'esquiver une attaque et prendre seulement la moitié des dégâts.\n\n");
 			classe = this.vue.AfficherDemandeClasse();
 		}
 		
@@ -155,7 +155,7 @@ public class Controller {
 		}
 
 		String deplacement = this.model.deplacerPersonnage(this.jeu.getJoueur(), choixDeplacement, this.jeu);
-		String messageCsq = this.jeu.consequenceAction();
+		String messageCsq = this.jeu.consequenceAction(1);
 		
 		this.verifEtatJeu(deplacement+messageCsq);
 	}
@@ -166,7 +166,7 @@ public class Controller {
 	public void manger()
 	{
 		String message = this.model.manger(this.jeu.getJoueur());
-		String messageCsq = this.jeu.consequenceAction();
+		String messageCsq = this.jeu.consequenceAction(1);
 		this.verifEtatJeu(message+messageCsq);
 	}
 	
@@ -176,7 +176,7 @@ public class Controller {
 	public void boirePotion()
 	{
 		String message = this.model.boirePotion(this.jeu.getJoueur());
-		String messageCsq = this.jeu.consequenceAction();
+		String messageCsq = this.jeu.consequenceAction(1);
 		this.verifEtatJeu(message+messageCsq);
 	}
 	
@@ -235,7 +235,7 @@ public class Controller {
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
 				String message = this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
 
-				String messageCsq = this.jeu.consequenceAction();
+				String messageCsq = this.jeu.consequenceAction(1);
 				this.verifEtatJeu(message+"\n"+messageCsq);
 			}
 		}
@@ -267,7 +267,7 @@ public class Controller {
 				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
 				String message = this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
 				
-				String messageCsq = this.jeu.consequenceAction();
+				String messageCsq = this.jeu.consequenceAction(1);
 				this.verifEtatJeu(message+"\nVous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie."+messageCsq);
 			}
 		}
@@ -281,7 +281,7 @@ public class Controller {
 		Personnage personnage = this.jeu.getJoueur();
 		Case laCase = this.jeu.recupererCase(personnage.getPosition()+1);
 		String message = this.jeu.getJoueur().nettoyer(laCase);
-		String messageCsq = this.jeu.consequenceAction();
+		String messageCsq = this.jeu.consequenceAction(2);
 		this.verifEtatJeu(message+messageCsq);
 	}
 	
@@ -290,7 +290,7 @@ public class Controller {
 	 */
 	public void examinerCase()
 	{
-		this.jeu.consequenceAction();
+		this.jeu.consequenceAction(1);
 		int nbCase = this.jeu.getCases().size();
 		int laCase = this.vue.afficherChoixCase(nbCase);
 		if(laCase == -1)
@@ -307,9 +307,8 @@ public class Controller {
 			}
 			else
 			{
-				this.jeu.consequenceAction();
 				String infos = this.jeu.getCases().get(laCase).toString();
-				String messageCsq = this.jeu.consequenceAction();
+				String messageCsq = this.jeu.consequenceAction(1);
 				this.verifEtatJeu(infos+messageCsq);
 			}
 		}
@@ -344,7 +343,7 @@ public class Controller {
 	{	
 		String message = this.jeu.ChangerTour();
 		
-		this.verifEtatJeu(message+"\nVous avez passé votre tour. \nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n");
+		this.verifEtatJeu("\nVous avez passé votre tour. \nVous vous endormez sous un arbre. La lune apparaît puis se voile, laissant place au Soleil. Un nouveau jour commence.\n\n"+message);
 	}
 	
 	/**

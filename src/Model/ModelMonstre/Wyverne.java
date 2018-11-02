@@ -72,7 +72,7 @@ public class Wyverne extends Monstre implements Volant, Ovipare
 	@Override
 	public String son() 
 	{
-		return "La Wyverne "+this.getNom()+" pousse un cri strident en tournoyant dans le ciel.";
+		return "La "+this.getNom()+" pousse un cri strident en tournoyant dans le ciel.";
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class Wyverne extends Monstre implements Volant, Ovipare
 	{
 		Oeuf oeuf = this.pondreOeuf();
 		jeu.ajoutOeuf(oeuf);
-		return "Un oeuf de "+this.getNom()+" est en cours d'incubation.";
+		return "\nUn oeuf de "+this.getNom()+" est en cours d'incubation.\n";
 	}
 
 }

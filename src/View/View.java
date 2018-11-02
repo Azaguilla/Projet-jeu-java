@@ -142,7 +142,7 @@ public class View {
 	{
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Le jeu est composé de "+nbCases+" cases.\n");
+		System.out.println("\nLe jeu est composé de "+nbCases+" cases.");
 		
 		nbCases = nbCases-1;
 		

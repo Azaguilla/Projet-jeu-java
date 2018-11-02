@@ -69,13 +69,13 @@ public class Rodeur extends Personnage
 				int m = rand.nextInt(2);
 				if(m == 0)
 				{
-					this.setVie(this.getVie()-monstre.getForce()/2);
+					this.setVie(this.getVie()-degatsMonstre/2);
 					return "Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre."
 						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+degatsMonstre/2+" pts de dégât.";
 				}
 				else
 				{
-					this.setVie(this.getVie()-monstre.getForce());
+					this.setVie(this.getVie()-degatsMonstre);
 					return "Coup critique! Vous infligez "+this.getForce()*2+" pts de dégât au monstre."
 						 + "Le monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 				}
@@ -95,13 +95,13 @@ public class Rodeur extends Personnage
 				int m = rand.nextInt(2);
 				if(m == 0)
 				{
-					this.setVie(this.getVie()-monstre.getForce()/2);
+					this.setVie(this.getVie()-degatsMonstre/2);
 					return "Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre."
 						 + "\nLe monstre réplique mais vous esquivez le gros de l'attaque, le monstre vous inflige "+degatsMonstre/2+" pts de dégât.";
 				}
 				else
 				{
-					this.setVie(this.getVie()-monstre.getForce());
+					this.setVie(this.getVie()-degatsMonstre);
 					return "Votre poignard attend sa cible et vous infligez "+this.getForce()+" pts de dégât au monstre."
 						 + "Le monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 				}
@@ -127,12 +127,12 @@ public class Rodeur extends Personnage
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. Il succombe à ses blessures.";
+			return "\nL'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. Il succombe à ses blessures.";
 		}
 		else
 		{
-			this.setVie(this.getVie()-monstre.getForce());
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
+			this.setVie(this.getVie()-degatsMonstre);
+			return "\nL'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	

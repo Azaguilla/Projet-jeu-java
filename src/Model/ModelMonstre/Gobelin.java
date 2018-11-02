@@ -123,7 +123,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 				{
 					//System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 					monstrePlace = true;
-					message = "Un bébé "+this.getNom()+" est né ! Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase();
+					message = "\nUn bébé "+this.getNom()+" est né ! Le jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase()+"\n";
 				}
 				else
 				{
@@ -131,7 +131,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 					{
 						//System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 						monstrePlace = true;
-						message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.\n";
+						message = "\nUn jeune monstre "+this.getNom()+" est mort car aucun terrain ne lui était favorable.\n";
 					}
 					else
 					{
@@ -148,7 +148,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 		{
 			this.tempsGestation++;
 			this.setEnGestation(true);
-			return "Le monstre "+this.getNom()+" est toujours en gestation.\n";
+			return "\nLe monstre "+this.getNom()+" est en gestation.\n";
 		}
 	}
 	
@@ -158,7 +158,7 @@ public class Gobelin extends Monstre implements Terrestre, Vivipare
 	 */
 	public String son()
 	{
-		return "Le gobelin "+this.getNom()+" ricane dans les profondeurs.";
+		return "Le "+this.getNom()+" ricane dans les profondeurs.";
 	}
 
 }

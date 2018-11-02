@@ -71,7 +71,7 @@ public class Griffon extends Monstre implements Volant, Ovipare
 	@Override
 	public String son()
 	{
-		return "Le Griffon "+this.getNom()+" glatit dans le ciel.";
+		return "Le "+this.getNom()+" glatit dans le ciel.";
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Griffon extends Monstre implements Volant, Ovipare
 	{
 		Oeuf oeuf = this.pondreOeuf();
 		jeu.ajoutOeuf(oeuf);
-		return "Un oeuf de "+this.getNom()+" est en cours d'incubation.";
+		return "\nUn oeuf de "+this.getNom()+" est en cours d'incubation.\n";
 	}
 
 }

@@ -43,16 +43,16 @@ public class Plaine extends Case
 		switch (this.getPollution()) {
 		case 1 :
 			personnage.setVie(personnage.getVie()-1);
-			return "Pollution niveau 1 : vous perdez 1 pts de vie.";
+			return "L'herbe autrefois grasse et d'un vert majestueux est maintenant spongieuse et jaunâtre. Vous glissez et perdez 1 pts de vie.\n";
 		case 2 : 
 			personnage.setVie(personnage.getVie()-2);
-			return "Pollution niveau 2 : vous perdez 2 pts de vie.";
+			return "Avec le sol glissant et l'atmosfère étouffante, votre tête tourne et vous tombez plusieurs fois. Vous vous blessez et perdez 2 pts de vie.\n";
 		case 3 : 
 			personnage.setVie(personnage.getVie()-3);
-			return "Pollution niveau 3 : vous perdez 3 pts de vie.";
+			return "Des roses ont muté sur la plaine ! Elles tentent de vous dévorer ! Vous perdez 3 pts de vie.\n";
 		default: 
 			personnage.setVie(personnage.getVie());
-			return "Le vent frais souffle sur votre visage, le soleil illumine la plaine luxuriante.";
+			return "Le vent frais souffle sur votre visage, le soleil illumine la plaine luxuriante.\n";
 		}
 	}
 

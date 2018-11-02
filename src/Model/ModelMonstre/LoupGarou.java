@@ -130,7 +130,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 				{
 					//System.out.println("sysoLe jeune monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
 					monstrePlace = true;
-					message = "Un bébé "+this.getNom()+" est né !";
+					message = "\nUn bébé "+this.getNom()+" est né !\n";
 				}
 				else
 				{
@@ -138,7 +138,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 					{
 						//System.out.println("sysoUn jeune monstre est mort car aucun terrain ne lui était favorable.");
 						monstrePlace = true;
-						message = "Un jeune monstre est mort car aucun terrain ne lui était favorable.";
+						message = "\nUn jeune monstre est mort car aucun terrain ne lui était favorable.\n";
 					}
 					else
 					{
@@ -155,7 +155,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 		{
 			this.tempsGestation++;
 			this.setEnGestation(true);
-			return "Le monstre "+this.getNom()+" est en gestation";
+			return "\nLe monstre "+this.getNom()+" est en gestation\n";
 		}
 	}
 	
@@ -165,7 +165,7 @@ public class LoupGarou extends Monstre implements Terrestre, Vivipare
 	 */
 	public String son()
 	{
-		return "Le Loup Garou "+this.getNom()+" hurle à la Lune.";
+		return "Le "+this.getNom()+" hurle à la Lune.";
 	}
 
 }

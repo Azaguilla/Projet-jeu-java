@@ -47,18 +47,18 @@ public class Guerrier extends Personnage
 	@Override
 	public String attaquer(Monstre monstre, Jeu jeu) 
 	{
-		monstre.setVie(this.getForce(), jeu);
+		monstre.setVie(this.getForce()*2, jeu);
 		monstre.setSommeil(false);
 		int degatsMonstre = monstre.getForce() + monstre.getTaille();
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
-			return "Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
+			return "\nVotre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. Le monstre succombe à ses blessures.";
 		}
 		else
 		{
-			this.setVie(this.getVie()-monstre.getForce());
-			return "Votre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
+			this.setVie(this.getVie()-degatsMonstre);
+			return "\nVotre épée fend l'air et vous infligez "+this.getForce()*2+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	
@@ -80,12 +80,12 @@ public class Guerrier extends Personnage
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. Il succombe à ses blessures.";
+			return "\nL'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. Il succombe à ses blessures.";
 		}
 		else
 		{
-			this.setVie(this.getVie()-monstre.getForce());
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
+			this.setVie(this.getVie()-degatsMonstre);
+			return "\nL'air crépite autour de vous et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 	

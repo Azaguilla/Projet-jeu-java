@@ -41,7 +41,7 @@ public class Ent extends Monstre implements Vivipare
 	 */
 	public boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu) 
 	{
-		System.out.println("Les Ent ne se déplacent pas !");
+		//System.out.println("Les Ent ne se déplacent pas !");
 		return true;
 	}
 
@@ -73,11 +73,11 @@ public class Ent extends Monstre implements Vivipare
 		if(laCase.ajoutMonstre(monstre))
 		{
 			System.out.println("Le monstre "+monstre.getNom()+" s'est placé à la case "+laCase.getNumCase());
-			return "Une pousse d'Ent est apparue !";
+			return "\nUne pousse d'Ent est apparue !\n";
 		}
 		else
 		{
-			return "La vie peut être difficile, dans les sous-bois, pour les jeunes Ent. L'un d'entre eux n'a pas survécu à cause du manque de place.";
+			return "\nLa vie peut être difficile, dans les sous-bois, pour les jeunes Ent. L'un d'entre eux n'a pas survécu à cause du manque de place.\n";
 		}
 	}
 

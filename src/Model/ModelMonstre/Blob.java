@@ -40,7 +40,7 @@ public class Blob extends Monstre implements Rampant
 	@Override
 	public String son() 
 	{
-		return "Le Blob "+this.getNom()+" gargouille de manière écoeurante.";
+		return "Le "+this.getNom()+" gargouille de manière écoeurante.";
 	}
 	
 	/**

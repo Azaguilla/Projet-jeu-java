@@ -209,11 +209,11 @@ public class Model
 		if (deplacement == true)
 		{
 			String message = jeu.recupererCase(personnage.getPosition()).degatPersonnage(personnage);
-			return "Vous marchez difficilement à travers le lieu hostile, mais vous réussissez à avancer.\n"+message;
+			return "\nVous marchez difficilement à travers le lieu hostile, mais vous réussissez à avancer.\n"+message;
 		}
 		else
 		{
-			return "Vous essayez d'avancer, mais quelque chose vous en empêche. La fatigue, peut-être ?";
+			return "\nVous essayez d'avancer, mais quelque chose vous en empêche. La fatigue, peut-être ?";
 		}
 	}
 	

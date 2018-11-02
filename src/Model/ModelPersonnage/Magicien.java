@@ -30,7 +30,7 @@ public final class Magicien extends Personnage
 		}
 		else
 		{
-			this.setVie(this.getVie()-monstre.getForce());
+			this.setVie(this.getVie()-degatsMonstre);
 			return "Vous sortez votre dague et vous infligez "+this.getForce()+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
@@ -53,12 +53,12 @@ public final class Magicien extends Personnage
 		if(monstre.getVie() <= 0)
 		{
 			monstre.mourir(jeu);
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. Il succombe à ses blessures.";
+			return "\nL'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. Il succombe à ses blessures.";
 		}
 		else
 		{
-			this.setVie(this.getVie()-monstre.getForce());
-			return "L'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
+			this.setVie(this.getVie()-degatsMonstre);
+			return "`\nL'air crépite autour de vous et vous infligez "+this.getForce()*3+" pts de dégât au monstre. \nLe monstre réplique et vous inflige "+degatsMonstre+" pts de dégât.";
 		}
 	}
 

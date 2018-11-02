@@ -311,7 +311,7 @@ public class Jeu
 	 */
 	private String lesMonstresSeDeplacent()
 	{
-		String message ="";
+		String message ="------------ Information sur les déplacements ------------";
 		//On récupère tous les monstres
 		ArrayList<Monstre> monstres = new ArrayList<Monstre>();
 		for (int i = 0; i < this.cases.size(); i++)
@@ -326,6 +326,7 @@ public class Jeu
 		for(int l = 0; l < monstres.size(); l++)
 		{
 			Monstre monstre = monstres.get(l);
+			message += "\nCase "+monstre.getNumCaseActuelle()+" ----- \n";
 			if(!monstre.isSommeil())
 			{
 				//System.out.println("Case "+monstre.getNumCaseActuelle()+" : "+monstre.getNom());
@@ -336,16 +337,16 @@ public class Jeu
 					{
 						if (!monstre.seDeplacer(new Voler(), this))
 						{
-							message += "\nLe monstre tourne en rond et piétine. Il n'a pas pu se déplacer.\n";
+							message += "Le monstre tourne en rond et piétine. Il n'a pas pu se déplacer.\n";
 						}
 						else
 						{
-							message += "\nLe monstre "+monstre.getNom()+"  vole vers la case "+monstre.getNumCaseActuelle()+".\n";
+							message += "\nLe monstre "+monstre.getNom()+" vole vers la case "+monstre.getNumCaseActuelle()+".\n";
 						}
 					}
 					else
 					{
-						message += "\nLe monstre "+monstre.getNom()+"  rampe vers la case "+monstre.getNumCaseActuelle()+".\n";
+						message += "\nLe monstre "+monstre.getNom()+" rampe vers la case "+monstre.getNumCaseActuelle()+".\n";
 					}
 				}
 				else
@@ -356,13 +357,13 @@ public class Jeu
 					}
 					else
 					{
-						message += "\nLe monstre "+monstre.getNom()+"  vagabonde vers la case "+monstre.getNumCaseActuelle()+".\n";
+						message += "\nLe monstre "+monstre.getNom()+" vagabonde vers la case "+monstre.getNumCaseActuelle()+".\n";
 					}
 				}
 			}
 			else
 			{
-				message += "\nLe monstre "+monstre.getNom()+" dort, il ne peut pas se déplacer.\n";
+				message += "Le monstre "+monstre.getNom()+" dort, il ne peut pas se déplacer.\n";
 			}
 		}
 		
@@ -384,7 +385,7 @@ public class Jeu
 			}
 		}
 		
-		String message = "";
+		String message = "\n------------ Information sur les nouveaux monstres en gestation ------------\n";
 		int i = 1;
 		while(i != 4)
 		{
@@ -393,7 +394,7 @@ public class Jeu
 			Monstre monstre = monstres.get(n);
 			if(!monstre.isEnGestation() && monstre.getSexe() != 1)
 			{
-				message =  message+monstre.gestation(this);
+				message +=  monstre.gestation(this);
 			}
 			i++;
 		}
@@ -415,7 +416,7 @@ public class Jeu
 	{
 		//TODO OPTIMISATION !!!
 		//On vérifie les oeufs
-		String message = "";
+		String message = "------------ Informations sur les naissances ------------";
 		for (int i = 0; i < this.oeufs.size(); i++)
 		{
 			if(this.oeufs.get(i).getTempsIncub() >= 1)		//changé en > pour éviter les erreurs (-1...)
@@ -474,7 +475,7 @@ public class Jeu
 			}
 		}
 		
-		return message;
+		return message+"\n\n";
 	}
 	
 	/**
@@ -497,8 +498,8 @@ public class Jeu
 			this.nbHeure = 10;
 			this.modifierEtatMonstre();
 			this.modifierEtatCase();
-			message = this.verifNaissances();
 			this.lesMonstresAttaquent();
+			message = this.verifNaissances();
 			message += this.lesMonstresSeDeplacent();
 			message += this.nouvellesNaissances();
 			return message;
@@ -520,17 +521,18 @@ public class Jeu
 	/**
 	 * Décrément le nombre d'heures
 	 * Si le nombre d'heure est à 0, le tour change
+	 * @param duree Temps nécessaire à faire l'action
 	 * @return Les conséquences de l'action
 	 */
-	public String consequenceAction()
+	public String consequenceAction(int duree)
 	{
-		this.nbHeure --;
+		this.nbHeure = this.nbHeure- duree;
 		String message = "";
 		if(this.nbHeure == 0)
 		{
 			message = this.ChangerTour();
 		}
-		return message+"\nLes heures tournent. Vous perdez une heure de temps à faire votre action. Il vous reste "+this.nbHeure+" heures.";
+		return message+"\nLes heures tournent. Vous perdez "+duree+" heure(s) de temps à faire votre action. Il vous reste "+this.nbHeure+" heure(s).\n";
 	}
 	
 	/**
@@ -539,9 +541,9 @@ public class Jeu
 	 */
 	public String infosJeu()
 	{
-		return "Jeu \n"
+		return "\nLe Royaume de Dar Elnor \n"
 				+ "Nom : " + nom + "\n"
-				+ "Joueur : " + joueur + "\n"
+				+ "Joueur : \n" + joueur + "\n"
 				+ "Nombre de jour : " + nbJour + "\n"
 				+ "Jour actuel : " + jourCourant + "\n"
 				+ "Nombre d'heure à dépenser : " + nbHeure + "\n"
