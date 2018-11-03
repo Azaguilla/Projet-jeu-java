@@ -35,24 +35,23 @@ public class Model
 	 * @param nom Le nom du personnage
 	 * @return Le personnage créé
 	 */
-	public Personnage creerPersonnage(int classe, String sexe, String nom)
+	public Personnage creerPersonnage(String classe, String sexe, String nom)
 	{
 		Personnage personnage = null;
 		switch(classe)
 		{
-			case 1:personnage = Chasseur.getInstance(nom, sexe, "Chasseur");
+			case "1":personnage = Chasseur.getInstance(nom, sexe, "Chasseur");
 					break;
-			case 2:personnage = Guerrier.getInstance(nom, sexe, "Guerrier");
+			case "2":personnage = Guerrier.getInstance(nom, sexe, "Guerrier");
 					break;
-			case 3:personnage = Magicien.getInstance(nom, sexe, "Magicien");
+			case "3":personnage = Magicien.getInstance(nom, sexe, "Magicien");
 					break;
-			case 4:personnage = Rodeur.getInstance(nom, sexe, "Rôdeur");
+			case "4":personnage = Rodeur.getInstance(nom, sexe, "Rôdeur");
 					break;
 		}
 		return personnage;
 	}
 	
-	//TODO vérifier doc (type) + faire en sorte que le jeu ne plante pas si les monstres ne peuvent pas être placés
 	/**
 	 * Permet de créer les cases du jeu et de placer les monstres qu'elles contiennent
 	 * @param monstres Les monstres du jeu
@@ -204,7 +203,7 @@ public class Model
 	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 * @return message
 	 */
-	public String deplacerPersonnage(Personnage personnage, int choixDeplacement, Jeu jeu)
+	public String deplacerPersonnage(Personnage personnage, String choixDeplacement, Jeu jeu)
 	{
 		boolean deplacement = personnage.seDeplacer(choixDeplacement, jeu);
 		

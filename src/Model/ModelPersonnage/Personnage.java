@@ -62,10 +62,10 @@ public abstract class Personnage
 	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 * @return vrai(true) si le déplacement est valide, faux(false) sinon
 	 */
-	public boolean seDeplacer(int choix, Jeu jeu)
+	public boolean seDeplacer(String choix, Jeu jeu)
 	{
 		switch (choix) {
-		case 0 :
+		case "0" :
 			if (this.position == Jeu.getMaxCase())
 			{
 				return false;
@@ -75,7 +75,7 @@ public abstract class Personnage
 				this.position++;
 				return true;
 			}
-		case 1 : 
+		case "1" : 
 			if (this.position == 0)
 			{
 				return false;

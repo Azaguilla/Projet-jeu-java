@@ -22,11 +22,11 @@ public class View {
 	 * Affiche le choix de classe
 	 * @return La classe choisie
 	 */
-	public int AfficherDemandeClasse()
+	public String AfficherDemandeClasse()
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choississez la classe de votre personnage : Chasseur [1], Guerrier [2], Magicien [3], Rodeur [4] -- Plus de détails [0]");
-		int classe = sc.nextInt();
+		String classe = sc.next();
 		
 		return classe;
 	}
@@ -61,11 +61,11 @@ public class View {
 	 * Affiche le choix de déplacement, avancer ou reculer
 	 * @return choix Le choix de déplacement
 	 */
-	public int choixDeplacement()
+	public String choixDeplacement()
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Comment voulez-vous vous déplacer ? \n Avancer[0] \n Reculer[1]");
-		int choix = sc.nextInt();
+		String choix = sc.next();
 		
 		return choix;
 	}
@@ -76,7 +76,7 @@ public class View {
 	 * @param personnage Le personnage du joueur
 	 * @return Le choix de l'action
 	 */
-	public int AfficherMenu(String message, Personnage personnage)
+	public String AfficherMenu(String message, Personnage personnage)
 	{
 		Scanner sc = new Scanner(System.in);
 		
@@ -95,7 +95,7 @@ public class View {
 				+ "Afficher des infos sur le jeu (simplifié)[8] - gratuit \n "
 				+ "Passer le tour[9]");
 		
-		int choix = sc.nextInt();
+		String choix = sc.next();
 		
 		return choix;
 	}
@@ -119,7 +119,7 @@ public class View {
 	 * @param monstres
 	 * @return Le choix du monstre à attaquer
 	 */
-	public int afficherChoixMonstre(ArrayList<Monstre> monstres)
+	public String afficherChoixMonstre(ArrayList<Monstre> monstres)
 	{
 		Scanner sc = new Scanner(System.in);
 		
@@ -128,7 +128,7 @@ public class View {
 		System.out.println("Quel monstre veux-tu attaquer ? Indique son numéro de 0 à 2 \n"
 				+ "Retour[-1]");
 		
-		int choix = sc.nextInt();
+		String choix = sc.next();
 		
 		return choix;
 	}
@@ -138,7 +138,7 @@ public class View {
 	 * @param nbCases Le nombre de cases
 	 * @return Le choix de la case à examiner
 	 */
-	public int afficherChoixCase(int nbCases)
+	public String afficherChoixCase(int nbCases)
 	{
 		Scanner sc = new Scanner(System.in);
 		
@@ -149,7 +149,7 @@ public class View {
 		System.out.println("Entrez le numéro de la case à étudier, en indiquant un nombre en 0 et "+nbCases+". \n"
 				+ "Retour[-1]");
 		
-		int choix = sc.nextInt();
+		String choix = sc.next();
 		
 		return choix;
 	}
@@ -158,12 +158,12 @@ public class View {
 	 * Affiche le choix d'attaquer à distance pour un chasseur
 	 * @return Le choix d'attaque
 	 */
-	public int afficherChoixChasseur()
+	public String afficherChoixChasseur()
 	{
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Vous êtes chasseur. Vous pouvez attaquer à distance. Voulez-vous attaquer d'une case supplémentaire ? Oui[0]/Non[1]");
-		int choix = sc.nextInt();
+		String choix = sc.next();
 		
 		return choix;
 	}
@@ -172,12 +172,12 @@ public class View {
 	 * Affiche le choix de la case à attaquer
 	 * @return Le choix de la case à attaquer
 	 */
-	public int afficherChoixCaseChasseur()
+	public String afficherChoixCaseChasseur()
 	{
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Vous voulez attaquer la case précédente ou la case suivante ? Précédente[0]/Suivante[1]");
-		int choix = sc.nextInt();
+		String choix = sc.next();
 		
 		return choix;
 	}

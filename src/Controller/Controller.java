@@ -35,18 +35,36 @@ public class Controller {
 	 */
 	public void debutJeu()
 	{
-		int classe = this.vue.AfficherDemandeClasse();
-		while(classe > 4 || classe < 0)
+		boolean continuer = false;
+		String classe = this.vue.AfficherDemandeClasse();
+		while (continuer == false)
 		{
-			this.vue.afficherUnMessage("Saisie incorrecte.");
-			classe = this.vue.AfficherDemandeClasse();
+			switch (classe)
+			{
+				case "0":
+					this.vue.afficherUnMessage("Descriptif des classes :\n Le Chasseur est capable d'attaquer à distance,\n Le magicien possède un bonus de dégâts lorsqu'il lance un sort, \n le Guerrier possède un bonus de dégâts au corps-à-corps,\n le Rôdeur a 50% de chance de faire un coup critique et infliger le double de dégâts et 50% de chance d'esquiver une attaque et prendre seulement la moitié des dégâts.\n\n");
+					classe = this.vue.AfficherDemandeClasse();
+					continuer = false;
+					break;
+				case "1":
+					continuer = true;
+					break;
+				case "2":
+					continuer = true;
+					break;
+				case "3":
+					continuer = true;
+					break;
+				case "4":
+					continuer = true;
+					break;
+				default:
+					this.vue.afficherUnMessage("Saisie incorrecte.");
+					classe = this.vue.AfficherDemandeClasse();
+					continuer = false;
+					break;
+			}
 		}
-		while(classe == 0)
-		{
-			this.vue.afficherUnMessage("Descriptif des classes :\n Le Chasseur est capable d'attaquer à distance,\n Le magicien possède un bonus de dégâts lorsqu'il lance un sort, \n le Guerrier possède un bonus de dégâts au corps-à-corps,\n le Rôdeur a 50% de chance de faire un coup critique et infliger le double de dégâts et 50% de chance d'esquiver une attaque et prendre seulement la moitié des dégâts.\n\n");
-			classe = this.vue.AfficherDemandeClasse();
-		}
-		
 		
 		String nom = this.vue.AfficherDemandePersonnage();
 		
@@ -85,7 +103,7 @@ public class Controller {
 			case 3: quete = "Dans les bois vous rencontrez un vieil homme qui possède une carte indiquant un trésor enfoui dans des ruines se trouvant à "+this.jeu.getCases().size()+" lieux. C’est un voyage bien trop dangereux \npour un vieil homme comme lui, il vous propose donc d’aller chercher ce trésor pour lui en échange de la moitié du butin. Comment refuser une telle proposition ?";
 					break;
 		}
-		int choix = this.vue.AfficherMenu("Bienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n\n"+quete+"\n\n", personnage);
+		String choix = this.vue.AfficherMenu("Bienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n\n"+quete+"\n\n", personnage);
 		actions(choix);
 	}
 	
@@ -94,39 +112,39 @@ public class Controller {
 	 * Vérifie que l'entrée est correct
 	 * @param action L'action choisie
 	 */
-	public void actions(int action)
+	public void actions(String action)
 	{
-		int choix;
+		String choix;
 		switch (action)
 		{
-			case 0: 
+			case "0": 
 				this.seDeplacer();
 				break;
-			case 1: 
+			case "1": 
 				this.manger();
 				break;
-			case 2: 
+			case "2": 
 				this.boirePotion();
 				break;
-			case 3: 
+			case "3": 
 				this.attaquer();
 				break;
-			case 4: 
+			case "4": 
 				this.lancerSort();
 				break;
-			case 5: 
+			case "5": 
 				this.nettoyerCase();
 				break;
-			case 6: 
+			case "6": 
 				this.examinerCase();
 				break;
-			case 7: 
+			case "7": 
 				this.afficheInfosCaseActuelle();
 				break;
-			case 8:
+			case "8":
 				this.afficheInfoJeu();
 				break;
-			case 9:
+			case "9":
 				this.passerTour();
 				break;
 			default:
@@ -143,15 +161,20 @@ public class Controller {
 	 */
 	public void seDeplacer()
 	{
-		int choixDeplacement = this.vue.choixDeplacement();
+		String choixDeplacement = this.vue.choixDeplacement();
 
-		if (choixDeplacement != 0)
+		switch(choixDeplacement)
 		{
-			if(choixDeplacement != 1)
-			{
-				this.vue.afficherUnMessage("Veuillez entrer un caractère valide.");
-				this.seDeplacer();
-			}
+			case "0":
+				//On continue
+				break;
+			case "1":
+				//On continue
+				break;
+			default:
+				this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+				actions("0");
+				break;
 		}
 
 		String deplacement = this.model.deplacerPersonnage(this.jeu.getJoueur(), choixDeplacement, this.jeu);
@@ -191,53 +214,83 @@ public class Controller {
 		// Si le joueur est de la classe chasseur, il peut attaquer à distance
 		if(this.jeu.getJoueur() instanceof Chasseur)
 		{
-			int choix = this.vue.afficherChoixChasseur();
+			String choix = this.vue.afficherChoixChasseur();
 			switch(choix)
 			{
-				case 0:
-					int choixCase = this.vue.afficherChoixCaseChasseur();
-					if(choixCase == 0)
+				case "0":
+					boolean continuer = false;
+					while(continuer == false)
 					{
-						numCase = this.jeu.getJoueur().getPosition()-1;
-					}
-					else
-					{
-						numCase = this.jeu.getJoueur().getPosition()+1;
+						String choixCase = this.vue.afficherChoixCaseChasseur();
+						switch (choixCase)
+						{
+							case "0":
+								continuer = true;
+								numCase = this.jeu.getJoueur().getPosition()-1;
+								if (numCase == -1)
+								{
+									this.vue.afficherUnMessage("\n\nVous ne pouvez pas attaquer au-delà des frontières !\n");
+									continuer =  false;
+								}
+								break;
+							case "1":
+								continuer = true;
+								numCase = this.jeu.getJoueur().getPosition()+1;
+								if (numCase == 20)
+								{
+									this.vue.afficherUnMessage("\n\nVous ne pouvez pas attaquer au-delà des frontières !\n");
+									continuer =  false;
+								}
+								break;
+							default:
+								this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+								break;
+						}
 					}
 					break;
-				case 1:
+				case "1":
 					numCase = this.jeu.getJoueur().getPosition();
 					break;
 				default:
 					this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
-					actions(3);
+					actions("3");
 					break;
 			}
 		}
 		
 		// On récupère les monstres en fonction de la case
 		ArrayList<Monstre> monstres = this.model.recupererMonstre(numCase, this.jeu);
-		int numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
-		if(numMonstreAttaque == -1)
+		String numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
+		try 
 		{
-			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-			actions(choix);
-		}
-		else
-		{
-			if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
+			int numMonstre = Integer.parseInt(numMonstreAttaque);
+			if(numMonstre == -1)
 			{
-				this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
-				actions(3);
+				String choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+				actions(choix);
 			}
 			else
 			{
-				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
-				String message = this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
+				if(numMonstre > monstres.size()-1 || numMonstre < 0)
+				{
+					this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+					actions("3");
+				}
+				else
+				{
+					Monstre monstreAttaque = monstres.get(numMonstre);
+					String message = this.model.attaquerMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
 
-				String messageCsq = this.jeu.consequenceAction(1);
-				this.verifEtatJeu(message+"\n"+messageCsq);
+					String messageCsq = this.jeu.consequenceAction(1);
+					this.verifEtatJeu(message+"\n"+messageCsq);
+				}
 			}
+			
+		}
+		catch(Exception e)
+		{
+			this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+			actions("3");
 		}
 	}
 	
@@ -249,28 +302,40 @@ public class Controller {
 	{
 		int numCase = this.jeu.getJoueur().getPosition();
 		ArrayList<Monstre> monstres = this.model.recupererMonstre(numCase, this.jeu);
-		int numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
-		if(numMonstreAttaque == -1)
+		
+		String numMonstreAttaque = this.vue.afficherChoixMonstre(monstres);
+		try 
 		{
-			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-			actions(choix);
-		}
-		else
-		{
-			if(numMonstreAttaque > monstres.size()-1 || numMonstreAttaque < 0)
+			int numMonstre = Integer.parseInt(numMonstreAttaque);
+			if(numMonstre == -1)
 			{
-				this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
-				actions(4);
+				String choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+				actions(choix);
 			}
 			else
 			{
-				Monstre monstreAttaque = monstres.get(numMonstreAttaque);
-				String message = this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
-				
-				String messageCsq = this.jeu.consequenceAction(1);
-				this.verifEtatJeu(message+"\nVous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie."+messageCsq);
+				if(numMonstre > monstres.size()-1 || numMonstre < 0)
+				{
+					this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+					actions("4");
+				}
+				else
+				{
+					Monstre monstreAttaque = monstres.get(numMonstre);
+					String message = this.model.lancerSortSurMonstre(this.jeu.getJoueur(), jeu, monstreAttaque);
+					
+					String messageCsq = this.jeu.consequenceAction(1);
+					this.verifEtatJeu(message+"\nVous avez perdu 5 pts d'énergie. Il vous reste "+this.jeu.getJoueur().getEnergie()+" pts d'énergie."+messageCsq);
+				}
 			}
+			
 		}
+		catch(Exception e)
+		{
+			this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+			actions("4");
+		}
+		
 	}
 	
 	/**
@@ -290,28 +355,38 @@ public class Controller {
 	 */
 	public void examinerCase()
 	{
-		this.jeu.consequenceAction(1);
 		int nbCase = this.jeu.getCases().size();
-		int laCase = this.vue.afficherChoixCase(nbCase);
-		if(laCase == -1)
+		String laCase = this.vue.afficherChoixCase(nbCase);
+		try 
 		{
-			int choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
-			actions(choix);
-		}
-		else
-		{
-			if(laCase > nbCase-1 || laCase < 0)
+			int numCase = Integer.parseInt(laCase);
+			if(numCase == -1)
 			{
-				this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
-				actions(5);
+				String choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+				actions(choix);
 			}
 			else
 			{
-				String infos = this.jeu.getCases().get(laCase).toString();
-				String messageCsq = this.jeu.consequenceAction(1);
-				this.verifEtatJeu(infos+messageCsq);
+				if(numCase > nbCase-1 || numCase < 0)
+				{
+					this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+					actions("6");
+				}
+				else
+				{
+					String infos = this.jeu.getCases().get(numCase).toString();
+					String messageCsq = this.jeu.consequenceAction(1);
+					this.verifEtatJeu(infos+messageCsq);
+				}
 			}
+			
 		}
+		catch(Exception e)
+		{
+			this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+			actions("6");
+		}
+		
 	}
 	
 	/**
@@ -359,7 +434,7 @@ public class Controller {
 		
 		if (vivant && pasArrive && resteDuTemps)
 		{
-			int choix = this.vue.AfficherMenu(message, this.jeu.getJoueur());
+			String choix = this.vue.AfficherMenu(message, this.jeu.getJoueur());
 			actions(choix);
 		}
 		else
