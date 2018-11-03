@@ -36,14 +36,14 @@ public class Controller {
 	public void debutJeu()
 	{
 		boolean continuer = false;
-		String classe = this.vue.AfficherDemandeClasse();
+		String classe = this.vue.afficherDemandeClasse();
 		while (continuer == false)
 		{
 			switch (classe)
 			{
 				case "0":
 					this.vue.afficherUnMessage("Descriptif des classes :\n Le Chasseur est capable d'attaquer à distance,\n Le magicien possède un bonus de dégâts lorsqu'il lance un sort, \n le Guerrier possède un bonus de dégâts au corps-à-corps,\n le Rôdeur a 50% de chance de faire un coup critique et infliger le double de dégâts et 50% de chance d'esquiver une attaque et prendre seulement la moitié des dégâts.\n\n");
-					classe = this.vue.AfficherDemandeClasse();
+					classe = this.vue.afficherDemandeClasse();
 					continuer = false;
 					break;
 				case "1":
@@ -60,15 +60,15 @@ public class Controller {
 					break;
 				default:
 					this.vue.afficherUnMessage("Saisie incorrecte.");
-					classe = this.vue.AfficherDemandeClasse();
+					classe = this.vue.afficherDemandeClasse();
 					continuer = false;
 					break;
 			}
 		}
 		
-		String nom = this.vue.AfficherDemandePersonnage();
+		String nom = this.vue.afficherDemandePersonnage();
 		
-		String sexe = this.vue.AfficherDemandeSexe();
+		String sexe = this.vue.afficherDemandeSexe();
 		
 		Personnage personnage = this.model.creerPersonnage(classe, sexe, nom);
 		
@@ -89,7 +89,7 @@ public class Controller {
 		Case[] cases = this.model.creerCases(monstres);
 		this.jeu = this.model.creerJeu(cases, personnage);
 		
-		this.vue.AfficheInfoJeu(this.jeu);
+		this.vue.afficheInfoJeu(this.jeu);
 		String quete = null;
 		int n = rand.nextInt(4);
 		switch (n)
@@ -103,7 +103,7 @@ public class Controller {
 			case 3: quete = "Dans les bois vous rencontrez un vieil homme qui possède une carte indiquant un trésor enfoui dans des ruines se trouvant à "+this.jeu.getCases().size()+" lieux. C’est un voyage bien trop dangereux \npour un vieil homme comme lui, il vous propose donc d’aller chercher ce trésor pour lui en échange de la moitié du butin. Comment refuser une telle proposition ?";
 					break;
 		}
-		String choix = this.vue.AfficherMenu("Bienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n\n"+quete+"\n\n", personnage);
+		String choix = this.vue.afficherMenu("Bienvenue dans le Royaume de Dar Elnor, " + personnage.getNom() + ".\n\n"+quete+"\n\n", personnage);
 		actions(choix);
 	}
 	
@@ -149,7 +149,7 @@ public class Controller {
 				break;
 			default:
 				this.vue.afficherUnMessage("Veuillez recommencer");
-				choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+				choix = this.vue.afficherMenu("\n", this.jeu.getJoueur());
 				actions(choix);
 				break;
 		}
@@ -266,7 +266,7 @@ public class Controller {
 			int numMonstre = Integer.parseInt(numMonstreAttaque);
 			if(numMonstre == -1)
 			{
-				String choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+				String choix = this.vue.afficherMenu("\n", this.jeu.getJoueur());
 				actions(choix);
 			}
 			else
@@ -309,7 +309,7 @@ public class Controller {
 			int numMonstre = Integer.parseInt(numMonstreAttaque);
 			if(numMonstre == -1)
 			{
-				String choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+				String choix = this.vue.afficherMenu("\n", this.jeu.getJoueur());
 				actions(choix);
 			}
 			else
@@ -362,7 +362,7 @@ public class Controller {
 			int numCase = Integer.parseInt(laCase);
 			if(numCase == -1)
 			{
-				String choix = this.vue.AfficherMenu("\n", this.jeu.getJoueur());
+				String choix = this.vue.afficherMenu("\n", this.jeu.getJoueur());
 				actions(choix);
 			}
 			else
@@ -434,7 +434,7 @@ public class Controller {
 		
 		if (vivant && pasArrive && resteDuTemps)
 		{
-			String choix = this.vue.AfficherMenu(message, this.jeu.getJoueur());
+			String choix = this.vue.afficherMenu(message, this.jeu.getJoueur());
 			actions(choix);
 		}
 		else

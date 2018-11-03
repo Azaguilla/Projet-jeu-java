@@ -22,7 +22,7 @@ public class View {
 	 * Affiche le choix de classe
 	 * @return La classe choisie
 	 */
-	public String AfficherDemandeClasse()
+	public String afficherDemandeClasse()
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choississez la classe de votre personnage : Chasseur [1], Guerrier [2], Magicien [3], Rodeur [4] -- Plus de détails [0]");
@@ -35,7 +35,7 @@ public class View {
 	 * Affiche le choix de sexe, femme ou homme
 	 * @return Le sexe choisi
 	 */
-	public String AfficherDemandeSexe()
+	public String afficherDemandeSexe()
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choississez le sexe de votre personnage : Femme [F], Homme [M].");
@@ -48,7 +48,7 @@ public class View {
 	 * Affiche la demande du nom
 	 * @return Le nom choisi
 	 */
-	public String AfficherDemandePersonnage()
+	public String afficherDemandePersonnage()
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choississez le nom de votre personnage :");
@@ -76,7 +76,7 @@ public class View {
 	 * @param personnage Le personnage du joueur
 	 * @return Le choix de l'action
 	 */
-	public String AfficherMenu(String message, Personnage personnage)
+	public String afficherMenu(String message, Personnage personnage)
 	{
 		Scanner sc = new Scanner(System.in);
 		
@@ -104,7 +104,7 @@ public class View {
 	 * Affiche les informations du jeu
 	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
 	 */
-	public void AfficheInfoJeu(Jeu jeu)
+	public void afficheInfoJeu(Jeu jeu)
 	{
 		System.out.println("Voici la liste des cases et des monstres qui y sont placés:\n\n"+
 		jeu.getCases() 
