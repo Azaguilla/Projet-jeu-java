@@ -273,7 +273,7 @@ public class Controller {
 			{
 				if(numMonstre > monstres.size()-1 || numMonstre < 0)
 				{
-					this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+					this.vue.afficherUnMessage("\n\nCe monstre n'existe pas, veuillez ressaisir.\n");
 					actions("3");
 				}
 				else
@@ -316,7 +316,7 @@ public class Controller {
 			{
 				if(numMonstre > monstres.size()-1 || numMonstre < 0)
 				{
-					this.vue.afficherUnMessage("\n\nSaisie incorrecte, veuillez recommencer.\n");
+					this.vue.afficherUnMessage("\n\nCe monstre n'existe pas, veuillez ressaisir.\n");
 					actions("4");
 				}
 				else

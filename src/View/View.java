@@ -125,7 +125,7 @@ public class View {
 		
 		System.out.println(monstres);
 		
-		System.out.println("Quel monstre veux-tu attaquer ? Indique son numéro de 0 à 2 \n"
+		System.out.println("Quel monstre voulez-vous attaquer ? Indiquez son numéro de 0 à 2, en fonction du nombre de monstre disponible.\n"
 				+ "Retour[-1]");
 		
 		String choix = sc.next();
