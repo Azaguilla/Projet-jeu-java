@@ -327,7 +327,25 @@ public abstract class Personnage
 		this.position = position;
 	}
 
+	/**
+	 * Attaque un monstre et met a jour la vie du monstre selon la force du personnage
+	 * Réveille le monstre
+	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
+	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
+	 * @param monstre Le monstre choisi
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
+	 */
 	public abstract String attaquer(Monstre monstre, Jeu jeu);
+	
+	/**
+	 * Lance un sort au monstre et met a jour la vie du monstre selon la force du personnage et l'énergie dépensée
+	 * Réveille le monstre
+	 * Si la vie du monstre en inférieur ou égale à 0, le monstre meurt
+	 * Sinon le monstre attaque a son tour et met jour la vie du personnage selon la force du monstre
+	 * @param monstre Le monstre choisi
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
+	 */
 	public abstract String lancerSort(Monstre monstre, Jeu jeu);
-	//public abstract String infosPersoSimple();
 }

@@ -137,8 +137,25 @@ public abstract class Case
 		this.pollution = pollution;
 	}
 	
+	/**
+	 * Inflige des dégats au personnage selon de niveau de pollution de la case
+	 * @param personnage Le personnage du joueur
+	 * @return Un message d'information
+	 */
 	public abstract String degatPersonnage(Personnage personnage);
+	
+	/**
+	 * Permet de nettoyer la case si la case n'est pas déjà propre
+	 * @return Un message d'information
+	 */
 	public abstract String nettoyerCase();
+	
+	/**
+	 * Ajoute un monstres qui ne peut se trouver que dans un certain type de terrain
+	 * @param monstre Le monstre a ajouter
+	 * @return vrai(true) si le monste peut être placé ici
+	 * 		   faux(false) si non
+	 */
 	public abstract boolean ajoutMonstre(Monstre monstre);
 	
 }

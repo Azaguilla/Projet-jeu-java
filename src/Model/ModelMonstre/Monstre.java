@@ -27,11 +27,11 @@ public abstract class Monstre
 	/**
 	 * Un monstre du jeu
 	 * @param nom Nom du monstre
-	 * @param sexe
-	 * @param poids
-	 * @param taille
-	 * @param age
-	 * @param sommeil
+	 * @param sexe Sexe du monstres
+	 * @param poids Poids du monstre
+	 * @param taille Taille du monstre
+	 * @param age Age du monstre
+	 * @param sommeil Etat de sommeil du monstre
 	 */
 	public Monstre(String nom, int sexe, int poids, int taille, double age, boolean sommeil) 
 	{
@@ -340,7 +340,28 @@ public abstract class Monstre
 			System.out.println("Le monstre n'attaque pas,"+this.nom+" est endormis.");
 	}
 	
+	/**
+	 * Détermine le son du monstre
+	 * @return Le son et le nom de l'Ogre
+	 */
 	public abstract String son();
+	
+	/**
+	 * Détermine la méthode de gestation des monstres
+	 * 
+	 * @param jeu Les informations concernant l'anvancée du jeu, les monstres, les cases...
+	 * @return Un message d'information
+	 */
 	public abstract String gestation(Jeu jeu);
+	
+	/**
+	 * Méthode commune à tous les monstres. Permet à celui-ci de se déplacer.
+	 * 
+	 * @param seDeplacer 
+	 * @param jeu 
+	 * 
+	 * @return Si le monstre s'est bien déplacé, true, sinon, false
+	 * 
+	 */
 	public abstract boolean seDeplacer(SeDeplacer seDeplacer, Jeu jeu);
 }
